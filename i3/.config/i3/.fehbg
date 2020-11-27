@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+feh --bg-fill ~/Pictures/fields.png --bg-fill ~/Pictures/swirl.png

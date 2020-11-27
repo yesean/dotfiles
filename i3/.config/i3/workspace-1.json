@@ -1,0 +1,88 @@
+// vim:ts=4:sw=4:et
+{
+    // splitv split container with 2 children
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.5,
+    "type": "con",
+    "nodes": [{
+            "border": "pixel",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+                "height": 600,
+                "width": 800,
+                "x": 0,
+                "y": 0
+            },
+            "name": "sean@arch-sean:~",
+            "percent": 0.334782608695652,
+            "swallows": [{
+                "instance": "^wttr$"
+            }],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+                "height": 600,
+                "width": 800,
+                "x": 0,
+                "y": 0
+            },
+            "name": "sean@arch-sean:~",
+            "percent": 0.665217391304348,
+            "swallows": [{
+                "instance": "^neofetch$"
+            }],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    // splitv split container with 2 children
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.5,
+    "type": "con",
+    "nodes": [{
+            "border": "pixel",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+                "height": 600,
+                "width": 800,
+                "x": 0,
+                "y": 0
+            },
+            "name": "sean@arch-sean:~",
+            "percent": 0.6,
+            "swallows": [{
+                "instance": "^unimatrix$"
+            }],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+                "height": 600,
+                "width": 800,
+                "x": 0,
+                "y": 0
+            },
+            "name": "cava",
+            "percent": 0.4,
+            "swallows": [{
+                "instance": "^cava$"
+            }],
+            "type": "con"
+        }
+    ]
+}
