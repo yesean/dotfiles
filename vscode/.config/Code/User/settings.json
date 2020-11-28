@@ -29,7 +29,7 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.detectIndentation": false,
   "editor.fontSize": 14,
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
   "editor.parameterHints.enabled": false,
