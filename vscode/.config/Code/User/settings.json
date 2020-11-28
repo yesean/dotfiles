@@ -1,52 +1,66 @@
 {
-    "debug.onTaskErrors": "abort",
+  "debug.onTaskErrors": "abort",
 
-    "C_Cpp.updateChannel": "Insiders",
-  
-    "diffEditor.ignoreTrimWhitespace": false,
-  
-    "explorer.confirmDelete": false,
-  
-    "explorer.confirmDragAndDrop": false,
-    "editor.codeActionsOnSave": {
-      "source.fixAll": true
-    },
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    // "editor.defaultFormatter": "xaver.clang-format",
-    "editor.detectIndentation": false,
-    "editor.fontSize": 14,
-    "editor.formatOnSave": true,
-    "editor.lineNumbers": "relative",
-    "editor.minimap.enabled": false,
-    "editor.parameterHints.enabled": false,
-    "editor.rulers": [80],
-    "editor.suggestSelection": "first",
-    "editor.tabSize": 2,
-  
-    "files.autoSave": "afterDelay",
-    "files.exclude": {
-      "**/.classpath": true,
-      "**/.project": true,
-      "**/.settings": true,
-      "**/.factorypath": true
-    },
-  
-    "git.autofetch": true,
-  
-    "keyboard.dispatch": "keyCode",
-  
-    "javascript.updateImportsOnFileMove.enabled": "always",
-  
-    "latex-workshop.view.pdf.viewer": "tab",
-  
-    "terminal.integrated.shell.osx": "/bin/zsh",
-  
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  
-    "workbench.colorTheme": "Nord",
-    "workbench.editor.enablePreviewFromQuickOpen": false,
-    "workbench.editor.enablePreview": false,
-    "workbench.startupEditor": "newUntitledFile",
-    "window.zoomLevel": 0,
-    "workbench.iconTheme": "material-icon-theme",
+  "C_Cpp.updateChannel": "Insiders",
+
+  "diffEditor.ignoreTrimWhitespace": false,
+
+  "explorer.confirmDelete": false,
+
+  "explorer.confirmDragAndDrop": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "[cpp]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "[c]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "[objective-c]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "[objective-cpp]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "[java]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.detectIndentation": false,
+  "editor.fontSize": 14,
+  "editor.formatOnSave": true,
+  "editor.lineNumbers": "relative",
+  "editor.minimap.enabled": false,
+  "editor.parameterHints.enabled": false,
+  "editor.rulers": [80],
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 2,
+
+  "files.autoSave": "afterDelay",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+
+  "git.autofetch": true,
+
+  "keyboard.dispatch": "keyCode",
+
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  "latex-workshop.view.pdf.viewer": "tab",
+
+  "terminal.integrated.shell.osx": "/bin/zsh",
+
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+
+  "workbench.colorTheme": "Nord",
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.enablePreview": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "window.zoomLevel": 0,
+  "workbench.iconTheme": "material-icon-theme"
 }
