@@ -61,6 +61,5 @@
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.enablePreview": false,
   "workbench.startupEditor": "newUntitledFile",
-  "window.zoomLevel": 0,
-  "workbench.iconTheme": "material-icon-theme"
+  "window.zoomLevel": 0
 }
