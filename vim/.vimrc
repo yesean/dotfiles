@@ -1,20 +1,24 @@
 " plugins
 call plug#begin('~/.vim/plugged')
+" aesthetics
 Plug 'itchyny/lightline.vim'
-Plug 'morhetz/gruvbox'
-Plug 'valloric/youcompleteme'
 Plug 'arcticicestudio/nord-vim'
+
+" editing
 Plug 'preservim/nerdtree'
+Plug 'valloric/youcompleteme'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'kien/ctrlp.vim'
-Plug 'pangloss/vim-javascript'
+
+" formatting
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'yuezk/vim-js'
+
+" specific languages
+Plug 'pangloss/vim-javascript'
 call plug#end()
 
 call glaive#Install()
@@ -33,8 +37,6 @@ set smartindent                     " intelligently indents based on prev line
 set nu rnu                          " relative line numbers
 set cc=80                           " column 80 highlight
 set columns=80                      " soft wrap at column 80
-set wrap
-set linebreak
 set ruler                           " bottom right ruler
 set noswapfile                      " creates new buffer without swap file
 set backspace=indent,eol,start      " enables backspace in insert
@@ -50,63 +52,59 @@ let &t_SI.="\e[5 q"             " blinking vertical in insert
 let &t_SR.="\e[4 q"             " solid underscore in replace
 let &t_EI.="\e[2 q"             " blinking block in normal
 
-" cpp settings
+" ycm cpp
 let g:ycm_global_ycm_extra_conf = '$HOME/.vim/ycm_extra_conf/ycm_extra_conf.py'
 
-" ctrlp settings
+" ctrlp
 let g:ctrlp_working_path_mode = 'ra'
 
-" theme/color settings
+" theme
 if has('termguicolors')
   set termguicolors                       " sets correct color codes
 endif
-
 set background=dark                       " sets background color
 colorscheme nord                          " set colorscheme
 let g:nord_cursor_line_number_background = 1
 
-" lightline settings
+" lightline
 set laststatus=2
 let g:lightline = {
   \ 'colorscheme': 'nord',
   \ }
 
-" syntastic settings
+" syntastic 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
 
-" vim js settings
+" vim javascript 
 let g:javascript_plugin_jsdoc = 1
 let g:javascript_plugin_ngdoc = 1
 
-" vim jsx pretty settings
-let g:vim_jsx_pretty_highlight_close_tag = 1
-let g:vim_jsx_pretty_colorful_config = 1
+" vim prettier
+let g:prettier#config#single_quote = 'true'
+let g:prettier#config#trailing_comma = 'all'
 
 " ycm setttings
 let g:ycm_autoclose_preview_window_after_insertion=1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 
-" vim formatter
+" vim codefmt
 augroup autoformat_settings
   autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp,proto,javascript,arduino AutoFormatBuffer clang-format
+  autocmd FileType c,cpp,proto,arduino AutoFormatBuffer clang-format
   autocmd FileType dart AutoFormatBuffer dartfmt
   autocmd FileType go AutoFormatBuffer gofmt
   autocmd FileType gn AutoFormatBuffer gn
-  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
   autocmd FileType java AutoFormatBuffer google-java-format
   autocmd FileType python AutoFormatBuffer yapf
-  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
   autocmd FileType rust AutoFormatBuffer rustfmt
-  autocmd FileType vue AutoFormatBuffer prettier
+  autocmd FileType html,css,javascript,sass,scss,less,json,vue AutoFormatBuffer prettier
 augroup END
 
