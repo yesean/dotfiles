@@ -8,6 +8,7 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'preservim/nerdtree'
 Plug 'valloric/youcompleteme'
 Plug 'scrooloose/syntastic'
+Plug 'bfrg/vim-cpp-modern'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'kien/ctrlp.vim'
@@ -81,6 +82,11 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
+
+" cpp modern highlighting
+let g:cpp_attributes_highlight = 1
+let g:cpp_member_highlight = 1
+let g:cpp_simple_highlight = 1
 
 " vim javascript 
 let g:javascript_plugin_jsdoc = 1
