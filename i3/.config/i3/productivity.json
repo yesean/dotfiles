@@ -1,0 +1,89 @@
+// vim:ts=4:sw=4:et
+{
+  // splitv split container with 3 children
+  "border": "normal",
+  "floating": "auto_off",
+  "layout": "splitv",
+  "marks": [],
+  "percent": 1,
+  "type": "con",
+  "nodes": [
+    {
+      "border": "pixel",
+      "current_border_width": 0,
+      "floating": "auto_off",
+      "geometry": {
+        "height": 456,
+        "width": 1265,
+        "x": 10,
+        "y": 974
+      },
+      "marks": [],
+      "name": "Mailspring",
+      "percent": 0.333333333333333,
+      "swallows": [
+        {
+          "class": "^Mailspring$",
+          "instance": "^mailspring$"
+        }
+      ],
+      "type": "con"
+    },
+    {
+      "border": "pixel",
+      "current_border_width": 0,
+      "floating": "auto_off",
+      "geometry": {
+        "height": 1250,
+        "width": 705,
+        "x": 10,
+        "y": 1300
+      },
+      "marks": [],
+      "name": "Calendar",
+      "percent": 0.333333333333333,
+      "swallows": [
+        {
+          "class": "^Gnome\\-calendar$",
+          "instance": "^gnome\\-calendar$",
+          "title": "^Calendar$"
+        }
+      ],
+      "type": "con"
+    },
+    {
+      // splith split container with 1 children
+      "border": "normal",
+      "floating": "auto_off",
+      "layout": "splith",
+      "marks": [],
+      "percent": 0.333333333333333,
+      "type": "con",
+      "nodes": [
+        {
+          "border": "pixel",
+          "current_border_width": 0,
+          "floating": "auto_off",
+          "geometry": {
+            "height": 600,
+            "width": 800,
+            "x": 880,
+            "y": 420
+          },
+          "marks": [],
+          "name": "Todoist",
+          "percent": 1,
+          "swallows": [
+            {
+              "class": "^Todoist$",
+              "instance": "^todoist$",
+              "title": "^Todoist$",
+              "window_role": "^browser\\-window$"
+            }
+          ],
+          "type": "con"
+        }
+      ]
+    }
+  ]
+}
