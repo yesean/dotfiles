@@ -9,7 +9,7 @@
 
   "explorer.confirmDragAndDrop": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll.eslint": true
   },
   "[cpp]": {
     "editor.defaultFormatter": "xaver.clang-format"
