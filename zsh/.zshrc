@@ -11,8 +11,8 @@ fi
 export PATH=$PATH:/home/sean/.cargo/bin
 export QUOTING_STYLE=literal
 
-# hidden files shortcut
-alias ll='ls -l'
+# long list hidden files shortcut
+alias ll='ls -l -a'
 
 # vi key bindings
 bindkey -v
