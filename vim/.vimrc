@@ -37,7 +37,6 @@ set autoindent                      " maintains indent from prev line
 set smartindent                     " intelligently indents based on prev line
 set nu rnu                          " relative line numbers
 set cc=80                           " column 80 highlight
-set columns=80                      " soft wrap at column 80
 set ruler                           " bottom right ruler
 set noswapfile                      " creates new buffer without swap file
 set backspace=indent,eol,start      " enables backspace in insert
