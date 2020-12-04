@@ -8,6 +8,12 @@
   "explorer.confirmDelete": false,
 
   "explorer.confirmDragAndDrop": false,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
@@ -54,6 +60,10 @@
   "latex-workshop.view.pdf.viewer": "tab",
 
   "terminal.integrated.shell.osx": "/bin/zsh",
+
+  "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
+  "vscode-neovim.neovimInitVimPaths.darwin": "~/.dotfiles/nvim/init.vim",
+  "vim.enableNeovim": true,
 
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 
