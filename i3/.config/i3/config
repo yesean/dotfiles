@@ -1,4 +1,4 @@
-set $mod Mod1
+set $mod Mod4
 set $term alacritty
 
 # Define names for default workspaces for which we configure key bindings later on.
@@ -73,7 +73,7 @@ bindsym $mod+Return exec --no-startup-id $term
 bindsym $mod+shift+Return exec --no-startup-id google-chrome-stable
 
 # start file system
-bindsym $mod+mod4+Return exec --no-startup-id $term -e ranger
+bindsym $mod+mod1+Return exec --no-startup-id $term -e ranger
 
 # kill focused window
 bindsym $mod+q kill
