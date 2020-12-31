@@ -25,6 +25,9 @@ autoload -Uz compinit promptinit
 compinit
 promptinit
 
+# match hidden files
+setopt globdots
+
 # enable history search
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
