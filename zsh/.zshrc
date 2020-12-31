@@ -8,38 +8,37 @@ fi
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# set environment variables
 export PATH=$PATH:/home/sean/.cargo/bin
 export QUOTING_STYLE=literal
 
-# long list hidden files shortcut
-alias ll='ls -l -a'
+# match hidden files
+setopt globdots
 
-# vi key bindings
-bindkey -v
-
-# reduce vim timeout
-export KEYTIMEOUT=1
+# aliases
+alias ll='ls -la' # long list hidden files shortcut
+alias vim='nvim' # neovim as vim
+alias g='git' # git as g
 
 # enable autocomplete
 autoload -Uz compinit promptinit
 compinit
 promptinit
 
-# match hidden files
-setopt globdots
-
 # enable history search
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-
 [[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
 [[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
 
-# change cursor based on vi mode
-function zle-keymap-select zle-line-init
+
+# vim mode
+bindkey -v # vi key bindings
+export KEYTIMEOUT=1 # reduce vim timeout
+function zle-keymap-select zle-line-init # change cursor based on vi mode
 {
-    # change cursor shape in iTerm2
+    # change cursor shape
     case $KEYMAP in
         vicmd)      print -n -- "\E]50;CursorShape=0\C-G";;  # block cursor
         viins|main) print -n -- "\E]50;CursorShape=1\C-G";;  # line cursor
@@ -48,7 +47,6 @@ function zle-keymap-select zle-line-init
     zle reset-prompt
     zle -R
 }
-
 function zle-line-finish
 {
     print -n -- "\E]50;CursorShape=0\C-G"  # block cursor
@@ -59,10 +57,8 @@ zle -N zle-line-finish
 zle -N zle-keymap-select
 
 # powerline zsh
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme 2> /dev/null
+source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme 2> /dev/null
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# powerline10k prompt
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
-[[ ! -f ~/.dotfiles/zsh/.p10k.zsh ]] || source ~/.dotfiles/zsh/.p10k.zsh
