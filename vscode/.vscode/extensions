@@ -1,4 +1,5 @@
 arcticicestudio.nord-visual-studio-code
+asvetliakov.vscode-neovim
 CoenraadS.bracket-pair-colorizer
 dbaeumer.vscode-eslint
 donjayamanne.githistory
@@ -9,5 +10,4 @@ James-Yu.latex-workshop
 ms-vscode.cpptools
 ms-vscode.vscode-typescript-next
 oderwat.indent-rainbow
-vscodevim.vim
 xaver.clang-format
