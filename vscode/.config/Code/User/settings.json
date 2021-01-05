@@ -62,9 +62,9 @@
   "terminal.integrated.shell.osx": "/bin/zsh",
 
   "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.darwin": "~/.dotfiles/nvim/init.vim",
+  "vscode-neovim.neovimInitVimPaths.darwin": "~/.dotfiles/nvim/.config/nvim/init.vim",
   "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.linux": "~/.dotfiles/nvim/init.vim",
+  "vscode-neovim.neovimInitVimPaths.linux": "~/.dotfiles/nvim/.config/nvim/init.vim",
   "vim.enableNeovim": true,
 
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
