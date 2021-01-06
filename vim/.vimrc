@@ -12,6 +12,7 @@ Plug 'bfrg/vim-cpp-modern'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'kien/ctrlp.vim'
+Plug 'jiangmiao/auto-pairs'
 
 " formatting
 Plug 'google/vim-maktaba'
@@ -51,6 +52,12 @@ set mouse=a                         " enable mouse support
 let &t_SI.="\e[5 q"             " blinking vertical in insert
 let &t_SR.="\e[4 q"             " solid underscore in replace
 let &t_EI.="\e[2 q"             " blinking block in normal
+
+" set leader key
+let mapleader=" "
+
+" nerdtree shortcut
+noremap <leader>n :NERDTree<CR>
 
 " ycm cpp
 let g:ycm_global_ycm_extra_conf = '$HOME/.vim/ycm_extra_conf/ycm_extra_conf.py'
