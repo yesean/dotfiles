@@ -13,6 +13,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'kien/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'lervag/vimtex'
+Plug 'alvan/vim-closetag'
 
 " formatting
 Plug 'google/vim-maktaba'
@@ -26,7 +28,7 @@ call plug#end()
 call glaive#Install()
 " Optional: Enable codefmt's default mappings on the <Leader>= prefix.
 Glaive codefmt plugin[mappings]
-Glaive codefmt google_java_executable="java -jar /path/to/google-java-format-VERSION-all-deps.jar"
+Glaive codefmt google_java_executable="/usr/local/bin/google-java-format"
 
 syntax enable                       " turns on syntax highlighting
 filetype plugin indent on           " activate filetype detection
@@ -47,6 +49,7 @@ set hlsearch                        " highlights all search matches
 set timeoutlen=1000                 " reduce esc delay (mapping delay)
 set ttimeoutlen=0                   " reduce esc delay (keycode delay)
 set mouse=a                         " enable mouse support
+set scrolloff=20
 
 " cursor modes
 let &t_SI.="\e[5 q"             " blinking vertical in insert
