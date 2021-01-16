@@ -6,7 +6,6 @@ Plug 'arcticicestudio/nord-vim'
 
 " editing
 Plug 'preservim/nerdtree'
-Plug 'valloric/youcompleteme'
 Plug 'scrooloose/syntastic'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'tpope/vim-fugitive'
@@ -15,6 +14,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'lervag/vimtex'
 Plug 'alvan/vim-closetag'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " formatting
 Plug 'google/vim-maktaba'
@@ -55,13 +55,15 @@ set exrc                            " automatically source local .vimrc
 set nohlsearch                      " turn off search highlighting
 set hidden                          " hides all buffers in background
 set signcolumn=yes                  " add extra left column for messages
+set splitright                      " open vertical splits to the right
+set splitbelow                      " open horizontal splits below
 
 " cursor modes
 let &t_SI.="\e[5 q"             " blinking vertical in insert
 let &t_SR.="\e[4 q"             " solid underscore in replace
 let &t_EI.="\e[2 q"             " blinking block in normal
 
-" set leader key
+" set leader key to space
 let mapleader=" "
 
 " change window shortcut
@@ -73,8 +75,15 @@ nnoremap <Leader>l :wincmd l<CR>
 " nerdtree shortcut
 noremap <leader>n :NERDTree<CR>
 
-" ycm cpp
-let g:ycm_global_ycm_extra_conf = '$HOME/.vim/ycm_extra_conf/ycm_extra_conf.py'
+" coc extensions
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-clangd', 'coc-css', 'coc-eslint', 'coc-html', 'coc-java', 'coc-python', 'coc-tsserver', 'coc-texlab', 'coc-yaml']
+
+" use enter for trigger completion
+inoremap <silent><expr> <CR> coc#_select_confirm()
+
+" use tab/shift-tab to navigate suggestions
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " ctrlp
 let g:ctrlp_working_path_mode = 'ra'
