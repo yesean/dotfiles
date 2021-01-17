@@ -74,7 +74,7 @@ nnoremap <Leader>k :wincmd k<CR>
 nnoremap <Leader>l :wincmd l<CR>
 
 " nerdtree shortcut
-noremap <leader>n :NERDTree<CR>
+noremap <Leader>n :NERDTree<CR>
 
 " coc extensions
 let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-clangd', 'coc-css', 'coc-eslint', 'coc-html', 'coc-java', 'coc-python', 'coc-tsserver', 'coc-texlab', 'coc-yaml']
@@ -85,6 +85,9 @@ inoremap <silent><expr> <CR> coc#_select_confirm()
 " use tab/shift-tab to navigate suggestions
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" fzf hotkey
+nnoremap <C-p> :Files<CR>
 
 " theme
 if has('termguicolors')
