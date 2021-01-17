@@ -10,11 +10,12 @@ Plug 'scrooloose/syntastic'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'kien/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'lervag/vimtex'
 Plug 'alvan/vim-closetag'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " formatting
 Plug 'google/vim-maktaba'
@@ -84,9 +85,6 @@ inoremap <silent><expr> <CR> coc#_select_confirm()
 " use tab/shift-tab to navigate suggestions
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" ctrlp
-let g:ctrlp_working_path_mode = 'ra'
 
 " theme
 if has('termguicolors')

@@ -11,6 +11,7 @@ fi
 # set environment variables
 export PATH=$PATH:/home/sean/.cargo/bin
 export QUOTING_STYLE=literal
+export FZF_DEFAULT_COMMAND='rg --files'
 
 # match hidden files
 setopt globdots
