@@ -12,6 +12,7 @@ fi
 export PATH=$PATH:/home/sean/.cargo/bin
 export QUOTING_STYLE=literal
 export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 
 # match hidden files
 setopt globdots
@@ -63,3 +64,6 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme 2> /dev/null
 
 # powerline10k prompt
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# fzf prompt
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
