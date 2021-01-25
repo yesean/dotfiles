@@ -2,6 +2,20 @@
   "debug.onTaskErrors": "abort",
 
   "C_Cpp.updateChannel": "Insiders",
+  
+  "colorize.languages": [
+    "css",
+    "javascript",
+    "typescript",
+    "sass",
+    "scss",
+    "less",
+    "postcss",
+    "sss",
+    "stylus",
+    "xml",
+    "svg"
+  ],
 
   "diffEditor.ignoreTrimWhitespace": false,
 
