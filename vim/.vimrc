@@ -64,8 +64,9 @@ let &t_SI.="\e[5 q"             " blinking vertical in insert
 let &t_SR.="\e[4 q"             " solid underscore in replace
 let &t_EI.="\e[2 q"             " blinking block in normal
 
-" set leader key to space
-let mapleader=" "
+" set leader, localleader key to space
+let mapleader = " "
+let maplocalleader = " "
 
 " change window shortcut
 nnoremap <Leader>h :wincmd h<CR>
@@ -80,7 +81,7 @@ noremap <Leader>n :NERDTree<CR>
 let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-clangd', 'coc-css', 'coc-eslint', 'coc-html', 'coc-java', 'coc-python', 'coc-tsserver', 'coc-texlab', 'coc-yaml']
 
 " use enter for trigger completion
-inoremap <silent><expr> <CR> coc#_select_confirm()
+" inoremap <silent><expr> <CR> coc#_select_confirm()
 
 " use tab/shift-tab to navigate suggestions
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -112,6 +113,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_tex_checkers = ['chktek']
+let g:syntastic_html_checkers = ['validator', 'w3']
 
 " cpp modern highlighting
 let g:cpp_attributes_highlight = 1
@@ -130,6 +133,10 @@ let g:prettier#config#trailing_comma = 'all'
 let g:ycm_autoclose_preview_window_after_insertion=1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
+
+" vimtex settings
+let g:vimtex_syntax_enabled=1
+let g:tex_flavor = 'latex'
 
 " vim codefmt
 augroup autoformat_settings
