@@ -2,7 +2,7 @@
   "debug.onTaskErrors": "abort",
 
   "C_Cpp.updateChannel": "Insiders",
-  
+
   "colorize.languages": [
     "css",
     "javascript",

@@ -22,6 +22,14 @@ alias ll='ls -la' # long list hidden files shortcut
 alias vim='nvim' # neovim as vim
 alias g='git' # git as g
 
+# homebrew completions
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
 # enable autocomplete
 autoload -Uz compinit promptinit
 compinit
