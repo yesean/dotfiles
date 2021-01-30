@@ -11,14 +11,16 @@ fi
 # set environment variables
 export PATH=$PATH:/home/sean/.cargo/bin
 export QUOTING_STYLE=literal
-export FZF_DEFAULT_COMMAND='rg --files'
+export FZF_DEFAULT_COMMAND='fd --hidden --exclude "{.git,node_modules}" . ~'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 
 # match hidden files
 setopt globdots
 
 # aliases
-alias ll='ls -la' # long list hidden files shortcut
+alias ll='ls -lah' # long list hidden files shortcut
 alias vim='nvim' # neovim as vim
 alias g='git' # git as g
 
@@ -75,3 +77,7 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme 2> /dev/null
 
 # fzf prompt
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# fzf keybindings
+bindkey '^P' fzf-file-widget
+bindkey '^O' fzf-cd-widget
