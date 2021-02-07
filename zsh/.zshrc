@@ -9,12 +9,13 @@ fi
 [[ $- != *i* ]] && return
 
 # set environment variables
+export PATH="/usr/local/sbin:$PATH"
 export PATH=$PATH:/home/sean/.cargo/bin
 export QUOTING_STYLE=literal
-export FZF_DEFAULT_COMMAND='fd --hidden --exclude "{.git,node_modules}" . ~'
+export FZF_DEFAULT_COMMAND='fd --hidden --exclude "{.git,node_modules}" .'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
+export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
+export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type d"
 
 # match hidden files
 setopt globdots
