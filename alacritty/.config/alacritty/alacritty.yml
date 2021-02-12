@@ -6,10 +6,6 @@ env:
 key_bindings:
   - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }
 
-    #cursor:
-    #style: Block
-    #vi_mode_style: Beam
-
 font:
   size: 11
   normal:
