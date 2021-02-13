@@ -9,8 +9,7 @@ fi
 [[ $- != *i* ]] && return
 
 # set environment variables
-export PATH="/usr/local/sbin:$PATH"
-export PATH=$PATH:/home/sean/.cargo/bin
+export PATH="$PATH:/usr/local/sbin"
 export QUOTING_STYLE=literal
 export FZF_DEFAULT_COMMAND='fd --hidden --exclude "{.git,node_modules}" .'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
@@ -44,7 +43,6 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 [[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
 [[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
-
 
 # vim mode
 bindkey -v # vi key bindings

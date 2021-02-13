@@ -31,15 +31,15 @@ Glaive codefmt google_java_executable="/usr/local/bin/google-java-format"
 let mapleader = " "
 let maplocalleader = " "
 
-source ./coc.vim
-source ./fzf.vim
-source ./formatting.vim
-source ./lightline.vim
-source ./nerdtree.vim
-source ./options.vim
-source ./syntax.vim
-source ./theme.vim
-source ./vimtex.vim
+source ~/.dotfiles/vim/coc.vim
+source ~/.dotfiles/vim/fzf.vim
+source ~/.dotfiles/vim/formatting.vim
+source ~/.dotfiles/vim/lightline.vim
+source ~/.dotfiles/vim/nerdtree.vim
+source ~/.dotfiles/vim/options.vim
+source ~/.dotfiles/vim/syntax.vim
+source ~/.dotfiles/vim/theme.vim
+source ~/.dotfiles/vim/vimtex.vim
 
 " cursor modes
 let &t_SI.="\e[5 q"             " blinking vertical in insert
