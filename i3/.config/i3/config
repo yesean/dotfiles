@@ -197,8 +197,8 @@ bindsym $mod+o        gaps outer current plus 10
 bindsym $mod+Shift+o  gaps outer current minus 10
 
 # set gaps
-gaps inner 10 
-gaps outer 0
+gaps inner 20 
+gaps outer 40
 
 # set gaps for aesthetic workspace (10)
 # workspace $ws10 gaps inner 20
