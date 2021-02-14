@@ -42,9 +42,13 @@ source ~/.dotfiles/vim/theme.vim
 source ~/.dotfiles/vim/vimtex.vim
 
 " cursor modes
-let &t_SI.="\e[5 q"             " blinking vertical in insert
-let &t_SR.="\e[4 q"             " solid underscore in replace
-let &t_EI.="\e[2 q"             " blinking block in normal
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
+else
+    let &t_SI = "\e[5 q"
+    let &t_EI = "\e[2 q"
+endif
 
 " change window shortcut
 nnoremap <Leader>h :wincmd h<CR>

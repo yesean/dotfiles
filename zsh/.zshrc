@@ -48,25 +48,31 @@ zle -N down-line-or-beginning-search
 # vim mode
 bindkey -v # vi key bindings
 export KEYTIMEOUT=1 # reduce vim timeout
-function zle-keymap-select zle-line-init # change cursor based on vi mode
-{
-    # change cursor shape
-    case $KEYMAP in
-        vicmd)      print -n -- "\E]50;CursorShape=0\C-G";;  # block cursor
-        viins|main) print -n -- "\E]50;CursorShape=1\C-G";;  # line cursor
-    esac
 
-    zle reset-prompt
-    zle -R
-}
-function zle-line-finish
-{
-    print -n -- "\E]50;CursorShape=0\C-G"  # block cursor
+# Change cursor with support for inside/outside tmux
+function _set_cursor() {
+    if [[ $TMUX = '' ]]; then
+      echo -ne $1
+    else
+      echo -ne "\ePtmux;\e\e$1\e\\"
+    fi
 }
 
-zle -N zle-line-init
-zle -N zle-line-finish
+function _set_block_cursor() { _set_cursor '\e[2 q' }
+function _set_beam_cursor() { _set_cursor '\e[6 q' }
+
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
+      _set_block_cursor
+  else
+      _set_beam_cursor
+  fi
+}
 zle -N zle-keymap-select
+# ensure beam cursor when starting new terminal
+precmd_functions+=(_set_beam_cursor) #
+# ensure insert mode and beam cursor when exiting vim
+zle-line-init() { zle -K viins; _set_beam_cursor }
 
 # powerline zsh
 source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme 2> /dev/null
