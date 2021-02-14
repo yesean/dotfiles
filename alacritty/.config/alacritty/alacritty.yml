@@ -1,14 +1,14 @@
 # 8 bit color
 env:
-  TERM: tmux-256color
+  TERM: xterm-256color
   COLORTERM: truecolor 
 
-shell:
-  program: /bin/zsh
-  args:
-    - -l
-    - -c
-    - "TERM=xterm-256color tmux attach || TERM=xterm-256color tmux"
+  #shell:
+  #  program: /bin/zsh
+  #  args:
+  #    - -l
+  #    - -c
+  #    - "TERM=xterm-256color tmux -u attach || TERM=xterm-256color tmux -u"
 
 key_bindings:
   - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }
@@ -16,13 +16,13 @@ key_bindings:
 font:
   size: 14
   normal:
-    family: Menlo
+    family: MesloLGS NF
     style: Regular
   bold:
-    family: Menlo
+    family: MesloLGS NF
     style: Bold
   italic:
-    family: Menlo
+    family: MesloLGS NF
     style: Italic
 
 window:
