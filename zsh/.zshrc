@@ -77,8 +77,8 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme 2> /dev/null
 
 # fzf prompt
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh 2> /dev/null
+source /usr/share/fzf/completion.zsh 2> /dev/null
 
 # fzf keybindings
 bindkey '^P' fzf-file-widget
