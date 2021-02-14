@@ -224,7 +224,8 @@ workspace $ws9  output $monitor-two
 workspace $ws10 output $monitor-two
 
 # start polybar
-exec_always --no-startup-id ~/.config/polybar/launch.sh
+# exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id ~/polybar-themes/simple/launch.sh --blocks
 
 # power cycle webcam and set up dummy cam
 exec_always --no-startup-id sudo /home/sean/.config/i3/reset-webcam.sh

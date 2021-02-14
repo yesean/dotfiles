@@ -10,6 +10,7 @@ fi
 
 # set environment variables
 export PATH="$PATH:/usr/local/sbin"
+export PATH="$PATH:/var/lib/snapd/snap/bin"
 export QUOTING_STYLE=literal
 export FZF_DEFAULT_COMMAND='fd --hidden --exclude "{.git,node_modules}" .'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
