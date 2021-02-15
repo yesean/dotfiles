@@ -3,12 +3,12 @@ env:
   TERM: xterm-256color
   COLORTERM: truecolor 
 
-  #shell:
-  #  program: /bin/zsh
-  #  args:
-  #    - -l
-  #    - -c
-  #    - "TERM=xterm-256color tmux -u attach || TERM=xterm-256color tmux -u"
+shell:
+  program: /bin/zsh
+  args:
+    - -l
+    - -c
+    - "TERM=xterm-256color tmux -u attach || TERM=xterm-256color tmux -u"
 
 key_bindings:
   - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }
