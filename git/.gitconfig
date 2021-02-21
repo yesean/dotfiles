@@ -1,0 +1,44 @@
+[user]
+	name = Sean Ye
+	email = seanye24@gmail.com
+[credential]
+	helper = osxkeychain
+[core]
+	editor = vim
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[alias]
+	b = branch
+	ci = commit
+	co = checkout
+	l = log --oneline
+        st = status	
+	unstage = reset HEAD --
+	up = rebase
+        lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches
+[init]
+	defaultBranch = main
+[pull]
+	ff = only
+
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[interactive]
+	diffFilter = diff-so-fancy --patch
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	func = 146 bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
