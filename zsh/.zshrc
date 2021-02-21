@@ -21,16 +21,16 @@ export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type d"
 setopt globdots
 
 # aliases
-alias ll  ='ls -lah'        # list, show hidden
-alias vim ='nvim'           # neovim
-alias g   ='git'            
-alias gd  ='git diff'
-alias gds ='git diff --staged'
-alias gcm ='git commit -m'
-alias ga  ='git add'
-alias gaa ='git add .'
-alias gs  ='git status'
-alias gl  ='git lg'
+alias ll='ls -la'         # list, show hidden
+alias vim='nvim'           # neovim
+alias g='git'            
+alias gd='git diff'
+alias gds='git diff --staged'
+alias gcm='git commit -m'
+alias ga='git add'
+alias gaa='git add .'
+alias gs='git status'
+alias gl='git lg'
 
 # homebrew completions
 if type brew &>/dev/null; then
