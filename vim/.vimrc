@@ -1,3 +1,6 @@
+" disable ale lsp
+let g:ale_disable_lsp = 1
+
 call plug#begin('~/.vim/plugged')
 " aesthetics
 Plug 'itchyny/lightline.vim'
@@ -5,7 +8,6 @@ Plug 'arcticicestudio/nord-vim'
 
 " editing
 Plug 'preservim/nerdtree'
-Plug 'scrooloose/syntastic'
 Plug 'bfrg/vim-cpp-modern'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-fugitive'
@@ -16,6 +18,7 @@ Plug 'alvan/vim-closetag'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'dense-analysis/ale'
 
 " formatting
 Plug 'google/vim-maktaba'
