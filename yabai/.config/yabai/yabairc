@@ -1,5 +1,8 @@
 #!/usr/bin/env zsh
 
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
 # use tiling layout
 yabai -m config layout bsp
 
