@@ -1,17 +1,17 @@
 # 8 bit color
 env:
   TERM: xterm-256color
-  COLORTERM: truecolor 
+  COLORTERM: truecolor
 
 shell:
   program: /bin/zsh
   args:
     - -l
     - -c
-    - "TERM=xterm-256color tmux -u attach || TERM=xterm-256color tmux -u"
+    - 'TERM=xterm-256color tmux -u'
 
 key_bindings:
-  - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }
+  - { key: Return, mods: Control|Shift, action: SpawnNewInstance }
 
 font:
   size: 14
@@ -29,7 +29,7 @@ window:
   padding:
     x: 15
     y: 15
-  decorations: "none"
+  decorations: 'none'
 
 # colors (nord)
 colors:
@@ -80,4 +80,3 @@ colors:
     magenta: '#8c738c'
     cyan: '#6d96a5'
     white: '#aeb3bb'
-
