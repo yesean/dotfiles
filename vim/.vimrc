@@ -72,6 +72,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'dense-analysis/ale'
+Plug 'JamshedVesuna/vim-markdown-preview'
 
 Plug 'google/vim-maktaba'         " formatting
 Plug 'google/vim-codefmt'
