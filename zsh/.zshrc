@@ -27,10 +27,14 @@ alias g='git'
 alias gd='git diff'
 alias gds='git diff --staged'
 alias gcm='git commit -m'
+alias gco='git checkout'
+alias gb='git branch'
 alias ga='git add'
 alias gaa='git add .'
 alias gs='git status'
 alias gl='git lg'
+alias gpu='git push'
+alias gpl='git pull'
 
 # homebrew completions
 if type brew &>/dev/null; then
