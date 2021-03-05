@@ -21,7 +21,8 @@ export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type d"
 setopt globdots
 
 # aliases
-alias ll='ls -la'         # list, show hidden
+alias ls='ls --color=auto 2>/dev/null || ls -G 2>/dev/null'         # list, show hidden
+alias ll='ls --color=auto -lA 2>/dev/null || ls -lAG 2>/dev/null'         # list, show hidden
 alias vim='nvim'           # neovim
 alias g='git'            
 alias gd='git diff'
