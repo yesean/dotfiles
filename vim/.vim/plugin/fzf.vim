@@ -1,2 +1,11 @@
 " fzf hotkey
-nnoremap <C-p> :Files<CR>
+function! s:find_git_root()
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+
+command! ProjectFiles execute 'Files' s:find_git_root()
+command! -bang -nargs=* PRg
+  \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'dir': system('git rev-parse --show-toplevel 2> /dev/null')[:-2]}, <bang>0)
+
+nnoremap <C-p> :ProjectFiles<CR>
+nnoremap <C-f> :PRg<CR>
