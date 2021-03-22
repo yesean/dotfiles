@@ -21,17 +21,23 @@ export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type d"
 setopt globdots
 
 # aliases
-alias ls='ls --color=auto 2>/dev/null || ls -G 2>/dev/null'         # list, show hidden
-alias ll='ls --color=auto -lA 2>/dev/null || ls -lAG 2>/dev/null'         # list, show hidden
+if [[ -f /etc/arch-release ]]; then
+  alias ls='ls --color=auto'         # list, show hidden
+  alias ll='ls --color=auto -lA'   # list, show hidden
+elif [[ $(uname) == "Darwin" ]]; then
+  alias ls='ls -G'         # list, show hidden
+  alias ll='ls -lAG'   # list, show hidden
+fi
 alias vim='nvim'           # neovim
-alias g='git'            
+# git gud
 alias gd='git diff'
 alias gds='git diff --staged'
 alias gcm='git commit -m'
+alias gcam='git commit --amend --no-edit'
 alias gco='git checkout'
 alias gb='git branch'
 alias ga='git add'
-alias gaa='git add .'
+alias gaa='git add -A'
 alias gs='git status'
 alias gl='git lg'
 alias gpu='git push'
@@ -87,16 +93,21 @@ precmd_functions+=(_set_beam_cursor) #
 zle-line-init() { zle -K viins; _set_beam_cursor }
 
 # powerline zsh
-source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme 2> /dev/null
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme 2> /dev/null
+if [[ -f /etc/arch-release ]]; then
+  source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme # arch powerline location
+elif [[ $(uname) == "Darwin" ]]; then
+  source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme       # macos powerline location
+fi
 
 # powerline10k prompt
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # fzf prompt
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source /usr/share/fzf/key-bindings.zsh 2> /dev/null
-source /usr/share/fzf/completion.zsh 2> /dev/null
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+if [[ -f /etc/arch-release ]]; then
+  source /usr/share/fzf/key-bindings.zsh
+  source /usr/share/fzf/completion.zsh
+fi
 
 # fzf keybindings
 bindkey '^P' fzf-file-widget
