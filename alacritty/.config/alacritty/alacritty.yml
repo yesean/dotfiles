@@ -14,7 +14,7 @@ key_bindings:
   - { key: Return, mods: Control|Shift, action: SpawnNewInstance }
 
 font:
-  size: 14
+  size: 10
   normal:
     family: MesloLGS NF
     style: Regular
