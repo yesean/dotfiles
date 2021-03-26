@@ -11,20 +11,25 @@ fi
 # set environment variables
 export PATH="$PATH:/usr/local/sbin"
 export PATH="$PATH:/var/lib/snapd/snap/bin"
+export PATH="$PATH:$(yarn global bin)"
 export QUOTING_STYLE=literal
 export FZF_DEFAULT_COMMAND='fd --hidden --exclude "{.git,node_modules}" .'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type d"
 
+# check linux or macos
+[[ $(uname) = 'Darwin' ]] && is_macos=true || is_macos=false
+[[ $(uname) = 'Linux' ]] && is_linux=true || is_linux=false
+
 # match hidden files
 setopt globdots
 
 # aliases
-if [[ -f /etc/arch-release ]]; then
+if [[ "$is_linux" == true ]]; then
   alias ls='ls --color=auto'         # list, show hidden
   alias ll='ls --color=auto -lA'   # list, show hidden
-elif [[ $(uname) == "Darwin" ]]; then
+elif [[ "$is_darwin" == true ]]; then
   alias ls='ls -G'         # list, show hidden
   alias ll='ls -lAG'   # list, show hidden
 fi
@@ -93,9 +98,9 @@ precmd_functions+=(_set_beam_cursor) #
 zle-line-init() { zle -K viins; _set_beam_cursor }
 
 # powerline zsh
-if [[ -f /etc/arch-release ]]; then
+if [[ "$is_linux" == true ]]; then
   source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme # arch powerline location
-elif [[ $(uname) == "Darwin" ]]; then
+elif [[ "$is_macos" == true ]]; then
   source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme       # macos powerline location
 fi
 
