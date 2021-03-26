@@ -40,7 +40,7 @@ client.focused_inactive     $nord2 $nord2 $nord6 $nord3 $nord3
 client.unfocused            $nord0 $nord0 $nord6 $nord3 $nord3
 client.urgent               $nord8 $nord8 $nord6 $nord3 $nord3
 client.placeholder          $nord0 $nord0 $nord6 $nord3 $nord3
-client.background           $nord0 
+client.background           $nord0
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -49,7 +49,7 @@ client.background           $nord0
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # set cursor size
-exec --no-startup-id xrdb ~/.Xresources 
+exec --no-startup-id xrdb ~/.Xresources
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -79,7 +79,7 @@ bindsym $mod+mod1+Return exec --no-startup-id $term -e ranger
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id rofi -show
+bindsym $mod+d exec --no-startup-id ~/.config/rofi/launchers/colorful/launcher.sh
 
 # change focus
 bindsym $mod+h focus left
@@ -196,8 +196,12 @@ bindsym $mod+Shift+i  gaps inner current minus 10
 bindsym $mod+o        gaps outer current plus 10
 bindsym $mod+Shift+o  gaps outer current minus 10
 
+# flameshot shortcut (for screenshotting)
+bindsym $mod+Ctrl+4 exec --no-startup-id flameshot gui
+bindsym $mod+Ctrl+3 exec --no-startup-id flameshot full -c
+
 # set gaps
-gaps inner 0 
+gaps inner 10
 gaps outer 0
 
 # set gaps for aesthetic workspace (10)
@@ -209,7 +213,7 @@ gaps outer 0
 # workspace $ws8  gaps outer 60
 
 # style window title
-font pango:OpenSans 10 
+font pango:OpenSans 10
 title_align center
 for_window [class=".*"] title_format "    %title    "
 for_window [class=".*"] border pixel 0
@@ -224,8 +228,7 @@ workspace $ws9  output $monitor-two
 workspace $ws10 output $monitor-two
 
 # start polybar
-# exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec_always --no-startup-id ~/polybar-themes/simple/launch.sh --blocks
+exec_always --no-startup-id ~/.config/polybar/launch.sh --blocks
 
 # power cycle webcam and set up dummy cam
 exec_always --no-startup-id sudo /home/sean/.config/i3/reset-webcam.sh
@@ -246,5 +249,3 @@ exec_always --no-startup-id dbus-launch picom --experimental-backends -b
 
 # startup basic layout
 exec --no-startup-id ~/.config/i3/load-layout.sh
-
-
