@@ -11,5 +11,5 @@ fi
 i3-msg "workspace ${ws}; append_layout ~/.config/i3/aesthetic.json"
 (alacritty --hold -t wttr --class wttr -e curl wttr.in/?0 &)
 (alacritty --hold -t neofetch --class neofetch -e neofetch &)
-(alacritty --hold -t unimatrix --class unimatrix -e ~/terminal-rain.sh &)
+(alacritty --hold -t unimatrix --class unimatrix -e ~/.local/bin/terminal-rain.sh &)
 (alacritty --hold -t cava --class cava -e cava &)
