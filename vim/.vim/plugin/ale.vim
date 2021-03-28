@@ -4,7 +4,7 @@ let g:ale_linters = {
 \   'javascriptreact':  ['prettier', 'eslint'],
 \   'typescript':       ['prettier', 'eslint'],
 \   'typescriptreact':  ['prettier', 'eslint'],
-}
+\}
 let g:ale_fixers = {
 \   '*':                ['remove_trailing_lines', 'trim_whitespace'],
 \   'tex':              ['latexindent', 'textlint'],
