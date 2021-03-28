@@ -26,10 +26,10 @@ export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type d"
 setopt globdots
 
 # aliases
-if [[ "$is_linux" == true ]]; then
+if [[ "$is_linux" == "true" ]]; then
   alias ls='ls --color=auto'         # list, show hidden
   alias ll='ls --color=auto -lA'   # list, show hidden
-elif [[ "$is_darwin" == true ]]; then
+elif [[ "$is_macos" == "true" ]]; then
   alias ls='ls -G'         # list, show hidden
   alias ll='ls -lAG'   # list, show hidden
 fi
@@ -98,9 +98,9 @@ precmd_functions+=(_set_beam_cursor) #
 zle-line-init() { zle -K viins; _set_beam_cursor }
 
 # powerline zsh
-if [[ "$is_linux" == true ]]; then
+if [[ "$is_linux" == "true" ]]; then
   source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme # arch powerline location
-elif [[ "$is_macos" == true ]]; then
+elif [[ "$is_macos" == "true" ]]; then
   source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme       # macos powerline location
 fi
 
