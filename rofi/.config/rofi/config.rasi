@@ -1,8 +1,6 @@
+/** Basic config file **/
+
 configuration {
-  matching: "fuzzy";
-  modi: "combi";
-  theme: "onedark";
-  font: "hack 10";
-  combi-modi: "drun#ssh";
-  display-combi: "> ";
+  show-icons: true;
+  icon-theme: "Papirus";
 }
