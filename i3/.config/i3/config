@@ -82,6 +82,8 @@ bindsym $mod+q kill
 bindsym $mod+d exec --no-startup-id ~/.config/rofi/launchers/colorful/launcher.sh
 # rofi calculator
 bindsym $mod+c exec --no-startup-id rofi -show calc -modi calc -no-show-match -no-sort -theme ~/.dotfiles/rofi/.config/rofi/launchers/colorful/style_2.rasi
+# rofi powermenu
+bindsym $mod+Ctrl+q exec --no-startup-id ~/.config/polybar/blocks/scripts/powermenu.sh
 
 # change focus
 bindsym $mod+h focus left
@@ -159,7 +161,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -198,6 +200,9 @@ bindsym $mod+Shift+i  gaps inner current minus 10
 bindsym $mod+o        gaps outer current plus 10
 bindsym $mod+Shift+o  gaps outer current minus 10
 
+# save workspaces shortcut
+bindsym $mod+Ctrl+s exec --no-startup-id ~/.config/i3/scripts/save-workspaces.sh
+
 # flameshot shortcut (for screenshotting)
 bindsym $mod+Ctrl+4 exec --no-startup-id flameshot gui
 bindsym $mod+Ctrl+3 exec --no-startup-id flameshot full -c
@@ -221,8 +226,11 @@ title_align center
 for_window [class=".*"] title_format "    %title    "
 for_window [class=".*"] border pixel 0
 
+# load wallpaper
+exec --no-startup-id ~/.fehbg &
+
 # set correct monitor arrangement
-exec --no-startup-id ~/.config/i3/monitor-arrangement.sh
+exec --no-startup-id ~/.config/i3/scripts/load-dual-monitors-arrangement.sh
 
 # assign workspace to specific monitors
 workspace $ws1  output $monitor-one
@@ -233,8 +241,8 @@ workspace $ws10 output $monitor-two
 # start polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh --blocks
 
-# power cycle webcam and set up dummy cam
-exec_always --no-startup-id sudo /home/sean/.config/i3/reset-webcam.sh
+# power cycle webcam
+exec_always --no-startup-id sudo /home/sean/.config/i3/scripts/reset-webcam.sh
 
 # start gnome-key-daemon
 exec --no-startup-id eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
@@ -250,5 +258,5 @@ exec --no-startup-id xautolock -time 30 -locker "systemctl suspend" -detectsleep
 exec_always --no-startup-id killall picom
 exec_always --no-startup-id dbus-launch picom --experimental-backends -b
 
-# startup basic layout
-exec --no-startup-id ~/.config/i3/load-layout.sh
+# startup basic layout (ws 8,9,10)
+exec --no-startup-id ~/.config/i3/scripts/load-default-workspaces.sh
