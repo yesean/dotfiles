@@ -55,6 +55,18 @@ nnoremap <Leader>l :wincmd l<CR>
 " disable ale lsp
 let g:ale_disable_lsp = 1
 
+" yank/paste with clipboard
+function! ClipboardYank()
+  call system('xclip -i -selection clipboard', @@)
+endfunction
+function! ClipboardPaste()
+  let @@ = system('xclip -o -selection clipboard')
+endfunction
+
+vnoremap <silent> +y y:call ClipboardYank()<cr>
+vnoremap <silent> +d d:call ClipboardYank()<cr>
+nnoremap <silent> +p :call ClipboardPaste()<cr>p
+
 " load plugins
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'      " aesthetics
