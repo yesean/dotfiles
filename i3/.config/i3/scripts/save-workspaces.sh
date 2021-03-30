@@ -10,3 +10,7 @@ i3-resurrect save -w 7 --swallow=class,instance,title
 i3-resurrect save -w 8 --swallow=class,instance,title
 i3-resurrect save -w 9 --swallow=class,instance,title
 i3-resurrect save -w 10 --swallow=class,instance,title
+
+for file in ~/.i3/i3-resurrect/workspace_*_layout.json; do
+  node ~/.config/i3/scripts/updateDiscordLayout.js "$file"
+done

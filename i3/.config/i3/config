@@ -82,8 +82,6 @@ bindsym $mod+q kill
 bindsym $mod+d exec --no-startup-id ~/.config/rofi/launchers/colorful/launcher.sh
 # rofi calculator
 bindsym $mod+c exec --no-startup-id rofi -show calc -modi calc -no-show-match -no-sort -theme ~/.dotfiles/rofi/.config/rofi/launchers/colorful/style_2.rasi
-# rofi powermenu
-bindsym $mod+Ctrl+q exec --no-startup-id ~/.config/polybar/blocks/scripts/powermenu.sh
 
 # change focus
 bindsym $mod+h focus left
