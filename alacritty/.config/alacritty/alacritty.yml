@@ -8,7 +8,7 @@ shell:
   args:
     - -l
     - -c
-    - 'TERM=xterm-256color tmux -u'
+    - 'tmux -u'
 
 key_bindings:
   - { key: Return, mods: Control|Shift, action: SpawnNewInstance }
