@@ -88,12 +88,7 @@ Plug 'tpope/vim-commentary'
 
 Plug 'google/vim-maktaba'         " formatting
 Plug 'google/vim-codefmt'
-Plug 'google/vim-glaive'
 call plug#end()
-
-call glaive#Install()
-Glaive codefmt plugin[mappings]
-Glaive codefmt google_java_executable="/usr/local/bin/google-java-format"
 
 colorscheme nord                          " set colorscheme
 let g:nord_cursor_line_number_background = 1
