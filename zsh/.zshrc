@@ -110,7 +110,7 @@ fi
 
 # fzf prompt
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-if [[ -f /etc/arch-release ]]; then
+if [[ "$is_linux" == "true" ]]; then
   source /usr/share/fzf/key-bindings.zsh
   source /usr/share/fzf/completion.zsh
 fi
