@@ -15,3 +15,7 @@ i3-resurrect restore -w 10
 if [[ $(rg --hidden --pcre2 '\"class\": \"\^Google\\\\-chrome\$\"' ~/.i3/i3-resurrect/workspace*) != "" ]]; then
   google-chrome-stable --restore-last-session
 fi
+
+if [[ $(rg --hidden --pcre2 '\"class\": \"\^Brave\\\\-browser\$\"' ~/.i3/i3-resurrect/workspace*) != "" ]]; then
+  brave
+fi
