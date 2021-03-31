@@ -70,7 +70,7 @@ floating_modifier $mod
 bindsym $mod+Return exec --no-startup-id $term
 
 # start web browser
-bindsym $mod+shift+Return exec --no-startup-id google-chrome-stable
+bindsym $mod+shift+Return exec --no-startup-id brave
 
 # start file system
 bindsym $mod+mod1+Return exec --no-startup-id $term -e ranger
