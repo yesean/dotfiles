@@ -160,7 +160,7 @@ for_window [class="zoom" title="Settings"] floating enable, move absolute positi
 for_window [class="zoom" title="Chat"] floating enable, move absolute position center
 for_window [class="zoom" title="Participants"] floating enable, move absolute position center
 
-bindsym $mod+Shift+minus [floating] move scratchpad
+bindsym $mod+Shift+x [floating] move scratchpad
 bindsym $mod+minus scratchpad show
 bindsym $mod+x move scratchpad
 
