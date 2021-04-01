@@ -249,8 +249,11 @@ workspace $ws10 output $monitor-two
 # start polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh --blocks
 
+# enable wake on sleep for mouse and keyboard
+exec_always --no-startup-id sudo /home/sean/bin/enable-usb-wakeup.sh
+
 # power cycle webcam
-exec_always --no-startup-id sudo /home/sean/.config/i3/scripts/reset-webcam.sh
+exec_always --no-startup-id sudo /home/sean/bin/reset-webcam.sh
 
 # start gnome-key-daemon
 exec --no-startup-id eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
