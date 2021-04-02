@@ -76,6 +76,7 @@ Plug 'preservim/nerdtree'         " editing
 Plug 'bfrg/vim-cpp-modern'
 Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
 Plug 'lervag/vimtex'
 Plug 'alvan/vim-closetag'
