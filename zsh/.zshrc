@@ -118,3 +118,4 @@ fi
 # fzf keybindings
 bindkey '^P' fzf-file-widget
 bindkey '^O' fzf-cd-widget
+bindkey -s '^E' 'vim $(fzf)\n'
