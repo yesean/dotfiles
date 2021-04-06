@@ -238,7 +238,7 @@ for_window [class=".*"] border pixel 0
 exec --no-startup-id ~/.fehbg &
 
 # set correct monitor arrangement
-exec --no-startup-id ~/.config/i3/scripts/load-dual-monitors-arrangement.sh
+# exec --no-startup-id ~/.config/i3/scripts/load-dual-monitors-arrangement.sh
 
 # assign workspace to specific monitors
 workspace $ws1  output $monitor-one
