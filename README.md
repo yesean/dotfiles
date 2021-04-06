@@ -12,7 +12,7 @@ I use [stow](https://www.gnu.org/software/stow/) to help manage my dotfiles.
 Each directory contains config files for its namesake program (e.g. vim, zsh,
 polybar, etc) and mirrors the home directory (necessary for stow).
 The [install script](https://github.com/seanye24/dotfiles/blob/main/install.sh)
-will use stow to create symlinks in your config directory and point them toward
+uses stow to create symlinks in your config directories and point them toward
 files in the dotfiles repo.
 The install script will also detect the OS (macOS or Linux) and only install the
 relevant dotfiles.
