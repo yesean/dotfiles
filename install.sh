@@ -17,7 +17,7 @@ fi
 # create config directory if it doesn't exist
 if [[ ! -d $config_dir ]]; then
   echo "Creating configuration directory at ~/.config/"
-  mkdir "$config_dir"
+  mkdir -p "$config_dir"
 fi
 
 if [[ "$is_linux" == "true" ]]; then
@@ -33,7 +33,77 @@ else
   exit 1
 fi
 
+home_programs=(git tmux vim zsh)
 for program in "${programs[@]}"; do
-  echo "Installing $program configuration"
-  stow -v 1 "$program"
+  # check if program uses top level home dir (doesnt use ~/.config)
+  if [[ " ${home_programs[*]} " =~ " ${program} " ]]; then
+    echo "Syncing $program dotfiles"
+    if [[ "$program" == 'git' ]]; then
+      stow -v 1 "$program" || {
+        echo "Sync failed. Creating $program backup."
+        mv "$HOME/.gitconfig" "$HOME/.gitconfig.old"
+        echo "Retrying $program sync."
+        stow -v 1 "$program"
+      }
+    elif [[ "$program" == 'tmux' ]]; then
+      stow -v 1 "$program" || {
+        echo "Sync failed. Creating $program backup."
+        mv "$HOME/.tmux.conf" "$HOME/.tmux.conf.old"
+        echo "Retrying $program sync."
+        stow -v 1 "$program"
+      }
+    elif [[ "$program" == 'vim' ]]; then
+      if [[ -L "$HOME/.vim" ]]; then
+        echo "Removing symlink at $HOME/.vim"
+        rm "$HOME/.vim"
+      fi
+      mkdir -p "$HOME/.vim"
+      if [[ -L "$HOME/.vim/plugin" ]]; then
+        echo "Removing symlink at $HOME/.vim/plugin"
+        rm "$HOME/.vim/plugin"
+      fi
+      if [[ -L "$HOME/.vim/syntax" ]]; then
+        echo "Removing symlink at $HOME/.vim/syntax"
+        rm "$HOME/.vim/syntax"
+      fi
+      mkdir -p "$HOME/.vim/plugin" "$HOME/.vim/syntax"
+
+      stow -v 1 "$program" || {
+        echo "Sync failed. Creating $program backup."
+        mv "$HOME/.vimrc" "$HOME/.vimrc.old"
+        mv "$HOME/.vim" "$HOME/.vim.old"
+        mkdir -p "$HOME/.vim" "$HOME/.vim/plugin" "$HOME/.vim/syntax"
+        echo "Retrying $program sync."
+        stow -v 1 "$program"
+      }
+    elif [[ "$program" == 'zsh' ]]; then
+      stow -v 1 "$program" || {
+        echo "Sync failed. Creating $program backup."
+        mv "$HOME/.zsh" "$HOME/.zsh.old"
+        mv "$HOME/.p10k.zsh" "$HOME/.p10k.zsh.old"
+        echo "Retrying $program sync."
+        stow -v 1 "$program"
+      }
+    fi
+  else
+    # remove program dir symlink if it exists
+    program_dir="$config_dir/$program"
+    if [[ -L $program_dir ]]; then
+      echo "Removing symlink at $program_dir"
+      rm "$program_dir"
+    fi
+
+    mkdir -p "$program_dir"
+
+    # try to symlink files of current program
+    # if it fails, move the old program_dir to a backup
+    echo "Syncing $program dotfiles"
+    stow -v 2 "$program" || {
+      echo "Sync failed. Creating $program backup."
+      mv "$program_dir" "$program_dir.old"
+      mkdir -p "$program_dir"
+      echo "Retrying $program sync."
+      stow -v 2 "$program"
+    }
+  fi
 done
