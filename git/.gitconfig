@@ -3,6 +3,7 @@
 	email = seanye24@gmail.com
 [credential]
 	helper = osxkeychain
+        helper = /usr/share/git/credential/gnome-keyring/git-credential-gnome-keyring
 [core]
 	editor = vim
 	pager = diff-so-fancy | less --tabs=4 -RFX
@@ -11,7 +12,7 @@
 	ci = commit
 	co = checkout
 	l = log --oneline
-        st = status	
+        st = status
 	unstage = reset HEAD --
 	up = rebase
         lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --branches
