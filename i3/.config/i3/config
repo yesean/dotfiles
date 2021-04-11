@@ -35,10 +35,10 @@ set $nord14 #a3be8c
 set $nord15 #b48ead
 
 # style window decoration colors
-client.focused              $nord2 $nord2 $nord6 $nord3 $nord3
-client.focused_inactive     $nord2 $nord2 $nord6 $nord3 $nord3
+client.focused              $nord9 $nord9 $nord6 $nord3 $nord3
+client.focused_inactive     $nord9 $nord9 $nord6 $nord3 $nord3
 client.unfocused            $nord0 $nord0 $nord6 $nord3 $nord3
-client.urgent               $nord8 $nord8 $nord6 $nord3 $nord3
+client.urgent               $nord12 $nord12 $nord6 $nord3 $nord3
 client.placeholder          $nord0 $nord0 $nord6 $nord3 $nord3
 client.background           $nord0
 
