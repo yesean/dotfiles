@@ -1,9 +1,6 @@
 [user]
 	name = Sean Ye
 	email = seanye24@gmail.com
-[credential]
-	helper = osxkeychain
-        helper = /usr/share/git/credential/gnome-keyring/git-credential-gnome-keyring
 [core]
 	editor = vim
 	pager = diff-so-fancy | less --tabs=4 -RFX
