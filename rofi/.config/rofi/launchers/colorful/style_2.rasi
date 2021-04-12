@@ -8,10 +8,10 @@
  */
 
 configuration {
-    font:			    "Iosevka Nerd Font 10";
+    font:			    "Lato 10";
     show-icons:                     true;
     icon-theme: 		    "Papirus";
-    display-drun: 		    "";
+    display-drun: 		    "";
     drun-display-format:            "{name}";
     disable-history:                false;
     fullscreen:                     false;
@@ -36,10 +36,10 @@ window {
 
 prompt {
     enabled: 			    true;
-    padding: 			    0.30% 1% 0% -0.5%;
+    padding: 			    0.1% 0.3% 0% -1%;
     background-color: 		    @al;
     text-color: 		    @bg;
-    font:			    "FantasqueSansMono Nerd Font 12";
+    font:			    "Material Icons 12";
 }
 
 entry {
