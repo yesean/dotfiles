@@ -24,7 +24,7 @@ export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type d"
 [[ $(uname) = 'Linux' ]] && is_linux=true || is_linux=false
 
 setopt globdots # match hidden files
-setopt extendedopt # add globbing syntax
+setopt extendedglob # add globbing syntax
 
 # aliases
 if [[ "$is_linux" == "true" ]]; then
