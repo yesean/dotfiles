@@ -14,7 +14,7 @@ export PATH="$PATH:/var/lib/snapd/snap/bin"
 export PATH="$PATH:$(yarn global bin)"
 export EDITOR=vim
 export QUOTING_STYLE=literal
-export FZF_DEFAULT_COMMAND='fd --hidden --follow --exclude "{.git,node_modules}" .'
+export FZF_DEFAULT_COMMAND='fd --hidden --follow --exclude "{.git,node_modules,games}" .'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type d"
@@ -23,8 +23,8 @@ export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type d"
 [[ $(uname) = 'Darwin' ]] && is_macos=true || is_macos=false
 [[ $(uname) = 'Linux' ]] && is_linux=true || is_linux=false
 
-# match hidden files
-setopt globdots
+setopt globdots # match hidden files
+setopt extendedopt # add globbing syntax
 
 # aliases
 if [[ "$is_linux" == "true" ]]; then
