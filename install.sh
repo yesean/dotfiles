@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if ! command -v stow &> /dev/null; then
+  echo "GNU Stow must be installed in order to run the install script"
+  exit 1
+fi
+
 [[ $(uname) = 'Darwin' ]] && is_macos=true || is_macos=false
 [[ $(uname) = 'Linux' ]] && is_linux=true || is_linux=false
 
@@ -98,12 +103,12 @@ for program in "${programs[@]}"; do
     # try to symlink files of current program
     # if it fails, move the old program_dir to a backup
     echo "Syncing $program dotfiles"
-    stow -v 2 "$program" || {
+    stow -v 1 "$program" || {
       echo "Sync failed. Creating $program backup."
       mv "$program_dir" "$program_dir.old"
       mkdir -p "$program_dir"
       echo "Retrying $program sync."
-      stow -v 2 "$program"
+      stow -v 1 "$program"
     }
   fi
 done
