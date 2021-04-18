@@ -44,14 +44,14 @@ for program in "${programs[@]}"; do
   if [[ " ${home_programs[*]} " =~ " ${program} " ]]; then
     echo "Syncing $program dotfiles"
     if [[ "$program" == 'git' ]]; then
-      stow -v 1 "$program" || {
+      stow -v 1 "$program" 2> /dev/null || {
         echo "Sync failed. Creating $program backup."
         mv "$HOME/.gitconfig" "$HOME/.gitconfig.old"
         echo "Retrying $program sync."
         stow -v 1 "$program"
       }
     elif [[ "$program" == 'tmux' ]]; then
-      stow -v 1 "$program" || {
+      stow -v 1 "$program" 2> /dev/null || {
         echo "Sync failed. Creating $program backup."
         mv "$HOME/.tmux.conf" "$HOME/.tmux.conf.old"
         echo "Retrying $program sync."
@@ -73,7 +73,7 @@ for program in "${programs[@]}"; do
       fi
       mkdir -p "$HOME/.vim/plugin" "$HOME/.vim/syntax"
 
-      stow -v 1 "$program" || {
+      stow -v 1 "$program" 2> /dev/null || {
         echo "Sync failed. Creating $program backup."
         mv "$HOME/.vimrc" "$HOME/.vimrc.old"
         mv "$HOME/.vim" "$HOME/.vim.old"
@@ -82,9 +82,9 @@ for program in "${programs[@]}"; do
         stow -v 1 "$program"
       }
     elif [[ "$program" == 'zsh' ]]; then
-      stow -v 1 "$program" || {
+      stow -v 1 "$program" 2> /dev/null || {
         echo "Sync failed. Creating $program backup."
-        mv "$HOME/.zsh" "$HOME/.zsh.old"
+        mv "$HOME/.zshrc" "$HOME/.zshrc.old"
         mv "$HOME/.p10k.zsh" "$HOME/.p10k.zsh.old"
         echo "Retrying $program sync."
         stow -v 1 "$program"
@@ -103,7 +103,7 @@ for program in "${programs[@]}"; do
     # try to symlink files of current program
     # if it fails, move the old program_dir to a backup
     echo "Syncing $program dotfiles"
-    stow -v 1 "$program" || {
+    stow -v 1 "$program" 2> /dev/null || {
       echo "Sync failed. Creating $program backup."
       mv "$program_dir" "$program_dir.old"
       mkdir -p "$program_dir"
