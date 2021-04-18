@@ -31,7 +31,7 @@ window:
     y: 15
   decorations: 'none'
 
-# colors (nord)
+# nord colorscheme
 colors:
   primary:
     background: '#2e3440'
