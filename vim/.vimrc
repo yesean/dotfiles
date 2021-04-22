@@ -86,6 +86,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'dense-analysis/ale'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'tpope/vim-commentary'
+Plug 'sheerun/vim-polyglot'
 
 Plug 'google/vim-maktaba'         " formatting
 Plug 'google/vim-codefmt'
