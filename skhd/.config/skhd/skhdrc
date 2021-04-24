@@ -78,4 +78,4 @@ ctrl + alt - space : yabai -m window --toggle float;\
 # application hotkeys
 ctrl + alt - return : alacritty
 cmd + ctrl + alt - return : alacritty --command ranger ~
-shift + ctrl + alt - return : /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
+shift + ctrl + alt - return : /Applications/Brave\ Browser.app/Contents/MacOS/Brave\ Browser
