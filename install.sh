@@ -58,24 +58,22 @@ for program in "${programs[@]}"; do
         stow -v 1 "$program"
       }
     elif [[ "$program" == 'vim' ]]; then
+      if [[ -L "$HOME/.vimrc" ]]; then
+        echo "Removing symlink at $HOME/.vimrc"
+        rm "$HOME/.vimrc"
+      fi
+      if [[ -f "$HOME/.vimrc" ]]; then
+        echo "Backing up .vimrc"
+        mv "$HOME/.vimrc" "$HOME/.vimrc.old"
+      fi
       if [[ -L "$HOME/.vim" ]]; then
         echo "Removing symlink at $HOME/.vim"
         rm "$HOME/.vim"
       fi
       mkdir -p "$HOME/.vim"
-      if [[ -L "$HOME/.vim/plugin" ]]; then
-        echo "Removing symlink at $HOME/.vim/plugin"
-        rm "$HOME/.vim/plugin"
-      fi
-      if [[ -L "$HOME/.vim/syntax" ]]; then
-        echo "Removing symlink at $HOME/.vim/syntax"
-        rm "$HOME/.vim/syntax"
-      fi
-      mkdir -p "$HOME/.vim/plugin" "$HOME/.vim/syntax"
 
       stow -v 1 "$program" 2> /dev/null || {
         echo "Sync failed. Creating $program backup."
-        mv "$HOME/.vimrc" "$HOME/.vimrc.old"
         mv "$HOME/.vim" "$HOME/.vim.old"
         mkdir -p "$HOME/.vim" "$HOME/.vim/plugin" "$HOME/.vim/syntax"
         echo "Retrying $program sync."
