@@ -52,6 +52,9 @@ nnoremap <Leader>j :wincmd j<CR>
 nnoremap <Leader>k :wincmd k<CR>
 nnoremap <Leader>l :wincmd l<CR>
 
+" vim-plug
+let g:plug_url_format = 'git@github.com:%s.git'
+
 " disable ale lsp
 let g:ale_disable_lsp = 1
 
@@ -87,6 +90,7 @@ Plug 'dense-analysis/ale'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'tpope/vim-commentary'
 Plug 'sheerun/vim-polyglot'
+Plug '907th/vim-auto-save'
 
 Plug 'google/vim-maktaba'         " formatting
 Plug 'google/vim-codefmt'
