@@ -3,8 +3,6 @@ balena-etcher
 bitwarden
 brave-bin
 cava
-cuda-10.1
-cudnn7-cuda10.1
 ffcast
 font-manager
 google-chrome
@@ -12,12 +10,14 @@ google-java-format
 heroku-cli
 i3-resurrect
 insync
+kitematic-bin
 lightdm-webkit-theme-aether
 mailspring
 mangohud
 minetime-bin
 neovim-nightly-git
 networkmanager-dmenu-git
+nvidia-container-toolkit
 ocrmypdf
 paper-icon-theme-git
 picom-ibhagwan-git
