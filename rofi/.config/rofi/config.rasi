@@ -1,6 +1,15 @@
-/** Basic config file **/
-
 configuration {
+  font: "Lato 10";
+  theme: "~/.config/rofi/themes/combi";
   show-icons: true;
-  icon-theme: "Papirus";
+  icon-theme: "Paper";
+  terminal: "alacritty";
+  parse-known-hosts: false;
+  matching: "fuzzy";
+  sort: true;
+  sorting-method: "fzf";
+  drun-match-fields: "name,generic";
+  drun-show-actions: true;
+  combi-modi: "drun,ssh,file:~/.config/rofi/scripts/file.sh";
+  modi: "combi";
 }
