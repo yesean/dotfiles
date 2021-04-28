@@ -259,6 +259,9 @@ exec_always --no-startup-id sudo /home/sean/bin/enable-usb-wakeup.sh
 # power cycle webcam
 exec --no-startup-id sudo /home/sean/bin/reset-webcam.sh
 
+# add virtual webcam
+exec --no-startup-id sudo /home/sean/bin/add-virtual-webcam.sh
+
 # start gnome-key-daemon
 exec --no-startup-id eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 exec --no-startup-id export SSD_AUTH_SOCK
