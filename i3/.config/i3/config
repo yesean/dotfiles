@@ -78,10 +78,13 @@ bindsym $mod+mod1+Return exec --no-startup-id $term -e ranger
 # kill focused window
 bindsym $mod+q kill
 
+# only change focus with keyboard
+focus_follows_mouse no
+
 # rofi
-bindsym $mod+d exec --no-startup-id ~/.config/rofi/launchers/colorful/launcher.sh
+bindsym $mod+d exec --no-startup-id ~/.config/rofi/scripts/launch-search.sh
 # rofi calculator
-bindsym $mod+c exec --no-startup-id rofi -show calc -modi calc -no-show-match -no-sort -theme ~/.dotfiles/rofi/.config/rofi/launchers/colorful/style_2.rasi
+bindsym $mod+c exec --no-startup-id ~/.config/rofi/scripts/launch-calculator.sh
 
 # change focus
 bindsym $mod+h focus left
@@ -108,7 +111,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+g split h
+bindsym $mod+Shift+v split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -122,13 +125,18 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
+
+# toggle scratchpad (used to minimize windows)
+bindsym $mod+Shift+x [floating] move scratchpad
+bindsym $mod+minus scratchpad show
+bindsym $mod+x move scratchpad
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -159,10 +167,6 @@ for_window [class="zoom" title="Zoom - Licensed Account"] floating enable, move 
 for_window [class="zoom" title="Settings"] floating enable, move absolute position center
 for_window [class="zoom" title="Chat"] floating enable, move absolute position center
 for_window [class="zoom" title="Participants"] floating enable, move absolute position center
-
-bindsym $mod+Shift+x [floating] move scratchpad
-bindsym $mod+minus scratchpad show
-bindsym $mod+x move scratchpad
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
