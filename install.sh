@@ -28,7 +28,7 @@ fi
 if [[ "$is_linux" == "true" ]]; then
   echo 'Linux machine detected!'
   echo 'Installing for linux:'
-  programs=(alacritty git i3 nvim picom polybar prettier ranger rofi tmux vim vscode zathura zsh)
+  programs=(alacritty git i3 nvim picom polybar prettier ranger rofi tmux vim "Code - OSS" zathura zsh)
 elif [[ "$is_macos" == "true" ]]; then
   echo 'macOS machine detected!'
   echo 'Installing for macos:'
@@ -109,4 +109,8 @@ for program in "${programs[@]}"; do
       stow -v 1 "$program"
     }
   fi
+
+  echo "Installing vscode extensions"
+  ~/.dotfiles/vscode/.config/Code/scripts/install-extensions.sh 2> /dev/null
+
 done
