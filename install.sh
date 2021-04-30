@@ -32,7 +32,7 @@ if [[ "$is_linux" == "true" ]]; then
 elif [[ "$is_macos" == "true" ]]; then
   echo 'macOS machine detected!'
   echo 'Installing for macos:'
-  programs=(alacritty git nvim prettier skhd tmux vim vscode yabai zsh)
+  programs=(git nvim prettier skhd tmux vim vscode yabai zsh)
 else
   echo "Unknown machine detected."
   exit 1
