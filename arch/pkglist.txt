@@ -29,7 +29,6 @@ dhcpcd
 diff-so-fancy
 discord
 dmenu
-docker
 dunst
 expac
 fakeroot
@@ -57,7 +56,6 @@ i3-resurrect
 insync
 intel-ucode
 jdk-openjdk
-kitematic-bin
 kitty
 lib32-gamemode
 lib32-nvidia-utils
@@ -95,9 +93,10 @@ playerctl
 polybar
 postgresql
 pulseaudio-ctl
+python-gpustat
 python-grip
 python-tensorflow-opt-cuda
-python37
+python38
 ranger
 ripgrep
 rofi

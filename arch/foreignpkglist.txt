@@ -10,7 +10,6 @@ google-java-format
 heroku-cli
 i3-resurrect
 insync
-kitematic-bin
 lightdm-webkit-theme-aether
 mailspring
 mangohud
@@ -23,8 +22,9 @@ paper-icon-theme-git
 picom-ibhagwan-git
 polybar
 pulseaudio-ctl
+python-gpustat
 python-grip
-python37
+python38
 slack-desktop
 spotify
 texlive-latexindent-meta
