@@ -10,6 +10,7 @@ fi
 
 # set environment variables
 export PATH="$PATH:/usr/local/sbin"
+export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/var/lib/snapd/snap/bin"
 export PATH="$PATH:$(yarn global bin)"
 export EDITOR=vim
