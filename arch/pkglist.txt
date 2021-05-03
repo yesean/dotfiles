@@ -21,6 +21,7 @@ caprine
 cava
 clang
 cmake
+code
 cronie
 cuda
 cudnn
@@ -81,6 +82,7 @@ nvidia
 nvidia-container-toolkit
 ocrmypdf
 pacman-contrib
+pandoc-bin
 paper-icon-theme-git
 patch
 pavucontrol
@@ -131,7 +133,6 @@ usbutils
 v4l2loopback-dkms
 valgrind
 vim-plug
-visual-studio-code-bin
 wget
 wine
 wpa_supplicant

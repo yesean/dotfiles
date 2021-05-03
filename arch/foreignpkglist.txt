@@ -18,6 +18,7 @@ neovim-nightly-git
 networkmanager-dmenu-git
 nvidia-container-toolkit
 ocrmypdf
+pandoc-bin
 paper-icon-theme-git
 picom-ibhagwan-git
 polybar
@@ -37,7 +38,6 @@ ttf-ms-fonts
 unimatrix-git
 usbreset
 vim-plug
-visual-studio-code-bin
 xow-git
 yay
 zoom
