@@ -10,7 +10,7 @@ set relativenumber                  " display relative line number
 set number                          " display current line number
 set ruler                           " bottom right ruler
 set colorcolumn=80                  " column 80 highlight
-set nowrap                          " turn off line wrapping
+set wrap linebreak                  " turn off line wrapping
 set noswapfile                      " creates new buffer without swap file
 set ignorecase                      " ignores case when searching
 set smartcase                       " overrides ignorecase when uppercase is specified
@@ -51,6 +51,12 @@ nnoremap <Leader>h :wincmd h<CR>
 nnoremap <Leader>j :wincmd j<CR>
 nnoremap <Leader>k :wincmd k<CR>
 nnoremap <Leader>l :wincmd l<CR>
+
+" move according to displayed text, allows movement between wrapped lines
+noremap <silent> k gk
+noremap <silent> j gj
+noremap <silent> 0 g0
+noremap <silent> $ g$
 
 " vim-plug
 let g:plug_url_format = 'git@github.com:%s.git'
