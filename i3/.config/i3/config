@@ -233,7 +233,7 @@ gaps top 34
 # workspace $ws8  gaps outer 60
 
 # style window title
-font pango:OpenSans 10
+font pango:Inconsolata 10
 title_align center
 for_window [class=".*"] title_format "    %title    "
 for_window [class=".*"] border pixel 0
