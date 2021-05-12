@@ -52,6 +52,9 @@
     "editor.defaultFormatter": "James-Yu.latex-workshop",
     "editor.formatOnSave": true
   },
+  "[systemverilog]": {
+    "editor.defaultFormatter": "eirikpre.systemverilog"
+  },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.detectIndentation": false,
   "editor.fontSize": 14,
@@ -89,7 +92,7 @@
 
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 
-  "workbench.colorTheme": "Nord",
+  "workbench.colorTheme": "Gruvbox Material Dark",
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.enablePreview": false,
   "workbench.startupEditor": "newUntitledFile",
