@@ -4,10 +4,14 @@ CoenraadS.bracket-pair-colorizer
 dbaeumer.vscode-eslint
 donjayamanne.githistory
 dsznajder.es7-react-js-snippets
+eirikpre.systemverilog
 esbenp.prettier-vscode
 humao.rest-client
 James-Yu.latex-workshop
 ms-vscode.cpptools
 ms-vscode.vscode-typescript-next
+ms-vsliveshare.vsliveshare
+mshr-h.veriloghdl
 oderwat.indent-rainbow
+sainnhe.gruvbox-material
 xaver.clang-format
