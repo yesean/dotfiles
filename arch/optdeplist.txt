@@ -2,7 +2,6 @@ efibootmgr
 highlight
 hunspell-en_us
 hwinfo
-lib32-gnutls
 libgnome-keyring
 linux-firmware
 llvm

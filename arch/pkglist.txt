@@ -21,7 +21,6 @@ caprine
 cava
 clang
 cmake
-code
 cronie
 cuda
 cudnn
@@ -76,6 +75,7 @@ mpv
 neofetch
 neovim-nightly-git
 networkmanager-dmenu-git
+nodejs-markdown-pdf
 nss-mdns
 ntfs-3g
 nvidia
@@ -99,12 +99,14 @@ python-gpustat
 python-grip
 python-tensorflow-opt-cuda
 python38
+quartus-free
 ranger
 ripgrep
 rofi
 rofi-calc
 ruby
 sane-airscan
+sc-im
 seahorse
 shellcheck
 shfmt
@@ -133,6 +135,7 @@ usbutils
 v4l2loopback-dkms
 valgrind
 vim-plug
+visual-studio-code-bin
 wget
 wine
 wpa_supplicant

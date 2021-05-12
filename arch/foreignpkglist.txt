@@ -16,6 +16,7 @@ mangohud
 minetime-bin
 neovim-nightly-git
 networkmanager-dmenu-git
+nodejs-markdown-pdf
 nvidia-container-toolkit
 ocrmypdf
 pandoc-bin
@@ -26,6 +27,8 @@ pulseaudio-ctl
 python-gpustat
 python-grip
 python38
+quartus-free
+sc-im
 slack-desktop
 spotify
 texlive-latexindent-meta
@@ -38,6 +41,7 @@ ttf-ms-fonts
 unimatrix-git
 usbreset
 vim-plug
+visual-studio-code-bin
 xow-git
 yay
 zoom
