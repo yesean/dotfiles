@@ -84,7 +84,7 @@ focus_follows_mouse no
 # rofi
 bindsym $mod+d exec --no-startup-id ~/.config/rofi/scripts/launch-search.sh
 # rofi calculator
-bindsym $mod+c exec --no-startup-id ~/.config/rofi/scripts/launch-calculator.sh
+bindsym $mod+Shift+d exec --no-startup-id ~/.config/rofi/scripts/launch-calculator.sh
 
 # change focus
 bindsym $mod+h focus left
