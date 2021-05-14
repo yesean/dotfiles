@@ -57,7 +57,8 @@
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.detectIndentation": false,
-  "editor.fontSize": 14,
+  "editor.fontSize": 13,
+  "editor.fontFamily": "FiraMono Nerd Font Mono",
   "editor.formatOnSave": false,
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
@@ -82,21 +83,21 @@
 
   "latex-workshop.view.pdf.viewer": "tab",
 
-  "terminal.integrated.shell.osx": "/bin/zsh",
+  "terminal.integrated.defaultProfile.osx": "/bin/zsh",
+  "terminal.integrated.fontFamily": "FiraMono Nerd Font Mono",
 
   "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.darwin": "~/.dotfiles/nvim/.config/nvim/init.vim",
   "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.linux": "~/.dotfiles/nvim/.config/nvim/init.vim",
+  "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.vim",
+  "vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim/init.vim",
   "vim.enableNeovim": true,
 
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 
-  "workbench.colorTheme": "Gruvbox Material Dark",
-  "workbench.editor.enablePreviewFromQuickOpen": false,
-  "workbench.editor.enablePreview": false,
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.editor.enablePreviewFromQuickOpen": true,
+  "workbench.editor.enablePreview": true,
   "workbench.startupEditor": "newUntitledFile",
-  "window.zoomLevel": 0,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "liveshare.authenticationProvider": "GitHub"
 }

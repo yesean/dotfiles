@@ -80,6 +80,7 @@ nnoremap <silent> +p :call ClipboardPaste()<cr>p
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'      " aesthetics
 Plug 'arcticicestudio/nord-vim'
+Plug 'joshdick/onedark.vim'
 
 Plug 'preservim/nerdtree'         " editing
 Plug 'bfrg/vim-cpp-modern'
@@ -97,10 +98,11 @@ Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'tpope/vim-commentary'
 Plug 'sheerun/vim-polyglot'
 Plug '907th/vim-auto-save'
+Plug 'peitalin/vim-jsx-typescript'
 
 Plug 'google/vim-maktaba'         " formatting
 Plug 'google/vim-codefmt'
 call plug#end()
 
-colorscheme nord                          " set colorscheme
+colorscheme onedark                          " set colorscheme
 let g:nord_cursor_line_number_background = 1
