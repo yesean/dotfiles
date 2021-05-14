@@ -274,7 +274,7 @@ exec --no-startup-id xautolock -time 30 -locker "systemctl suspend" -detectsleep
 
 # restart picom
 exec_always --no-startup-id killall picom
-exec_always --no-startup-id picom -b
+exec_always --no-startup-id picom --experimental-backends -b
 
 # startup basic layout (ws 8,9,10)
 exec --no-startup-id ~/.config/i3/scripts/load-default-workspaces.sh
