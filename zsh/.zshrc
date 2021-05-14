@@ -52,6 +52,7 @@ alias gl='git lg'
 alias gpu='git push'
 alias gpl='git pull'
 alias gi='grep -i'
+alias pss='ps -ef | grep -i'
 
 # homebrew completions
 if type brew &>/dev/null; then
