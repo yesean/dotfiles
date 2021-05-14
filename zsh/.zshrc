@@ -44,12 +44,14 @@ alias gca='git commit --amend'
 alias gcan='git commit --amend --no-edit'
 alias gco='git checkout'
 alias gb='git branch'
+alias gba='git branch -a'
 alias ga='git add'
 alias gaa='git add -A'
 alias gs='git status'
 alias gl='git lg'
 alias gpu='git push'
 alias gpl='git pull'
+alias gi='grep -i'
 
 # homebrew completions
 if type brew &>/dev/null; then
