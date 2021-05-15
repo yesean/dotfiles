@@ -41,6 +41,7 @@ flex
 font-manager
 fzf
 gamemode
+ghc
 git
 gnome-disk-utility
 gnome-keyring
@@ -65,6 +66,7 @@ lightdm-webkit-theme-aether
 linux
 linux-headers
 lutris
+lxappearance
 m4
 mailspring
 make
@@ -74,6 +76,7 @@ minetime-bin
 mpv
 neofetch
 neovim-nightly-git
+nerd-fonts-complete
 networkmanager-dmenu-git
 nodejs-markdown-pdf
 nss-mdns
@@ -88,7 +91,7 @@ patch
 pavucontrol
 pdfgrep
 perl
-picom-ibhagwan-git
+picom-git
 piper
 pkgconf
 playerctl
@@ -105,6 +108,7 @@ ripgrep
 rofi
 rofi-calc
 ruby
+rust
 sane-airscan
 sc-im
 seahorse
@@ -114,6 +118,7 @@ simple-scan
 slack-desktop
 solaar
 spotify
+stack-static
 steam
 stow
 sudo

@@ -15,13 +15,14 @@ mailspring
 mangohud
 minetime-bin
 neovim-nightly-git
+nerd-fonts-complete
 networkmanager-dmenu-git
 nodejs-markdown-pdf
 nvidia-container-toolkit
 ocrmypdf
 pandoc-bin
 paper-icon-theme-git
-picom-ibhagwan-git
+picom-git
 polybar
 pulseaudio-ctl
 python-gpustat
@@ -31,6 +32,7 @@ quartus-free
 sc-im
 slack-desktop
 spotify
+stack-static
 texlive-latexindent-meta
 todoist-electron
 ttf-apple-emoji
