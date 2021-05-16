@@ -79,6 +79,7 @@ nnoremap <silent> +p :call ClipboardPaste()<cr>p
 " load plugins
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'      " aesthetics
+Plug 'maximbaz/lightline-ale'
 Plug 'arcticicestudio/nord-vim'
 Plug 'joshdick/onedark.vim'
 
@@ -100,8 +101,7 @@ Plug 'sheerun/vim-polyglot'
 Plug '907th/vim-auto-save'
 Plug 'peitalin/vim-jsx-typescript'
 
-Plug 'google/vim-maktaba'         " formatting
-Plug 'google/vim-codefmt'
+Plug 'Chiel92/vim-autoformat'         " formatting
 call plug#end()
 
 colorscheme onedark                          " set colorscheme
