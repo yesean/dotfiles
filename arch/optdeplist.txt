@@ -1,6 +1,5 @@
 efibootmgr
 highlight
-hunspell-en_us
 hwinfo
 libgnome-keyring
 linux-firmware

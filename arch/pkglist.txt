@@ -25,6 +25,7 @@ cronie
 cuda
 cudnn
 cups
+ddcutil
 dhcpcd
 diff-so-fancy
 discord
@@ -35,13 +36,13 @@ fakeroot
 fd
 feh
 ffcast
-firefox
 flameshot
 flex
 font-manager
 fzf
 gamemode
 ghc
+ghc-static
 git
 gnome-disk-utility
 gnome-keyring
@@ -51,6 +52,8 @@ grub
 grub-customizer
 gtop
 gvim
+haskell-base-prelude
+haskell-language-server-bin
 heroku-cli
 i3-gaps
 i3-resurrect
@@ -121,6 +124,7 @@ spotify
 stack-static
 steam
 stow
+stylish-haskell
 sudo
 texlive-latexextra
 texlive-latexindent-meta

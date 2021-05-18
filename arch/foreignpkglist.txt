@@ -7,6 +7,7 @@ ffcast
 font-manager
 google-chrome
 google-java-format
+haskell-language-server-bin
 heroku-cli
 i3-resurrect
 insync
