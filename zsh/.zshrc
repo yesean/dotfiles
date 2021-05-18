@@ -31,9 +31,11 @@ setopt extendedglob # add globbing syntax
 if [[ "$is_linux" == "true" ]]; then
   alias ls='ls --color=auto'         # list, show hidden
   alias ll='ls --color=auto -lA'   # list, show hidden
+  alias o='xdg-open'
 elif [[ "$is_macos" == "true" ]]; then
   alias ls='ls -G'         # list, show hidden
   alias ll='ls -lAG'   # list, show hidden
+  alias o='open'
 fi
 alias vim='nvim'           # neovim
 # git gud
