@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if ! command -v stow &> /dev/null; then
+if ! command -v stow &>/dev/null; then
   echo "GNU Stow must be installed in order to run the install script"
   exit 1
 fi
@@ -38,53 +38,63 @@ else
   exit 1
 fi
 
+backup_file() {
+  file=$1
+  mv "$file" "${file}.old"
+}
+
+backup_retry_msg() {
+  echo "Sync failed. Creating $1 backup."
+  echo "Retrying $1 sync."
+}
+
 home_programs=(git tmux vim zsh)
 for program in "${programs[@]}"; do
   # check if program uses top level home dir (doesnt use ~/.config)
   if [[ " ${home_programs[*]} " =~ " ${program} " ]]; then
     echo "Syncing $program dotfiles"
     if [[ "$program" == 'git' ]]; then
-      stow -v 1 "$program" 2> /dev/null || {
-        echo "Sync failed. Creating $program backup."
-        mv "$HOME/.gitconfig" "$HOME/.gitconfig.old"
-        echo "Retrying $program sync."
+      stow -v 1 "$program" 2>/dev/null || {
+        backup_file "$HOME/.gitconfig"
+        backup_retry_msg "$program"
         stow -v 1 "$program"
       }
     elif [[ "$program" == 'tmux' ]]; then
-      stow -v 1 "$program" 2> /dev/null || {
-        echo "Sync failed. Creating $program backup."
-        mv "$HOME/.tmux.conf" "$HOME/.tmux.conf.old"
-        echo "Retrying $program sync."
+      stow -v 1 "$program" 2>/dev/null || {
+        backup_file "$HOME/.tmux.conf"
+        backup_retry_msg "$program"
         stow -v 1 "$program"
       }
     elif [[ "$program" == 'vim' ]]; then
+      # remove symlinks
       if [[ -L "$HOME/.vimrc" ]]; then
         echo "Removing symlink at $HOME/.vimrc"
         rm "$HOME/.vimrc"
-      fi
-      if [[ -f "$HOME/.vimrc" ]]; then
-        echo "Backing up .vimrc"
-        mv "$HOME/.vimrc" "$HOME/.vimrc.old"
       fi
       if [[ -L "$HOME/.vim" ]]; then
         echo "Removing symlink at $HOME/.vim"
         rm "$HOME/.vim"
       fi
-      mkdir -p "$HOME/.vim"
 
-      stow -v 1 "$program" 2> /dev/null || {
-        echo "Sync failed. Creating $program backup."
-        mv "$HOME/.vim" "$HOME/.vim.old"
-        mkdir -p "$HOME/.vim" "$HOME/.vim/plugin" "$HOME/.vim/syntax"
-        echo "Retrying $program sync."
+      if [[ -f "$HOME/.vimrc" ]]; then
+        echo "Backing up .vimrc"
+        backup_file "$HOME/.vimrc"
+      fi
+
+      vim_dirs=(plugin syntax ftplugin after)
+      mkdir -p "${vim_dirs[@]/#/${HOME}/.vim/}"
+
+      stow -v 1 "$program" 2>/dev/null || {
+        backup_file "$HOME/.vim"
+        backup_retry_msg "$program"
+        mkdir -p "${vim_dirs[@]/#/${HOME}/.vim/}"
         stow -v 1 "$program"
       }
     elif [[ "$program" == 'zsh' ]]; then
-      stow -v 1 "$program" 2> /dev/null || {
-        echo "Sync failed. Creating $program backup."
-        mv "$HOME/.zshrc" "$HOME/.zshrc.old"
-        mv "$HOME/.p10k.zsh" "$HOME/.p10k.zsh.old"
-        echo "Retrying $program sync."
+      stow -v 1 "$program" 2>/dev/null || {
+        backup_retry_msg "$program"
+        backup_file "$HOME/.zshrc"
+        backup_file "$HOME/.p10k.zsh"
         stow -v 1 "$program"
       }
     fi
@@ -105,15 +115,16 @@ for program in "${programs[@]}"; do
     # try to symlink files of current program
     # if it fails, move the old program_dir to a backup
     echo "Syncing $program dotfiles"
-    stow -v 1 "$program" 2> /dev/null || {
-      echo "Sync failed. Creating $program backup."
-      mv "$program_dir" "$program_dir.old"
+    stow -v 1 "$program" 2>/dev/null || {
+      backup_retry_msg "$program"
+      backup_file "$program_dir"
       mkdir -p "$program_dir"
-      echo "Retrying $program sync."
       stow -v 1 "$program"
     }
   fi
 done
 
-echo "Installing vscode extensions"
-~/.dotfiles/vscode/.config/Code/scripts/install-extensions.sh
+if ! command -v code &>/dev/null; then
+  echo "Installing vscode extensions"
+  ~/.dotfiles/vscode/.config/Code/scripts/install-extensions.sh
+fi
