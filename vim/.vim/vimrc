@@ -100,8 +100,7 @@ Plug 'tpope/vim-commentary'
 Plug 'sheerun/vim-polyglot'
 Plug '907th/vim-auto-save'
 Plug 'peitalin/vim-jsx-typescript'
-
-Plug 'Chiel92/vim-autoformat'         " formatting
+Plug 'sbdchd/neoformat'
 call plug#end()
 
 colorscheme onedark                          " set colorscheme
