@@ -131,7 +131,7 @@ for program in "${programs[@]}"; do
   fi
 done
 
-if ! command -v code &>/dev/null; then
-  echo "Installing vscode extensions"
-  ~/.dotfiles/vscode/.config/Code/scripts/install-extensions.sh
+if command -v code &>/dev/null; then
+  echo "Updating vscode extensions."
+  ~/.dotfiles/vscode/.config/Code/scripts/install-extensions.sh 1>/dev/null
 fi
