@@ -90,6 +90,13 @@ for program in "${programs[@]}"; do
         mkdir -p "${vim_dirs[@]/#/${HOME}/.vim/}"
         stow -v 1 "$program"
       }
+
+      # Update vim plugins
+      echo "Updating vim plugins."
+      vim -c ":PlugClean! | quit | quit"
+      vim -c ":PlugInstall | quit | quit"
+      vim -c ":PlugUpdate | quit | quit"
+
     elif [[ "$program" == 'zsh' ]]; then
       stow -v 1 "$program" 2>/dev/null || {
         backup_retry_msg "$program"
