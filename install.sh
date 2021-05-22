@@ -32,7 +32,7 @@ if [[ "$is_linux" == "true" ]]; then
 elif [[ "$is_macos" == "true" ]]; then
   echo 'macOS machine detected!'
   echo 'Installing for macos:'
-  programs=(git nvim prettier skhd tmux vim vscode yabai zsh)
+  programs=(alacritty git nvim prettier skhd tmux vim vscode yabai zsh)
 else
   echo "Unknown machine detected."
   exit 1
@@ -93,9 +93,9 @@ for program in "${programs[@]}"; do
 
       # Update vim plugins
       echo "Updating vim plugins."
-      vim -c ":PlugClean! | quit | quit"
-      vim -c ":PlugInstall | quit | quit"
-      vim -c ":PlugUpdate | quit | quit"
+      nvim -c ":PlugClean! | quit | quit"
+      nvim -c ":PlugInstall | quit | quit"
+      nvim -c ":PlugUpdate | quit | quit"
 
     elif [[ "$program" == 'zsh' ]]; then
       stow -v 1 "$program" 2>/dev/null || {
