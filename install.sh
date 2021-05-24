@@ -81,7 +81,7 @@ for program in "${programs[@]}"; do
         backup_file "$HOME/.vimrc"
       fi
 
-      vim_dirs=(plugin syntax ftplugin after)
+      vim_dirs=(plugin syntax ftplugin after undo)
       mkdir -p "${vim_dirs[@]/#/${HOME}/.vim/}"
 
       stow -v 1 "$program" 2>/dev/null || {
