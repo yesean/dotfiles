@@ -193,5 +193,4 @@ zathura-pdf-mupdf
 zip
 zoom
 zsh
-zsh-completions
 zsh-theme-powerlevel10k-git
