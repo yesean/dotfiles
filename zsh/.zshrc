@@ -42,7 +42,7 @@ bindkey '^O' fzf-cd-widget
 bindkey '^E' 'vim $(fzf)\n'
 
 # set environment variables
-export EDITOR=vim
+export EDITOR=nvim
 export QUOTING_STYLE=literal
 export PATH="$PATH:/usr/local/sbin"
 export PATH="$PATH:$HOME/.local/bin"

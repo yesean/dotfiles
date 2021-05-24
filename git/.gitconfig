@@ -3,7 +3,7 @@
 	email = seanye24@gmail.com
 
 [core]
-	editor = vim
+	editor = nvim
 	pager = diff-so-fancy | less --tabs=4 -RFX
 
 [url "ssh://git@github.com/"]
