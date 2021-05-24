@@ -25,6 +25,8 @@ set hidden                          " hides all buffers in background
 set signcolumn=yes                  " add extra left column for messages
 set splitright                      " open vertical splits to the right
 set splitbelow                      " open horizontal splits below
+set undofile                        " use permanent undo file
+set undodir=~/.vim/undo             " specify undo directory
 
 " cursor modes
 if exists('$TMUX')
