@@ -36,7 +36,7 @@ setopt globdots # match hidden files
 setopt extendedglob # add globbing syntax
 
 # key bindings
-bindkey '^ ' autosuggest-accept
+bindkey '^]' autosuggest-accept
 bindkey '^P' fzf-file-widget
 bindkey '^O' fzf-cd-widget
 bindkey '^E' 'vim $(fzf)\n'
