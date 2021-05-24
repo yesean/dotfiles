@@ -1,104 +1,70 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# powerline10k theme
+ZSH_THEME="powerlevel10k/powerlevel10k"
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+# vi-mode settings
+VI_MODE_SET_CURSOR=true
+KEYTIMEOUT=1
 
-# set environment variables
-export PATH="$PATH:/usr/local/sbin"
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/scripts"
-export PATH="$PATH:$(yarn global bin)"
-export EDITOR=vim
-export QUOTING_STYLE=literal
+# fzf settings
+export FZF_BASE=/usr/share/fzf
 export FZF_DEFAULT_COMMAND='fd --hidden --follow --exclude "{.git,node_modules,games}" .'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type d"
 
-# check linux or macos
-[[ $(uname) = 'Darwin' ]] && is_macos=true || is_macos=false
-[[ $(uname) = 'Linux' ]] && is_linux=true || is_linux=false
+# completion settings
+autoload -Uz compinit && compinit
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+
+# oh-my-zsh plugins
+export ZSH=$HOME/.oh-my-zsh
+plugins=(
+  brew
+  fzf
+  git
+  git-extras
+  vi-mode
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+  zsh-completions
+)
+source $ZSH/oh-my-zsh.sh
 
 setopt globdots # match hidden files
 setopt extendedglob # add globbing syntax
 
+# key bindings
+bindkey '^ ' autosuggest-accept
+bindkey '^P' fzf-file-widget
+bindkey '^O' fzf-cd-widget
+bindkey '^E' 'vim $(fzf)\n'
+
+# set environment variables
+export EDITOR=vim
+export QUOTING_STYLE=literal
+export PATH="$PATH:/usr/local/sbin"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/scripts"
+export PATH="$PATH:$(yarn global bin)"
+
+# check linux or macos
+[[ $(uname) = 'Darwin' ]] && is_macos=true || is_macos=false
+[[ $(uname) = 'Linux' ]] && is_linux=true || is_linux=false
+
 # aliases
 if [[ "$is_linux" == "true" ]]; then
-  alias ls='ls --color=auto'         # list, show hidden
-  alias ll='ls --color=auto -lA'   # list, show hidden
+  alias ls='ls --color=auto'      # list with color
+  alias ll='ls -lhA --color=auto' # list with color, show hidden
   alias o='xdg-open'
 elif [[ "$is_macos" == "true" ]]; then
-  alias ls='ls -G'         # list, show hidden
-  alias ll='ls -lAG'   # list, show hidden
+  alias ls='ls -G'    # list with color
+  alias ll='ls -lhAG' # list with color, show hidden
   alias o='open'
 fi
-alias vim='nvim'           # neovim
-# git gud
-alias gd='git diff'
-alias gds='git diff --staged'
-alias gcm='git commit -m'
-alias gca='git commit --amend'
-alias gcan='git commit --amend --no-edit'
-alias gco='git checkout'
-alias gb='git branch'
-alias gba='git branch -a'
-alias ga='git add'
-alias gaa='git add -A'
-alias gs='git status'
-alias gl='git lg'
-alias gpu='git push'
-alias gpl='git pull'
+alias vim='nvim'
+alias glg='git lg'
 alias gi='grep -i'
 alias pss='ps -ef | grep -i'
 alias llg='ll | grep -i'
-
-# homebrew completions
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-
-  autoload -Uz compinit
-  compinit
-fi
-
-# enable autocomplete
-autoload -Uz compinit promptinit
-compinit
-promptinit
-
-# enable history search
-autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
-[[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
-[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
-
-# vim mode
-bindkey -v # vi key bindings
-export KEYTIMEOUT=1 # reduce vim timeout
-
-# powerline zsh
-if [[ "$is_linux" == "true" ]]; then
-  source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme # arch powerline location
-elif [[ "$is_macos" == "true" ]]; then
-  source /usr/local/opt/powerlevel10k/powerlevel10k.zsh-theme       # macos powerline location
-fi
-
-# powerline10k prompt
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# fzf prompt
-[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-if [[ "$is_linux" == "true" ]]; then
-  source /usr/share/fzf/key-bindings.zsh
-  source /usr/share/fzf/completion.zsh
-fi
-
-# fzf keybindings
-bindkey '^P' fzf-file-widget
-bindkey '^O' fzf-cd-widget
-bindkey -s '^E' 'vim $(fzf)\n'
