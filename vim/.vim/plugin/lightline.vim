@@ -1,4 +1,7 @@
 let g:lightline = {
+  \ 'component': {
+  \   'filename': '%F',
+  \ },
   \ 'colorscheme': 'onedark',
   \ 'separator': { 'left': '', 'right': '' },
   \ 'subseparator': { 'left': '', 'right': '' }
