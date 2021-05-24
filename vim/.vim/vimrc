@@ -10,7 +10,7 @@ set relativenumber                  " display relative line number
 set number                          " display current line number
 set ruler                           " bottom right ruler
 set colorcolumn=80                  " column 80 highlight
-set wrap linebreak                  " turn off line wrapping
+set nowrap                          " turn off word wrapping
 set noswapfile                      " creates new buffer without swap file
 set ignorecase                      " ignores case when searching
 set smartcase                       " overrides ignorecase when uppercase is specified
