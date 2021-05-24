@@ -74,36 +74,34 @@ function! ClipboardPaste()
   let @@ = system('xclip -o -selection clipboard')
 endfunction
 
-vnoremap <silent> +y y:call ClipboardYank()<cr>
-vnoremap <silent> +d d:call ClipboardYank()<cr>
-nnoremap <silent> +p :call ClipboardPaste()<cr>p
+vnoremap <silent> <leader>y y:call ClipboardYank()<cr>
+vnoremap <silent> <leader>d d:call ClipboardYank()<cr>
+nnoremap <silent> <leader>p :cal<leader> ClipboardPaste()<cr>p
 
 " load plugins
 call plug#begin('~/.vim/plugged')
-Plug 'itchyny/lightline.vim'      " aesthetics
+" aesthetics
+Plug 'itchyny/lightline.vim'
 Plug 'maximbaz/lightline-ale'
-Plug 'arcticicestudio/nord-vim'
 Plug 'joshdick/onedark.vim'
 
-Plug 'preservim/nerdtree'         " editing
-Plug 'bfrg/vim-cpp-modern'
-Plug 'pangloss/vim-javascript'
+" editing
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'dense-analysis/ale'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'sbdchd/neoformat'
+Plug '907th/vim-auto-save'
+Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
-Plug 'lervag/vimtex'
-Plug 'alvan/vim-closetag'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'dense-analysis/ale'
-Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'tpope/vim-commentary'
-Plug 'sheerun/vim-polyglot'
-Plug '907th/vim-auto-save'
+Plug 'alvan/vim-closetag'
+Plug 'lervag/vimtex'
+Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'sbdchd/neoformat'
 call plug#end()
 
 colorscheme onedark                          " set colorscheme
-let g:nord_cursor_line_number_background = 1
