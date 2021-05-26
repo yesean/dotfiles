@@ -17,14 +17,22 @@ export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type d"
 autoload -Uz compinit && compinit
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 # oh-my-zsh plugins
 export ZSH=$HOME/.oh-my-zsh
 plugins=(
+  archlinux
   brew
+  emoji
+  extract
+  fd
   fzf
   git
   git-extras
+  ripgrep
+  stack
+  tmux
   vi-mode
   zsh-syntax-highlighting
   zsh-autosuggestions
@@ -43,6 +51,7 @@ bindkey '^E' 'vim $(fzf)\n'
 
 # set environment variables
 export EDITOR=nvim
+export BROWSER=brave
 export QUOTING_STYLE=literal
 export PATH="$PATH:/usr/local/sbin"
 export PATH="$PATH:$HOME/.local/bin"
@@ -63,6 +72,7 @@ elif [[ "$is_macos" == "true" ]]; then
   alias ll='ls -lhAG' # list with color, show hidden
   alias o='open'
 fi
+
 alias vim='nvim'
 alias glg='git lg'
 alias gi='grep -i'
