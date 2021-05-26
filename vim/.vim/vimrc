@@ -1,9 +1,9 @@
 syntax enable                       " turns on syntax highlighting
 filetype plugin indent on           " activate filetype detection
 set belloff=all                     " turns off error bells
-set softtabstop=2                   " sets tabs 2 spaces long
-set shiftwidth=2                    " sets shift indent to 2 spaces
-set expandtab                       " converts tabs to spaces
+set softtabstop=2                   " set tabs to 2 spaces
+set shiftwidth=2                    " set shift indent to 2 spaces
+set expandtab                       " convert tabs to spaces
 set autoindent                      " maintains indent from prev line
 set smartindent                     " intelligently indents based on prev line
 set relativenumber                  " display relative line number
@@ -12,8 +12,8 @@ set ruler                           " bottom right ruler
 set colorcolumn=80                  " column 80 highlight
 set nowrap                          " turn off word wrapping
 set noswapfile                      " creates new buffer without swap file
-set ignorecase                      " ignores case when searching
-set smartcase                       " overrides ignorecase when uppercase is specified
+set ignorecase                      " when searching, ignore case
+set smartcase                       " when searching, apply case if uppercase is specified
 set timeoutlen=1000                 " reduce esc delay (mapping delay)
 set ttimeoutlen=0                   " reduce esc delay (keycode delay)
 set backspace=indent,eol,start      " enables backspace in insert
@@ -71,6 +71,8 @@ endfunction
 vnoremap <silent> <leader>y y:call ClipboardYank()<cr>
 vnoremap <silent> <leader>d d:call ClipboardYank()<cr>
 nnoremap <silent> <leader>p :cal<leader> ClipboardPaste()<cr>p
+
+let g:polyglot_disabled = ['autoindent']
 
 " load plugins
 call plug#begin('~/.vim/plugged')
