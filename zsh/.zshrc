@@ -74,7 +74,10 @@ elif [[ "$is_macos" == "true" ]]; then
 fi
 
 alias vim='nvim'
-alias glg='git lg'
+alias gl='git lg'
 alias gi='grep -i'
+alias gs='git status'
+alias gcm='git commit -vm'
+alias gpl='git pull'
 alias pss='ps -ef | grep -i'
 alias llg='ll | grep -i'
