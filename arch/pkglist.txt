@@ -61,6 +61,7 @@ insync
 intel-ucode
 jdk-openjdk
 kitty
+languagetool
 lib32-gamemode
 lib32-nvidia-utils
 libreoffice-still
@@ -70,6 +71,7 @@ linux
 linux-headers
 lutris
 lxappearance
+lynx
 m4
 mailspring
 make
@@ -77,11 +79,14 @@ man-db
 mangohud
 minetime-bin
 mpv
+mutt
 neofetch
+neomutt-git
 neovim-nightly-git
 nerd-fonts-complete
 networkmanager-dmenu-git
 nodejs-markdown-pdf
+nodejs-markdownlint-cli
 nss-mdns
 ntfs-3g
 nvidia
@@ -100,6 +105,7 @@ pkgconf
 playerctl
 polybar
 postgresql
+proselint
 pulseaudio-ctl
 python-gpustat
 python-grip
@@ -129,6 +135,7 @@ sudo
 texlive-latexextra
 texlive-latexindent-meta
 texlive-science
+thunderbird
 tmux
 todoist-electron
 tree
@@ -139,6 +146,7 @@ ttf-meslo
 ttf-ms-fonts
 unimatrix-git
 unzip
+urlview-git
 usbreset
 usbutils
 v4l2loopback-dkms
