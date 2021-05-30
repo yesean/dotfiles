@@ -2,6 +2,7 @@ apulse
 balena-etcher
 bitwarden
 brave-bin
+caffeine-ng
 cava
 ffcast
 font-manager

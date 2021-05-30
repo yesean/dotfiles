@@ -17,6 +17,7 @@ bluez
 bluez-utils
 brave-bin
 broadcom-wl-dkms
+caffeine-ng
 caprine
 cava
 clang
@@ -79,7 +80,6 @@ man-db
 mangohud
 minetime-bin
 mpv
-mutt
 neofetch
 neomutt-git
 neovim-nightly-git
