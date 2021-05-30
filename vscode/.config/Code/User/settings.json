@@ -53,7 +53,7 @@
     "editor.formatOnSave": true
   },
   "[systemverilog]": {
-    "editor.defaultFormatter": "eirikpre.systemverilog"
+    "editor.defaultFormatter": "ericsonj.verilogformat"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.detectIndentation": false,
