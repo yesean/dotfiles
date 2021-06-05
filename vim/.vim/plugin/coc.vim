@@ -1,5 +1,5 @@
 " coc extensions
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-clangd', 'coc-css', 'coc-eslint', 'coc-html', 'coc-java', 'coc-python', 'coc-tsserver', 'coc-texlab', 'coc-yaml']
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-clangd', 'coc-css', 'coc-eslint', 'coc-html', 'coc-java', 'coc-pyright', 'coc-tsserver', 'coc-texlab', 'coc-yaml']
 
 " use enter for trigger completion
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
