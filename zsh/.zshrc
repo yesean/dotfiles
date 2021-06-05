@@ -1,4 +1,7 @@
 # powerline10k theme
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 ZSH_THEME="powerlevel10k/powerlevel10k"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -73,7 +76,7 @@ elif [[ "$is_macos" == "true" ]]; then
   alias o='open'
 fi
 
-alias vim='nvim'
+alias nv='nvim'
 alias gl='git lg'
 alias gi='grep -i'
 alias gs='git status'
