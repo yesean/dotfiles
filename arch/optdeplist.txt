@@ -2,6 +2,7 @@ efibootmgr
 highlight
 hwinfo
 libgnome-keyring
+libmicrohttpd
 linux-firmware
 llvm
 mpdecimal

@@ -33,7 +33,6 @@ pulseaudio-ctl
 python-gpustat
 python-grip
 python38
-quartus-free
 sc-im
 slack-desktop
 spotify

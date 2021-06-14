@@ -4,6 +4,7 @@ anki
 appmenu-gtk-module
 apulse
 arc-gtk-theme
+audacity
 autoconf
 automake
 balena-etcher
@@ -20,6 +21,7 @@ broadcom-wl-dkms
 caffeine-ng
 caprine
 cava
+cheese
 clang
 cmake
 cronie
@@ -111,7 +113,6 @@ python-gpustat
 python-grip
 python-tensorflow-opt-cuda
 python38
-quartus-free
 ranger
 ripgrep
 rofi
