@@ -1,5 +1,5 @@
 " coc extensions
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-clangd', 'coc-css', 'coc-eslint', 'coc-html', 'coc-java', 'coc-pyright', 'coc-tsserver', 'coc-texlab', 'coc-yaml']
+let g:coc_global_extensions = ['coc-sh', 'coc-clangd', 'coc-css', 'coc-docker', 'coc-html', 'coc-java', 'coc-json', 'coc-lua', 'coc-markdownlint', 'coc-pyright', 'coc-tsserver', 'coc-texlab', 'coc-yaml']
 
 " use enter for trigger completion
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -10,9 +10,9 @@ nmap <silent> gr <Plug>(coc-references)
 " nmap <silent> gy <Plug>(coc-type-definition)
 " nmap <silent> gi <Plug>(coc-implementation)
 
-" Use <c-space> to trigger completion.
+" Use <c-p> to trigger completion.
 if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+  inoremap <silent><expr> <c-p> coc#refresh()
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
