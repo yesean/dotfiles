@@ -4,6 +4,7 @@ let g:ale_linters = {
 \   'javascriptreact':  ['eslint'],
 \   'typescript':       ['eslint'],
 \   'typescriptreact':  ['eslint'],
+\   'python':           ['pylint']
 \}
 let g:ale_fixers = {
 \   '*':                ['remove_trailing_lines', 'trim_whitespace'],

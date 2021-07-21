@@ -14,7 +14,7 @@ set nowrap                          " turn off word wrapping
 set noswapfile                      " creates new buffer without swap file
 set ignorecase                      " when searching, ignore case
 set smartcase                       " when searching, apply case if uppercase is specified
-set timeoutlen=1000                 " reduce esc delay (mapping delay)
+set timeoutlen=100                  " reduce esc delay (mapping delay)
 set ttimeoutlen=0                   " reduce esc delay (keycode delay)
 set backspace=indent,eol,start      " enables backspace in insert
 set mouse=a                         " enable mouse support
@@ -83,10 +83,12 @@ Plug 'joshdick/onedark.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'dense-analysis/ale'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 Plug 'sbdchd/neoformat'
-Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
@@ -94,6 +96,10 @@ Plug 'tpope/vim-commentary'
 Plug 'alvan/vim-closetag'
 Plug 'lervag/vimtex'
 Plug 'JamshedVesuna/vim-markdown-preview'
+
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
+Plug 'romgrk/barbar.nvim'
 call plug#end()
 
 colorscheme onedark                          " set colorscheme

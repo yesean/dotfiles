@@ -1,7 +1,9 @@
-"augroup fmt
-"autocmd!
-"autocmd BufWritePre * undojoin | Neoformat
-"augroup END
+" format on save
+let ftToIgnore = ['conf']
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * if index(ftToIgnore, &ft) < 0 | undojoin | Neoformat
+augroup END
 
 " basic formatting
 let g:neoformat_basic_format_align = 1
