@@ -2,7 +2,7 @@
 let ftToIgnore = ['conf']
 augroup fmt
   autocmd!
-  autocmd BufWritePre * if index(ftToIgnore, &ft) < 0 | undojoin | Neoformat
+  autocmd BufWritePre * if index(ftToIgnore, &ft) < 0 | Neoformat
 augroup END
 
 " basic formatting

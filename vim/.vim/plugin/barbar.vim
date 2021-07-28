@@ -1,2 +1,4 @@
-noremap :q :BufferClose<CR>
-noremap :wq :w<CR>:BufferClose<CR>
+nnoremap <leader>q :BufferClose<cr>
+
+nnoremap <c-l> :BufferNext<cr>
+nnoremap <c-h> :BufferPrevious<cr>
