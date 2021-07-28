@@ -18,6 +18,9 @@ options = {
   theme = 'onedark'
   }
 })
+vim.g['nvim_tree_follow'] = 1
+vim.g['nvim_tree_auto_close'] = 1
+vim.g['nvim_tree_highlight_opened_files'] = 1
 local actions = require('telescope.actions')
 require('telescope').setup({
 defaults = {
@@ -118,7 +121,7 @@ EOF
 
 " telescope key bindings
 nnoremap <C-p> <cmd>lua       require('telescope.builtin').find_files({ find_command = { 'fd', '--hidden', '--follow', '--exclude' ,'{.git,node_modules,games}' } })<cr>
-nnoremap <leader>f <cmd>lua   require('telescope.builtin').live_grep()<cr>
+nnoremap <C-f> <cmd>lua   require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua  require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua  require('telescope.builtin').help_tags()<cr>
 
@@ -164,3 +167,27 @@ vim.api.nvim_set_keymap('v', 'gj',
 .. "'toggle_comment_custom_commentstring'" .. ')<cr>',
 { noremap = true, silent = true })
 EOF
+
+" configure barbar offset for file tree
+lua << EOF
+function toggleTree()
+  function openTree()
+    require'bufferline.state'.set_offset(30, 'FileTree')
+    require'nvim-tree'.find_file(true)
+  end
+
+  function closeTree()
+    require'bufferline.state'.set_offset(0)
+    require'nvim-tree'.close()
+  end
+  local view = require 'nvim-tree.view'
+  local lib = require 'nvim-tree.lib'
+  if view.win_open() then
+    closeTree()
+  else
+    openTree()
+  end
+end
+vim.api.nvim_set_keymap('n', '<leader>n', '<cmd> lua toggleTree()<CR>', {noremap = true})
+EOF
+
