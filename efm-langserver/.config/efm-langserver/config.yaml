@@ -109,7 +109,7 @@ tools:
     format-stdin: true
 
   javascript-eslint: &javascript-eslint
-    lint-command: "eslint -f visualstudio --stdin --stdin-filename ${INPUT}"
+    lint-command: "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT} || eslint -f visualstudio --stdin --stdin-filename ${INPUT}"
     lint-ignore-exit-code: true
     lint-stdin: true
     lint-formats:
@@ -203,6 +203,15 @@ languages:
     - <<: *sh-shfmt
 
   javascript:
+    - <<: *javascript-eslint
+
+  javascriptreact:
+    - <<: *javascript-eslint
+
+  typescript:
+    - <<: *javascript-eslint
+
+  typescriptreact:
     - <<: *javascript-eslint
 
   php:
