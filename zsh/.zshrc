@@ -37,6 +37,7 @@ plugins=(
   stack
   tmux
   vi-mode
+  zsh-aliases-exa
   zsh-syntax-highlighting
   zsh-autosuggestions
   zsh-completions
@@ -67,12 +68,8 @@ export PATH="$PATH:$(yarn global bin)"
 
 # aliases
 if [[ "$is_linux" == "true" ]]; then
-  alias ls='ls --color=auto'      # list with color
-  alias ll='ls -lhA --color=auto' # list with color, show hidden
   alias o='xdg-open'
 elif [[ "$is_macos" == "true" ]]; then
-  alias ls='ls -G'    # list with color
-  alias ll='ls -lhAG' # list with color, show hidden
   alias o='open'
 fi
 
