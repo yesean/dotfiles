@@ -92,29 +92,31 @@ local nvim_lsp = require('lspconfig')
 local util = require('lspconfig/util')
 local lspinstall = require('lspinstall')
 
--- modify typescript lsp setup to allow curr dir as project root
-local typescript = {
-  on_attach = on_attach,
-  flags = {
-    debounce_text_changes = 150,
-    },
-  root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git", vim.loop.cwd())
-  }
-
 lspinstall.setup()
 local servers = lspinstall.installed_servers()
 table.insert(servers, 'efm')
 for _, lsp in ipairs(servers) do
-  if lsp == 'typescript' then
-    nvim_lsp.typescript.setup(typescript)
-  else
-    nvim_lsp[lsp].setup({
+  local config = {
     on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,
       }
-    })
+    }
+
+  -- modify typescript lsp setup to allow curr dir as project root
+  if lsp == 'typescript' then
+    config.root_dir = util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git", vim.loop.cwd())
+  end
+
+  nvim_lsp[lsp].setup(config)
 end
+end
+
+setup_servers()
+
+lspinstall.post_install_hook = function()
+setup_servers()
+vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
 end
 EOF
 
