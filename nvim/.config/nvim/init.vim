@@ -16,6 +16,15 @@ require('gitsigns').setup()
 require('lualine').setup({
 options = {
   theme = 'onedark'
+  },
+sections = {
+  lualine_c = {
+    {
+        'filename',
+        file_status = true,
+        path = 1
+    }
+    }
   }
 })
 vim.g['nvim_tree_follow'] = 1
