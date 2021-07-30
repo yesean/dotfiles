@@ -31,20 +31,7 @@ vim.g['nvim_tree_follow'] = 1
 vim.g['nvim_tree_auto_close'] = 1
 vim.g['nvim_tree_highlight_opened_files'] = 1
 local actions = require('telescope.actions')
-require('telescope').setup({
-defaults = {
-  vimgrep_arguments = {
-    'rg',
-    '--color=never',
-    '--no-heading',
-    '--with-filename',
-    '--line-number',
-    '--column',
-    '--smart-case',
-    '--hidden'
-    }
-  }
-})
+require('telescope').setup()
 require('compe').setup({
   enabled = true;
   autocomplete = true;
