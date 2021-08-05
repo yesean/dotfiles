@@ -51,6 +51,7 @@ setopt extendedglob # add globbing syntax
 bindkey '^]' autosuggest-accept
 bindkey '^P' fzf-file-widget
 bindkey '^O' fzf-cd-widget
+bindkey '^R' fzf-history-widget
 bindkey '^E' 'vim $(fzf)\n'
 
 # set environment variables
