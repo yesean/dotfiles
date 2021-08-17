@@ -1,4 +1,6 @@
 version: 2
+log-file: ~/.efm.log
+log-level: 1
 root-markers:
   - .git/
 lint-debounce: 1s
@@ -191,7 +193,7 @@ languages:
     - <<: *python-isort
     - <<: *python-mypy
     # - <<: *python-flake8
-    # - <<: *python-pylint
+    - <<: *python-pylint
     # - <<: *python-autopep8
     # - <<: *python-black
 
