@@ -10,9 +10,9 @@ VI_MODE_SET_CURSOR=true
 KEYTIMEOUT=1
 
 # fzf settings
-export FZF_BASE=/usr/share/fzf
+export FZF_BASE="/usr/share/fzf"
 export FZF_DEFAULT_COMMAND='fd --hidden --follow --exclude "{.git,node_modules,games}" .'
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
 export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type d"
 
