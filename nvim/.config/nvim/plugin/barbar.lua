@@ -17,6 +17,7 @@ function toggleTree()
         openTree()
     end
 end
+
 vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>lua toggleTree()<CR>',
                         {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>q', ':BufferClose<cr>', {noremap = true})
