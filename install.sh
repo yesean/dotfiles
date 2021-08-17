@@ -5,6 +5,16 @@ if ! command -v stow &>/dev/null; then
   exit 1
 fi
 
+while :; do
+  case $1 in
+  --vscode)
+    vscode="SET"
+    ;;
+  *) break ;;
+  esac
+  shift
+done
+
 [[ $(uname) = 'Darwin' ]] && is_macos=true || is_macos=false
 [[ $(uname) = 'Linux' ]] && is_linux=true || is_linux=false
 
@@ -131,7 +141,7 @@ for program in "${programs[@]}"; do
   fi
 done
 
-if command -v code &>/dev/null; then
+if [[ $(command -v code) ]] &>/dev/null && [[ $vscode == "SET" ]]; then
   echo "Updating vscode extensions."
   ~/.dotfiles/vscode/.config/Code/scripts/install-extensions.sh 1>/dev/null
 fi
