@@ -92,6 +92,8 @@ Plug 'windwp/nvim-ts-autotag'
 Plug 'navarasu/onedark.nvim'
 Plug 'npxbr/glow.nvim', {'branch': 'main'}
 Plug 'b3nj5m1n/kommentary'
+Plug 'onsails/lspkind-nvim'
+Plug 'kosayoda/nvim-lightbulb'
 
 " misc vim plugins (will probably migrate to neovim/lua versions)
 Plug 'sbdchd/neoformat'
