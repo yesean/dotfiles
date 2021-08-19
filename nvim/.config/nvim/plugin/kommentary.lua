@@ -19,20 +19,16 @@ function toggle_comment_custom_commentstring(...)
     vim.api.nvim_buf_set_option(0, "commentstring", commentstring)
 end
 -- Set the extra mapping for toggling a single line in normal mode
-vim.api.nvim_set_keymap('n', 'gjj',
-                        '<cmd>lua require("kommentary");kommentary.go(' ..
-                            require('kommentary.config').context.line .. ', ' ..
-                            "'toggle_comment_custom_commentstring'" .. ')<cr>',
-                        {noremap = true, silent = true})
+local map = vim.api.nvim_set_keymap
+local opts = {noremap = true, silent = true}
+map('n', 'gjj', '<cmd>lua require("kommentary");kommentary.go(' ..
+        require('kommentary.config').context.line .. ', ' ..
+        "'toggle_comment_custom_commentstring'" .. ')<cr>', opts)
 -- Set the extra mapping for toggling a range with a motion
-vim.api.nvim_set_keymap('n', 'gj',
-                        'v:lua.kommentary.go(' ..
-                            require('kommentary.config').context.init .. ', ' ..
-                            "'toggle_comment_custom_commentstring'" .. ')',
-                        {noremap = true, expr = true})
+map('n', 'gj',
+    'v:lua.kommentary.go(' .. require('kommentary.config').context.init .. ', ' ..
+        "'toggle_comment_custom_commentstring'" .. ')', opts)
 -- Set the extra mapping for toggling a range with a visual selection
-vim.api.nvim_set_keymap('v', 'gj',
-                        '<cmd>lua require("kommentary");kommentary.go(' ..
-                            require('kommentary.config').context.visual .. ', ' ..
-                            "'toggle_comment_custom_commentstring'" .. ')<cr>',
-                        {noremap = true, silent = true})
+map('v', 'gj', '<cmd>lua require("kommentary");kommentary.go(' ..
+        require('kommentary.config').context.visual .. ', ' ..
+        "'toggle_comment_custom_commentstring'" .. ')<cr>', opts)

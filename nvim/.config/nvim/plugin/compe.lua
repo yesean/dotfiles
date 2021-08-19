@@ -29,13 +29,10 @@ require('compe').setup({
 })
 
 -- nvim-compe key bindings
-vim.api.nvim_set_keymap('i', '<c-p>', "compe#complete()",
-                        {expr = true, noremap = true})
-vim.api.nvim_set_keymap('i', '<cr>', "compe#confirm('<CR>')",
-                        {expr = true, noremap = true})
-vim.api.nvim_set_keymap('i', '<c-e>', "compe#close('<C-e>')",
-                        {expr = true, noremap = true})
-vim.api.nvim_set_keymap('i', '<c-f>', "compe#scroll({ 'delta': +4 })",
-                        {expr = true, noremap = true})
-vim.api.nvim_set_keymap('i', '<c-d>', "compe#scroll({ 'delta': -4 })",
-                        {expr = true, noremap = true})
+local map = vim.api.nvim_set_keymap
+local opts = {expr = true, noremap = true}
+map('i', '<c-p>', "compe#complete()", opts)
+map('i', '<cr>', "compe#confirm('<CR>')", opts)
+map('i', '<c-e>', "compe#close('<C-e>')", opts)
+map('i', '<c-f>', "compe#scroll({ 'delta': +4 })", opts)
+map('i', '<c-d>', "compe#scroll({ 'delta': -4 })", opts)

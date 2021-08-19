@@ -18,12 +18,12 @@ function toggleTree()
     end
 end
 
-vim.api.nvim_set_keymap('n', '<leader>n', '<cmd>lua toggleTree()<CR>',
-                        {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>q', ':BufferClose<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>qa', ':BufferCloseAllButCurrent<cr>',
-                        {noremap = true})
-vim.api.nvim_set_keymap('n', '<c-l>', ':BufferNext<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<c-h>', ':BufferPrevious<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<c-s>', ':BufferPick<cr>',
-                        {noremap = true, silent = true})
+local map = vim.api.nvim_set_keymap
+local opts = {noremap = true, silent = true}
+map('n', '<leader>n', '<cmd>lua toggleTree()<CR>', opts)
+map('n', '<leader>q', ':BufferClose<cr>', opts)
+map('n', '<c-l>', ':BufferNext<cr>', opts)
+map('n', '<c-h>', ':BufferPrevious<cr>', opts)
+map('n', '<c-[>', ':BufferMovePrevious<cr>', opts)
+map('n', '<c-]>', ':BufferMoveNext<cr>', opts)
+map('n', '<c-s>', ':BufferPick<cr>', opts)
