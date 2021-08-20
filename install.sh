@@ -5,6 +5,7 @@ if ! command -v stow &>/dev/null; then
   exit 1
 fi
 
+# check if vscode is installed
 while :; do
   case $1 in
   --vscode)
@@ -91,13 +92,9 @@ for program in "${programs[@]}"; do
         backup_file "$HOME/.vimrc"
       fi
 
-      vim_dirs=(plugin syntax ftplugin after undo)
-      mkdir -p "${vim_dirs[@]/#/${HOME}/.vim/}"
-
       stow -v 1 "$program" 2>/dev/null || {
         backup_file "$HOME/.vim"
         backup_retry_msg "$program"
-        mkdir -p "${vim_dirs[@]/#/${HOME}/.vim/}"
         stow -v 1 "$program"
       }
 
@@ -134,6 +131,11 @@ for program in "${programs[@]}"; do
     }
   fi
 done
+
+# Update packer
+echo "Starting to sync packer.nvim..."
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+echo "Finished syncing packer."
 
 if [[ $(command -v code) ]] &>/dev/null && [[ $vscode == "SET" ]]; then
   echo "Updating vscode extensions."
