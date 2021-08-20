@@ -8,7 +8,7 @@ return require('packer').startup(function()
   use 'kyazdani42/nvim-web-devicons'
 
   -- core neovim plugins
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 'nvim-treesitter/nvim-treesitter', run = 'TSUpdate' }
   use 'neovim/nvim-lspconfig'
   use 'kabouzeid/nvim-lspinstall'
   use 'hrsh7th/nvim-compe'
