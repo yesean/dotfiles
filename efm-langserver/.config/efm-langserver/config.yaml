@@ -1,4 +1,5 @@
 version: 2
+log-file: /Users/yesean/.efm
 log-level: 1
 root-markers:
   - .git/
@@ -191,7 +192,7 @@ languages:
     - <<: *python-yapf
     - <<: *python-isort
     - <<: *python-pylint
-    - <<: *python-mypy
+    # - <<: *python-mypy
     # - <<: *python-autopep8
     # - <<: *python-flake8
     # - <<: *python-black
