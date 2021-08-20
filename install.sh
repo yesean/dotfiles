@@ -132,7 +132,7 @@ for program in "${programs[@]}"; do
   fi
 done
 
-# Update packer
+# clean and update packer
 echo "Starting to sync packer.nvim..."
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 echo "Finished syncing packer."
