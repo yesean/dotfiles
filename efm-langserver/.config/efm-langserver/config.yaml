@@ -1,5 +1,4 @@
 version: 2
-log-file: /Users/yesean/.efm
 log-level: 1
 root-markers:
   - .git/

@@ -44,8 +44,7 @@ local function setup_servers()
     -- modify typescript lsp setup to allow curr dir as project root
     if server == 'typescript' then
       config.root_dir = util.root_pattern('package.json', 'tsconfig.json',
-                                          'jsconfig.json', '.git',
-                                          vim.loop.cwd())
+                                          '.git', vim.loop.cwd())
     end
 
     -- inject globals into lua for neovim
