@@ -101,12 +101,6 @@ for program in "${programs[@]}"; do
         stow -v 1 "$program"
       }
 
-      # Update vim plugins
-      echo "Updating vim plugins."
-      nvim -c ":PlugClean! | quit | quit"
-      nvim -c ":PlugInstall | quit | quit"
-      nvim -c ":PlugUpdate | quit | quit"
-
     elif [[ "$program" == 'zsh' ]]; then
       stow -v 1 "$program" 2>/dev/null || {
         backup_retry_msg "$program"
