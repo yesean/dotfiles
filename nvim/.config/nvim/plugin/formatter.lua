@@ -1,56 +1,47 @@
-local prettier = {
-  exe = 'prettier',
-  args = { '--stdin-filepath', vim.api.nvim_buf_get_name(0) },
-  stdin = true
-}
-local luaFormat = {
-  exe = 'lua-format',
-  args = {
-    '--indent-width',
-    2,
-    '--column-limit',
-    80,
-    '--spaces-inside-table-braces',
-    '--double-quote-to-single-quote',
-    '--align-args',
-    '--align-parameter',
-    '--chop-down-table',
-    '--break-after-table-lb',
-    '--no-keep-simple-function-one-line'
-  },
-  stdin = true
-}
-local shfmt = { exe = 'shfmt', args = { '-i', 2 }, stdin = true }
+local prettier = function()
+  return {
+    exe = 'prettier',
+    args = { '--stdin-filepath', vim.api.nvim_buf_get_name(0) },
+    stdin = true
+  }
+end
+
+local luaFormat = function()
+  return {
+    exe = 'lua-format',
+    args = {
+      '--indent-width',
+      2,
+      '--column-limit',
+      80,
+      '--spaces-inside-table-braces',
+      '--double-quote-to-single-quote',
+      '--align-args',
+      '--align-parameter',
+      '--chop-down-table',
+      '--break-after-table-lb',
+      '--no-keep-simple-function-one-line'
+    },
+    stdin = true
+  }
+end
+
+local shfmt = function()
+  return { exe = 'shfmt', args = { '-i', 2 }, stdin = true }
+end
+
 local yapf = { exe = 'yapf', args = { '--style', 'google' }, stdin = true }
 
 require('formatter').setup({
   logging = false,
   filetype = {
-    javascript = {
-      function()
-        return prettier
-      end
-    },
-    lua = {
-      function()
-        return luaFormat
-      end
-    },
-    sh = {
-      function()
-        return shfmt
-      end
-    },
-    python = {
-      function()
-        return yapf
-      end
-    },
-    markdown = {
-      function()
-        return prettier
-      end
-    }
+    javascript = { prettier },
+    javascriptreact = { prettier },
+    typescript = { prettier },
+    typescriptreact = { prettier },
+    lua = { luaFormat },
+    sh = { shfmt },
+    python = { yapf }
   }
 })
 
