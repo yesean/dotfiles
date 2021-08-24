@@ -10,7 +10,6 @@ function toggleTree()
   end
 
   local view = require 'nvim-tree.view'
-  local lib = require 'nvim-tree.lib'
   if view.win_open() then
     closeTree()
   else
@@ -22,9 +21,10 @@ local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 map('n', '<leader>n', '<cmd>lua toggleTree()<CR>', opts)
 map('n', '<leader>q', ':BufferClose<cr>', opts)
-map('n', '<leader>qa', ':BufferCloseAllButCurrent<cr>', opts)
+map('n', '<leader>qw', ':BufferCloseAllButCurrent<cr>', opts)
+map('n', '<leader>qr', ':BufferCloseAllButPinned<cr>', opts)
 map('n', '<c-l>', ':BufferNext<cr>', opts)
 map('n', '<c-h>', ':BufferPrevious<cr>', opts)
 map('n', '<c-[>', ':BufferMovePrevious<cr>', opts)
 map('n', '<c-]>', ':BufferMoveNext<cr>', opts)
-map('n', '<c-s>', ':BufferPick<cr>', opts)
+map('n', '<c-y>', ':BufferPick<cr>', opts)
