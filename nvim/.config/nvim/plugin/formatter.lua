@@ -1,10 +1,9 @@
-local js = {
+local prettier = {
   exe = 'prettier',
   args = { '--stdin-filepath', vim.api.nvim_buf_get_name(0) },
   stdin = true
 }
-
-local lua = {
+local luaFormat = {
   exe = 'lua-format',
   args = {
     '--indent-width',
@@ -21,32 +20,35 @@ local lua = {
   },
   stdin = true
 }
-
-local sh = { exe = 'shfmt', args = { '-i', 2 }, stdin = true }
-
-local python = { exe = 'yapf', args = { '--style', 'google' }, stdin = true }
+local shfmt = { exe = 'shfmt', args = { '-i', 2 }, stdin = true }
+local yapf = { exe = 'yapf', args = { '--style', 'google' }, stdin = true }
 
 require('formatter').setup({
   logging = false,
   filetype = {
     javascript = {
       function()
-        return js
+        return prettier
       end
     },
     lua = {
       function()
-        return lua
+        return luaFormat
       end
     },
     sh = {
       function()
-        return sh
+        return shfmt
       end
     },
     python = {
       function()
-        return python
+        return yapf
+      end
+    },
+    markdown = {
+      function()
+        return prettier
       end
     }
   }
@@ -61,6 +63,8 @@ vim.api.nvim_exec([[
 ]], true)
 
 -- remove trailing whitespace
+require('formatter.util').print = function()
+end
 vim.api.nvim_exec([[
   augroup TrimTrailingWhiteSpace
       au!
