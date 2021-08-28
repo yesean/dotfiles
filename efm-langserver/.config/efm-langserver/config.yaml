@@ -110,12 +110,20 @@ tools:
     format-stdin: true
 
   javascript-eslint: &javascript-eslint
-    lint-command: "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT} || eslint -f visualstudio --stdin --stdin-filename ${INPUT}"
+    lint-command: "eslint --format visualstudio --stdin --stdin-filename ${INPUT}"
     lint-ignore-exit-code: true
     lint-stdin: true
     lint-formats:
-      - "%f(%l,%c): %tarning %m"
-      - "%f(%l,%c): %rror %m"
+    - "%f(%l,%c): %tarning %m"
+    - "%f(%l,%c): %rror %m"
+
+  javascript-eslintd: &javascript-eslintd
+    lint-command: "eslint_d --cache --format visualstudio --stdin --stdin-filename ${INPUT}"
+    lint-ignore-exit-code: true
+    lint-stdin: true
+    lint-formats:
+    - "%f(%l,%c): %tarning %m"
+    - "%f(%l,%c): %rror %m"
 
   php-phpstan: &php-phpstan
     lint-command: "./vendor/bin/phpstan analyze --error-format raw --no-progress"
@@ -191,10 +199,6 @@ languages:
     - <<: *python-yapf
     - <<: *python-isort
     - <<: *python-pylint
-    # - <<: *python-mypy
-    # - <<: *python-autopep8
-    # - <<: *python-flake8
-    # - <<: *python-black
 
   dockerfile:
     - <<: *dockerfile-hadolint
@@ -204,16 +208,16 @@ languages:
     - <<: *sh-shfmt
 
   javascript:
-    - <<: *javascript-eslint
+    - <<: *javascript-eslintd
 
   javascriptreact:
-    - <<: *javascript-eslint
+    - <<: *javascript-eslintd
 
   typescript:
-    - <<: *javascript-eslint
+    - <<: *javascript-eslintd
 
   typescriptreact:
-    - <<: *javascript-eslint
+    - <<: *javascript-eslintd
 
   php:
     - <<: *php-phpstan
