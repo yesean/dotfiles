@@ -30,5 +30,8 @@ return require('packer').startup(function()
   use 'blackCauldron7/surround.nvim'
   use 'lukas-reineke/indent-blankline.nvim'
 
+  -- vim plugins
+  use 'SirVer/ultisnips'
+  use 'mlaursen/vim-react-snippets'
   use 'JamshedVesuna/vim-markdown-preview'
 end)

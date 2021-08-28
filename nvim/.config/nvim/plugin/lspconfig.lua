@@ -36,9 +36,17 @@ local function setup_servers()
   lspinstall.setup()
   local servers = lspinstall.installed_servers()
   for _, server in ipairs(servers) do
+
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    capabilities.textDocument.completion.completionItem.resolveSupport = {
+      properties = { 'documentation', 'detail', 'additionalTextEdits' }
+    }
+
     local config = {
       on_attach = on_attach,
-      flags = { debounce_text_changes = 150 }
+      flags = { debounce_text_changes = 150 },
+      capabilities = capabilities
     }
 
     -- modify typescript lsp setup to allow curr dir as project root
