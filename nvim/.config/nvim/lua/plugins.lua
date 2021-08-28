@@ -28,4 +28,7 @@ return require('packer').startup(function()
   use 'kosayoda/nvim-lightbulb'
   use 'mhartington/formatter.nvim'
   use 'blackCauldron7/surround.nvim'
+  use 'lukas-reineke/indent-blankline.nvim'
+
+  use 'JamshedVesuna/vim-markdown-preview'
 end)
