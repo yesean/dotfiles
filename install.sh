@@ -59,7 +59,7 @@ backup_retry_msg() {
   echo "Retrying $1 sync."
 }
 
-home_programs=(git tmux vim zsh)
+home_programs=(git tmux vim zsh prettier)
 for program in "${programs[@]}"; do
   # check if program uses top level home dir (doesnt use ~/.config)
   if [[ " ${home_programs[*]} " =~ " ${program} " ]]; then
@@ -103,6 +103,13 @@ for program in "${programs[@]}"; do
         backup_retry_msg "$program"
         backup_file "$HOME/.zshrc"
         backup_file "$HOME/.p10k.zsh"
+        stow -v 1 "$program"
+      }
+
+    elif [[ "$program" == 'prettier' ]]; then
+      stow -v 1 "$program" 2>/dev/null || {
+        backup_retry_msg "$program"
+        backup_file "$HOME/.prettierrc"
         stow -v 1 "$program"
       }
     fi
