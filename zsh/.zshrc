@@ -58,10 +58,15 @@ bindkey '^E' 'vim $(fzf)\n'
 export EDITOR=nvim
 export BROWSER=brave
 export QUOTING_STYLE=literal
-export PATH="$PATH:/usr/local/sbin"
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/scripts"
-export PATH="$PATH:$(yarn global bin)"
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-16.jdk/Contents/Home
+
+export PATH=/usr/local/sbin:$PATH
+export PATH=/usr/local/bin:$PATH
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/scripts
+export PATH=$PATH:$(yarn global bin)
+export PATH=$PATH:$HOME/.toolbox/bin
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 # check linux or macos
 [[ $(uname) = 'Darwin' ]] && is_macos=true || is_macos=false
