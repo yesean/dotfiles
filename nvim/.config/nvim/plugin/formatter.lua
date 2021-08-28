@@ -35,6 +35,7 @@ local yapf = { exe = 'yapf', args = { '--style', 'google' }, stdin = true }
 require('formatter').setup({
   logging = false,
   filetype = {
+    json = { prettier },
     javascript = { prettier },
     javascriptreact = { prettier },
     typescript = { prettier },
