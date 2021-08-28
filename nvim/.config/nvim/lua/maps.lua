@@ -19,7 +19,7 @@ map('n', '<leader>yg_', '"+yg_', opts)
 map('n', '<leader>yy', '"+yy', opts)
 
 -- Paste from clipboard
-map('v', '<leader>p', '"+y', opts)
-map('v', '<leader>P', '"+Y', opts)
-map('n', '<leader>p', '"+y', opts)
-map('n', '<leader>P', '"+Y', opts)
+map('v', '<leader>p', '"+p', opts)
+map('v', '<leader>P', '"+P', opts)
+map('n', '<leader>p', '"+p', opts)
+map('n', '<leader>P', '"+P', opts)
