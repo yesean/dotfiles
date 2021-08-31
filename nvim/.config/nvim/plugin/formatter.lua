@@ -30,7 +30,9 @@ local shfmt = function()
   return { exe = 'shfmt', args = { '-i', 2 }, stdin = true }
 end
 
-local yapf = { exe = 'yapf', args = { '--style', 'google' }, stdin = true }
+local yapf = function()
+  return { exe = 'yapf', args = { '--style', 'google' }, stdin = true }
+end
 
 require('formatter').setup({
   logging = false,
@@ -40,6 +42,7 @@ require('formatter').setup({
     javascriptreact = { prettier },
     typescript = { prettier },
     typescriptreact = { prettier },
+    markdown = { prettier },
     lua = { luaFormat },
     sh = { shfmt },
     python = { yapf }
