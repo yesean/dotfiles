@@ -28,7 +28,7 @@ local on_attach = function(_, bufnr)
 end
 
 -- attach mappings to lsp once client attaches
-local nvim_lsp = require('lspconfig')
+local lspconfig = require('lspconfig')
 local util = require('lspconfig/util')
 local lspinstall = require('lspinstall')
 
@@ -61,7 +61,19 @@ local function setup_servers()
           { Lua = { diagnostics = { globals = { 'vim', 'use' } } } }
     end
 
-    nvim_lsp[server].setup(config)
+    if server == 'efm' then
+      config.filetypes = {
+        'lua',
+        'javascript',
+        'javascriptreact',
+        'typescript',
+        'typescriptreact',
+        'python',
+        'yaml'
+      }
+    end
+
+    lspconfig[server].setup(config)
   end
 end
 
