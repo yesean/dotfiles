@@ -29,6 +29,7 @@ return require('packer').startup(function()
   use 'mhartington/formatter.nvim'
   use 'blackCauldron7/surround.nvim'
   use 'lukas-reineke/indent-blankline.nvim'
+  use 'numtostr/FTerm.nvim'
 
   -- vim plugins
   use 'SirVer/ultisnips'
