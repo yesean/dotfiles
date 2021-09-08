@@ -4,7 +4,7 @@ local lspinstall = require('lspinstall')
 
 -- general on_attach function
 -- define keybindings
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
   local function map(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
   end
@@ -41,8 +41,6 @@ local on_attach = function(client, bufnr)
     '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>',
     opts
   )
-
-  vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
 end
 
 -- typescript on_attach function (adds nvim-lsp-ts-utils integration)

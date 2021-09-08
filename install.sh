@@ -8,10 +8,10 @@ fi
 # check if vscode is installed
 while :; do
   case $1 in
-  --vscode)
-    vscode="SET"
-    ;;
-  *) break ;;
+    --vscode)
+      vscode="SET"
+      ;;
+    *) break ;;
   esac
   shift
 done
@@ -39,11 +39,11 @@ fi
 if [[ "$is_linux" == "true" ]]; then
   echo 'Linux machine detected!'
   echo 'Installing for linux:'
-  programs=(alacritty efm-langserver git i3 nvim picom polybar prettier ranger rofi tmux vim Code zathura zsh)
+  programs=(alacritty git i3 nvim picom polybar prettier ranger rofi tmux vim Code zathura zsh)
 elif [[ "$is_macos" == "true" ]]; then
   echo 'macOS machine detected!'
   echo 'Installing for macos:'
-  programs=(alacritty efm-langserver git nvim prettier skhd tmux vim vscode yabai zsh)
+  programs=(alacritty git nvim prettier skhd tmux vim vscode yabai zsh)
 else
   echo "Unknown machine detected."
   exit 1
@@ -51,7 +51,7 @@ fi
 
 backup_file() {
   file=$1
-  mv "$file" "${file}.old"
+  mv "$file" "$file.old"
 }
 
 backup_retry_msg() {
@@ -59,7 +59,7 @@ backup_retry_msg() {
   echo "Retrying $1 sync."
 }
 
-home_programs=(git tmux vim zsh prettier)
+home_programs=(git tmux vim zsh prettier stylua)
 for program in "${programs[@]}"; do
   # check if program uses top level home dir (doesnt use ~/.config)
   if [[ " ${home_programs[*]} " =~ " ${program} " ]]; then
@@ -97,7 +97,6 @@ for program in "${programs[@]}"; do
         backup_retry_msg "$program"
         stow -v 1 "$program"
       }
-
     elif [[ "$program" == 'zsh' ]]; then
       stow -v 1 "$program" 2>/dev/null || {
         backup_retry_msg "$program"
@@ -105,11 +104,16 @@ for program in "${programs[@]}"; do
         backup_file "$HOME/.p10k.zsh"
         stow -v 1 "$program"
       }
-
     elif [[ "$program" == 'prettier' ]]; then
       stow -v 1 "$program" 2>/dev/null || {
         backup_retry_msg "$program"
         backup_file "$HOME/.prettierrc"
+        stow -v 1 "$program"
+      }
+    elif [[ "$program" == 'stylua' ]]; then
+      stow -v 1 "$program" 2>/dev/null || {
+        backup_retry_msg "$program"
+        backup_file "$HOME/.stylua.toml"
         stow -v 1 "$program"
       }
     fi
