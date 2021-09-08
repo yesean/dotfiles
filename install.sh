@@ -39,11 +39,11 @@ fi
 if [[ "$is_linux" == "true" ]]; then
   echo 'Linux machine detected!'
   echo 'Installing for linux:'
-  programs=(alacritty git i3 nvim picom polybar prettier ranger rofi tmux vim Code zathura zsh)
+  programs=(alacritty git i3 nvim picom polybar prettier ranger rofi stylua tmux vim Code zathura zsh)
 elif [[ "$is_macos" == "true" ]]; then
   echo 'macOS machine detected!'
   echo 'Installing for macos:'
-  programs=(alacritty git nvim prettier skhd tmux vim vscode yabai zsh)
+  programs=(alacritty git nvim prettier skhd stylua tmux vim vscode yabai zsh)
 else
   echo "Unknown machine detected."
   exit 1
