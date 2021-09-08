@@ -15,6 +15,7 @@ return require('packer').startup(function()
   use('nvim-telescope/telescope.nvim')
 
   -- misc neovim plugins
+  use('folke/trouble.nvim')
   use('jose-elias-alvarez/null-ls.nvim')
   use('jose-elias-alvarez/nvim-lsp-ts-utils')
   use('romgrk/barbar.nvim')
