@@ -1,10 +1,3 @@
-# powerline10k theme
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-ZSH_THEME="powerlevel10k/powerlevel10k"
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # vi-mode settings
 VI_MODE_SET_CURSOR=true
 KEYTIMEOUT=1
@@ -43,6 +36,11 @@ plugins=(
   zsh-completions
 )
 source $ZSH/oh-my-zsh.sh
+
+# initialize prompt
+ZSH_THEME=""
+autoload -U promptinit; promptinit
+prompt pure
 
 setopt globdots # match hidden files
 setopt extendedglob # add globbing syntax

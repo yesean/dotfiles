@@ -101,7 +101,6 @@ for program in "${programs[@]}"; do
       stow -v 1 "$program" 2>/dev/null || {
         backup_retry_msg "$program"
         backup_file "$HOME/.zshrc"
-        backup_file "$HOME/.p10k.zsh"
         stow -v 1 "$program"
       }
     elif [[ "$program" == 'prettier' ]]; then
