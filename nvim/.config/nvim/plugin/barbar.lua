@@ -1,15 +1,15 @@
 function toggleTree()
   function openTree()
-    require'bufferline.state'.set_offset(30, 'FileTree')
-    require'nvim-tree'.find_file(true)
+    require('bufferline.state').set_offset(30, 'FileTree')
+    require('nvim-tree').find_file(true)
   end
 
   function closeTree()
-    require'bufferline.state'.set_offset(0)
-    require'nvim-tree'.close()
+    require('bufferline.state').set_offset(0)
+    require('nvim-tree').close()
   end
 
-  local view = require 'nvim-tree.view'
+  local view = require('nvim-tree.view')
   if view.win_open() then
     closeTree()
   else

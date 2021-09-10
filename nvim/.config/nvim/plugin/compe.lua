@@ -19,7 +19,7 @@ require('compe').setup({
     max_width = 120,
     min_width = 60,
     max_height = math.floor(vim.o.lines * 0.3),
-    min_height = 1
+    min_height = 1,
   },
   source = {
     path = true,
@@ -27,15 +27,15 @@ require('compe').setup({
     calc = true,
     nvim_lsp = true,
     nvim_lua = true,
-    ultisnips = true
-  }
+    ultisnips = true,
+  },
 })
 
 -- nvim-compe key bindings
 local map = vim.api.nvim_set_keymap
 local opts = { expr = true, noremap = true }
 map('i', '<c-p>', 'compe#complete()', opts)
-map('i', '<cr>', 'compe#confirm(\'<CR>\')', opts)
-map('i', '<c-e>', 'compe#close(\'<C-e>\')', opts)
-map('i', '<c-f>', 'compe#scroll({ \'delta\': +4 })', opts)
-map('i', '<c-d>', 'compe#scroll({ \'delta\': -4 })', opts)
+map('i', '<cr>', "compe#confirm('<CR>')", opts)
+map('i', '<c-e>', "compe#close('<C-e>')", opts)
+map('i', '<c-f>', "compe#scroll({ 'delta': +4 })", opts)
+map('i', '<c-d>', "compe#scroll({ 'delta': -4 })", opts)

@@ -3,7 +3,9 @@ local modemap = function(mode)
   return function(binding, command, extra)
     extra = extra or {}
     local opts = { noremap = true }
-    for k, v in pairs(extra) do opts[k] = v end
+    for k, v in pairs(extra) do
+      opts[k] = v
+    end
     map(mode, binding, command, opts)
   end
 end
