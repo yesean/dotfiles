@@ -33,6 +33,7 @@ return require('packer').startup(function()
   use('blackCauldron7/surround.nvim')
   use('lukas-reineke/indent-blankline.nvim')
   use('numtostr/FTerm.nvim')
+  use('haringsrob/nvim_context_vt')
 
   -- vim plugins
   use('SirVer/ultisnips')
