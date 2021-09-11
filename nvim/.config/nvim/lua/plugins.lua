@@ -34,6 +34,7 @@ return require('packer').startup(function()
   use('lukas-reineke/indent-blankline.nvim')
   use('numtostr/FTerm.nvim')
   use('haringsrob/nvim_context_vt')
+  use('goolord/alpha-nvim')
 
   -- vim plugins
   use('SirVer/ultisnips')
