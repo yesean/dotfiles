@@ -2,8 +2,8 @@
 
 query=$@
 if [[ $query != "" ]]; then
-  coproc (xdg-open "$query" &> /dev/null)
+  coproc (xdg-open "$query" &>/dev/null)
   exit
 else
-  fd --follow --exclude "{.git,node_modules,games,venv}" . ~
+  fd --type f --follow --exclude "{.git,node_modules,games,venv}" . ~
 fi

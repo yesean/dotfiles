@@ -1,103 +1,89 @@
-configuration {
-    font:			                      "Lato 10";
-    drun-display-format:            "{name}";
-    display-drun: 		              "";
-    display-ssh: 		                "ssh";
-    disable-history:                false;
-    fullscreen:                     false;
-    hide-scrollbar: 		            true;
-    sidebar-mode: 		              false;
+* {
+  black:      #000000;
+  red:        #eb6e67;
+  green:      #95ee8f;
+  yellow:     #f8c456;
+  blue:       #6eaafb;
+  mangenta:   #d886f3;
+  cyan:       #6cdcf7;
+  emphasis:   #50536b;
+  text:       #dfdfdf;
+  text-alt:   #b2b2b2;
+  fg:         #abb2bf;
+  bg:         #282c34;
+
+  spacing: 0;
+  background-color: transparent;
+
+  font: "Knack Nerd Font 14";
+  text-color: @text;
 }
 
-@import "colors.rasi"
-
 window {
-    transparency:                   "real";
-    background-color:               @bg;
-    text-color:                     @fg;
-    border:			                    0px;
-    border-color:		                @ac;
-    border-radius:                  0px;
-    width:			                    50%;
-    location:                       center;
-    x-offset:                       0;
-    y-offset:                       0;
+  transparency: "real";
+  fullscreen: true;
+  background-color: #282c34dd;
 }
 
 mainbox {
-    background-color:               @al;
-    border:			                    0% 0% 0% 0%;
-    border-radius:                  0% 0% 0% 0%;
-    border-color:		                @ac;
-    children:                       [ inputbar, message, listview ];
-    spacing:                        0%;
-    padding:                        16px;
+  padding: 30% 30%;
 }
 
 inputbar {
-    children: 		                  [ entry ];
-    background-color:               @ac;
-    text-color:                     @bg;
-    expand:                         false;
-    border:			                    0;
-    border-radius:                  0px;
-    border-color:		                @ac;
-    margin:                         0;
-    padding:                        16px 20px;
+  margin: 0px 0px 20px 0px;
+  children: [prompt, textbox-prompt-colon, entry, case-indicator];
+}
+
+prompt {
+  text-color: @blue;
+}
+
+textbox-prompt-colon {
+  expand: false;
+  str: ":";
+  text-color: @text-alt;
 }
 
 entry {
-    background-color:               @al;
-    text-color:                     @bg;
-    placeholder-color:              @bg;
-    expand:                         true;
-    horizontal-align:               0;
-    placeholder:                    "Search";
-    padding:                        0;
-    blink:                          true;
-}
-
-textbox {
-    background-color:               @ac;
-    text-color:                     @fg;
-    orientation:                    horizontal;
-    border-radius:                  0;
-    padding: 			                  0;
-    margin:                         0;
+  margin: 0px 10px;
 }
 
 listview {
-    background-color:               @al;
-    padding:                        0px;
-    columns:                        1;
-    lines:                          10;
-    spacing:                        0;
-    cycle:                          false;
-    dynamic:                        true;
-    layout:                         vertical;
+  spacing: 5px;
+  dynamic: true;
+  scrollbar: false;
 }
 
 element {
-    background-color:               @al;
-    text-color:                     @fg;
-    orientation:                    horizontal;
-    border-radius:                  0;
-    padding:                        16px;
-}
-
-element-icon {
-    size:                           32px;
-    border:                         0;
-}
-
-element-text {
-    expand:                         true;
-    horizontal-align:               0;
-    vertical-align:                 0.5;
-    margin:                         0;
+  padding: 5px;
+  text-color: @text-alt;
+  highlight: bold #95ee8f; /* green */
+  border-radius: 3px;
 }
 
 element selected {
-    background-color:               @se;
-    text-color:                     @fg;
+  background-color: @emphasis;
+  text-color: @text;
+}
+
+element urgent, element selected urgent {
+  text-color: @red;
+}
+
+element active, element selected active {
+  text-color: @purple;
+}
+
+message {
+  padding: 5px;
+  border-radius: 3px;
+  background-color: @emphasis;
+  border: 1px;
+  border-color: @cyan;
+}
+
+button selected {
+  padding: 5px;
+  border-radius: 3px;
+  background-color: @emphasis;
 }
