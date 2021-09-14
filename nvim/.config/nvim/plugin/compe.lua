@@ -34,8 +34,8 @@ require('compe').setup({
 -- nvim-compe key bindings
 local map = vim.api.nvim_set_keymap
 local opts = { expr = true, noremap = true }
-map('i', '<c-p>', 'compe#complete()', opts)
-map('i', '<cr>', "compe#confirm('<CR>')", opts)
-map('i', '<c-e>', "compe#close('<C-e>')", opts)
+map('i', '<cr>', 'compe#complete()<cr>', opts)
+map('i', '<c-y>', "compe#confirm('<cr>')", opts)
+map('i', '<c-e>', "compe#close('<c-e>')", opts)
 map('i', '<c-f>', "compe#scroll({ 'delta': +4 })", opts)
 map('i', '<c-d>', "compe#scroll({ 'delta': -4 })", opts)
