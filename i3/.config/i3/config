@@ -216,7 +216,7 @@ bindsym $mod+Ctrl+3 exec --no-startup-id flameshot full -c
 # set gaps
 gaps inner 0
 gaps outer 0
-gaps top 28
+gaps top 22
 
 # set gaps for aesthetic workspace (10)
 # workspace $ws10 gaps inner 20
