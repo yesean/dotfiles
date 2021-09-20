@@ -20,6 +20,7 @@ horizontal_padding = 12
 frame_width = 2 # width in pixels of frame around the notification window.
 
 geometry = "300x5-15+15" # The geometry of the window. [{width}]x{height}[+/-{x}+/-{y}]
+
 frame_color = "#abb2bf"
 separator_color = "#abb2bf"
 
@@ -96,19 +97,21 @@ mouse_right_click = close_all
 close = ctrl+space
 close_all = ctrl+shift+space
 history = ctrl+grave
-context = ctrl+shift+period
 
-[urgency_low]
-background = "#353b45"
-foreground = "#abb2bf"
-timeout = 5
+cframe_color = "#abb2bf"
+separator_color = "#abb2bf"
 
-[urgency_normal]
-background = "#3e4451"
-foreground = "#abb2bf"
-timeout = 5
+[base16_low]
+    msg_urgency = low
+    background = "#353b45"
+    foreground = "#545862"
 
-[urgency_critical]
-background = "#e06c75"
-foreground = "#abb2bf"
-timeout = 10
+[base16_normal]
+    msg_urgency = normal
+    background = "#3e4451"
+    foreground = "#abb2bf"
+
+[base16_critical]
+    msg_urgency = critical
+    background = "#e06c75"
+    foreground = "#b6bdca"ontext = ctrl+shift+period
