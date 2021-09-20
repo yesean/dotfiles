@@ -4,10 +4,20 @@ KEYTIMEOUT=1
 
 # fzf settings
 export FZF_BASE="/usr/share/fzf"
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude "{.git,node_modules,games}" .'
-export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --preview 'bat --color=always --style=numbers --line-range=:500 {}'"
-export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
-export FZF_ALT_C_COMMAND="${FZF_DEFAULT_COMMAND} --type d"
+fzf_file_layout='--height 40% --layout=reverse --border --preview "bat --color=always --style=numbers --line-range=:500 {}"'
+fzf_dir_layout='--height 40% --layout=reverse --border --preview "exa -lbhHigUmuSa --no-time  --git --color-scale {}"'
+fd_default_opts='--hidden --follow --exclude "{.git,node_modules}"'
+fd_files="fd ${fd_default_opts} -t f ."
+fd_dirs="fd ${fd_default_opts} -t d  ."
+
+export FZF_DEFAULT_COMMAND=$fd_files
+export FZF_DEFAULT_OPTS=$fzf_file_layout
+
+export FZF_CTRL_T_COMMAND=$fd_files
+export FZF_CTRL_T_OPTS=$fzf_file_layout
+
+export FZF_ALT_C_COMMAND=$fd_dirs
+export FZF_ALT_C_OPTS=$fzf_dir_layout
 
 # completion settings
 autoload -Uz compinit && compinit
