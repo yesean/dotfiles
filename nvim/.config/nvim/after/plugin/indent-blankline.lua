@@ -6,7 +6,13 @@ vim.cmd([[highlight IndentBlanklineIndent4 guifg=#56B6C2 blend=nocombine]])
 vim.cmd([[highlight IndentBlanklineIndent5 guifg=#61AFEF blend=nocombine]])
 vim.cmd([[highlight IndentBlanklineIndent6 guifg=#C678DD blend=nocombine]])
 
-vim.opt.listchars = { lead = '⋅', eol = '↴' }
+-- display certain characters (tab, space, eol, etc)
+vim.opt.listchars = {
+  -- tab = '  →',
+  tab = '. ⮕',
+  lead = '·',
+  eol = '⮧',
+}
 vim.opt.list = true
 
 require('indent_blankline').setup({
@@ -18,5 +24,4 @@ require('indent_blankline').setup({
     'IndentBlanklineIndent5',
     'IndentBlanklineIndent6',
   },
-  buftype_exclude = { 'terminal' },
 })

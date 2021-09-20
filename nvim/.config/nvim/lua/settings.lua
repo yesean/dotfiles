@@ -1,6 +1,5 @@
-local o = vim.o
-
 -- options
+local o = vim.o
 o.ignorecase = true -- when searching, ignore case
 o.smartcase = true -- when searching, apply case if uppercase is specified
 o.timeoutlen = 300 -- reduce esc delay (mapping delay)
@@ -17,9 +16,10 @@ o.number = true -- display current line number
 o.colorcolumn = '80' -- column 80 highlight
 o.wrap = false -- turn off word wrapping
 o.signcolumn = 'yes' -- add extra left column for messages
-o.expandtab = true -- convert tabs to spaces
-o.softtabstop = 2 -- set tabs to 2 spaces
+o.tabstop = 2 -- set tabs to 2 spaces
+o.softtabstop = 2 -- set <tab>/<backspace> presses to 2 spaces
 o.shiftwidth = 2 -- set shift indent to 2 spaces
+o.expandtab = true -- convert tabs to spaces
 o.autoindent = true -- maintains indent from prev line
 o.smartindent = true -- intelligently indents based on prev line
 o.swapfile = false -- creates new buffer without swap file

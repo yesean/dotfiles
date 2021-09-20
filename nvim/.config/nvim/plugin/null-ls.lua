@@ -13,6 +13,7 @@ local sources = {
 
   -- js/ts
   diag.eslint_d,
+  fmt.eslint_d,
   fmt.prettier,
 
   -- python

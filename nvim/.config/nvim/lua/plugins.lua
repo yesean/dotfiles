@@ -13,6 +13,7 @@ return require('packer').startup(function()
   use('kabouzeid/nvim-lspinstall')
   use('hrsh7th/nvim-compe')
   use('nvim-telescope/telescope.nvim')
+  use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
 
   -- misc neovim plugins
   use('folke/trouble.nvim')
