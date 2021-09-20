@@ -1,3 +1,4 @@
+
 set $mod Mod4
 set $term alacritty
 
@@ -13,44 +14,41 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-set $monitor-one "DP-0.8"
-set $monitor-two "DP-0.1.8"
-
 # set colors
-set $nord0  #2e3440
-set $nord1  #3b4252
-set $nord2  #434c5e
-set $nord3  #4c566a
-set $nord4  #d8dee9
-set $nord5  #e5e9f0
-set $nord6  #eceff4
-set $nord7  #8fbcbb
-set $nord8  #88c0d0
-set $nord9  #81a1c1
-set $nord10 #5e81ac
-set $nord11 #bf616a
-set $nord12 #d08770
-set $nord13 #ebcb8b
-set $nord14 #a3be8c
-set $nord15 #b48ead
+set $base00 #282c34
+set $base01 #353b45
+set $base02 #3e4451
+set $base03 #545862
+set $base04 #565c64
+set $base05 #abb2bf
+set $base06 #b6bdca
+set $base07 #c8ccd4
+set $base08 #e06c75
+set $base09 #d19a66
+set $base0A #e5c07b
+set $base0B #98c379
+set $base0C #56b6c2
+set $base0D #61afef
+set $base0E #c678dd
+set $base0F #be5046
 
 # style window decoration colors
-client.focused              $nord9 $nord9 $nord6 $nord3 $nord3
-client.focused_inactive     $nord9 $nord9 $nord6 $nord3 $nord3
-client.unfocused            $nord0 $nord0 $nord6 $nord3 $nord3
-client.urgent               $nord12 $nord12 $nord6 $nord3 $nord3
-client.placeholder          $nord0 $nord0 $nord6 $nord3 $nord3
-client.background           $nord0
+client.focused          $base05 $base0D $base00 $base0D $base0C
+client.focused_inactive $base01 $base01 $base05 $base03 $base01
+client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
+client.placeholder      $base00 $base00 $base05 $base00 $base00
+client.background       $base07
 
 # set cursor size
 exec --no-startup-id xrdb ~/.Xresources
 
-# Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id /usr/bin/pulseaudio-ctl up && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id /usr/bin/pulseaudio-ctl down && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id /usr/bin/pulseaudio-ctl mute && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id /usr/bin/pulseaudio-ctl mute-input && $refresh_i3status
+# Use pulseaudio-ctl to adjust volume in PulseAudio.
+exec --no-startup-id volnoti # start volnoti daemon
+bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up && volnoti-show $(pulseaudio-ctl current | grep -Po "[0-9]+(?=%)")
+bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down && volnoti-show $(pulseaudio-ctl current | grep -Po "[0-9]+(?=%)")
+bindsym XF86AudioMute exec --no-startup-id "pulseaudio-ctl mute && pulseaudio-ctl status | grep -Po '(?<=Is sink muted).*' | if [[ $(grep -Po 'yes|no') == 'yes' ]]; then volnoti-show -m; else volnoti-show $(pulseaudio-ctl current | grep -Po '[0-9]+(?=%)'); fi"
+bindsym XF86AudioMicMute exec --no-startup-id pulseaudio-ctl mute-input
 
 # Media player controls
 bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
@@ -60,13 +58,13 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
+# terminal key binding
 bindsym $mod+Return exec --no-startup-id $term
 
-# start web browser
+# browser key binding
 bindsym $mod+shift+Return exec --no-startup-id brave
 
-# start file system
+# file browser key binding
 bindsym $mod+mod1+Return exec --no-startup-id $term -e ranger
 
 # kill focused window
@@ -75,10 +73,9 @@ bindsym $mod+q kill
 # only change focus with keyboard
 focus_follows_mouse no
 
-# rofi
-bindsym $mod+d exec --no-startup-id ~/.config/rofi/scripts/launch-search.sh
-# rofi calculator
-bindsym $mod+Shift+d exec --no-startup-id ~/.config/rofi/scripts/launch-calculator.sh
+# rofi (search + calculator)
+bindsym $mod+space exec --no-startup-id ~/.config/rofi/scripts/launch-search.sh
+bindsym $mod+Shift+space exec --no-startup-id ~/.config/rofi/scripts/launch-calculator.sh
 
 # change focus
 bindsym $mod+h focus left
@@ -119,10 +116,10 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+space floating toggle
+bindsym $mod+b floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+Shift+space focus mode_toggle
+bindsym $mod+Shift+b focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -219,46 +216,20 @@ gaps outer 0
 gaps top 22
 
 # set gaps for aesthetic workspace (10)
-# workspace $ws10 gaps inner 20
-# workspace $ws10 gaps outer 60
-# workspace $ws9  gaps inner 20
-# workspace $ws9  gaps outer 60
-# workspace $ws8  gaps inner 20
-# workspace $ws8  gaps outer 60
+workspace $ws10 gaps inner 20
+workspace $ws10 gaps outer 100
 
 # style window title
-font pango:Inconsolata 10
+font pango:IBM Plex Mono 10
 title_align center
 for_window [class=".*"] title_format "    %title    "
 for_window [class=".*"] border pixel 0
 
 # load wallpaper
-exec --no-startup-id ~/.fehbg &
-
-# set correct monitor arrangement
-# exec --no-startup-id ~/.config/i3/scripts/load-dual-monitors-arrangement.sh
-
-# assign workspace to specific monitors
-workspace $ws1  output $monitor-one
-workspace $ws8  output $monitor-two
-workspace $ws9  output $monitor-two
-workspace $ws10 output $monitor-two
+exec_always --no-startup-id ~/.fehbg &
 
 # start polybar
-exec_always --no-startup-id ~/.config/polybar/launch.sh --blocks
-
-# enable wake on sleep for mouse and keyboard
-exec_always --no-startup-id sudo /home/sean/bin/enable-usb-wakeup.sh
-
-# power cycle webcam
-exec --no-startup-id sudo /home/sean/bin/reset-webcam.sh
-
-# add virtual webcam
-exec --no-startup-id sudo /home/sean/bin/add-virtual-webcam.sh
-
-# start gnome-key-daemon
-exec --no-startup-id eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-exec --no-startup-id export SSD_AUTH_SOCK
+exec_always --no-startup-id ~/.config/polybar/launch.sh 
 
 # start dunst
 exec_always --no-startup-id dunst
@@ -266,12 +237,11 @@ exec_always --no-startup-id dunst
 # sleep after idle for 30 minutes
 exec --no-startup-id xidlehook --not-when-audio --not-when-fullscreen --timer 1800 'systemctl suspend' '' &
 
-# restart picom
-exec_always --no-startup-id killall picom
-exec_always --no-startup-id picom --experimental-backends &
-
-# startup basic layout (ws 8,9,10)
-exec --no-startup-id ~/.config/i3/scripts/load-default-workspaces.sh
-
 # start insync
 exec --no-startup-id insync start --no-daemon
+
+# restore saved layout
+exec --no-startup-id ~/.config/i3/scripts/restore-workspaces.sh
+
+# start picom
+exec_always --no-startup-id picom --experimental-backends &
