@@ -1,12 +1,32 @@
 configuration {
-    font:			                      "Lato 10";
     drun-display-format:            "{name}";
-    display-drun: 		              "";
-    display-ssh: 		                "ssh";
+    display-drun:                   "";
+    display-ssh:                    "ssh";
     disable-history:                false;
     fullscreen:                     false;
-    hide-scrollbar: 		            true;
-    sidebar-mode: 		              false;
+    hide-scrollbar:                 true;
+    sidebar-mode:                   false;
+}
+
+* {
+  black:      #000000;
+  red:        #eb6e67;
+  green:      #95ee8f;
+  yellow:     #f8c456;
+  blue:       #6eaafb;
+  mangenta:   #d886f3;
+  cyan:       #6cdcf7;
+  emphasis:   #50536b;
+  text:       #dfdfdf;
+  text-alt:   #b2b2b2;
+  fg:         #abb2bf;
+  bg:         #282c34;
+
+  spacing: 0;
+  background-color: transparent;
+
+  font: "IBM Plex Mono 11";
+  text-color: @text;
 }
 
 @import "colors.rasi"
@@ -15,10 +35,10 @@ window {
     transparency:                   "real";
     background-color:               @bg;
     text-color:                     @fg;
-    border:			                    0px;
-    border-color:		                @ac;
+    border:                         0px;
+    border-color:                   @ac;
     border-radius:                  0px;
-    width:			                    50%;
+    width:                          900px;
     location:                       center;
     x-offset:                       0;
     y-offset:                       0;
@@ -26,22 +46,22 @@ window {
 
 mainbox {
     background-color:               @al;
-    border:			                    0% 0% 0% 0%;
+    border:                         0% 0% 0% 0%;
     border-radius:                  0% 0% 0% 0%;
-    border-color:		                @ac;
+    border-color:                   @ac;
     children:                       [ inputbar, message, listview ];
     spacing:                        0%;
     padding:                        16px;
 }
 
 inputbar {
-    children: 		                  [ entry ];
+    children:                       [ entry ];
     background-color:               @ac;
     text-color:                     @bg;
     expand:                         false;
-    border:			                    0;
+    border:                         0;
     border-radius:                  0px;
-    border-color:		                @ac;
+    border-color:                   @ac;
     margin:                         0;
     padding:                        16px 20px;
 }
@@ -62,7 +82,7 @@ textbox {
     text-color:                     @fg;
     orientation:                    horizontal;
     border-radius:                  0;
-    padding: 			                  16px;
+    padding:                        16px;
     margin:                         5px;
 }
 

@@ -15,18 +15,19 @@
   spacing: 0;
   background-color: transparent;
 
-  font: "Knack Nerd Font 14";
+  font: "IBM Plex Mono 11";
   text-color: @text;
 }
 
 window {
   transparency: "real";
-  fullscreen: true;
+  fullscreen: false;
   background-color: #282c34dd;
+  width: 900px;
 }
 
 mainbox {
-  padding: 30% 30%;
+  padding: 1em;
 }
 
 inputbar {

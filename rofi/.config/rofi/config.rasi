@@ -1,5 +1,4 @@
 configuration {
-  font: "Lato 10";
   theme: "~/.config/rofi/themes/combi";
   show-icons: true;
   icon-theme: "Paper";
@@ -8,7 +7,8 @@ configuration {
   matching: "fuzzy";
   sort: true;
   sorting-method: "fzf";
-  drun-match-fields: "name,generic";
+  drun-match-fields: "all";
+  drun-display-format: "{name}";
   drun-show-actions: true;
   combi-modi: "drun,ssh,file:~/.config/rofi/scripts/file.sh";
   modi: "combi";
