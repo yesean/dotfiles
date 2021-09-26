@@ -128,6 +128,7 @@ local function setup_servers()
 
     lspconfig[server].setup(config)
   end
+  require('lspconfig').r_language_server.setup({})
 end
 
 setup_servers()
