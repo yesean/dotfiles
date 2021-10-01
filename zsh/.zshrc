@@ -70,11 +70,12 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-16.jdk/Conten
 
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/scripts
 export PATH=$PATH:$(yarn global bin)
 export PATH=$PATH:$HOME/.toolbox/bin
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH=$PATH:$HOME/go/bin
 
 # check linux or macos
 [[ $(uname) = 'Darwin' ]] && is_macos=true || is_macos=false
