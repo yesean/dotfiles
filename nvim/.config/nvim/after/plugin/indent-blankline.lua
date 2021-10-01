@@ -9,7 +9,7 @@ vim.cmd([[highlight IndentBlanklineIndent6 guifg=#C678DD blend=nocombine]])
 -- display certain characters (tab, space, eol, etc)
 vim.opt.listchars = {
   -- tab = '  →',
-  tab = '. ↹',
+  tab = '. ‣',
   lead = '·',
   eol = '↵',
 }
