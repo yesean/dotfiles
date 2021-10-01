@@ -22,6 +22,11 @@ local sources = {
   fmt.yapf,
   fmt.isort,
 
+  -- golang
+  fmt.goimports,
+  fmt.gofmt,
+  fmt.golines,
+
   -- java/c/c++
   fmt.clang_format,
 
