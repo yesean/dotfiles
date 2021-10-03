@@ -27,3 +27,5 @@ o.undofile = true -- use permanent undo file
 
 -- globals
 local g = vim.g
+
+g.tex_flavor = 'latex' -- set default ft as tex
