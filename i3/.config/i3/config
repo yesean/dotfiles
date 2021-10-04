@@ -234,6 +234,9 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 # start dunst
 exec_always --no-startup-id dunst
 
+# turn off screen blanking
+exec --no-startup-id xset s off && xset s noblank
+
 # sleep after idle for 30 minutes
 exec --no-startup-id xidlehook --not-when-audio --not-when-fullscreen --timer 1800 'systemctl suspend' '' &
 
