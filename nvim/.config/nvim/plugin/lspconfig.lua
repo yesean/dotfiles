@@ -1,6 +1,7 @@
 local lspconfig = require('lspconfig')
 local util = require('lspconfig/util')
 local lspinstall = require('lspinstall')
+local coq = require('coq')
 
 -- general on_attach function
 -- define keybindings
@@ -126,9 +127,9 @@ local function setup_servers()
       }
     end
 
-    lspconfig[server].setup(config)
+    lspconfig[server].setup(coq.lsp_ensure_capabilities(config))
   end
-  require('lspconfig').r_language_server.setup({})
+  require('lspconfig').r_language_server.setup(coq.lsp_ensure_capabilities({}))
 end
 
 setup_servers()
