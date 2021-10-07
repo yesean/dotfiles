@@ -3,8 +3,6 @@ configuration {
     display-drun:                   "";
     display-ssh:                    "ssh";
     disable-history:                false;
-    fullscreen:                     false;
-    hide-scrollbar:                 true;
     sidebar-mode:                   false;
 }
 
