@@ -220,7 +220,7 @@ workspace $ws10 gaps inner 20
 workspace $ws10 gaps outer 100
 
 # style window title
-font pango:SF Mono 8
+font pango:SF Mono Bold 8
 title_align center
 for_window [class=".*"] title_format "    %title    "
 for_window [class=".*"] border pixel 0
