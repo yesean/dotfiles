@@ -15,14 +15,14 @@
   spacing: 0;
   background-color: transparent;
 
-  font: "IBM Plex Mono 11";
+  font: "SF Pro Text 12";
   text-color: @text;
 }
 
 window {
   transparency: "real";
   fullscreen: false;
-  background-color: #282c34dd;
+  background-color: #282c34aa;
   width: 900px;
 }
 
@@ -32,7 +32,7 @@ mainbox {
 
 inputbar {
   margin: 0px 0px 20px 0px;
-  children: [prompt, textbox-prompt-colon, entry, case-indicator];
+  children: [prompt, textbox-prompt-colon, entry];
 }
 
 prompt {
@@ -58,8 +58,8 @@ listview {
 element {
   padding: 5px;
   text-color: @text-alt;
-  highlight: bold #95ee8f; /* green */
-  border-radius: 3px;
+  highlight: bold #95ee8f;
+  border-radius: 5px;
 }
 
 element selected {
@@ -74,6 +74,16 @@ element urgent, element selected urgent {
 element active, element selected active {
   text-color: @purple;
 }
+
+element-icon {
+  margin: 5px;
+  size: 22px;
+  color: blue;
+}
+
+element-text {
+   margin: 5px;
+ }
 
 message {
   padding: 5px;

@@ -8,5 +8,20 @@ if [[ $query != "" ]]; then
   coproc (xdg-open "$query" &>/dev/null)
   exit
 else
-  fd --type f --follow --exclude "{.git,node_modules,games,venv}" . ~
+  fd --type f --follow \
+    --search-path ~/Downloads/ \
+    --search-path ~/documents/ \
+    --search-path ~/projects/ \
+    --search-path ~/pictures/ \
+    --search-path ~/gd-personal/ \
+    --search-path ~/gd-ucsd/ \
+    --search-path ~/pictures/ \
+    --search-path ~/scripts/ \
+    --search-path ~/.dotfiles/ \
+    --search-path ~/.config/ \
+    --exclude Cache \
+    --exclude Default \
+    --exclude modules \
+    --exec echo -en "{}\x0icon\x1ftext-x-generic\n"
+  .
 fi

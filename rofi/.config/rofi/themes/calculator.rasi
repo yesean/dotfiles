@@ -7,23 +7,10 @@ configuration {
 }
 
 * {
-  black:      #000000;
-  red:        #eb6e67;
-  green:      #95ee8f;
-  yellow:     #f8c456;
-  blue:       #6eaafb;
-  mangenta:   #d886f3;
-  cyan:       #6cdcf7;
-  emphasis:   #50536b;
-  text:       #dfdfdf;
-  text-alt:   #b2b2b2;
-  fg:         #abb2bf;
-  bg:         #282c34;
-
   spacing: 0;
   background-color: transparent;
 
-  font: "IBM Plex Mono 11";
+  font: "SF Pro Text 12";
   text-color: @text;
 }
 
@@ -33,17 +20,12 @@ window {
     transparency:                   "real";
     background-color:               @bg;
     text-color:                     @fg;
-    border:                         0px;
-    border-color:                   @ac;
-    border-radius:                  0px;
     width:                          900px;
     location:                       center;
-    x-offset:                       0;
-    y-offset:                       0;
 }
 
 mainbox {
-    background-color:               @al;
+    background-color:               @bg;
     border:                         0% 0% 0% 0%;
     border-radius:                  0% 0% 0% 0%;
     border-color:                   @ac;
@@ -54,38 +36,34 @@ mainbox {
 
 inputbar {
     children:                       [ entry ];
-    background-color:               @ac;
     text-color:                     @bg;
     expand:                         false;
     border:                         0;
     border-radius:                  0px;
     border-color:                   @ac;
     margin:                         0;
-    padding:                        16px 20px;
+    padding:                        16px 16px;
 }
 
 entry {
-    background-color:               @al;
-    text-color:                     @bg;
-    placeholder-color:              @bg;
+    text-color:                     @fg;
+    placeholder-color:              @fg-alt1;
     expand:                         true;
     horizontal-align:               0;
-    placeholder:                    "Search";
+    placeholder:                    "Enter expression...";
     padding:                        0;
     blink:                          true;
 }
 
 textbox {
-    background-color:               @ac;
     text-color:                     @fg;
+    horizontal-align:               0.5;
     orientation:                    horizontal;
     border-radius:                  0;
     padding:                        16px;
-    margin:                         5px;
 }
 
 listview {
-    background-color:               @al;
     padding:                        0px;
     columns:                        1;
     lines:                          10;
@@ -96,10 +74,8 @@ listview {
 }
 
 element {
-    background-color:               @al;
-    text-color:                     @fg;
     orientation:                    horizontal;
-    border-radius:                  0;
+    border-radius:                  5px;
     padding:                        16px;
 }
 
@@ -109,6 +85,7 @@ element-icon {
 }
 
 element-text {
+    color:                          @fg-alt2;
     expand:                         true;
     horizontal-align:               0;
     vertical-align:                 0.5;
