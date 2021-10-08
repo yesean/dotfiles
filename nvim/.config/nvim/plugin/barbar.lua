@@ -1,10 +1,10 @@
-function toggleTree()
-  function openTree()
+function ToggleTree()
+  local function openTree()
     require('bufferline.state').set_offset(30, 'FileTree')
     require('nvim-tree').find_file(true)
   end
 
-  function closeTree()
+  local function closeTree()
     require('bufferline.state').set_offset(0)
     require('nvim-tree').close()
   end
@@ -19,7 +19,7 @@ end
 
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
-map('n', '<leader>n', '<cmd>lua toggleTree()<CR>', opts)
+map('n', '<leader>n', '<cmd>lua ToggleTree()<CR>', opts)
 map('n', '<leader>q', ':BufferClose<cr>', opts)
 map('n', '<leader>qw', ':BufferCloseAllButCurrent<cr>', opts)
 map('n', '<leader>qr', ':BufferCloseAllButPinned<cr>', opts)
