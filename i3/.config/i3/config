@@ -248,3 +248,6 @@ exec --no-startup-id ~/.config/i3/scripts/restore-workspaces.sh
 
 # start picom
 exec_always --no-startup-id picom --experimental-backends &
+
+# start autostart
+exec_always --no-startup-id systemctl --user start autostart.target
