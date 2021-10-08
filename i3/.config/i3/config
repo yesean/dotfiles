@@ -65,7 +65,7 @@ bindsym $mod+Return exec --no-startup-id $term
 bindsym $mod+shift+Return exec --no-startup-id brave
 
 # file browser key binding
-bindsym $mod+mod1+Return exec --no-startup-id $term -e ranger
+bindsym $mod+mod1+Return exec --no-startup-id nautilus
 
 # kill focused window
 bindsym $mod+q kill
