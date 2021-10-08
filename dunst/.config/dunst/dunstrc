@@ -18,9 +18,7 @@ separator_height = 2
 padding = 12 # Padding between text and separator.
 horizontal_padding = 12
 frame_width = 2 # width in pixels of frame around the notification window.
-
 geometry = "300x5-15+15" # The geometry of the window. [{width}]x{height}[+/-{x}+/-{y}]
-
 frame_color = "#abb2bf"
 separator_color = "#abb2bf"
 
@@ -104,7 +102,7 @@ separator_color = "#abb2bf"
 [base16_low]
     msg_urgency = low
     background = "#353b45"
-    foreground = "#545862"
+    foreground = "#abb2bf"
 
 [base16_normal]
     msg_urgency = normal
@@ -114,4 +112,4 @@ separator_color = "#abb2bf"
 [base16_critical]
     msg_urgency = critical
     background = "#e06c75"
-    foreground = "#b6bdca"ontext = ctrl+shift+period
+    foreground = "#abb2bf"
