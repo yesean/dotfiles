@@ -1,3 +1,3 @@
 #!/bin/bash
 
-rofi -show combi
+rofi -show combi -async-pre-read 0

@@ -1,9 +1,7 @@
 configuration {
-  theme: "~/.config/rofi/themes/combi";
   show-icons: true;
   icon-theme: "Paper";
   terminal: "alacritty";
-  normal-window: true;
   parse-known-hosts: false;
   matching: "fuzzy";
   sort: true;
@@ -17,3 +15,5 @@ configuration {
   combi-modi: "drun,ssh,file:~/.config/rofi/scripts/file.sh";
   modi: "combi";
 }
+
+@theme "~/.config/rofi/themes/combi"
