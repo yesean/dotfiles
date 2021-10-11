@@ -100,6 +100,10 @@ alias psm='ps -o rss,vsize,command | head -1; ps -o rss,vsize,command | grep -v 
 alias llg='ll | grep -i'
 alias R='R --quiet --no-save'
 
+gpo() {
+  git push origin HEAD~$1:main
+}
+
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
