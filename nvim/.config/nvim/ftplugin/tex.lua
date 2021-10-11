@@ -1,1 +1,1 @@
-vim.cmd([[autocmd BufWritePost * silent !pdflatex %]])
+vim.cmd([[autocmd BufWritePost * silent !latexmk -c %]])
