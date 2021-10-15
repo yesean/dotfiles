@@ -12,8 +12,6 @@ local sources = {
   fmt.stylua,
 
   -- js/ts
-  diag.eslint_d,
-  fmt.eslint_d,
   fmt.prettier,
 
   -- python

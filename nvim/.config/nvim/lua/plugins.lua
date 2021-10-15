@@ -1,4 +1,4 @@
-return require('packer').startup(function()
+require('packer').startup(function()
   -- package manager
   use('wbthomason/packer.nvim')
 
@@ -10,10 +10,11 @@ return require('packer').startup(function()
   -- core neovim plugins
   use({ 'nvim-treesitter/nvim-treesitter', run = 'TSUpdate' })
   use('neovim/nvim-lspconfig')
-  use('kabouzeid/nvim-lspinstall')
-  use({ 'ms-jpq/coq_nvim', branch = 'coq' })
-  use({ 'ms-jpq/coq.artifacts', branch = 'artifacts' })
-  use({ 'ms-jpq/coq.thirdparty', branch = '3p' })
+  use('williamboman/nvim-lsp-installer')
+  use('hrsh7th/nvim-cmp')
+  use('hrsh7th/cmp-nvim-lsp')
+  use('hrsh7th/cmp-buffer')
+  use('quangnguyen30192/cmp-nvim-ultisnips')
   use('nvim-telescope/telescope.nvim')
   use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
 
