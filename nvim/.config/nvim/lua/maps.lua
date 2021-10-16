@@ -12,6 +12,7 @@ end
 local nmap = modemap('n')
 local imap = modemap('i')
 local vmap = modemap('v')
+local smap = modemap('s')
 
 -- map leader to space
 nmap('<space>', '')
@@ -58,4 +59,5 @@ return {
   n = nmap,
   i = imap,
   v = vmap,
+  s = smap,
 }
