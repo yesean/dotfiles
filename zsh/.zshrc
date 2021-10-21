@@ -99,6 +99,8 @@ alias pss='ps -ef | grep "PID" | head -1; ps -ef | grep -v "grep" | grep'
 alias psm='ps -o rss,vsize,command | head -1; ps -o rss,vsize,command | grep -v "grep" | grep'
 alias llg='ll | grep -i'
 alias R='R --quiet --no-save'
+alias dots='cd ~/.dotfiles/'
+alias proj='cd ~/projects/'
 
 gpo() {
   git push origin HEAD~$1:main
