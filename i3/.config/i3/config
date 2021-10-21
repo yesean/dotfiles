@@ -73,9 +73,8 @@ bindsym $mod+q kill
 # only change focus with keyboard
 focus_follows_mouse no
 
-# rofi (search + calculator)
-bindsym $mod+space exec --no-startup-id ~/.config/rofi/scripts/launch-search.sh
-bindsym $mod+Shift+space exec --no-startup-id ~/.config/rofi/scripts/launch-calculator.sh
+# spotlight equivalent
+exec_always --no-startup-id albert &
 
 # change focus
 bindsym $mod+h focus left
