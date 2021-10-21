@@ -35,7 +35,6 @@ require('packer').startup(function()
 
   -- visuals
   use('navarasu/onedark.nvim')
-  use('folke/trouble.nvim')
   use('romgrk/barbar.nvim')
   use('kyazdani42/nvim-tree.lua')
   use('hoob3rt/lualine.nvim')
