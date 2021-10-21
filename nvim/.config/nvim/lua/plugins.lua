@@ -14,10 +14,13 @@ require('packer').startup(function()
   use('neovim/nvim-lspconfig')
   use('williamboman/nvim-lsp-installer')
 
-  -- completion
+  -- completion engine
   use('hrsh7th/nvim-cmp')
+
+  -- completion sources
   use('hrsh7th/cmp-nvim-lsp')
   use('saadparwaiz1/cmp_luasnip')
+  use('hrsh7th/cmp-nvim-lua')
   use('hrsh7th/cmp-path')
   use('hrsh7th/cmp-buffer')
 
