@@ -1,4 +1,11 @@
 require('lualine').setup({
   options = { theme = 'onedark' },
-  sections = { lualine_c = { { 'filename', file_status = true, path = 1 } } },
+  sections = {
+    lualine_a = { 'mode' },
+    lualine_b = { 'branch' },
+    lualine_c = { 'filename' },
+    lualine_x = { 'encoding' },
+    lualine_y = { 'location' },
+    lualine_z = { 'filetype' },
+  },
 })
