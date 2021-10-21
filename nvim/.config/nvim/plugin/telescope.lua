@@ -10,37 +10,18 @@ local grep_command = {
 }
 
 -- telescope key bindings
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true }
+local maps = require('maps')
 
+maps.n('<leader>t', '<cmd>Telescope<cr>')
 local find_command =
   [[{ 'fd', '--type', 'f', '--hidden', '--follow', '--exclude', '{.git,node_modules}' }]]
-map(
-  'n',
+maps.n(
   '<c-p>',
   [[<cmd>lua require('telescope.builtin').find_files({ find_command = ]]
     .. find_command
-    .. [[})<cr>]],
-  opts
+    .. [[})<cr>]]
 )
-map(
-  'n',
-  '<c-f>',
-  [[<cmd>lua require('telescope.builtin').live_grep({})<cr>]],
-  opts
-)
-map(
-  'n',
-  '<leader>fb',
-  "<cmd>lua require('telescope.builtin').buffers()<cr>",
-  opts
-)
-map(
-  'n',
-  '<leader>fh',
-  "<cmd>lua require('telescope.builtin').help_tags()<cr>",
-  opts
-)
+maps.n('<c-f>', '<cmd>Telescope live_grep<cr>')
 
 require('telescope').setup({ defaults = { vimgrep_arguments = grep_command } })
 require('telescope').load_extension('fzf')

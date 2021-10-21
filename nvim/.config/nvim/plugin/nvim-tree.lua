@@ -4,4 +4,7 @@ require('nvim-tree').setup({
     enable = true,
     update_cwd = true,
   },
+  view = {
+    width = 40,
+  },
 })

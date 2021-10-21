@@ -1,6 +1,6 @@
 function ToggleTree()
   local function openTree()
-    require('bufferline.state').set_offset(30, 'FileTree')
+    require('bufferline.state').set_offset(40, 'FileTree')
     require('nvim-tree').find_file(true)
   end
 

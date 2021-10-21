@@ -8,26 +8,20 @@ local function on_attach(client, bufnr)
   local function map(key, action)
     vim.api.nvim_buf_set_keymap(bufnr, 'n', key, action, opts)
   end
-  map('gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
-  map('gd', '<Cmd>lua vim.lsp.buf.definition()<CR>')
-  map('gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-  map('gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-  map('K', '<Cmd>lua vim.lsp.buf.hover()<CR>')
-  map('<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-  map('<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
-  map('<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
-  map('<space>a', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-  map('<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
-  map('[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
-  map(']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
-  map('<space>ql', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
-  map('<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
-  map('<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>')
-  map('<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>')
-  map(
-    '<space>wl',
-    '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>'
-  )
+  map('gD', '<cmd>lua vim.lsp.buf.declaration()<cr>')
+  map('gd', '<cmd>Telescope lsp_definitions<cr>')
+  map('gi', '<cmd>lua vim.lsp.buf.implementation()<cr>')
+  map('gr', '<cmd>Telescope lsp_references<cr>')
+  map('K', '<cmd>lua vim.lsp.buf.hover()<cr>')
+  map('<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>')
+  map('<space>D', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
+  map('<space>rn', '<cmd>lua vim.lsp.buf.rename()<cr>')
+  map('<space>a', '<cmd>lua vim.lsp.buf.code_action()<cr>')
+  map('<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>')
+  map('[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>')
+  map(']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<cr>')
+  map('<space>ql', '<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>')
+  map('<space>f', '<cmd>lua vim.lsp.buf.formatting()<cr>')
 
   client.resolved_capabilities.document_formatting = false
   client.resolved_capabilities.document_range_formatting = false
@@ -52,6 +46,10 @@ lsp_installer.on_server_ready(function(server)
       '.git',
       vim.loop.cwd()
     )
+  end
+
+  if server.name == 'stylelint_lsp' then
+    opts.filetypes = { 'css', 'less', 'scss' }
   end
 
   if server.name == 'sumneko_lua' then
