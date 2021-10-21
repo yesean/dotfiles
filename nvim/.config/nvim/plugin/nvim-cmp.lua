@@ -16,7 +16,10 @@ cmp.setup({
     ['<c-d>'] = cmp.mapping.scroll_docs(-4),
     ['<c-e>'] = cmp.mapping.close(),
     ['<cr>'] = cmp.mapping.confirm({ select = true }),
-    ['<esc>'] = cmp.mapping.abort(),
+    ['<esc>'] = cmp.mapping(function(fallback)
+      cmp.mapping.abort()
+      fallback()
+    end),
     ['<tab>'] = cmp.mapping(function(fallback)
       if luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
@@ -55,10 +58,10 @@ cmp.setup({
     format = require('lspkind').cmp_format({
       with_text = true,
       menu = {
-        nvim_lsp = '[LSP]',
-        luasnip = '[LuaSnip]',
-        path = '[Path]',
-        buffer = '[Buffer]',
+        nvim_lsp = '[lsp]',
+        luasnip = '[luasnip]',
+        path = '[path]',
+        buffer = '[buffer]',
       },
     }),
   },
