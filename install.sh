@@ -39,7 +39,7 @@ fi
 if [[ "$is_linux" == "true" ]]; then
   echo 'Linux machine detected!'
   echo 'Installing for linux:'
-  programs=(alacritty dunst git i3 nvim picom polybar prettier ranger rofi scripts stylua tmux vim Code zathura zsh)
+  programs=(alacritty dunst git i3 nvim picom polybar prettier ranger scripts stylua tmux vim Code zathura zsh)
 elif [[ "$is_macos" == "true" ]]; then
   echo 'macOS machine detected!'
   echo 'Installing for macos:'
@@ -145,7 +145,7 @@ done
 # clean and update packer
 echo "Starting to sync packer.nvim..."
 nvim --headless --noplugin -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-echo "Finished syncing packer."
+echo -e "\nFinished syncing packer."
 
 if [[ $(command -v code) ]] &>/dev/null && [[ $vscode == "SET" ]]; then
   echo "Updating vscode extensions."
