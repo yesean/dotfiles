@@ -37,7 +37,7 @@ require('packer').startup(function()
   use('jose-elias-alvarez/nvim-lsp-ts-utils')
 
   -- visuals
-  use('navarasu/onedark.nvim')
+  use('monsonjeremy/onedark.nvim')
   use('romgrk/barbar.nvim')
   use('kyazdani42/nvim-tree.lua')
   use('hoob3rt/lualine.nvim')
