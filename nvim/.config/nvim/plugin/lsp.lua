@@ -1,6 +1,5 @@
 local util = require('lspconfig/util')
 local lsp_installer = require('nvim-lsp-installer')
-local maps = require('maps')
 
 -- general on_attach function
 -- define keybindings

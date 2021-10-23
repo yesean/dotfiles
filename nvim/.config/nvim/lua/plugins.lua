@@ -41,6 +41,7 @@ require('packer').startup(function()
   use('savq/melange')
   use('folke/tokyonight.nvim')
   use({ 'ellisonleao/gruvbox.nvim', requires = { 'rktjmp/lush.nvim' } })
+  use('eddyekofo94/gruvbox-flat.nvim')
 
   -- visuals
   use('romgrk/barbar.nvim')
