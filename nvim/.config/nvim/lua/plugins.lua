@@ -36,8 +36,13 @@ require('packer').startup(function()
   use('jose-elias-alvarez/null-ls.nvim')
   use('jose-elias-alvarez/nvim-lsp-ts-utils')
 
-  -- visuals
+  -- colorscheme
   use('monsonjeremy/onedark.nvim')
+  use('savq/melange')
+  use('folke/tokyonight.nvim')
+  use({ 'ellisonleao/gruvbox.nvim', requires = { 'rktjmp/lush.nvim' } })
+
+  -- visuals
   use('romgrk/barbar.nvim')
   use('kyazdani42/nvim-tree.lua')
   use('hoob3rt/lualine.nvim')
