@@ -1,3 +1,4 @@
+-- lsp icons
 require('lspkind').init({
   -- enables text annotations
   --
@@ -42,3 +43,6 @@ require('lspkind').init({
     TypeParameter = '',
   },
 })
+
+-- general icons
+require('nvim-web-devicons').setup({ default = true })

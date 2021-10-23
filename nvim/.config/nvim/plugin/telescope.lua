@@ -1,3 +1,5 @@
+local maps = require('maps')
+
 local grep_command = {
   'rg',
   '--hidden',
@@ -10,8 +12,6 @@ local grep_command = {
 }
 
 -- telescope key bindings
-local maps = require('maps')
-
 maps.n('<leader>t', '<cmd>Telescope<cr>')
 local find_command =
   [[{ 'fd', '--type', 'f', '--hidden', '--follow', '--exclude', '{.git,node_modules}' }]]

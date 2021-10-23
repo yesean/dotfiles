@@ -2,11 +2,7 @@ local null_ls = require('null-ls')
 
 local fmt = null_ls.builtins.formatting
 local diag = null_ls.builtins.diagnostics
-local act = null_ls.builtins.code_actions
 local sources = {
-  -- git
-  -- act.gitsigns,
-
   -- lua
   diag.luacheck.with({ extra_args = { '--globals', 'vim', 'use' } }),
   fmt.stylua,

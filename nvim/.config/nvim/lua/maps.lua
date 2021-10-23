@@ -24,14 +24,13 @@ nmap('<leader>j', ':wincmd j<cr>')
 nmap('<leader>k', ':wincmd k<cr>')
 nmap('<leader>l', ':wincmd l<cr>')
 
--- clipboard operations
--- Copy to clipboard
+-- copy to clipboard
 vmap('<leader>y', '"+y')
 nmap('<leader>y', '"+y')
 nmap('<leader>yg_', '"+yg_')
 nmap('<leader>yy', '"+yy')
 
--- Paste from clipboard
+-- paste from clipboard
 vmap('<leader>p', '"+p')
 vmap('<leader>P', '"+P')
 nmap('<leader>p', '"+p')

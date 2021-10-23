@@ -1,5 +1,6 @@
 local util = require('lspconfig/util')
 local lsp_installer = require('nvim-lsp-installer')
+local maps = require('maps')
 
 -- general on_attach function
 -- define keybindings
@@ -31,7 +32,7 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
--- setup lsp clients
+-- setup language servers
 lsp_installer.on_server_ready(function(server)
   local opts = {
     capabilities = capabilities,
@@ -49,6 +50,7 @@ lsp_installer.on_server_ready(function(server)
   end
 
   if server.name == 'stylelint_lsp' then
+    -- only start stylelint in *css files
     opts.filetypes = { 'css', 'less', 'scss' }
   end
 
