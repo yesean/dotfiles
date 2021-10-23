@@ -57,7 +57,7 @@
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.detectIndentation": false,
-  "editor.fontSize": 13,
+  "editor.fontSize": 12,
   "editor.fontFamily": "FiraMono Nerd Font Mono",
   "editor.formatOnSave": false,
   "editor.lineNumbers": "relative",
@@ -94,10 +94,11 @@
 
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 
-  "workbench.colorTheme": "One Dark Pro",
+  "workbench.colorTheme": "Gruvbox Material Dark",
   "workbench.editor.enablePreviewFromQuickOpen": true,
   "workbench.editor.enablePreview": true,
   "workbench.startupEditor": "newUntitledFile",
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "liveshare.authenticationProvider": "GitHub"
+  "liveshare.authenticationProvider": "GitHub",
+  "window.zoomLevel": 1
 }
