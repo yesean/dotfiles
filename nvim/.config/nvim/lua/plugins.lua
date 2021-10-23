@@ -57,7 +57,7 @@ require('packer').startup(function()
   -- editing
   use('windwp/nvim-autopairs')
   use('windwp/nvim-ts-autotag')
-  use('b3nj5m1n/kommentary')
+  use('numToStr/Comment.nvim')
   use('JoosepAlviste/nvim-ts-context-commentstring')
   use('blackCauldron7/surround.nvim')
 
