@@ -53,6 +53,7 @@ require('packer').startup(function()
   use('lukas-reineke/indent-blankline.nvim')
   use('haringsrob/nvim_context_vt')
   use('goolord/alpha-nvim')
+  use('norcalli/nvim-colorizer.lua')
 
   -- editing
   use('windwp/nvim-autopairs')
