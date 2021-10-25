@@ -14,9 +14,6 @@
 [delta]
   syntax-theme = "OneHalfDark"
 
-[url "ssh://git@github.com/"]
-  insteadOf = https://github.com/
-
 [alias]
   b = branch
   ci = commit
