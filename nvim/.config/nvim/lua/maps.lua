@@ -9,10 +9,28 @@ local modemap = function(mode)
     map(mode, binding, command, opts)
   end
 end
+
+local bmap = vim.api.nvim_buf_set_keymap
+local modebmap = function(mode)
+  return function(buffer, binding, command, extra)
+    extra = extra or {}
+    local opts = { noremap = true }
+    for k, v in pairs(extra) do
+      opts[k] = v
+    end
+    bmap(buffer, mode, binding, command, opts)
+  end
+end
+
 local nmap = modemap('n')
 local imap = modemap('i')
 local vmap = modemap('v')
 local smap = modemap('s')
+
+local bnmap = modebmap('n')
+local bimap = modebmap('i')
+local bvmap = modebmap('v')
+local bsmap = modebmap('s')
 
 -- map leader to space
 nmap('<space>', '')
@@ -27,7 +45,7 @@ nmap('<leader>l', ':wincmd l<cr>')
 -- copy to clipboard
 vmap('<leader>y', '"+y')
 nmap('<leader>y', '"+y')
-nmap('<leader>yg_', '"+yg_')
+nmap('<leader>Y', '"+yg_')
 nmap('<leader>yy', '"+yy')
 
 -- paste from clipboard
@@ -59,4 +77,8 @@ return {
   i = imap,
   v = vmap,
   s = smap,
+  bn = bnmap,
+  bi = bimap,
+  bv = bvmap,
+  bs = bsmap,
 }

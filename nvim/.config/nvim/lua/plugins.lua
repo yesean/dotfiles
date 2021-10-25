@@ -32,9 +32,8 @@ require('packer').startup(function()
   use('L3MON4D3/LuaSnip')
   use('rafamadriz/friendly-snippets')
 
-  -- misc neovim plugins
+  -- diagnoistics
   use('jose-elias-alvarez/null-ls.nvim')
-  use('jose-elias-alvarez/nvim-lsp-ts-utils')
 
   -- colorscheme
   use('monsonjeremy/onedark.nvim')
@@ -61,6 +60,12 @@ require('packer').startup(function()
   use('numToStr/Comment.nvim')
   use('JoosepAlviste/nvim-ts-context-commentstring')
   use('blackCauldron7/surround.nvim')
+
+  -- remote editing
+  use('chipsenkbeil/distant.nvim')
+
+  -- typescript
+  use('jose-elias-alvarez/nvim-lsp-ts-utils')
 
   -- markdown
   use({ 'npxbr/glow.nvim', branch = 'main' })
