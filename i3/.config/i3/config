@@ -232,6 +232,8 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # start dunst
 exec_always --no-startup-id dunst
+bindsym $mod+BackSpace exec --no-startup-id dunstctl close-all
+bindsym $mod+Shift+BackSpace exec --no-startup-id dunstctl history-pop
 
 # turn off screen blanking
 exec --no-startup-id xset s off && xset s noblank
