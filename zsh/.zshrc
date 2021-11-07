@@ -102,6 +102,7 @@ alias llg='ll | grep -i'
 alias R='R --quiet --no-save'
 alias dots='cd ~/.dotfiles/'
 alias proj='cd ~/projects/'
+alias ucsd='cd ~/gd-ucsd/year\ 3/fall/'
 
 gpo() {
   git push origin HEAD~$1:main
@@ -111,3 +112,6 @@ gpo() {
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "/usr/share/nvm/init-nvm.sh" ] && \. "/usr/share/nvm/nvm.sh" # This loads nvm
+
+# direnv
+eval "$(direnv hook zsh)"
