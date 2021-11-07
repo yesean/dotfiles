@@ -239,7 +239,7 @@ bindsym $mod+Shift+BackSpace exec --no-startup-id dunstctl history-pop
 exec --no-startup-id xset s off && xset s noblank
 
 # sleep after idle for 30 minutes
-exec --no-startup-id xidlehook --not-when-audio --not-when-fullscreen --timer 600 'systemctl suspend' '' &
+exec --no-startup-id xidlehook --not-when-audio --not-when-fullscreen --timer 1800 'systemctl suspend' '' &
 
 # start insync
 exec --no-startup-id insync start --no-daemon
@@ -248,7 +248,7 @@ exec --no-startup-id insync start --no-daemon
 exec --no-startup-id ~/.config/i3/scripts/restore-workspaces.sh
 
 # start picom
-exec_always --no-startup-id picom --experimental-backends &
+exec_always --no-startup-id picom &
 
 # start autostart
 exec_always --no-startup-id systemctl --user start autostart.target
