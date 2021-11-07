@@ -51,10 +51,11 @@ source $ZSH/oh-my-zsh.sh
 
 # initialize prompt
 ZSH_THEME=""
-autoload -U promptinit; promptinit
+autoload -U promptinit
+promptinit
 prompt pure
 
-setopt globdots # match hidden files
+setopt globdots     # match hidden files
 setopt extendedglob # add globbing syntax
 
 # key bindings
@@ -110,7 +111,7 @@ gpo() {
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                  # This loads nvm
 [ -s "/usr/share/nvm/init-nvm.sh" ] && \. "/usr/share/nvm/nvm.sh" # This loads nvm
 
 # direnv
