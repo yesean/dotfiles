@@ -69,8 +69,8 @@ imap('?', '?<c-g>u')
 imap('[', '[<c-g>u')
 
 -- add relative moves to jumplist
-nmap('k', '(v:count > 5 ? "m\'" . v:count : "") . "k"', { expr = true })
-nmap('j', '(v:count > 5 ? "m\'" . v:count : "") . "j"', { expr = true })
+nmap('k', '(v:count > 3 ? "m\'" . v:count : "") . "k"', { expr = true })
+nmap('j', '(v:count > 3 ? "m\'" . v:count : "") . "j"', { expr = true })
 
 return {
   n = nmap,
