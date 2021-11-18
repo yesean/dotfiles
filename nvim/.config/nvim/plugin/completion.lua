@@ -6,7 +6,7 @@ cmp.setup({
     ['<c-f>'] = cmp.mapping.scroll_docs(4),
     ['<c-d>'] = cmp.mapping.scroll_docs(-4),
     ['<c-e>'] = cmp.mapping.close(),
-    -- ['<cr>'] = cmp.mapping.confirm({ select = true }),
+    ['<cr>'] = cmp.mapping.confirm({ select = true }),
     ['<esc>'] = cmp.mapping(function(fallback)
       cmp.mapping.abort()
       fallback()
@@ -62,13 +62,4 @@ cmp.setup({
 })
 
 -- remap <cr> on bracket behavior
-require('nvim-autopairs.completion.cmp').setup({
-  map_cr = true,
-  map_complete = true,
-  auto_select = true,
-  insert = false,
-  map_char = {
-    all = '(',
-    tex = '{',
-  },
-})
+-- cmp.event:on('confirm_done', require('nvim-autopairs.completion.cmp'))

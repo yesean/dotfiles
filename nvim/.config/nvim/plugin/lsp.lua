@@ -46,7 +46,10 @@ lsp_installer.on_server_ready(function(server)
     capabilities = capabilities,
   }
 
+  -------------------------------
   -- language specific options --
+  -------------------------------
+
   if server.name == 'tsserver' then
     -- modify typescript lsp setup to allow curr dir as project root
     opts.root_dir = util.root_pattern(
@@ -55,13 +58,31 @@ lsp_installer.on_server_ready(function(server)
       '.git',
       vim.loop.cwd()
     )
+    local ts_utils = require('nvim-lsp-ts-utils')
+    opts.init_options = ts_utils.init_options
+    opts.on_attach = function(client, bufnr)
+      client.resolved_capabilities.document_formatting = false
+      client.resolved_capabilities.document_range_formatting = false
+      ts_utils.setup({})
+      ts_utils.setup_client(client)
+      maps.bn(bufnr, 'gi', ':TSLspImportAll<cr>')
+      maps.bn(bufnr, 'go', ':TSLspOrganize<cr>')
+      maps.bn(bufnr, '<leader>rf', ':TSLspRenameFile<cr>')
+    end
   elseif server.name == 'stylelint_lsp' then
     -- only start stylelint in css-related files, exclude react files
     opts.filetypes = { 'css', 'less', 'scss' }
   elseif server.name == 'sumneko_lua' then
     -- inject globals into lua for neovim config
     opts.settings = {
-      Lua = { diagnostics = { globals = { 'vim', 'use' } } },
+      Lua = {
+        diagnostics = {
+          globals = {
+            'vim',
+            'use',
+          },
+        },
+      },
     }
   end
 
