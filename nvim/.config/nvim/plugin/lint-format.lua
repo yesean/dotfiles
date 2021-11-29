@@ -9,7 +9,7 @@ local sources = {
   fmt.stylua,
 
   -- js/ts
-  fmt.prettier,
+  fmt.prettierd,
 
   -- python
   diag.pylint,
