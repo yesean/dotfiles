@@ -1,8 +1,7 @@
 {
   "debug.onTaskErrors": "abort",
-
   "C_Cpp.updateChannel": "Insiders",
-
+  "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 2 }",
   "colorize.languages": [
     "css",
     "javascript",
@@ -16,11 +15,9 @@
     "xml",
     "svg"
   ],
-
   "diffEditor.ignoreTrimWhitespace": false,
-
+  "editor.cursorBlinking": "solid",
   "explorer.confirmDelete": false,
-
   "explorer.confirmDragAndDrop": false,
   "eslint.validate": [
     "javascript",
@@ -32,7 +29,7 @@
     "source.fixAll.eslint": true
   },
   "[cpp]": {
-    "editor.defaultFormatter": "xaver.clang-format"
+    "editor.defaultFormatter": "ms-vscode.cpptools"
   },
   "[c]": {
     "editor.defaultFormatter": "xaver.clang-format"
@@ -59,14 +56,12 @@
   "editor.detectIndentation": false,
   "editor.fontSize": 12,
   "editor.fontFamily": "FiraMono Nerd Font Mono",
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "editor.lineNumbers": "relative",
-  "editor.minimap.enabled": false,
   "editor.parameterHints.enabled": false,
   "editor.rulers": [80],
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
-
   "files.autoSave": "afterDelay",
   "files.exclude": {
     "**/.classpath": true,
@@ -74,31 +69,27 @@
     "**/.settings": true,
     "**/.factorypath": true
   },
-
   "git.autofetch": true,
-
+  "git.confirmSync": false,
   "keyboard.dispatch": "keyCode",
-
   "javascript.updateImportsOnFileMove.enabled": "always",
-
   "latex-workshop.view.pdf.viewer": "tab",
-
   "terminal.integrated.defaultProfile.osx": "/bin/zsh",
   "terminal.integrated.fontFamily": "FiraMono Nerd Font Mono",
-
+  "typescript.preferences.importModuleSpecifier": "relative",
   "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
   "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
   "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.vim",
   "vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim/init.vim",
   "vim.enableNeovim": true,
-
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-
-  "workbench.colorTheme": "Gruvbox Material Dark",
+  "workbench.colorTheme": "Gruvbox Dark Hard",
   "workbench.editor.enablePreviewFromQuickOpen": true,
   "workbench.editor.enablePreview": true,
   "workbench.startupEditor": "newUntitledFile",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "liveshare.authenticationProvider": "GitHub",
+  "workbench.editor.untitled.hint": "hidden",
   "window.zoomLevel": 1
 }
+
