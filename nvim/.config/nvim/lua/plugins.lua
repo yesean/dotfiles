@@ -36,10 +36,6 @@ require('packer').startup(function()
   use('jose-elias-alvarez/null-ls.nvim')
 
   -- colorscheme
-  use('monsonjeremy/onedark.nvim')
-  use('savq/melange')
-  use('folke/tokyonight.nvim')
-  use({ 'ellisonleao/gruvbox.nvim', requires = { 'rktjmp/lush.nvim' } })
   use('eddyekofo94/gruvbox-flat.nvim')
 
   -- visuals
@@ -50,7 +46,6 @@ require('packer').startup(function()
   use('onsails/lspkind-nvim')
   use('kosayoda/nvim-lightbulb')
   use('lukas-reineke/indent-blankline.nvim')
-  use('haringsrob/nvim_context_vt')
   use('goolord/alpha-nvim')
   use('norcalli/nvim-colorizer.lua')
 
