@@ -4,7 +4,6 @@ env:
   COLORTERM: truecolor
 
 key_bindings:
-  - { key: Return, mods: Control|Shift, action: SpawnNewInstance }
   - { key: Space, mods: Control, chars: "\x00" }
   - { key: Key6, mods: Control|Shift, chars: "\x1e" }
 
