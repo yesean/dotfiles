@@ -60,10 +60,15 @@ lsp_installer.on_server_ready(function(server)
     )
     local ts_utils = require('nvim-lsp-ts-utils')
     opts.init_options = ts_utils.init_options
+    opts.init_options.preferences.importModuleSpecifierPreference = 'relative'
     opts.on_attach = function(client, bufnr)
       client.resolved_capabilities.document_formatting = false
       client.resolved_capabilities.document_range_formatting = false
-      ts_utils.setup({})
+      ts_utils.setup({
+        auto_inlay_hints = false,
+        filter_out_diagnostics_by_severity = { 'hint' },
+        update_imports_on_move = true,
+      })
       ts_utils.setup_client(client)
       maps.bn(bufnr, 'gi', ':TSLspImportAll<cr>')
       maps.bn(bufnr, 'go', ':TSLspOrganize<cr>')

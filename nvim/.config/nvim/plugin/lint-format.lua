@@ -1,5 +1,4 @@
 local null_ls = require('null-ls')
-local maps = require('maps')
 
 local fmt = null_ls.builtins.formatting
 local diag = null_ls.builtins.diagnostics
