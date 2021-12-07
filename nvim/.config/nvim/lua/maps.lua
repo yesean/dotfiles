@@ -54,9 +54,6 @@ vmap('<leader>P', '"+P')
 nmap('<leader>p', '"+p')
 nmap('<leader>P', '"+P')
 
--- make 'Y' like 'C' and 'D'
-nmap('Y', 'yg_')
-
 -- keep center cursor
 nmap('n', 'nzz')
 nmap('N', 'Nzz')
