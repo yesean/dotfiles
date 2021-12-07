@@ -8,7 +8,7 @@ key_bindings:
   - { key: Key6, mods: Control|Shift, chars: "\x1e" }
 
 font:
-  size: 14
+  size: 10
   normal:
     family: FiraMono Nerd Font
     style: Regular
@@ -56,3 +56,94 @@ colors:
   indexed_colors:
     - { index: 16, color: '0xe78a4e' }
     - { index: 17, color: '0xc14a4a' }
+# Catppuccin!
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0x1E1E28'
+#     foreground: '0xD7DAE0'
+#
+#   # Colors the cursor will use if `custom_cursor_colors` is true
+#   cursor:
+#     text: '0x1E1E28'
+#     cursor: '0xB3E1A3'
+#
+#   # Normal colors
+#   normal:
+#     black: '0x6E6C7C'
+#     red: '0xE28C8C'
+#     green: '0xB3E1A3'
+#     yellow: '0xEADDA0'
+#     blue: '0xA4B9EF'
+#     magenta: '0xC6AAE8'
+#     cyan: '0xF0AFE1'
+#     white: '0xD7DAE0'
+#
+#   # Bright colors
+#   bright:
+#     black: '0x6E6C7C'
+#     red: '0xE28C8C'
+#     green: '0xB3E1A3'
+#     yellow: '0xEADDA0'
+#     blue: '0xA4B9EF'
+#     magenta: '0xC6AAE8'
+#     cyan: '0xF0AFE1'
+#     white: '0xD7DAE0'
+#
+#   indexed_colors:
+#     - { index: 16, color: '0xECBFBD' }
+#     - { index: 17, color: '0x3E4058' }
+
+# onenord
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0x2E3440'
+#     foreground: '0xC8D0E0'
+#
+#   # Normal colors
+#   normal:
+#     black: '0x3B4252'
+#     red: '0xBF616A'
+#     green: '0xA3BE8C'
+#     yellow: '0xEBCB8B'
+#     blue: '0x81A1C1'
+#     magenta: '0xB988B0'
+#     cyan: '0x88C0D0'
+#     white: '0xE5E9F0'
+#
+#   # Bright colors
+#   bright:
+#     black: '0x4C566A'
+#     red: '0xBF616A'
+#     green: '0xA3BE8C'
+#     yellow: '0xEBCB8B'
+#     blue: '0x81A1C1'
+#     magenta: '0xB988B0'
+#     cyan: '0x8FBCBB'
+#     white: '0xECEFF4'
+#
+#   search:
+#     matches:
+#       foreground: '#81A1C1'
+#       background: '#4C566A'
+#     focused_match:
+#       foreground: '#EBCB8B'
+#       background: '#4C566A'
+#
+#     bar:
+#       background: '#434C5E'
+#       foreground: '#88C0D0'
+#
+#   hints:
+#     start:
+#       foreground: '#B988B0'
+#       background: '#4C566A'
+#
+#     end:
+#       foreground: '#81A1C1'
+#       background: '#4C566A'
+#
+#   selection:
+#     text: CellForeground
+#     background: '#3F4758'

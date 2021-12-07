@@ -4,8 +4,5 @@ require('nvim-autopairs').setup()
 -- automatically close tags
 require('nvim-ts-autotag').setup()
 
--- surround shortcuts
-require('surround').setup({})
-
 -- preview colors
 require('colorizer').setup()

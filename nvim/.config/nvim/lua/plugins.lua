@@ -37,6 +37,8 @@ require('packer').startup(function()
 
   -- colorscheme
   use('eddyekofo94/gruvbox-flat.nvim')
+  use({ 'catppuccin/nvim', as = 'catppuccin' })
+  use('rmehri01/onenord.nvim')
 
   -- visuals
   use('romgrk/barbar.nvim')
@@ -50,11 +52,11 @@ require('packer').startup(function()
   use('norcalli/nvim-colorizer.lua')
 
   -- editing
+  use('ggandor/lightspeed.nvim')
   use('windwp/nvim-autopairs')
   use('windwp/nvim-ts-autotag')
   use('numToStr/Comment.nvim')
   use('JoosepAlviste/nvim-ts-context-commentstring')
-  use('blackCauldron7/surround.nvim')
 
   -- remote editing
   use('chipsenkbeil/distant.nvim')
