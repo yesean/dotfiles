@@ -23,6 +23,7 @@ nvim_tree.setup({
   },
   view = {
     width = tree_width,
+    relativenumber = true,
   },
 })
 
