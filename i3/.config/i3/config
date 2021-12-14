@@ -238,8 +238,8 @@ bindsym $mod+Shift+BackSpace exec --no-startup-id dunstctl history-pop
 # turn off screen blanking
 exec --no-startup-id xset s off && xset s noblank
 
-# sleep after idle for 30 minutes
-exec --no-startup-id xidlehook --not-when-audio --not-when-fullscreen --timer 1800 'systemctl suspend' '' &
+# sleep after idle for 60 minutes
+exec --no-startup-id xidlehook --not-when-audio --not-when-fullscreen --timer 3600 'systemctl suspend' '' &
 
 # start insync
 exec --no-startup-id insync start --no-daemon
