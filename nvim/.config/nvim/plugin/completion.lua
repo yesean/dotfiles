@@ -37,7 +37,7 @@ cmp.setup({
     { name = 'luasnip' },
     { name = 'nvim_lua' },
     { name = 'path' },
-    { name = 'buffer', keyword_length = 5 },
+    { name = 'buffer' },
   },
   snippet = {
     expand = function(args)
