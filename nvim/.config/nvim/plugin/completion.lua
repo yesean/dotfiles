@@ -1,10 +1,10 @@
 local cmp = require('cmp')
 local luasnip = require('luasnip')
-
 cmp.setup({
   mapping = {
     ['<c-f>'] = cmp.mapping.scroll_docs(4),
     ['<c-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-p>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
     ['<c-e>'] = cmp.mapping.close(),
     ['<cr>'] = cmp.mapping.confirm({ select = true }),
     ['<esc>'] = cmp.mapping(function(fallback)
