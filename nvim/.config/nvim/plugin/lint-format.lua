@@ -46,6 +46,6 @@ local sources = {
 
   -- misc
   diag.codespell,
-  diag.write_good,
+  diag.write_good.with({ extra_args = { '--no-passive' } }),
 }
 null_ls.config({ sources = sources })
