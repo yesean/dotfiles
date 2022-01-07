@@ -42,10 +42,22 @@ local sources = {
   diag.chktex,
 
   -- markdown
-  diag.markdownlint,
+  diag.markdownlint.with({
+    extra_args = { '--config', '/home/sean/.markdownlint.json' },
+  }),
 
   -- misc
   diag.codespell,
-  diag.write_good.with({ extra_args = { '--no-passive' } }),
+  diag.write_good.with({
+    extra_args = { '--no-passive', '--no-adverb', '--no-tooWordy' },
+  }),
 }
-null_ls.config({ sources = sources })
+
+null_ls.setup({
+  sources = sources,
+  on_attach = function(client)
+    if client.resolved_capabilities.document_formatting then
+      vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
+    end
+  end,
+})

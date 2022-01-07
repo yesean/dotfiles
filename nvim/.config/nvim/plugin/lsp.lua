@@ -3,7 +3,7 @@ local lsp_installer = require('nvim-lsp-installer')
 local maps = require('maps')
 
 -- define keymaps when lsp client attaches
-local on_attach = function(format)
+local on_attach = function()
   return function(client, bfr)
     local lc = function(cmd, prefix)
       prefix = prefix or 'lua'
@@ -24,13 +24,8 @@ local on_attach = function(format)
     maps.bn(bfr, '<space>ql', lc('vim.diagnostic.set_loclist()'))
     maps.bn(bfr, '<space>f', lc('vim.lsp.buf.formatting()'))
 
-    -- use null-ls formatter or turn it off
-    if format then
-      vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()')
-    else
-      client.resolved_capabilities.document_formatting = false
-      client.resolved_capabilities.document_range_formatting = false
-    end
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
   end
 end
 
@@ -42,7 +37,7 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(
 -- setup language servers
 lsp_installer.on_server_ready(function(server)
   local opts = {
-    on_attach = on_attach(false),
+    on_attach = on_attach(),
     capabilities = capabilities,
   }
 
@@ -89,10 +84,10 @@ lsp_installer.on_server_ready(function(server)
         },
       },
     }
+  elseif server.name == 'clangd' then
+    opts.capabilities.offsetEncoding = { 'utf-16' }
   end
 
   server:setup(opts)
   vim.cmd([[ do User LspAttachBuffers ]])
 end)
-require('lspconfig').r_language_server.setup({ on_attach = on_attach(false) })
-require('lspconfig')['null-ls'].setup({ on_attach = on_attach(true) })
