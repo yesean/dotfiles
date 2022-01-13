@@ -45,10 +45,10 @@ exec --no-startup-id xrdb ~/.Xresources
 
 # Use pulseaudio-ctl to adjust volume in PulseAudio.
 exec --no-startup-id volnoti # start volnoti daemon
-bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up && volnoti-show $(pulseaudio-ctl current | grep -Po "[0-9]+(?=%)")
-bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down && volnoti-show $(pulseaudio-ctl current | grep -Po "[0-9]+(?=%)")
-bindsym XF86AudioMute exec --no-startup-id "pulseaudio-ctl mute && pulseaudio-ctl status | grep -Po '(?<=Is sink muted).*' | if [[ $(grep -Po 'yes|no') == 'yes' ]]; then volnoti-show -m; else volnoti-show $(pulseaudio-ctl current | grep -Po '[0-9]+(?=%)'); fi"
-bindsym XF86AudioMicMute exec --no-startup-id pulseaudio-ctl mute-input
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/scripts/volume.sh up
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/scripts/volume.sh down
+bindsym XF86AudioMute exec --no-startup-id ~/scripts/volume.sh mute 
+bindsym XF86AudioMicMute exec --no-startup-id ~/scripts/volume.sh mute-mic
 
 # Media player controls
 bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
@@ -74,7 +74,7 @@ bindsym $mod+q kill
 focus_follows_mouse no
 
 # spotlight equivalent
-exec_always --no-startup-id albert &
+exec_always --no-startup-id QT_QPA_PLATFORMTHEME=qt5ct albert &
 
 # change focus
 bindsym $mod+h focus left
@@ -155,8 +155,6 @@ bindsym $mod+Shift+0 move container to workspace number $ws10; workspace number 
 # make certain windows floating by default
 for_window [class="zoom" title="Zoom - Licensed Account"] floating enable, move absolute position center
 for_window [class="zoom" title="Settings"] floating enable, move absolute position center
-for_window [class="zoom" title="Chat"] floating enable, move absolute position center
-for_window [class="zoom" title="Participants"] floating enable, move absolute position center
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -195,6 +193,7 @@ bindsym $mod+r mode "resize"
 # bind moving workspaces shortcuts
 bindsym $mod+Ctrl+h move workspace to output left
 bindsym $mod+Ctrl+l move workspace to output right
+bindsym $mod+c move absolute position center
 
 # bind resizing gaps shortcuts
 bindsym $mod+i        gaps inner current plus 10
@@ -210,9 +209,9 @@ bindsym $mod+Ctrl+4 exec --no-startup-id flameshot gui
 bindsym $mod+Ctrl+3 exec --no-startup-id flameshot full -c
 
 # set gaps
-gaps inner 10
+gaps inner 20
 gaps outer 0
-gaps top 20
+# gaps top 10
 
 # set gaps for aesthetic workspace (10)
 workspace $ws10 gaps inner 20
@@ -249,6 +248,7 @@ exec --no-startup-id ~/.config/i3/scripts/restore-workspaces.sh
 
 # start picom
 exec_always --no-startup-id picom &
+bindsym $mod+Shift+p exec --no-startup-id ~/scripts/toggle-picom.sh
 
 # start autostart
 exec_always --no-startup-id systemctl --user start autostart.target
