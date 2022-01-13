@@ -90,20 +90,21 @@ mouse_left_click = close_current
 mouse_middle_click = do_action, close_current
 mouse_right_click = close_all
 
-cframe_color = "#abb2bf"
-separator_color = "#abb2bf"
+frame_color = "#282a36"
+separator_color = frame
 
-[base16_low]
-    msg_urgency = low
-    background = "#353b45"
-    foreground = "#abb2bf"
+[urgency_low]
+    background = "#282a36"
+    foreground = "#6272a4"
+    timeout = 10
 
-[base16_normal]
-    msg_urgency = normal
-    background = "#3e4451"
-    foreground = "#abb2bf"
+[urgency_normal]
+    background = "#282a36"
+    foreground = "#bd93f9"
+    timeout = 10
 
-[base16_critical]
-    msg_urgency = critical
-    background = "#e06c75"
-    foreground = "#abb2bf"
+[urgency_critical]
+    background = "#ff5555"
+    foreground = "#f8f8f2"
+    frame_color = "#ff5555"
+    timeout = 0
