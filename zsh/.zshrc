@@ -1,32 +1,3 @@
-# vi-mode settings
-VI_MODE_SET_CURSOR=true
-KEYTIMEOUT=1
-
-# fzf settings
-export FZF_BASE="/usr/share/fzf"
-fzf_file_layout='--height 40% --layout=reverse --border --preview "bat --color=always --style=numbers --line-range=:500 {}"'
-fzf_dir_layout='--height 40% --layout=reverse --border --preview "exa -lbhHigUmuSa --no-time  --git --color-scale {}"'
-fd_default_opts='--hidden --follow --exclude "{.steam,.local,.cache,.git,node_modules}"'
-fd_files="fd ${fd_default_opts} -t f ."
-fd_dirs="fd ${fd_default_opts} -t d  ."
-
-export FZF_DEFAULT_COMMAND=$fd_files
-export FZF_DEFAULT_OPTS=$fzf_file_layout
-
-export FZF_CTRL_T_COMMAND=$fd_files
-export FZF_CTRL_T_OPTS=$fzf_file_layout
-
-export FZF_ALT_C_COMMAND=$fd_dirs
-export FZF_ALT_C_OPTS=$fzf_dir_layout
-
-# completion settings
-autoload -Uz compinit && compinit
-zstyle ':completion:*' ignored-patterns '*.|*..' # ignore the special dirs . and .. in tab completion
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-ZSH_AUTOSUGGEST_USE_ASYNC=1
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#5a524c'
-
 # oh-my-zsh plugins
 export ZSH=$HOME/.oh-my-zsh
 plugins=(
@@ -48,6 +19,39 @@ plugins=(
   zsh-completions
 )
 source $ZSH/oh-my-zsh.sh
+
+# vi-mode settings
+VI_MODE_SET_CURSOR=true
+KEYTIMEOUT=1
+
+# fzf settings
+export FZF_BASE="/usr/share/fzf"
+
+fd_default_opts='--hidden --follow --exclude "{.steam,.local,.cache,.git,node_modules}"'
+fd_files="fd ${fd_default_opts} -t f ."
+fd_dirs="fd ${fd_default_opts} -t d ."
+
+fzf_finder_options='--height 40% --layout=reverse --border'
+fzf_file_layout="--preview 'bat --color=always --style=numbers --line-range=:500 {}'"
+fzf_dir_layout="--preview 'exa -lbhHigUmuSa --no-time  --git --color-scale {}'"
+
+export FZF_DEFAULT_COMMAND=$fd_files
+export FZF_DEFAULT_OPTS=$fzf_finder_options
+
+export FZF_CTRL_T_COMMAND=$fd_files
+export FZF_CTRL_T_OPTS=$fzf_file_layout
+
+export FZF_ALT_C_COMMAND=$fd_dirs
+export FZF_ALT_C_OPTS=$fzf_dir_layout
+
+# completion settings
+autoload -Uz compinit && compinit
+zstyle ':completion:*' ignored-patterns '*.|*..' # ignore the special dirs . and .. in tab completion
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#5a524c'
+
 
 # initialize prompt
 ZSH_THEME=""
