@@ -9,7 +9,12 @@ is_mute() {
 }
 
 if [[ $1 == 'up' ]]; then
-  pactl set-sink-volume @DEFAULT_SINK@ +5%
+  curr_volume=$(get_volume)
+  next_volume=$((curr_volume + 5))
+  if [[ $next_volume -gt 100 ]]; then
+    next_volume=100
+  fi
+  pactl set-sink-volume @DEFAULT_SINK@ ${next_volume}%
   volnoti-show "$(get_volume)"
 elif [[ $1 == 'down' ]]; then
   pactl set-sink-volume @DEFAULT_SINK@ -5%
