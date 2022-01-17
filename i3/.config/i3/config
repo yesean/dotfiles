@@ -221,7 +221,7 @@ workspace $ws10 gaps outer 100
 font pango:SF Mono Bold 8
 title_align center
 for_window [class=".*"] title_format "    %title    "
-for_window [class=".*"] border pixel 0
+for_window [class=".*"] border none
 
 # load wallpaper
 exec_always --no-startup-id ~/.fehbg &
