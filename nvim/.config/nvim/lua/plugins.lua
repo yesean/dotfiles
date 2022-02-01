@@ -57,6 +57,12 @@ require('packer').startup(function()
   use('windwp/nvim-ts-autotag')
   use('numToStr/Comment.nvim')
   use('JoosepAlviste/nvim-ts-context-commentstring')
+  use({
+    'glacambre/firenvim',
+    run = function()
+      vim.fn['firenvim#install'](0)
+    end,
+  })
 
   -- remote editing
   use('chipsenkbeil/distant.nvim')
