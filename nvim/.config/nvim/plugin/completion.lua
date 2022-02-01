@@ -4,7 +4,13 @@ cmp.setup({
   mapping = {
     ['<c-f>'] = cmp.mapping.scroll_docs(4),
     ['<c-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-p>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-p>'] = cmp.mapping(function()
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        cmp.complete()
+      end
+    end, { 'i' }),
     ['<c-e>'] = cmp.mapping.close(),
     ['<cr>'] = cmp.mapping.confirm({ select = true }),
     ['<esc>'] = cmp.mapping(function(fallback)
