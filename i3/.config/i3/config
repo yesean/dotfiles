@@ -74,7 +74,7 @@ bindsym $mod+q kill
 focus_follows_mouse no
 
 # spotlight equivalent
-exec_always --no-startup-id QT_QPA_PLATFORMTHEME=qt5ct albert &
+exec_always --no-startup-id QT_QPA_PLATFORMTHEME=gtk2 albert &
 
 # change focus
 bindsym $mod+h focus left
@@ -155,6 +155,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10; workspace number 
 # make certain windows floating by default
 for_window [class="zoom" title="Zoom - Licensed Account"] floating enable, move absolute position center
 for_window [class="zoom" title="Settings"] floating enable, move absolute position center
+floating_minimum_size 500 x 500
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
