@@ -1,7 +1,8 @@
 [color]
 
-background = #15121b
-foreground = #f8f8f2
+;; background = #15121b
+background = #00000000
+foreground = #000000
 black = #3B4252
 red = #ff5555
 green = #50fa7b
