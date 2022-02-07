@@ -27,7 +27,7 @@ height = 25
 offset-x = 0%
 offset-y = 0%
 
-background = ${color.background}
+background = ${color.transparent}
 foreground = ${color.foreground}
 
 radius-top = 0.0
@@ -36,8 +36,8 @@ radius-bottom = 0.0
 line-size = 2
 line-color = ${color.blue}
 
-border-size = 6
-border-color = ${color.background}
+border-size = 5
+border-color = ${color.transparent}
 
 padding = 0
 
@@ -46,13 +46,13 @@ module-margin-right = 0
 
 font-0 = "FiraCode Nerd Font Mono:size=9;3"
 font-1 = "Iosevka Nerd Font:size=13;3"
-font-2 = "Iosevka Nerd Font:size=16;4"
+font-2 = "Iosevka Nerd Font:size=18;4"
 font-3 = "FiraMono Nerd Font Mono:size=18;3"
 
 # Default
-modules-left = spacing BLD launcher BRD dot GLD cpu YPL memory CPL filesystem CRD dot MLD network MRD
+modules-left = spacing LRD1 cpu SH1 memory SH2 filesystem SH3 network RRD1
 modules-center = i3
-modules-right = GLD volume GRD dot BLD time BRD spacing
+modules-right = LRD2 volume SH5 time RRD2 spacing
 
 spacing = 0
 dim-value = 1.0
@@ -60,10 +60,10 @@ dim-value = 1.0
 tray-position = right
 tray-detached = false
 tray-maxsize = 14
-tray-background = ${color.background}
+tray-background = ${color.transparent}
 tray-offset-x = 0
 tray-offset-y = 0
-tray-padding = 0
+tray-padding = 1
 tray-scale = 1.0
 tray-font = 2
 

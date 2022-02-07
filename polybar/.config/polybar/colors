@@ -1,21 +1,50 @@
 [color]
+;; MORNING PALETTE
+flamingo = #f2cdcd
+mauve = #ddb6f2
+pink = #f5c2e7
+maroon = #e8a2af
+red = #f28fad
+peach = #f8bd96
+yellow = #fae3b0
+green = #abe9b3
+teal = #b5e8e0
+blue = #96cdfb
+sky = #89dceb
 
-;; background = #15121b
-background = #00000000
-foreground = #000000
-black = #3B4252
-red = #ff5555
-green = #50fa7b
-yellow = #f1fa8c
-blue = #bd93f9
-magenta = #ff79c6
-cyan = #88C0D0
-white = #E5E9F0
-altblack = #4C566A
-altred = #BF616A
-altgreen = #A3BE8C
-altyellow = #EBCB8B
-altblue = #81A1C1
-altmagenta = #B48EAD
-altcyan = #8FBCBB
-altwhite = #ECEFF4
+;; NIGHT PALETTE
+black0 = #161320
+black1 = #1a1826
+black2 = #1e1e2e
+black3 = #302d41
+black4 = #575268
+gray0 = #6e6c7e
+gray1 = #988ba2
+gray2 = #c3bac6
+white = #d9e0ee
+lavender = #c9cbff
+rosewater = #f5e0dc
+ 
+;; STANDARD SEMANTICS
+base = ${color.black0}
+surface = ${color.black1}
+top = ${color.black2}
+overlay = ${color.black3}
+standout = ${color.black4}
+subtle = ${color.gray0}
+active = ${color.white}
+inactive = ${color.gray2}
+projection = ${color.rosewater}
+
+;; TERMINAL COLORS
+color0 = ${color.gray0} 
+color1 = ${color.red} 
+color2 = ${color.green} 
+color3 = ${color.yellow} 
+color4 = ${color.blue} 
+color5 = ${color.pink} 
+color6 = ${color.sky} 
+color7 = ${color.gray2} 
+
+transparent = #00000000
+foreground = ${color.standout}

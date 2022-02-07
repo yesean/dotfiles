@@ -1,176 +1,60 @@
 [module/spacing]
 type = custom/text
 content = " "
-content-background = ${color.background}
-
-[module/sep]
-type = custom/text
-content = -
-
-content-background = ${color.background}
-content-foreground = ${color.background}
-
-[module/dot]
-type = custom/text
-;content = 
-content = ""
-
-content-font = 3
-content-background = ${color.background}
-content-foreground = ${color.altblack}
-content-padding = 1
+content-background = ${color.transparent}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-[module/LD]
+[module/LRD1]
 type = custom/text
 content = "%{T3}%{T-}"
-content-background = ${color.background}
-content-foreground = ${color.altblack}
+content-background = ${color.transparent}
+content-foreground = ${color.color1}
 
-[module/RD]
+[module/RRD1]
 type = custom/text
 content = "%{T3}%{T-}"
-content-background = ${color.background}
-content-foreground = ${color.altblack}
+content-background = ${color.transparent}
+content-foreground = ${color.color4}
 
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-
-[module/RLD]
+[module/LRD2]
 type = custom/text
 content = "%{T3}%{T-}"
-content-font = 3
-content-background = ${color.background}
-content-foreground = ${color.red}
+content-background = ${color.transparent}
+content-foreground = ${color.color5}
 
-[module/RRD]
+[module/RRD2]
 type = custom/text
 content = "%{T3}%{T-}"
-content-font = 3
-content-background = ${color.background}
-content-foreground = ${color.red}
+content-background = ${color.transparent}
+content-foreground = ${color.color6}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-[module/WLD]
-type = custom/text
-content = "%{T3}%{T-}"
-content-font = 3
-content-background = ${color.background}
-content-foreground = ${color.white}
-
-[module/WRD]
-type = custom/text
-content = "%{T3}%{T-}"
-content-font = 3
-content-background = ${color.background}
-content-foreground = ${color.white}
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-
-
-[module/CLD]
-type = custom/text
-content = "%{T3}%{T-}"
-content-font = 3
-content-background = ${color.background}
-content-foreground = ${color.cyan}
-
-[module/CRD]
-type = custom/text
-content = "%{T3}%{T-}"
-content-font = 3
-content-background = ${color.background}
-content-foreground = ${color.cyan}
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-
-
-[module/MLD]
-type = custom/text
-content = "%{T3}%{T-}"
-content-font = 3
-content-background = ${color.background}
-content-foreground = ${color.magenta}
-
-[module/MRD]
-type = custom/text
-content = "%{T3}%{T-}"
-content-font = 3
-content-background = ${color.background}
-content-foreground = ${color.magenta}
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-
-
-[module/YLD]
-type = custom/text
-content = "%{T3}%{T-}"
-content-font = 3
-content-background = ${color.background}
-content-foreground = ${color.yellow}
-
-[module/YRD]
-type = custom/text
-content = "%{T3}%{T-}"
-content-font = 3
-content-background = ${color.background}
-content-foreground = ${color.yellow}
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-
-
-[module/GLD]
-type = custom/text
-content = "%{T3}%{T-}"
-content-font = 3
-content-background = ${color.background}
-content-foreground = ${color.green}
-
-[module/GRD]
-type = custom/text
-content = "%{T3}%{T-}"
-content-font = 3
-content-background = ${color.background}
-content-foreground = ${color.green}
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-
-[module/BLD]
-type = custom/text
-content = "%{T3}%{T-}"
-content-font = 3
-content-background = ${color.background}
-content-foreground = ${color.blue}
-
-[module/BRD]
-type = custom/text
-content = "%{T3}%{T-}"
-content-font = 3
-content-background = ${color.background}
-content-foreground = ${color.blue}
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-
-[module/YPL]
+[module/SH1]
 type = custom/text
 content = "%{T3}%{T-}"
 content-font = 3
-content-background = ${color.green}
-content-foreground = ${color.yellow}
+content-background = ${color.color1}
+content-foreground = ${color.color2}
 
-[module/CPL]
+[module/SH2]
 type = custom/text
 content = "%{T3}%{T-}"
 content-font = 3
-content-background = ${color.yellow}
-content-foreground = ${color.cyan}
+content-background = ${color.color2}
+content-foreground = ${color.color3}
 
-[module/RPL]
+[module/SH3]
 type = custom/text
 content = "%{T3}%{T-}"
 content-font = 3
-content-background = ${color.magenta}
-content-foreground = ${color.red}
+content-background = ${color.color3}
+content-foreground = ${color.color4}
 
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+[module/SH5]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.color5}
+content-foreground = ${color.color6}
