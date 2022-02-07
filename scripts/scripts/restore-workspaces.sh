@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env bash
 
 # append saved layout of workspace 10
 i3-resurrect restore -w 1
@@ -14,8 +14,4 @@ i3-resurrect restore -w 10
 
 if [[ $(rg --hidden --pcre2 '\"class\": \"\^Brave\\\\-browser\$\"' ~/.i3/i3-resurrect/workspace*) != "" ]]; then
   brave
-fi
-
-if [[ $(rg --hidden --pcre2 '\"class\":\"\^Caprine\$\"' ~/.i3/i3-resurrect/workspace*) != "" ]]; then
-  caprine
 fi

@@ -203,7 +203,7 @@ bindsym $mod+o        gaps outer current plus 10
 bindsym $mod+Shift+o  gaps outer current minus 10
 
 # save workspaces shortcut
-bindsym $mod+Ctrl+s exec --no-startup-id ~/.config/i3/scripts/save-workspaces.sh
+bindsym $mod+Ctrl+s exec --no-startup-id ~/scripts/save-workspaces.sh
 
 # flameshot shortcut (for screenshotting)
 bindsym $mod+Ctrl+4 exec --no-startup-id flameshot gui
@@ -245,7 +245,7 @@ exec --no-startup-id xidlehook --not-when-audio --not-when-fullscreen --timer 36
 exec --no-startup-id insync start --no-daemon
 
 # restore saved layout
-exec --no-startup-id ~/.config/i3/scripts/restore-workspaces.sh
+exec --no-startup-id ~/scripts/restore-workspaces.sh
 
 # start picom
 exec_always --no-startup-id picom &
