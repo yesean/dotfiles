@@ -73,4 +73,7 @@ require('packer').startup(function()
   -- markdown
   use({ 'npxbr/glow.nvim', branch = 'main' })
   use('JamshedVesuna/vim-markdown-preview')
+
+  -- csv
+  use('chrisbra/csv.vim')
 end)
