@@ -9,7 +9,7 @@ content-background = ${color.transparent}
 type = custom/text
 content = "%{T3}%{T-}"
 content-background = ${color.transparent}
-content-foreground = ${color.color7}
+content-foreground = ${color.mauve}
 
 [module/RRD1]
 type = custom/text
@@ -27,7 +27,7 @@ content-foreground = ${color.color5}
 type = custom/text
 content = "%{T3}%{T-}"
 content-background = ${color.transparent}
-content-foreground = ${color.color6}
+content-foreground = ${color.teal}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -35,7 +35,7 @@ content-foreground = ${color.color6}
 type = custom/text
 content = "%{T3}%{T-}"
 content-font = 3
-content-background = ${color.color7}
+content-background = ${color.mauve}
 content-foreground = ${color.color2}
 
 [module/SH2]
@@ -58,3 +58,10 @@ content = "%{T3}%{T-}"
 content-font = 3
 content-background = ${color.color5}
 content-foreground = ${color.color6}
+
+[module/SH6]
+type = custom/text
+content = "%{T3}%{T-}"
+content-font = 3
+content-background = ${color.color6}
+content-foreground = ${color.teal}

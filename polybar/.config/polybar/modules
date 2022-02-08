@@ -129,7 +129,7 @@ format-padding = 0
 format-prefix-foreground = ${color.foreground}
 format-prefix-font = 2
 format-foreground = ${color.foreground}
-format-background = ${color.color7}
+format-background = ${color.mauve}
 label = "%{A1:terminal -e gtop &:}%percentage%% %{A}"
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
@@ -139,7 +139,6 @@ type = internal/date
 interval = 1
 format-margin = 0
 time = "%I:%M:%S %p"
-time-alt = "%A, %m/%d/%y"
 
 format-prefix = " "
 format-prefix-foreground = ${color.foreground}
@@ -149,6 +148,24 @@ format-prefix-font = 2
 label = %time%
 label-foreground = ${color.foreground}
 label-background = ${color.color6}
+label-padding = 1
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/date]
+type = internal/date
+interval = 1
+format-margin = 0
+time = "%A, %m/%d/%y"
+
+format-prefix = " "
+format-prefix-foreground = ${color.foreground}
+format-prefix-background = ${color.teal}
+format-prefix-font = 2
+
+label = %time%
+label-foreground = ${color.foreground}
+label-background = ${color.teal}
 label-padding = 1
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
