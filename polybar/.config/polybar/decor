@@ -9,7 +9,7 @@ content-background = ${color.transparent}
 type = custom/text
 content = "%{T3}%{T-}"
 content-background = ${color.transparent}
-content-foreground = ${color.color1}
+content-foreground = ${color.color7}
 
 [module/RRD1]
 type = custom/text
@@ -35,7 +35,7 @@ content-foreground = ${color.color6}
 type = custom/text
 content = "%{T3}%{T-}"
 content-font = 3
-content-background = ${color.color1}
+content-background = ${color.color7}
 content-foreground = ${color.color2}
 
 [module/SH2]

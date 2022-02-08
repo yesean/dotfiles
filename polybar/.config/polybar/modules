@@ -129,7 +129,7 @@ format-padding = 0
 format-prefix-foreground = ${color.foreground}
 format-prefix-font = 2
 format-foreground = ${color.foreground}
-format-background = ${color.color1}
+format-background = ${color.color7}
 label = "%{A1:terminal -e gtop &:}%percentage%% %{A}"
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
