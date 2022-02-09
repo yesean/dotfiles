@@ -52,7 +52,7 @@ font-3 = "FiraMono Nerd Font Mono:size=18;3"
 # Default
 modules-left = spacing LRD1 cpu SH1 memory SH2 filesystem SH3 network RRD1
 modules-center = i3
-modules-right = LRD2 volume SH5 time SH6 date RRD2 spacing
+modules-right = LRD2 volume SH5 date SH6 time RRD2 spacing
 
 spacing = 0
 dim-value = 1.0

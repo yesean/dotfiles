@@ -142,12 +142,12 @@ time = "%I:%M:%S %p"
 
 format-prefix = " "
 format-prefix-foreground = ${color.foreground}
-format-prefix-background = ${color.color6}
+format-prefix-background = ${color.teal}
 format-prefix-font = 2
 
 label = %time%
 label-foreground = ${color.foreground}
-label-background = ${color.color6}
+label-background = ${color.teal}
 label-padding = 1
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
@@ -160,12 +160,12 @@ time = "%A, %m/%d/%y"
 
 format-prefix = " "
 format-prefix-foreground = ${color.foreground}
-format-prefix-background = ${color.teal}
+format-prefix-background = ${color.color6}
 format-prefix-font = 2
 
 label = %time%
 label-foreground = ${color.foreground}
-label-background = ${color.teal}
+label-background = ${color.color6}
 label-padding = 1
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
