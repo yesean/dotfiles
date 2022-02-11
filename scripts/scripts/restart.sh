@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
-~/.config/i3/scripts/save-workspaces.sh
+~/scripts/save-workspaces.sh
 systemctl reboot
