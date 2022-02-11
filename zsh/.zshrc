@@ -27,7 +27,7 @@ KEYTIMEOUT=1
 # fzf settings
 export FZF_BASE="/usr/share/fzf"
 
-fd_default_opts='--hidden --follow --exclude "{.steam,.local,.cache,.git,node_modules}"'
+fd_default_opts='--follow --exclude {Games}'
 fd_files="fd ${fd_default_opts} -t f ."
 fd_dirs="fd ${fd_default_opts} -t d ."
 
