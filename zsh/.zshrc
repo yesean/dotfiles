@@ -27,7 +27,7 @@ KEYTIMEOUT=1
 # fzf settings
 export FZF_BASE="/usr/share/fzf"
 
-fd_default_opts='--follow --exclude {Games}'
+fd_default_opts='--follow --exclude "{Games,go,R,node_modules}"'
 fd_files="fd ${fd_default_opts} -t f ."
 fd_dirs="fd ${fd_default_opts} -t d ."
 
@@ -109,6 +109,7 @@ alias dots='cd ~/.dotfiles/'
 alias proj='cd ~/projects/'
 alias ucsd='cd ~/gd-ucsd/year\ 3/fall/'
 alias ta='tmux attach -t'
+alias sc='sc-im'
 
 gpo() {
   git push origin HEAD~$1:main
