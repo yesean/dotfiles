@@ -11,6 +11,7 @@ i3-resurrect restore -w 7
 i3-resurrect restore -w 8
 i3-resurrect restore -w 9
 i3-resurrect restore -w 10
+i3-resurrect restore -w __i3_scratch
 
 if [[ $(rg --hidden --pcre2 '\"class\": \"\^Brave\\\\-browser\$\"' ~/.i3/i3-resurrect/workspace*) != "" ]]; then
   brave
