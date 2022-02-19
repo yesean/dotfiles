@@ -35,7 +35,7 @@ format-prefix-font = ${font.nerd}
 format-background = ${color.mauve}
 format-padding = 1
 
-label = "%{A1:alacritty -e htop -s PERCENT_MEM &:}%gb_used%%{A}"
+label = "%{A1:alacritty -e htop -s PERCENT_MEM &:}%gb_used:9:9%%{A}"
 
 ;;============================================================================;;
 
@@ -61,7 +61,7 @@ interface = ${system.network_interface}
 ;; ------------------ CONNECTED MODE ------------------ ;;
 
 format-connected = <label-connected>
-format-connected-prefix = "  "
+format-connected-prefix = " "
 format-connected-prefix-font = ${font.nerd}
 format-connected-background = ${color.yellow}
 format-connected-padding = 1
@@ -117,10 +117,10 @@ format-font = ${font.bigtext}
 label-separator = "  "
 
 label-focused = %icon%
-label-focused-foreground = ${color.standout}
+label-focused-foreground = ${color.black2}
 
 label-unfocused = %icon%
-label-unfocused-foreground = ${color.inactive}
+label-unfocused-foreground = ${color.gray1}
 
 label-urgent = %icon%
 label-urgent-foreground = ${color.red}
@@ -181,8 +181,7 @@ type = internal/date
 time = "%I:%M:%S %p"
 
 format-background = ${color.maroon}
-
-format-prefix = " "
+format-prefix = "  "
 format-prefix-font = ${font.nerd}
 
 label = %time%
