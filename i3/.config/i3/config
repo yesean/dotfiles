@@ -74,7 +74,7 @@ bindsym $mod+q kill
 focus_follows_mouse no
 
 # spotlight equivalent
-exec_always --no-startup-id QT_QPA_PLATFORMTHEME=gtk2 albert &
+exec_always --no-startup-id ~/scripts/launch-albert.sh
 
 # change focus
 bindsym $mod+h focus left
@@ -246,6 +246,9 @@ exec --no-startup-id ~/scripts/restore-workspaces.sh
 # start picom
 exec_always --no-startup-id picom &
 bindsym $mod+Shift+p exec --no-startup-id ~/scripts/toggle-picom.sh
+
+# start alttab
+exec_always --no-startup-id alttab -mk 65515
 
 # start autostart
 exec_always --no-startup-id systemctl --user start autostart.target
