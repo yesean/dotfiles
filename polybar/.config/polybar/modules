@@ -48,7 +48,7 @@ interface = ${system.network_interface}
 format-connected = <label-connected>
 format-connected-prefix = "  "
 format-connected-prefix-font = ${font.nerd}
-format-connected-background = ${color.color3}
+format-connected-background = ${color.yellow}
 format-connected-padding = 1
 
 label-connected = "%{A1:nm-connection-editor &:}%essid%%{A}"
@@ -58,7 +58,7 @@ label-connected = "%{A1:nm-connection-editor &:}%essid%%{A}"
 format-disconnected = <label-disconnected>
 format-disconnected-prefix = "睊 "
 format-disconnected-prefix-font = ${font.nerd}
-format-disconnected-background = ${color.color3}
+format-disconnected-background = ${color.yellow}
 format-disconnected-padding = 1
 
 label-disconnected = "%{A1:def-nmdmenu &:}Offline%{A}"
@@ -137,7 +137,7 @@ use-ui-max = false
 ;; ------------------ VOLUME SECTION ------------------ ;;
 
 format-volume = <ramp-volume><label-volume>
-format-volume-background = ${color.color5}
+format-volume-background = ${color.teal}
 
 ramp-volume-0 = " "
 ramp-volume-1 = " "
@@ -150,7 +150,7 @@ label-volume-padding = 1
 ;; ------------------ MUTED SECTION ------------------ ;;
 
 format-muted = <label-muted>
-format-muted-background = ${color.color5}
+format-muted-background = ${color.teal}
 
 format-muted-prefix = " "
 format-muted-prefix-font = ${font.nerd}
@@ -165,7 +165,7 @@ type = internal/date
 date = "%A, %m/%d/%y"
 
 format-padding = 1
-format-background = ${color.color6}
+format-background = ${color.peach}
 
 format-prefix = " "
 format-prefix-font = ${font.nerd}
@@ -178,7 +178,7 @@ label = %date%
 type = internal/date
 time = "%I:%M:%S %p"
 
-format-background = ${color.teal}
+format-background = ${color.maroon}
 
 format-prefix = " "
 format-prefix-font = ${font.nerd}

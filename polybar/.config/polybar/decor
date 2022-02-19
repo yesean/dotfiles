@@ -20,7 +20,7 @@ content-foreground = ${color.mauve}
 
 [module/LRD2]
 inherit = module/LRD
-content-foreground = ${color.color5}
+content-foreground = ${color.teal}
 
 [module/RRD1]
 inherit = module/RRD
@@ -28,7 +28,7 @@ content-foreground = ${color.green}
 
 [module/RRD2]
 inherit = module/RRD
-content-foreground = ${color.teal}
+content-foreground = ${color.maroon}
 
 ;;============================================================================;;
 
@@ -45,19 +45,19 @@ content-foreground = ${color.blue}
 [module/SH2]
 inherit = module/SH
 content-background = ${color.blue}
-content-foreground = ${color.color3}
+content-foreground = ${color.yellow}
 
 [module/SH3]
 inherit = module/SH
-content-background = ${color.color3}
+content-background = ${color.yellow}
 content-foreground = ${color.green}
 
 [module/SH5]
 inherit = module/SH
-content-background = ${color.color5}
-content-foreground = ${color.color6}
+content-background = ${color.teal}
+content-foreground = ${color.peach}
 
 [module/SH6]
 inherit = module/SH
-content-background = ${color.color6}
-content-foreground = ${color.teal}
+content-background = ${color.peach}
+content-foreground = ${color.maroon}

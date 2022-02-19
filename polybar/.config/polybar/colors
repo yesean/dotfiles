@@ -36,23 +36,5 @@ active = ${color.white}
 inactive = ${color.gray2}
 projection = ${color.rosewater}
 
-;; TERMINAL COLORS
-color0  = ${color.gray0} 
-color1  = ${color.red} 
-color2  = ${color.green} 
-color3  = ${color.yellow} 
-color4  = ${color.blue} 
-color5  = ${color.pink} 
-color6  = ${color.sky} 
-color7  = ${color.gray2} 
-color8	= ${color.gray1}
-color9	= ${color.red}
-color10	= ${color.green}
-color11	= ${color.yellow}
-color12	= ${color.blue}
-color13	= ${color.pink}
-color14	= ${color.sky}
-color15	= ${color.white}
-
 transparent = #00000000
 foreground = ${color.standout}
