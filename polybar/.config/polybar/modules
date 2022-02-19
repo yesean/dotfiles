@@ -39,6 +39,21 @@ label = "%{A1:alacritty -e htop -s PERCENT_MEM &:}%gb_used%%{A}"
 
 ;;============================================================================;;
 
+[module/filesystem]
+type = internal/fs
+mount-0 = /
+fixed-values = true
+
+format-mounted-background = ${color.blue}
+format-mounted-prefix = " "
+format-mounted-prefix-font = ${font.nerd}
+format-mounted-padding = 1
+
+label-mounted = "%{A1:alacritty -e ncdu &:}%used%%{A}"
+label-mounted-padding = 1
+
+;;============================================================================;;
+
 [module/network]
 type = internal/network
 interface = ${system.network_interface}
@@ -52,6 +67,7 @@ format-connected-background = ${color.yellow}
 format-connected-padding = 1
 
 label-connected = "%{A1:nm-connection-editor &:}%essid%%{A}"
+label-connected-padding = 1
 
 ;; ------------------ DISCONNECTED MODE ------------------ ;;
 
@@ -76,21 +92,6 @@ format-background = ${color.green}
 
 label-minlen = 25
 label-maxlen = 25
-
-;;============================================================================;;
-
-[module/filesystem]
-type = internal/fs
-mount-0 = /
-fixed-values = true
-
-format-mounted-background = ${color.blue}
-format-mounted-prefix = " "
-format-mounted-prefix-font = ${font.nerd}
-format-mounted-padding = 1
-
-label-mounted = "%{A1:alacritty -e ncdu &:}%used%%{A}"
-label-mounted-padding = 1
 
 ;;============================================================================;;
 
@@ -164,13 +165,14 @@ label-muted-padding = 1
 type = internal/date
 date = "%A, %m/%d/%y"
 
-format-padding = 1
 format-background = ${color.peach}
+format-padding = 1
 
 format-prefix = " "
 format-prefix-font = ${font.nerd}
 
 label = %date%
+label-padding = 1
 
 ;;============================================================================;;
 
@@ -184,5 +186,6 @@ format-prefix = " "
 format-prefix-font = ${font.nerd}
 
 label = %time%
+label-padding = 1
 
 ;;============================================================================;;
