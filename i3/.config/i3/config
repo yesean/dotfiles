@@ -129,6 +129,7 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+x move scratchpad
 
 # toggle items in scratchpad
+bindsym $mod+Shift+m [class="Caprine"] scratchpad show; move absolute position center
 bindsym $mod+Shift+comma [class="Morgen"] scratchpad show; move absolute position center
 bindsym $mod+Shift+period [class="Todoist"] scratchpad show; move absolute position center
 bindsym $mod+Shift+slash [class="Spotify"] scratchpad show; move absolute position center
