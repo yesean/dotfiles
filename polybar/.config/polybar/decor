@@ -1,67 +1,63 @@
 [module/spacing]
 type = custom/text
 content = " "
-content-background = ${color.transparent}
 
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;;============================================================================;;
+
+[module/LRD]
+type = custom/text
+content = ""
+content-font = ${font.bignerd}
+
+[module/RRD]
+type = custom/text
+content = ""
+content-font = ${font.bignerd}
 
 [module/LRD1]
-type = custom/text
-content = "%{T3}%{T-}"
-content-background = ${color.transparent}
+inherit = module/LRD
 content-foreground = ${color.mauve}
 
-[module/RRD1]
-type = custom/text
-content = "%{T3}%{T-}"
-content-background = ${color.transparent}
-content-foreground = ${color.color4}
-
 [module/LRD2]
-type = custom/text
-content = "%{T3}%{T-}"
-content-background = ${color.transparent}
+inherit = module/LRD
 content-foreground = ${color.color5}
 
+[module/RRD1]
+inherit = module/RRD
+content-foreground = ${color.green}
+
 [module/RRD2]
-type = custom/text
-content = "%{T3}%{T-}"
-content-background = ${color.transparent}
+inherit = module/RRD
 content-foreground = ${color.teal}
 
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;;============================================================================;;
+
+[module/SH]
+type = custom/text
+content = ""
+content-font = ${font.bignerd}
 
 [module/SH1]
-type = custom/text
-content = "%{T3}%{T-}"
-content-font = 3
+inherit = module/SH
 content-background = ${color.mauve}
-content-foreground = ${color.color2}
+content-foreground = ${color.blue}
 
 [module/SH2]
-type = custom/text
-content = "%{T3}%{T-}"
-content-font = 3
-content-background = ${color.color2}
+inherit = module/SH
+content-background = ${color.blue}
 content-foreground = ${color.color3}
 
 [module/SH3]
-type = custom/text
-content = "%{T3}%{T-}"
-content-font = 3
+inherit = module/SH
 content-background = ${color.color3}
-content-foreground = ${color.color4}
+content-foreground = ${color.green}
 
 [module/SH5]
-type = custom/text
-content = "%{T3}%{T-}"
-content-font = 3
+inherit = module/SH
 content-background = ${color.color5}
 content-foreground = ${color.color6}
 
 [module/SH6]
-type = custom/text
-content = "%{T3}%{T-}"
-content-font = 3
+inherit = module/SH
 content-background = ${color.color6}
 content-foreground = ${color.teal}

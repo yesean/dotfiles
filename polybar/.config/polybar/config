@@ -1,91 +1,46 @@
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;;============================================================================;;
 
 [global/wm]
-margin-bottom = 0
-margin-top = 0
-
 include-file = ~/.config/polybar/colors
 include-file = ~/.config/polybar/modules
 include-file = ~/.config/polybar/decor
 include-file = ~/.config/polybar/system
 
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;;============================================================================;;
 
 [bar/main]
-monitor = 
-monitor-fallback =
-monitor-strict = false
-
-override-redirect = false
-
-bottom = false
-fixed-center = true
-
-width = 100%
-height = 25
-
-offset-x = 0%
-offset-y = 0%
-
 background = ${color.transparent}
-foreground = ${color.foreground}
-
-radius-top = 0.0
-radius-bottom = 0.0
-
-line-size = 2
-line-color = ${color.blue}
-
 border-size = 5
-border-color = ${color.transparent}
 
-padding = 0
+font-0 = "FiraCode Nerd Font Mono:size=9;2.5"
+font-1 = "FiraMono Nerd Font Mono:size=18;3"
+font-2 = "Iosevka Nerd Font:size=13;3"
+font-3 = "Iosevka Nerd Font:size=18;5"
+font-4 = "Material Design Icons:size=13;4"
 
-module-margin-left = 0
-module-margin-right = 0
-
-font-0 = "FiraCode Nerd Font Mono:size=9;3"
-font-1 = "Iosevka Nerd Font:size=13;3"
-font-2 = "Iosevka Nerd Font:size=18;4"
-font-3 = "FiraMono Nerd Font Mono:size=18;3"
-
-# Default
-modules-left = spacing LRD1 cpu SH1 memory SH2 filesystem SH3 network RRD1
+modules-left = spacing LRD1 cpu gpu memory SH1 filesystem SH2 network SH3 spotify RRD1
 modules-center = i3
-modules-right = LRD2 volume SH5 date SH6 time RRD2 spacing
-
-spacing = 0
-dim-value = 1.0
+modules-right = LRD2 volume SH5 date SH6 time RRD2
 
 tray-position = right
-tray-detached = false
 tray-maxsize = 14
-tray-background = ${color.transparent}
-tray-offset-x = 0
-tray-offset-y = 0
-tray-padding = 1
-tray-scale = 1.0
-tray-font = 2
+tray-padding = 10
 
 enable-ipc = true
 
-cursor-click = 
-cursor-scroll = 
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;;============================================================================;;
 
 [settings]
-throttle-output = 5
-throttle-output-for = 10
+format-background = ${color.background}
+format-foreground = ${color.foreground}
 
-screenchange-reload = false
+;;============================================================================;;
 
-compositing-background = source
-compositing-foreground = over
-compositing-overline = over
-compositing-underline = over
-compositing-border = over
+[font]
+text = 1
+bigtext = 2
+nerd = 3
+bignerd = 4
+material = 5
 
-pseudo-transparency = false
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+;;============================================================================;;
