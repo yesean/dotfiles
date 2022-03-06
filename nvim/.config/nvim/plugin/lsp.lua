@@ -107,6 +107,9 @@ end)
 vim.diag = vim.diagnostic
 require('navigator').setup({
   lsp_installer = true,
+  lsp = {
+    format_on_save = false,
+  },
   keymaps = {
     { key = '[d', func = 'vim.diag.goto_prev()' },
     { key = ']d', func = 'vim.diag.goto_next()' },
