@@ -1,4 +1,5 @@
 local maps = require('maps')
+local trouble = require('trouble.providers.telescope')
 
 local grep_command = {
   'rg',
@@ -23,5 +24,13 @@ maps.n(
 )
 maps.n('<c-f>', '<cmd>Telescope live_grep<cr>')
 
-require('telescope').setup({ defaults = { vimgrep_arguments = grep_command } })
+require('telescope').setup({
+  defaults = {
+    vimgrep_arguments = grep_command,
+    mappings = {
+      i = { ['<c-t>'] = trouble.open_with_trouble },
+      n = { ['<c-t>'] = trouble.open_with_trouble },
+    },
+  },
+})
 require('telescope').load_extension('fzf')

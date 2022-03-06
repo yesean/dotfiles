@@ -5,7 +5,7 @@ local tree_width = 40
 
 function Toggle_Tree()
   nvim_tree.toggle()
-  if require('nvim-tree.view').win_open() then
+  if require('nvim-tree.view').is_visible() then
     require('bufferline.state').set_offset(tree_width, 'FileTree')
     nvim_tree.find_file(true)
   else
@@ -24,7 +24,19 @@ nvim_tree.setup({
   view = {
     width = tree_width,
     relativenumber = true,
+    mappings = {
+      list = {
+        {
+          key = 'a',
+          action = 'create',
+          action_cb = function(node)
+            require('nvim-tree.actions.create-file').fn(node)
+            vim.cmd('LspRestart')
+          end,
+        },
+      },
+    },
   },
 })
 
-return { toggle_tree }
+return { Toggle_Tree }

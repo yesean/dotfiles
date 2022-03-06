@@ -5,7 +5,7 @@ require('lualine').setup({
     lualine_b = { 'branch' },
     lualine_c = { 'filename' },
     lualine_x = { 'encoding' },
-    lualine_y = { 'location' },
+    lualine_y = { 'location', 'progress' },
     lualine_z = { 'filetype' },
   },
 })

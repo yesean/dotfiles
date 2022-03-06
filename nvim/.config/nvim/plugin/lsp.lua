@@ -7,8 +7,8 @@ local add_default_maps = function(bfr)
     prefix = prefix or 'lua'
     return '<cmd>' .. prefix .. ' ' .. cmd .. '<cr>'
   end
-  maps.bn(bfr, 'gd', lc('lsp_definitions', 'Telescope'))
-  maps.bn(bfr, 'gr', lc('lsp_references', 'Telescope'))
+  -- maps.bn(bfr, 'gd', lc('TroubleToggle lsp_definitions', ''))
+  -- maps.bn(bfr, 'gr', lc('TroubleToggle lsp_references', ''))
   maps.bn(bfr, 'gt', lc('vim.lsp.buf.type_definition()'))
   maps.bn(bfr, 'gD', lc('vim.lsp.buf.declaration()'))
   maps.bn(bfr, 'gi', lc('vim.lsp.buf.implementation()'))
@@ -28,21 +28,26 @@ local turn_off_formatting = function(client)
   client.resolved_capabilities.document_range_formatting = false
 end
 
--- define keymaps when lsp client attaches
-local on_attach = function(client, bfr)
-  add_default_maps(bfr)
-  turn_off_formatting(client)
-end
-
 -- add additional capabilities supported by nvim-cmp
 local capabilities = require('cmp_nvim_lsp').update_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
+-- define keymaps when lsp client attaches
+local on_attach_default = function(client, bfr)
+  add_default_maps(bfr)
+  turn_off_formatting(client)
+  require('navigator.lspclient.mapping').setup({
+    client = client,
+    bufnr = bfr,
+    cap = capabilities,
+  })
+end
+
 -- setup language servers
 lsp_installer.on_server_ready(function(server)
   local opts = {
-    on_attach = on_attach,
+    on_attach = on_attach_default,
     capabilities = capabilities,
   }
 
@@ -61,14 +66,13 @@ lsp_installer.on_server_ready(function(server)
 
     -- inject ts-utils
     local ts_utils = require('nvim-lsp-ts-utils')
-    opts.init_options = ts_utils.init_options
-    opts.init_options.preferences.importModuleSpecifierPreference = 'relative'
+    local init_options = ts_utils.init_options
+    init_options.preferences.importModuleSpecifierPreference = 'relative'
+    opts.init_options = init_options
     opts.on_attach = function(client, bfr)
-      turn_off_formatting(client)
-      add_default_maps(bfr)
+      on_attach_default(client, bfr)
       maps.bn(bfr, 'gi', ':TSLspImportAll<cr>')
       maps.bn(bfr, 'go', ':TSLspOrganize<cr>')
-      maps.bn(bfr, '<leader>rf', ':TSLspRenameFile<cr>')
 
       ts_utils.setup({
         auto_inlay_hints = false,
@@ -97,5 +101,14 @@ lsp_installer.on_server_ready(function(server)
   end
 
   server:setup(opts)
-  vim.cmd([[ do User LspAttachBuffers ]])
+  vim.cmd('do User LspAttachBuffers')
 end)
+
+vim.diag = vim.diagnostic
+require('navigator').setup({
+  lsp_installer = true,
+  keymaps = {
+    { key = '[d', func = 'vim.diag.goto_prev()' },
+    { key = ']d', func = 'vim.diag.goto_next()' },
+  },
+})
