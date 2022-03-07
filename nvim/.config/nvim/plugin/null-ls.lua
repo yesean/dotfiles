@@ -61,6 +61,7 @@ null_ls.setup({
         callback = function()
           vim.lsp.buf.formatting_sync()
         end,
+        buffer = vim.fn.bufnr('%'),
       })
     end
   end,
