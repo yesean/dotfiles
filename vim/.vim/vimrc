@@ -27,6 +27,7 @@ set splitright                      " open vertical splits to the right
 set splitbelow                      " open horizontal splits below
 set undofile                        " use permanent undo file
 set undodir=~/.vim/undo             " specify undo directory
+set background=dark
 
 " cursor modes
 if exists('$TMUX')
