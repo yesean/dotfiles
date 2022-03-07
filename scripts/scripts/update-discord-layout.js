@@ -1,3 +1,4 @@
+const assert = require('assert');
 const fs = require('fs');
 
 const search = (node) => {
@@ -8,6 +9,8 @@ const search = (node) => {
 };
 
 const path = process.argv[2];
+assert.strictEqual(typeof path, 'string', 'must provide path as argument');
+
 const layout = require(path);
 const discordNode = search(layout);
 
