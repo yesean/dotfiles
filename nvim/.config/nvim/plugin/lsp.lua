@@ -7,8 +7,6 @@ local add_default_maps = function(bfr)
     prefix = prefix or 'lua'
     return '<cmd>' .. prefix .. ' ' .. cmd .. '<cr>'
   end
-  -- maps.bn(bfr, 'gd', lc('TroubleToggle lsp_definitions', ''))
-  -- maps.bn(bfr, 'gr', lc('TroubleToggle lsp_references', ''))
   maps.bn(bfr, 'gt', lc('vim.lsp.buf.type_definition()'))
   maps.bn(bfr, 'gD', lc('vim.lsp.buf.declaration()'))
   maps.bn(bfr, 'gi', lc('vim.lsp.buf.implementation()'))
@@ -98,6 +96,10 @@ lsp_installer.on_server_ready(function(server)
     }
   elseif server.name == 'clangd' then
     opts.capabilities.offsetEncoding = { 'utf-16' }
+    opts.cmd = {
+      'clangd',
+      '--clang-tidy',
+    }
   end
 
   server:setup(opts)

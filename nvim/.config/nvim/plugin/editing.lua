@@ -10,4 +10,4 @@ require('nvim-ts-autotag').setup()
 require('colorizer').setup()
 
 -- toggle trouble
-maps.n('<leader>,', '<cmd>TroubleToggle workspace_diagnostics<cr>')
+maps.n('<leader>,', '<cmd>TroubleToggle<cr>')
