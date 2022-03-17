@@ -2,12 +2,12 @@
 
 check() {
   if ! command -v "$1" &>/dev/null; then
-    echo "\\\`${1}\\\` must be installed. exiting."
+    echo "\`${1}\` must be installed. exiting."
     exit 1
   fi
 }
-start() { echo "Begin ${1}..."; }
-end() { echo "Done ${1}"; }
+start() { echo "Begin syncing ${1}..."; }
+end() { echo "Done syncing ${1}"; }
 
 check stow
 check nvim
@@ -25,19 +25,18 @@ else
   exit 1
 fi
 
-start "syncing dotfiles"
+start dotfiles
 for program in "${programs[@]}"; do
   stow "$program"
 done
-end "syncing dotfiles"
+end dotfiles
 
 # clean and update packer
-start "updating packer.nvim"
+start packer.nvim
 nvim --headless --noplugin -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-end "updating packer.nvim"
+end packer.nvim
 
 # update treesitter
-start "updating treesitter.nvim"
+start treesitter.nvim
 nvim --headless -c 'TSInstallSync maintained' -c 'q'
-echo
-end "updating treesitter.nvim"
+end treesitter.nvim
