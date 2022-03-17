@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
 
+check() {
+  if ! command -v "$1" &>/dev/null; then
+    echo "\\\`${1}\\\` must be installed. exiting."
+    exit 1
+  fi
+}
 start() { echo "Begin ${1}..."; }
 end() { echo "Done ${1}"; }
 
-if ! command -v stow &>/dev/null; then
-  echo "GNU Stow must be installed in order to run the install script"
-  exit 1
-fi
+check stow
+check nvim
 
 [[ $(uname) = 'Darwin' ]] && is_macos=true || is_macos=false
 [[ $(uname) = 'Linux' ]] && is_linux=true || is_linux=false
@@ -31,3 +35,9 @@ end "syncing dotfiles"
 start "updating packer.nvim"
 nvim --headless --noplugin -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 end "updating packer.nvim"
+
+# update treesitter
+start "updating treesitter.nvim"
+nvim --headless -c 'TSInstallSync maintained' -c 'q'
+echo
+end "updating treesitter.nvim"
