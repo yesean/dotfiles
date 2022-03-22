@@ -115,7 +115,6 @@ local build_keymaps = function()
     { ']O', 'diagnostic.set_loclist()' },
     { ']r', "require('navigator.treesitter').goto_next_usage()" },
     { '[r', "require('navigator.treesitter').goto_previous_usage()" },
-    { '<leader>k', "require('navigator.dochighlight').hi_symbol()" },
     { '<leader>wa', "require('navigator.workspace').add_workspace_folder()" },
     {
       '<leader>wr',
