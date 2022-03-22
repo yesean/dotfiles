@@ -6,8 +6,8 @@ check() {
     exit 1
   fi
 }
-start() { echo "Begin syncing ${1}..."; }
-end() { echo "Done syncing ${1}"; }
+begin() { echo "Begin $*..."; }
+end() { echo "Done $*"; }
 
 check stow
 check nvim
@@ -25,18 +25,18 @@ else
   exit 1
 fi
 
-start dotfiles
+begin stowing dotfiles
 for program in "${programs[@]}"; do
   stow "$program"
 done
-end dotfiles
+end stowing dotfiles
 
 # clean and update packer
-start packer.nvim
+begin updating neovim plugins
 nvim --headless --noplugin -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-end packer.nvim
+end updating neovim plugins
 
 # update treesitter
-start treesitter.nvim
+begin updating treesitter plugins
 nvim --headless -c 'TSInstallSync maintained' -c 'q'
-end treesitter.nvim
+end updating treesitter plugins
