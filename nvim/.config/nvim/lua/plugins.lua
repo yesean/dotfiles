@@ -79,8 +79,7 @@ require('packer').startup(function()
   use('jose-elias-alvarez/nvim-lsp-ts-utils')
 
   -- markdown
-  use({ 'npxbr/glow.nvim', branch = 'main' })
-  use('JamshedVesuna/vim-markdown-preview')
+  use('iamcco/markdown-preview.nvim')
 
   -- csv
   use('chrisbra/csv.vim')
