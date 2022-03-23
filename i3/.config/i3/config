@@ -243,6 +243,9 @@ exec --no-startup-id xset s off && xset s noblank
 # sleep after idle for 60 minutes
 exec --no-startup-id xidlehook --not-when-audio --not-when-fullscreen --timer 3600 'systemctl suspend' '' &
 
+# disable wakeup from mouse
+exec --no-startup-id sudo ~/scripts/disable-mouse-wakeup.sh
+
 # start insync
 exec --no-startup-id insync start --no-daemon
 
