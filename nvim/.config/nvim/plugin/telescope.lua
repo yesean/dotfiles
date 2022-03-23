@@ -1,5 +1,4 @@
 local maps = require('maps')
-local trouble = require('trouble.providers.telescope')
 
 local grep_command = {
   'rg',
@@ -27,9 +26,19 @@ maps.n('<c-f>', '<cmd>Telescope live_grep<cr>')
 require('telescope').setup({
   defaults = {
     vimgrep_arguments = grep_command,
-    mappings = {
-      i = { ['<c-t>'] = trouble.open_with_trouble },
-      n = { ['<c-t>'] = trouble.open_with_trouble },
+    layout_strategy = 'flex',
+    layout_config = {
+      width = 0.85,
+      height = 0.85,
+      vertical = {
+        prompt_position = 'top',
+      },
+      horizontal = {
+        prompt_position = 'bottom',
+      },
+      flex = {
+        flip_columns = 220,
+      },
     },
   },
 })

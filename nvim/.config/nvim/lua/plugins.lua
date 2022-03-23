@@ -49,17 +49,9 @@ require('packer').startup(function()
   use('lukas-reineke/indent-blankline.nvim')
   use('goolord/alpha-nvim')
   use('norcalli/nvim-colorizer.lua')
-  use('folke/trouble.nvim')
   use('tpope/vim-surround')
 
   -- editing
-  use({
-    'ray-x/navigator.lua',
-    requires = { 'ray-x/guihua.lua', run = 'cd lua/fzy && make' },
-  })
-  use({
-    'ray-x/lsp_signature.nvim',
-  })
   use('ggandor/lightspeed.nvim')
   use('windwp/nvim-autopairs')
   use('windwp/nvim-ts-autotag')
