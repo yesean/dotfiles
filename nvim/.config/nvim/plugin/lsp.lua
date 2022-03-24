@@ -12,8 +12,9 @@ local add_default_maps = function(bfr)
   maps.bn(bfr, 'gr', lc('lsp_references', 'Telescope'))
   maps.bn(bfr, 'gt', lc('lsp_type_definitions', 'Telescope'))
   maps.bn(bfr, 'gi', lc('lsp_implementations', 'Telescope'))
-  maps.bn(bfr, 'g0', lc('lsp_document_symbols', 'Telescope'))
   maps.bn(bfr, 'gG', lc('diagnostics bufnr=0', 'Telescope'))
+  maps.bn(bfr, 'g0', lc('lsp_document_symbols', 'Telescope'))
+  maps.bn(bfr, 'g-', lc('treesitter', 'Telescope'))
   maps.bn(
     bfr,
     'ga',
