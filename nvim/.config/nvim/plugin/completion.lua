@@ -42,8 +42,10 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'nvim_lua' },
+    { name = 'emoji' },
     { name = 'path' },
     { name = 'buffer' },
+    { name = 'nvim_lsp_signature_help' },
   },
   snippet = {
     expand = function(args)
@@ -67,5 +69,16 @@ cmp.setup({
   },
 })
 
--- remap <cr> on bracket behavior
--- cmp.event:on('confirm_done', require('nvim-autopairs.completion.cmp'))
+cmp.setup.cmdline(':', {
+  sources = {
+    { name = 'cmdline' },
+  },
+})
+
+cmp.setup.cmdline('/', {
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp_document_symbol' },
+  }, {
+    { name = 'buffer' },
+  }),
+})

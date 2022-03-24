@@ -23,6 +23,10 @@ require('packer').startup(function()
   use('hrsh7th/cmp-nvim-lua')
   use('hrsh7th/cmp-path')
   use('hrsh7th/cmp-buffer')
+  use('hrsh7th/cmp-nvim-lsp-document-symbol')
+  use('hrsh7th/cmp-emoji')
+  use('hrsh7th/cmp-cmdline')
+  use('hrsh7th/cmp-nvim-lsp-signature-help')
 
   -- file search
   use('nvim-telescope/telescope.nvim')
