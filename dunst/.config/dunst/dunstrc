@@ -9,10 +9,9 @@ follow = keyboard
 monitor = 0 # Which monitor should the notifications be displayed on.
 
 sort = yes # Sort messages by urgency.
-idle_threshold = 120 # Don't remove messages, if the user is idle (no mouse or keyboard input) for longer than idle_threshold seconds.
 indicate_hidden = yes # Show how many messages are currently hidden (because of geometry).
 shrink = no # Shrink window if it's smaller than the width
-transparency = 5 # The transparency of the window.  Range: [0; 100].
+transparency = 20 # The transparency of the window.  Range: [0; 100].
 separator_height = 2
 padding = 12 # Padding between text and separator.
 horizontal_padding = 12
