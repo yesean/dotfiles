@@ -1,4 +1,4 @@
-local maps = require('maps')
+local maps = require('mapping')
 
 local grep_command = {
   'rg',

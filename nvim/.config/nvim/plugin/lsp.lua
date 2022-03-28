@@ -1,6 +1,6 @@
 local util = require('lspconfig/util')
 local lsp_installer = require('nvim-lsp-installer')
-local maps = require('maps')
+local maps = require('mapping')
 
 local add_default_maps = function(bfr)
   local lc = function(cmd, prefix)

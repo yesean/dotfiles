@@ -1,4 +1,4 @@
-local maps = require('maps')
+local maps = require('mapping')
 local commands = require('neo-tree.sources.filesystem.commands')
 
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])

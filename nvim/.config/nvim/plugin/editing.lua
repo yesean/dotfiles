@@ -1,4 +1,4 @@
-local maps = require('maps')
+local maps = require('mapping')
 
 -- automatically close bracket like items
 require('nvim-autopairs').setup()
