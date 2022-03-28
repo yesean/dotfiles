@@ -44,7 +44,7 @@ require('cokeline').setup({
     filetype = 'neo-tree',
     components = {
       {
-        text = 'F   iles',
+        text = 'Files',
         fg = vim.g.terminal_color_3,
         bg = utils.get_hex('NeoTreeNormal', 'bg'),
         style = 'bold',
