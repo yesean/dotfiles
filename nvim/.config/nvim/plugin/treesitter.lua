@@ -14,7 +14,9 @@ vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.o.foldenable = false
 
 local function resetHighlighting()
-  if vim.bo.buftype == '' and not vim.bo.readonly then
+  local buffer = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false))
+  local is_buffer_empty = buffer == ''
+  if vim.bo.buftype == '' and not vim.bo.readonly and not is_buffer_empty then
     vim.cmd('write')
     vim.cmd('edit')
     vim.cmd('TSBufEnable highlight')
