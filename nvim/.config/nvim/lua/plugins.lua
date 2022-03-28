@@ -40,9 +40,7 @@ require('packer').startup(function()
   use('jose-elias-alvarez/null-ls.nvim')
 
   -- colorscheme
-  use('eddyekofo94/gruvbox-flat.nvim')
   use({ 'catppuccin/nvim', as = 'catppuccin' })
-  use('rmehri01/onenord.nvim')
 
   -- visuals
   use('romgrk/barbar.nvim')
