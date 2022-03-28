@@ -23,16 +23,13 @@ local add_default_maps = function(bfr)
       'Telescope'
     )
   )
-  maps.bn(bfr, 'gk', lc('keymaps', 'Telescope'))
-  maps.bn(bfr, 'gm', lc('git_status', 'Telescope'))
   maps.bn(bfr, 'K', lc('vim.lsp.buf.hover()'))
   maps.bn(bfr, '<C-k>', lc('vim.lsp.buf.signature_help()'))
   maps.bn(bfr, '<space>rn', lc('vim.lsp.buf.rename()'))
   maps.bn(bfr, '<space>a', lc('vim.lsp.buf.code_action()'))
-  maps.bn(bfr, '<space>e', lc('vim.diagnostic.open_float()'))
+  maps.bn(bfr, 'ge', lc('vim.diagnostic.open_float()'))
   maps.bn(bfr, '[d', lc('vim.diagnostic.goto_prev()'))
   maps.bn(bfr, ']d', lc('vim.diagnostic.goto_next()'))
-  maps.bn(bfr, '<space>ql', lc('vim.diagnostic.set_loclist()'))
   maps.bn(bfr, '<space>f', lc('vim.lsp.buf.formatting()'))
 end
 
