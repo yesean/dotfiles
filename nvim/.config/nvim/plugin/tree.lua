@@ -1,42 +1,28 @@
-local nvim_tree = require('nvim-tree')
 local maps = require('maps')
+local commands = require('neo-tree.sources.filesystem.commands')
 
-local tree_width = 40
-
-function Toggle_Tree()
-  nvim_tree.toggle()
-  if require('nvim-tree.view').is_visible() then
-    require('bufferline.state').set_offset(tree_width, 'FileTree')
-    nvim_tree.find_file(true)
-  else
-    require('bufferline.state').set_offset(0)
-  end
-end
-
-maps.n('<leader>n', '<cmd>lua Toggle_Tree()<cr>')
-
-nvim_tree.setup({
-  auto_close = true,
-  update_focused_file = {
-    enable = true,
-    update_cwd = true,
+vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+require('neo-tree').setup({
+  -- close_if_last_window = true,
+  filesystem = {
+    filtered_items = {
+      hide_dotfiles = false,
+    },
+    follow_current_file = true,
   },
-  view = {
-    width = tree_width,
-    relativenumber = true,
+  window = {
     mappings = {
-      list = {
-        {
-          key = 'a',
-          action = 'create',
-          action_cb = function(node)
-            require('nvim-tree.actions.create-file').fn(node)
-            vim.cmd('LspRestart')
-          end,
-        },
-      },
+      ['<space>'] = 'none',
+      ['<cr>'] = function(state)
+        local node = state.tree:get_node()
+        if node.type == 'file' then
+          commands.open(state)
+        elseif node.type == 'directory' then
+          commands.toggle_node(state)
+        end
+      end,
     },
   },
 })
 
-return { Toggle_Tree }
+maps.n('<leader>n', '<cmd>Neotree toggle<cr>')

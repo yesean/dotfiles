@@ -5,6 +5,7 @@ require('packer').startup(function()
   -- essentials
   use('nvim-lua/popup.nvim')
   use('nvim-lua/plenary.nvim')
+  use('MunifTanjim/nui.nvim')
   use('kyazdani42/nvim-web-devicons')
 
   -- syntax
@@ -43,8 +44,10 @@ require('packer').startup(function()
   use({ 'catppuccin/nvim', as = 'catppuccin' })
 
   -- visuals
-  use('romgrk/barbar.nvim')
-  use('kyazdani42/nvim-tree.lua')
+  -- use('romgrk/barbar.nvim')
+  use('noib3/nvim-cokeline')
+  -- use('kyazdani42/nvim-tree.lua')
+  use({ 'nvim-neo-tree/neo-tree.nvim', branch = 'v2.x' })
   use('hoob3rt/lualine.nvim')
   use('lewis6991/gitsigns.nvim')
   use('onsails/lspkind-nvim')
