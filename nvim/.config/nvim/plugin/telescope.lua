@@ -43,3 +43,7 @@ require('telescope').setup({
   },
 })
 require('telescope').load_extension('fzf')
+
+maps.n('gk', '<cmd>Telescope keymaps<cr>')
+maps.n('gm', '<cmd>Telescope git_status<cr>')
+maps.n('gl', '<cmd>Telescope git_bcommits<cr>')
