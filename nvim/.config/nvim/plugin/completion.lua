@@ -1,6 +1,9 @@
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 cmp.setup({
+  completion = {
+    completeopt = 'menu,menuone,noinsert',
+  },
   mapping = {
     ['<c-f>'] = cmp.mapping.scroll_docs(4),
     ['<c-d>'] = cmp.mapping.scroll_docs(-4),
@@ -73,6 +76,9 @@ cmp.setup.cmdline(':', {
   sources = {
     { name = 'cmdline' },
   },
+  completion = {
+    completeopt = 'menu,menuone,noinsert,noselect',
+  },
 })
 
 cmp.setup.cmdline('/', {
@@ -81,4 +87,7 @@ cmp.setup.cmdline('/', {
   }, {
     { name = 'buffer' },
   }),
+  completion = {
+    completeopt = 'menu,menuone,noinsert,noselect',
+  },
 })
