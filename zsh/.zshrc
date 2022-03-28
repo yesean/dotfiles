@@ -1,9 +1,25 @@
+# set environment variables
+export EDITOR=nvim
+export BROWSER=brave
+export QUOTING_STYLE=literal
+export PATH=/usr/local/sbin:$PATH
+export PATH=/usr/local/bin:$PATH
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/scripts
+export PATH=$PATH:$(yarn global bin)
+export PATH=$PATH:$HOME/.toolbox/bin
+export PATH=$PATH:$HOME/go/bin
+export NVM_LAZY_LOAD=true
+export NVM_COMPLETION=true
+
 # oh-my-zsh plugins
 export ZSH=$HOME/.oh-my-zsh
 plugins=(
   archlinux
   brew
   emoji
+  evalcache
   extract
   fd
   fzf
@@ -14,10 +30,11 @@ plugins=(
   tmux
   vi-mode
   zsh-aliases-exa
-  zsh-syntax-highlighting
   zsh-autosuggestions
-  zsh-completions
+  zsh-nvm
+  zsh-syntax-highlighting
 )
+fpath+="${ZSH_CUSTOM:-"$ZSH/custom"}/plugins/zsh-completions/src"
 source $ZSH/oh-my-zsh.sh
 
 # vi-mode settings
@@ -45,7 +62,6 @@ export FZF_ALT_C_COMMAND=$fd_dirs
 export FZF_ALT_C_OPTS=$fzf_dir_layout
 
 # completion settings
-autoload -Uz compinit && compinit
 zstyle ':completion:*' ignored-patterns '*.|*..' # ignore the special dirs . and .. in tab completion
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
@@ -68,21 +84,6 @@ bindkey '^P' fzf-file-widget
 bindkey '^O' fzf-cd-widget
 bindkey '^R' fzf-history-widget
 bindkey '^E' 'vim $(fzf)\n'
-
-# set environment variables
-export EDITOR=nvim
-export BROWSER=brave
-export QUOTING_STYLE=literal
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-16.jdk/Contents/Home
-
-export PATH=/usr/local/sbin:$PATH
-export PATH=/usr/local/bin:$PATH
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/scripts
-export PATH=$PATH:$(yarn global bin)
-export PATH=$PATH:$HOME/.toolbox/bin
-export PATH=$PATH:$HOME/go/bin
 
 # check linux or macos
 [[ $(uname) = 'Darwin' ]] && is_macos=true || is_macos=false
@@ -115,10 +116,5 @@ gpo() {
   git push origin HEAD~$1:main
 }
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                  # This loads nvm
-[ -s "/usr/share/nvm/init-nvm.sh" ] && \. "/usr/share/nvm/nvm.sh" # This loads nvm
-
 # direnv
-eval "$(direnv hook zsh)"
+_evalcache direnv hook zsh
