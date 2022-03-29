@@ -120,7 +120,7 @@ label-focused = %icon%
 label-focused-foreground = ${color.black2}
 
 label-unfocused = %icon%
-label-unfocused-foreground = ${color.gray1}
+label-unfocused-foreground = ${color.gray0}
 
 label-urgent = %icon%
 label-urgent-foreground = ${color.red}
