@@ -5,15 +5,13 @@
 This repo contains config files and scripts for my
 [Arch Linux](https://archlinux.org/)/macOS environment. I use `stow` to help
 manage my dotfiles and create symlinks that point to this repo. For example,
-this repo lives at `~/.dotfiles` on my machine, so `init.lua` for my `neovim`
+this repo lives at `~/.dotfiles` on my machine, so the `init.lua` for my neovim
 setup is a symlink at `~/.config/nvim/init.lua` that points to
 `~/.dotfiles/nvim/.config/nvim/init.lua`. As a result, every program becomes
 namespaced in its own directory in this repo, which is cleaner and easier to
 manage IMO.
 
 ## Installation
-
-### My Way
 
 There is a
 [helper script](https://github.com/seanye24/dotfiles/blob/main/sync.sh) for easy
@@ -38,14 +36,15 @@ If you just want to pull updates, run
 
 by itself.
 
-> If `sync.sh` fails, it's likely because either you are missing a dependency or
-> one of my files is conflicting with an existing file on your system. For
-> instance, if you already a neovim config at `~/.config/nvim/init.lua`, `stow`
-> won't be able to create a symlink at `~/.config/nvim/init.lua` that points to
-> my `init.lua`. You either have to delete/backup your `init.lua` or remove
-> `nvim` from the programs array in `sync.sh`.
+> If `sync.sh` fails, it's likely because you are either missing a dependency or
+> one of the config files is conflicting with an existing file on your system.
+> For instance, if you already a neovim config at `~/.config/nvim/init.lua`,
+> `stow` won't be able to create a symlink at `~/.config/nvim/init.lua` that
+> points to this repo's config at `~/.dotfiles/nvim/.config/nvim/init.lua`. You
+> either have to delete/backup your `init.lua` or remove `nvim` from the
+> programs array in `sync.sh`.
 
-### Your Way (probably)
+### Manual
 
 _Alternatively_, just copy and paste whatever you want! My dotfiles are specific
 to my preferences and use cases which are probably different from yours.
