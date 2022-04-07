@@ -7,6 +7,7 @@ o.ttimeoutlen = 0 -- reduce esc delay (keycode delay)
 o.backspace = 'indent,eol,start' -- enables backspace in insert
 o.mouse = 'a' -- enable mouse support
 o.scrolloff = 15 -- start scrolling 15 lines from edge
+o.sidescrolloff = 30 -- start scrolling 15 lines from edge
 o.hlsearch = false -- turn off search highlighting
 o.hidden = true -- hides all buffers in background
 o.splitright = true -- open vertical splits to the right
