@@ -83,12 +83,12 @@
   "vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim/init.vim",
   "vim.enableNeovim": true,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "workbench.colorTheme": "Gruvbox Dark Hard",
   "workbench.editor.enablePreviewFromQuickOpen": true,
   "workbench.editor.enablePreview": true,
   "workbench.startupEditor": "newUntitledFile",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "liveshare.authenticationProvider": "GitHub",
   "workbench.editor.untitled.hint": "hidden",
-  "window.zoomLevel": 1
+  "window.zoomLevel": 1,
+  "workbench.colorTheme": "Catppuccin"
 }
