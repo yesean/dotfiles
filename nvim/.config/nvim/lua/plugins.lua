@@ -55,6 +55,7 @@ require('packer').startup(function()
   use('goolord/alpha-nvim')
   use('norcalli/nvim-colorizer.lua')
   use('tpope/vim-surround')
+  use('kdheepak/lazygit.nvim')
 
   -- editing
   use('ggandor/lightspeed.nvim')
