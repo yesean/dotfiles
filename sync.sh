@@ -40,5 +40,5 @@ end updating neovim plugins
 
 # update treesitter
 begin updating treesitter plugins
-nvim --headless -c 'TSInstallSync maintained' -c 'q'
+nvim --headless -c 'TSInstallSync all' -c 'q'
 end updating treesitter plugins
