@@ -5,7 +5,7 @@ map.n('<leader>n', map.cmd('Neotree toggle'))
 
 vim.g.neo_tree_remove_legacy_commands = true
 require('neo-tree').setup({
-  -- close_if_last_window = true,
+  close_if_last_window = true,
   filesystem = {
     filtered_items = {
       hide_dotfiles = false,

@@ -54,6 +54,38 @@ require('cokeline').setup({
 })
 
 function Close_Buffer(buf)
+  if buf == 0 then
+    buf = vim.api.nvim_get_current_buf()
+  end
+
+  local bufname = vim.api.nvim_buf_get_name(buf)
+  if bufname:find('neo%-tree filesystem') then
+    vim.cmd('Neotree close')
+    return
+  end
+
+  local windows = vim.tbl_filter(function(w)
+    return vim.api.nvim_win_get_buf(w) == buf
+  end, vim.api.nvim_list_wins())
+  local buffers = vim.tbl_filter(function(b)
+    return vim.api.nvim_buf_is_valid(b) and vim.bo[b].buflisted
+  end, vim.api.nvim_list_bufs())
+
+  local next_buffer = -1
+  if #buffers > 1 then
+    for i, v in ipairs(buffers) do
+      if v == buf then
+        next_buffer = buffers[i % #buffers + 1]
+      end
+    end
+  end
+
+  if next_buffer ~= -1 then
+    for _, w in ipairs(windows) do
+      vim.api.nvim_win_set_buf(w, next_buffer)
+    end
+  end
+
   pcall(function()
     vim.api.nvim_buf_delete(buf, {})
   end)
@@ -62,12 +94,13 @@ end
 
 function Close_All_Buffers(keep_current)
   keep_current = keep_current or false
-  for _, buf in pairs(vim.api.nvim_list_bufs()) do
-    if vim.api.nvim_buf_is_loaded(buf) and vim.fn.buflisted(buf) ~= 0 then
-      local current_buf_name = vim.fn.bufname('%')
-      if not keep_current or vim.fn.bufname(buf) ~= current_buf_name then
-        Close_Buffer(buf)
-      end
+  local buffers = vim.tbl_filter(function(b)
+    return vim.api.nvim_buf_is_valid(b) and vim.api.nvim_buf_is_loaded(b)
+  end, vim.api.nvim_list_bufs())
+  local current_buf = vim.api.nvim_get_current_buf()
+  for _, buf in ipairs(buffers) do
+    if not keep_current or buf ~= current_buf then
+      Close_Buffer(buf)
     end
   end
 end
