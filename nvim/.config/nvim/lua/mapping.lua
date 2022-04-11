@@ -19,7 +19,7 @@ local function add_jumplist(key)
   end
 end
 
-local map = {
+local M = {
   n = set_mode('n'),
   i = set_mode('i'),
   v = set_mode('v'),
@@ -28,40 +28,40 @@ local map = {
 }
 
 -- map leader to space
-map.n('<space>', '')
+M.n('<space>', '')
 vim.g.mapleader = ' '
 
 -- pane switching
-map.n('<leader>h', cmd('wincmd h'))
-map.n('<leader>j', cmd('wincmd j'))
-map.n('<leader>k', cmd('wincmd k'))
-map.n('<leader>l', cmd('wincmd l'))
+M.n('<leader>h', cmd('wincmd h'))
+M.n('<leader>j', cmd('wincmd j'))
+M.n('<leader>k', cmd('wincmd k'))
+M.n('<leader>l', cmd('wincmd l'))
 
 -- copy to clipboard
-map.v('<leader>y', '"+y')
-map.n('<leader>y', '"+y')
-map.n('<leader>Y', '"+yg_')
-map.n('<leader>yy', '"+yy')
+M.v('<leader>y', '"+y')
+M.n('<leader>y', '"+y')
+M.n('<leader>Y', '"+yg_')
+M.n('<leader>yy', '"+yy')
 
 -- paste from clipboard
-map.v('<leader>p', '"+p')
-map.v('<leader>P', '"+P')
-map.n('<leader>p', '"+p')
-map.n('<leader>P', '"+P')
+M.v('<leader>p', '"+p')
+M.v('<leader>P', '"+P')
+M.n('<leader>p', '"+p')
+M.n('<leader>P', '"+P')
 
 -- keep center cursor
-map.n('n', 'nzz')
-map.n('N', 'Nzz')
+M.n('n', 'nzz')
+M.n('N', 'Nzz')
 
 -- add punctuation to undo break points
-map.i(',', ',<c-g>u')
-map.i('.', '.<c-g>u')
-map.i('!', '!<c-g>u')
-map.i('?', '?<c-g>u')
-map.i('[', '[<c-g>u')
+M.i(',', ',<c-g>u')
+M.i('.', '.<c-g>u')
+M.i('!', '!<c-g>u')
+M.i('?', '?<c-g>u')
+M.i('[', '[<c-g>u')
 
 -- add relative moves to jumplist
-map.n('k', add_jumplist('k'), { expr = true })
-map.n('j', add_jumplist('j'), { expr = true })
+M.n('k', add_jumplist('k'), { expr = true })
+M.n('j', add_jumplist('j'), { expr = true })
 
-return map
+return M
