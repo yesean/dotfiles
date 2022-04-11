@@ -1,81 +1,67 @@
-local map = vim.api.nvim_set_keymap
-local modemap = function(mode)
-  return function(binding, command, extra)
-    extra = extra or {}
-    local opts = { noremap = true }
-    for k, v in pairs(extra) do
+local default_opts = { silent = true }
+local function set_mode(mode)
+  return function(keymap, command, opts)
+    opts = opts or {}
+    for k, v in pairs(default_opts) do
       opts[k] = v
     end
-    map(mode, binding, command, opts)
+    vim.keymap.set(mode, keymap, command, opts)
   end
 end
 
-local bmap = vim.api.nvim_buf_set_keymap
-local modebmap = function(mode)
-  return function(buffer, binding, command, extra)
-    extra = extra or {}
-    local opts = { noremap = true }
-    for k, v in pairs(extra) do
-      opts[k] = v
-    end
-    bmap(buffer, mode, binding, command, opts)
+local function cmd(str)
+  return '<cmd>' .. str .. '<cr>'
+end
+
+local function add_jumplist(key)
+  return function()
+    return vim.v.count > 3 and "m'" .. vim.v.count .. key or key
   end
 end
 
-local nmap = modemap('n')
-local imap = modemap('i')
-local vmap = modemap('v')
-local smap = modemap('s')
-
-local bnmap = modebmap('n')
-local bimap = modebmap('i')
-local bvmap = modebmap('v')
-local bsmap = modebmap('s')
+local map = {
+  n = set_mode('n'),
+  i = set_mode('i'),
+  v = set_mode('v'),
+  s = set_mode('s'),
+  cmd = cmd,
+}
 
 -- map leader to space
-nmap('<space>', '')
+map.n('<space>', '')
 vim.g.mapleader = ' '
 
 -- pane switching
-nmap('<leader>h', ':wincmd h<cr>')
-nmap('<leader>j', ':wincmd j<cr>')
-nmap('<leader>k', ':wincmd k<cr>')
-nmap('<leader>l', ':wincmd l<cr>')
+map.n('<leader>h', cmd('wincmd h'))
+map.n('<leader>j', cmd('wincmd j'))
+map.n('<leader>k', cmd('wincmd k'))
+map.n('<leader>l', cmd('wincmd l'))
 
 -- copy to clipboard
-vmap('<leader>y', '"+y')
-nmap('<leader>y', '"+y')
-nmap('<leader>Y', '"+yg_')
-nmap('<leader>yy', '"+yy')
+map.v('<leader>y', '"+y')
+map.n('<leader>y', '"+y')
+map.n('<leader>Y', '"+yg_')
+map.n('<leader>yy', '"+yy')
 
 -- paste from clipboard
-vmap('<leader>p', '"+p')
-vmap('<leader>P', '"+P')
-nmap('<leader>p', '"+p')
-nmap('<leader>P', '"+P')
+map.v('<leader>p', '"+p')
+map.v('<leader>P', '"+P')
+map.n('<leader>p', '"+p')
+map.n('<leader>P', '"+P')
 
 -- keep center cursor
-nmap('n', 'nzz')
-nmap('N', 'Nzz')
+map.n('n', 'nzz')
+map.n('N', 'Nzz')
 
 -- add punctuation to undo break points
-imap(',', ',<c-g>u')
-imap('.', '.<c-g>u')
-imap('!', '!<c-g>u')
-imap('?', '?<c-g>u')
-imap('[', '[<c-g>u')
+map.i(',', ',<c-g>u')
+map.i('.', '.<c-g>u')
+map.i('!', '!<c-g>u')
+map.i('?', '?<c-g>u')
+map.i('[', '[<c-g>u')
 
 -- add relative moves to jumplist
-nmap('k', '(v:count > 3 ? "m\'" . v:count : "") . "k"', { expr = true })
-nmap('j', '(v:count > 3 ? "m\'" . v:count : "") . "j"', { expr = true })
+map.n('k', add_jumplist('k'), { expr = true })
+map.n('j', add_jumplist('j'), { expr = true })
 
-return {
-  n = nmap,
-  i = imap,
-  v = vmap,
-  s = smap,
-  bn = bnmap,
-  bi = bimap,
-  bv = bvmap,
-  bs = bsmap,
-}
+return map

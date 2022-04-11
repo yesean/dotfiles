@@ -1,7 +1,9 @@
-local maps = require('mapping')
+local map = require('mapping')
 local commands = require('neo-tree.sources.filesystem.commands')
 
-vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+map.n('<leader>n', map.cmd('Neotree toggle'))
+
+vim.g.neo_tree_remove_legacy_commands = true
 require('neo-tree').setup({
   -- close_if_last_window = true,
   filesystem = {
@@ -24,5 +26,3 @@ require('neo-tree').setup({
     },
   },
 })
-
-maps.n('<leader>n', '<cmd>Neotree toggle<cr>')

@@ -1,4 +1,16 @@
-local maps = require('mapping')
+local map = require('mapping')
+local telescope = require('telescope')
+local builtin = require('telescope.builtin')
+
+local find_command = {
+  'fd',
+  '--type',
+  'f',
+  '--hidden',
+  '--follow',
+  '--exclude',
+  '{.git,node_modules}',
+}
 
 local grep_command = {
   'rg',
@@ -12,18 +24,14 @@ local grep_command = {
 }
 
 -- telescope key bindings
-maps.n('<leader>t', '<cmd>Telescope<cr>')
-local find_command =
-  [[{ 'fd', '--type', 'f', '--hidden', '--follow', '--exclude', '{.git,node_modules}' }]]
-maps.n(
-  '<c-p>',
-  [[<cmd>lua require('telescope.builtin').find_files({ find_command = ]]
-    .. find_command
-    .. [[})<cr>]]
-)
-maps.n('<c-f>', '<cmd>Telescope live_grep<cr>')
+map.n('<leader>t', map.cmd('Telescope'))
+map.n('<c-p>', builtin.find_files)
+map.n('<c-f>', builtin.live_grep)
+map.n('gk', builtin.keymaps)
+map.n('gm', builtin.git_status)
+map.n('gl', builtin.git_bcommits)
 
-require('telescope').setup({
+telescope.setup({
   defaults = {
     vimgrep_arguments = grep_command,
     layout_strategy = 'flex',
@@ -41,9 +49,21 @@ require('telescope').setup({
       },
     },
   },
+  pickers = {
+    keymaps = {
+      show_plug = false,
+    },
+    find_files = {
+      find_command = find_command,
+    },
+    diagnostics = {
+      bufnr = 0,
+    },
+    lsp_code_actions = {
+      layout_config = {
+        prompt_position = 'bottom',
+      },
+    },
+  },
 })
-require('telescope').load_extension('fzf')
-
-maps.n('gk', '<cmd>Telescope keymaps<cr>')
-maps.n('gm', '<cmd>Telescope git_status<cr>')
-maps.n('gl', '<cmd>Telescope git_bcommits<cr>')
+telescope.load_extension('fzf')

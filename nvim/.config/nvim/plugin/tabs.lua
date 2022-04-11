@@ -1,4 +1,4 @@
-local maps = require('mapping')
+local map = require('mapping')
 local mappings = require('cokeline.mappings')
 local utils = require('cokeline.utils')
 
@@ -72,8 +72,12 @@ function Close_All_Buffers(keep_current)
   end
 end
 
-maps.n('<c-h>', '<Plug>(cokeline-focus-prev)', { silent = true })
-maps.n('<c-l>', '<Plug>(cokeline-focus-next)', { silent = true })
-maps.n('gq', ':lua Close_Buffer(0)<cr>', { silent = true })
-maps.n('gqq', ':lua Close_All_Buffers()<cr>', { silent = true })
-maps.n('gqw', ':lua Close_All_Buffers(true)<cr>', { silent = true })
+map.n('<c-h>', '<Plug>(cokeline-focus-prev)')
+map.n('<c-l>', '<Plug>(cokeline-focus-next)')
+map.n('gq', function()
+  Close_Buffer(0)
+end)
+map.n('gqq', Close_All_Buffers)
+map.n('gqw', function()
+  Close_All_Buffers(true)
+end)

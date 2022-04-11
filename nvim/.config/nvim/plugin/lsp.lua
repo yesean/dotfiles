@@ -1,36 +1,28 @@
 local util = require('lspconfig/util')
 local lsp_installer = require('nvim-lsp-installer')
-local maps = require('mapping')
+local map = require('mapping')
 
 local add_default_maps = function(bfr)
-  local lc = function(cmd, prefix)
-    prefix = prefix or 'lua'
-    return '<cmd>' .. prefix .. ' ' .. cmd .. '<cr>'
-  end
-  maps.bn(bfr, 'gd', lc('lsp_definitions', 'Telescope'))
-  maps.bn(bfr, 'gD', lc('vim.lsp.buf.declaration()'))
-  maps.bn(bfr, 'gr', lc('lsp_references', 'Telescope'))
-  maps.bn(bfr, 'gt', lc('lsp_type_definitions', 'Telescope'))
-  maps.bn(bfr, 'gi', lc('lsp_implementations', 'Telescope'))
-  maps.bn(bfr, 'gG', lc('diagnostics bufnr=0', 'Telescope'))
-  maps.bn(bfr, 'g0', lc('lsp_document_symbols', 'Telescope'))
-  maps.bn(bfr, 'g-', lc('treesitter', 'Telescope'))
-  maps.bn(
-    bfr,
-    'ga',
-    lc(
-      'lsp_code_actions layout_config={"prompt_position":"bottom"}',
-      'Telescope'
-    )
-  )
-  maps.bn(bfr, 'K', lc('vim.lsp.buf.hover()'))
-  maps.bn(bfr, '<C-k>', lc('vim.lsp.buf.signature_help()'))
-  maps.bn(bfr, '<space>rn', lc('vim.lsp.buf.rename()'))
-  maps.bn(bfr, '<space>a', lc('vim.lsp.buf.code_action()'))
-  maps.bn(bfr, 'ge', lc('vim.diagnostic.open_float()'))
-  maps.bn(bfr, '[d', lc('vim.diagnostic.goto_prev()'))
-  maps.bn(bfr, ']d', lc('vim.diagnostic.goto_next()'))
-  maps.bn(bfr, '<space>f', lc('vim.lsp.buf.formatting()'))
+  local builtin = require('telescope.builtin')
+  local opts = { buffer = bfr }
+  map.n('gd', builtin.lsp_definitions, opts)
+  map.n('gD', vim.lsp.buf.declaration, opts)
+  map.n('gr', builtin.lsp_references, opts)
+  map.n('gt', builtin.lsp_type_definitions, opts)
+  map.n('gi', builtin.lsp_implementations, opts)
+  map.n('gG', function()
+    builtin.diagnostics({ bufnr = 0 })
+  end, opts)
+  map.n('g0', builtin.lsp_document_symbols, opts)
+  map.n('g-', builtin.treesitter, opts)
+  map.n('ga', builtin.lsp_code_actions, opts)
+  map.n('K', vim.lsp.buf.hover, opts)
+  map.n('<C-k>', vim.lsp.buf.signature_help, opts)
+  map.n('grn', vim.lsp.buf.rename, opts)
+  map.n('ge', vim.diagnostic.open_float, opts)
+  map.n('[d', vim.diagnostic.goto_prev, opts)
+  map.n(']d', vim.diagnostic.goto_next, opts)
+  map.n('<space>f', vim.lsp.buf.formatting, opts)
 end
 
 local turn_off_formatting = function(client)
@@ -76,8 +68,9 @@ lsp_installer.on_server_ready(function(server)
     opts.init_options = init_options
     opts.on_attach = function(client, bfr)
       on_attach_default(client, bfr)
-      maps.bn(bfr, 'gI', ':TSLspImportAll<cr>')
-      maps.bn(bfr, 'go', ':TSLspOrganize<cr>')
+      local map_opts = { buffer = bfr }
+      map.n('gI', map.cmd('TSLspImportAll'), map_opts)
+      map.n('go', map.cmd('TSLspOrganize'), map_opts)
 
       ts_utils.setup({
         auto_inlay_hints = false,

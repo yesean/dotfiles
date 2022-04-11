@@ -1,4 +1,4 @@
-local maps = require('mapping')
+local map = require('mapping')
 
 -- automatically close bracket like items
 require('nvim-autopairs').setup()
@@ -14,5 +14,5 @@ require('lightspeed').setup({
   ignore_case = true,
 })
 
-maps.n('s', '<Plug>Lightspeed_omni_s')
-maps.n('gs', '<Plug>Lightspeed_omni_gs')
+map.n('s', '<Plug>Lightspeed_omni_s')
+map.n('gs', '<Plug>Lightspeed_omni_gs')
