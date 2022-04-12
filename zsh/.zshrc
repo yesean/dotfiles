@@ -4,7 +4,6 @@ export BROWSER=brave
 export QUOTING_STYLE=literal
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/scripts
 export PATH=$PATH:$(yarn global bin)
