@@ -179,18 +179,19 @@ require('packer').startup({
         require('config.firenvim')
       end,
     })
-    use({
-      'karb94/neoscroll.nvim',
-      config = function()
-        require('neoscroll').setup()
-      end,
-    })
 
     -- remote editing
     use({
       'chipsenkbeil/distant.nvim',
       config = function()
         require('config.distant')
+      end,
+    })
+
+    use({
+      'numToStr/Navigator.nvim',
+      config = function()
+        require('config.navigator')
       end,
     })
     use('untitled-ai/jupyter_ascending.vim')
