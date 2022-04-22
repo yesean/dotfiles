@@ -64,4 +64,7 @@ M.i('[', '[<c-g>u')
 M.n('k', add_jumplist('k'), { expr = true })
 M.n('j', add_jumplist('j'), { expr = true })
 
+-- jupyter ascending
+M.n('<leader><cr>', '<Plug>JupyterExecute')
+
 return M

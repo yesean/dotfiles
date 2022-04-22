@@ -1,5 +1,6 @@
 local cmp = require('cmp')
 local luasnip = require('luasnip')
+
 cmp.setup({
   completion = {
     completeopt = 'menu,menuone,noinsert',
@@ -7,13 +8,14 @@ cmp.setup({
   mapping = {
     ['<c-f>'] = cmp.mapping.scroll_docs(4),
     ['<c-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-p>'] = cmp.mapping(function()
+    ['<c-p>'] = cmp.mapping(function()
       if cmp.visible() then
         cmp.select_prev_item()
       else
         cmp.complete()
       end
     end, { 'i' }),
+    ['<c-n>'] = cmp.mapping.select_next_item(),
     ['<c-e>'] = cmp.mapping.close(),
     ['<cr>'] = cmp.mapping.confirm({ select = true }),
     ['<esc>'] = cmp.mapping(function(fallback)
@@ -57,10 +59,10 @@ cmp.setup({
   },
   formatting = {
     format = require('lspkind').cmp_format({
-      with_text = true,
+      mode = 'symbol',
       menu = {
         nvim_lsp = '[lsp]',
-        luasnip = '[luasnip]',
+        luasnip = '[snip]',
         nvim_lua = '[lua]',
         path = '[path]',
         buffer = '[buffer]',
@@ -73,6 +75,7 @@ cmp.setup({
 })
 
 cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline({}),
   sources = {
     { name = 'cmdline' },
   },
@@ -82,6 +85,7 @@ cmp.setup.cmdline(':', {
 })
 
 cmp.setup.cmdline('/', {
+  mapping = cmp.mapping.preset.cmdline({}),
   sources = cmp.config.sources({
     { name = 'nvim_lsp_document_symbol' },
   }, {

@@ -1,6 +1,6 @@
-local map = require('mapping')
 local mappings = require('cokeline.mappings')
 local utils = require('cokeline.utils')
+local map = require('mapping')
 
 local components = {
   {

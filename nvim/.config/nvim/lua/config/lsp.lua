@@ -1,33 +1,43 @@
-local util = require('lspconfig/util')
-local lsp_installer = require('nvim-lsp-installer')
 local map = require('mapping')
 
-local add_default_maps = function(bfr)
-  local builtin = require('telescope.builtin')
+local function add_default_maps(bfr)
+  local tel = require('telescope.builtin')
+  local lsp = vim.lsp.buf
+  local diag = vim.diagnostic
   local opts = { buffer = bfr }
-  map.n('gd', builtin.lsp_definitions, opts)
-  map.n('gD', vim.lsp.buf.declaration, opts)
-  map.n('gr', builtin.lsp_references, opts)
-  map.n('gt', builtin.lsp_type_definitions, opts)
-  map.n('gi', builtin.lsp_implementations, opts)
+
+  map.n('gD', lsp.declaration, opts)
+  map.n('K', lsp.hover, opts)
+  map.n('<c-k>', lsp.signature_help, opts)
+  map.n('<leader>r', lsp.rename, opts)
+  map.n('<leader>f', lsp.formatting, opts)
+
+  map.n('gd', tel.lsp_definitions, opts)
+  map.n('gr', tel.lsp_references, opts)
+  map.n('gt', tel.lsp_type_definitions, opts)
+  map.n('gi', tel.lsp_implementations, opts)
+  map.n('g0', tel.lsp_document_symbols, opts)
+  map.n('g-', tel.treesitter, opts)
+  map.n('ga', tel.lsp_code_actions, opts)
   map.n('gG', function()
-    builtin.diagnostics({ bufnr = 0 })
+    tel.diagnostics({ bufnr = 0 })
   end, opts)
-  map.n('g0', builtin.lsp_document_symbols, opts)
-  map.n('g-', builtin.treesitter, opts)
-  map.n('ga', builtin.lsp_code_actions, opts)
-  map.n('K', vim.lsp.buf.hover, opts)
-  map.n('<C-k>', vim.lsp.buf.signature_help, opts)
-  map.n('grn', vim.lsp.buf.rename, opts)
-  map.n('ge', vim.diagnostic.open_float, opts)
-  map.n('[d', vim.diagnostic.goto_prev, opts)
-  map.n(']d', vim.diagnostic.goto_next, opts)
-  map.n('<space>f', vim.lsp.buf.formatting, opts)
+
+  map.n('ge', diag.open_float, opts)
+  map.n('[d', diag.goto_prev, opts)
+  map.n(']d', diag.goto_next, opts)
 end
 
-local turn_off_formatting = function(client)
+-- turn off server formatting, use null-ls instead
+local function turn_off_formatting(client)
   client.resolved_capabilities.document_formatting = false
   client.resolved_capabilities.document_range_formatting = false
+end
+
+-- define keymaps when lsp client attaches
+local function on_attach_default(client, bfr)
+  add_default_maps(bfr)
+  turn_off_formatting(client)
 end
 
 -- add additional capabilities supported by nvim-cmp
@@ -35,14 +45,8 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
--- define keymaps when lsp client attaches
-local on_attach_default = function(client, bfr)
-  add_default_maps(bfr)
-  turn_off_formatting(client)
-end
-
 -- setup language servers
-lsp_installer.on_server_ready(function(server)
+require('nvim-lsp-installer').on_server_ready(function(server)
   local opts = {
     on_attach = on_attach_default,
     capabilities = capabilities,
@@ -54,7 +58,7 @@ lsp_installer.on_server_ready(function(server)
 
   if server.name == 'tsserver' then
     -- modify typescript lsp setup to allow curr dir as project root
-    opts.root_dir = util.root_pattern(
+    opts.root_dir = require('lspconfig/util').root_pattern(
       'package.json',
       'tsconfig.json',
       '.git',
