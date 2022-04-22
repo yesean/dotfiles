@@ -25,8 +25,6 @@ else
   exit 1
 fi
 
-git pull origin main
-
 begin stowing dotfiles
 for program in "${programs[@]}"; do
   stow "$program"
