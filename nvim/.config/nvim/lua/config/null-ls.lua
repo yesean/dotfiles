@@ -13,7 +13,7 @@ local sources = {
   -- python
   diag.pylint,
   fmt.yapf,
-  -- fmt.isort,
+  fmt.isort,
 
   -- golang
   fmt.goimports,
