@@ -111,6 +111,7 @@ alias ucsd='cd ~/gd-ucsd/year\ 3/fall/'
 alias ta='tmux attach -t'
 alias sc='sc-im'
 alias ll='ls -l'
+alias rs='sudo reset-audio'
 
 gpo() {
   git push origin HEAD~$1:main
