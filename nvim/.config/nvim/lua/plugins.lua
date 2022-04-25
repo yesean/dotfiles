@@ -13,22 +13,6 @@ require('packer').startup({
         require('nvim-web-devicons').setup({ default = true })
       end,
     })
-    use({
-      'karb94/neoscroll.nvim',
-      config = function()
-        require('neoscroll').setup({
-          mappings = {
-            '<C-u>',
-            '<C-d>',
-            '<C-y>',
-            '<C-e>',
-            'zt',
-            'zz',
-            'zb',
-          },
-        })
-      end,
-    })
 
     -- syntax
     use({
