@@ -1,3 +1,3 @@
 vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
-  command = 'silent !pdflatex -shell-escape % && rm %:r.aux %:r.log',
+  command = 'silent !pdflatex -shell-escape % && rm %:r.aux %:r.log %:r.out',
 })
