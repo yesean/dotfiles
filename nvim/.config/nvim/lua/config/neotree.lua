@@ -11,6 +11,7 @@ require('neo-tree').setup({
       hide_dotfiles = false,
     },
     follow_current_file = true,
+    hijack_netrw_behavior = 'open_current',
   },
   window = {
     mappings = {
