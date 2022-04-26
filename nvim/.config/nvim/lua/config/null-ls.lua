@@ -8,7 +8,7 @@ local sources = {
   fmt.stylua,
 
   -- js/ts
-  fmt.prettierd,
+  fmt.prettier,
 
   -- python
   diag.pylint,
