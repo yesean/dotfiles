@@ -55,7 +55,7 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.detectIndentation": false,
   "editor.fontSize": 12,
-  "editor.fontFamily": "FiraMono Nerd Font Mono",
+  "editor.fontFamily": "FiraCode Nerd Font",
   "editor.formatOnSave": true,
   "editor.lineNumbers": "relative",
   "editor.parameterHints.enabled": false,
@@ -89,6 +89,6 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "liveshare.authenticationProvider": "GitHub",
   "workbench.editor.untitled.hint": "hidden",
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0.75,
   "workbench.colorTheme": "Catppuccin"
 }

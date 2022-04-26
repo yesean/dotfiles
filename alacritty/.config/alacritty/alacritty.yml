@@ -8,15 +8,15 @@ key_bindings:
   - { key: Key6, mods: Control|Shift, chars: "\x1e" }
 
 font:
-  size: 10
+  size: 12
   normal:
-    family: FiraMono Nerd Font
+    family: FiraCode Nerd Font Mono
     style: Regular
   bold:
-    family: FiraMono Nerd Font
+    family: FiraCode Nerd Font Mono
     style: Bold
   italic:
-    family: FiraMono Nerd Font
+    family: FiraCode Nerd Font
     style: Italic
 
 window:
