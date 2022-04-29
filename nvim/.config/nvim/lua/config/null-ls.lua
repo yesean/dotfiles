@@ -10,6 +10,9 @@ local sources = {
   -- js/ts
   fmt.prettier,
 
+  -- rust
+  fmt.rustfmt,
+
   -- python
   diag.pylint,
   fmt.yapf,
