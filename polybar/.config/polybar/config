@@ -3,14 +3,12 @@
 [global/wm]
 include-file = ~/.config/polybar/colors
 include-file = ~/.config/polybar/modules
-include-file = ~/.config/polybar/decor
 include-file = ~/.config/polybar/system
 
 ;;============================================================================;;
 
 [bar/main]
-background = ${color.transparent}
-border-size = 4
+background = ${color.top}
 
 font-0 = "FiraCode Nerd Font Mono:size=9;2.5"
 font-1 = "FiraMono Nerd Font Mono:size=18;3"
@@ -18,21 +16,23 @@ font-2 = "Iosevka Nerd Font:size=13;3"
 font-3 = "Iosevka Nerd Font:size=16;4"
 font-4 = "Material Design Icons:size=13;4"
 
-modules-left = spacing LRD1 cpu gpu memory SH1 filesystem SH2 network SH3 spotify RRD1
+modules-left = spacing cpu gpu memory filesystem network spotify
 modules-center = i3
-modules-right = LRD2 volume SH5 date SH6 time RRD2
+modules-right = volume date time
 
-tray-position = right
+tray-position = none
 tray-maxsize = 14
-tray-padding = 10
+tray-padding = 0
+tray-background = ${color.top}
+tray-foreground = ${color.lavender}
 
 enable-ipc = true
 
 ;;============================================================================;;
 
 [settings]
-format-background = ${color.background}
-format-foreground = ${color.foreground}
+format-background = ${color.top}
+format-foreground = ${color.lavender}
 
 ;;============================================================================;;
 
