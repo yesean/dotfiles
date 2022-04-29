@@ -47,7 +47,7 @@ fd_default_opts='--follow --exclude "{Games,go,R,node_modules}"'
 fd_files="fd ${fd_default_opts} -t f ."
 fd_dirs="fd ${fd_default_opts} -t d ."
 
-fzf_finder_options='--height 40% --layout=reverse --border'
+fzf_finder_options='--height 40% --layout=reverse --border --color=bg+:#302D41,bg:#1E1E2E,spinner:#F8BD96,hl:#F28FAD --color=fg:#D9E0EE,header:#F28FAD,info:#DDB6F2,pointer:#F8BD96 --color=marker:#F8BD96,fg+:#F2CDCD,prompt:#DDB6F2,hl+:#F28FAD'
 fzf_file_layout="--preview 'bat --color=always --style=numbers --line-range=:500 {}'"
 fzf_dir_layout="--preview 'exa -lbhHigUmuSa --no-time  --git --color-scale {}'"
 
