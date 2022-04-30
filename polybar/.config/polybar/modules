@@ -6,10 +6,10 @@ exec = "~/scripts/cpu-stats.sh"
 interval = 1
 format-prefix = " "
 format-prefix-font = ${font.nerd}
-format-suffix = " "
 format-background = ${color.top}
+format-padding = 1
 
-label = "%{A1:alacritty -e htop -s PERCENT_CPU:}%output:9:9%%{A}"
+label = "%{A1:alacritty -e htop -s PERCENT_CPU:}%output:0:9%%{A}"
 
 ;;============================================================================;;
 
@@ -18,12 +18,11 @@ type = custom/script
 exec = "~/scripts/gpu-stats.sh"
 interval = 1
 format-prefix = "󰢮"
-format-prefix-font = ${font.material}
-format-prefix-alignment = left
+format-prefix-font = ${font.smallnerd}
 format-background = ${color.top}
 format-padding = 1
 
-label = " %{A1:alacritty -e watch -n 1 nvidia-smi &:}%output:9:9%%{A}"
+label = " %{A1:alacritty -e watch -n 1 nvidia-smi &:}%output:0:9%%{A}"
 
 ;;============================================================================;;
 
@@ -31,7 +30,7 @@ label = " %{A1:alacritty -e watch -n 1 nvidia-smi &:}%output:9:9%%{A}"
 type = internal/memory
 format = <label>
 format-prefix = ""
-format-prefix-font = ${font.nerd}
+format-prefix-font = ${font.smallnerd}
 format-background = ${color.top}
 format-padding = 1
 
@@ -45,39 +44,11 @@ mount-0 = /
 fixed-values = true
 
 format-mounted-background = ${color.top}
-format-mounted-prefix = ""
-format-mounted-prefix-font = ${font.nerd}
+format-mounted-prefix = " "
+format-mounted-prefix-font = ${font.smallnerd}
 format-mounted-padding = 1
 
 label-mounted = "%{A1:baobab &:}%used%%{A}"
-label-mounted-alignment = right
-
-;;============================================================================;;
-
-[module/network]
-type = internal/network
-interface = ${system.network_interface}
-
-;; ------------------ CONNECTED MODE ------------------ ;;
-
-format-connected = <label-connected>
-format-connected-prefix = " "
-format-connected-prefix-font = ${font.nerd}
-format-connected-background = ${color.top}
-format-connected-padding = 1
-
-label-connected = "%{A1:nm-connection-editor &:}%essid%%{A}"
-label-connected-padding = 1
-
-;; ------------------ DISCONNECTED MODE ------------------ ;;
-
-format-disconnected = <label-disconnected>
-format-disconnected-prefix = "睊"
-format-disconnected-prefix-font = ${font.nerd}
-format-disconnected-background = ${color.top}
-format-disconnected-padding = 1
-
-label-disconnected = "%{A1:def-nmdmenu &:}Offline%{A}"
 
 ;;============================================================================;;
 
@@ -85,9 +56,10 @@ label-disconnected = "%{A1:def-nmdmenu &:}Offline%{A}"
 type = custom/script
 exec = ~/scripts/scroll-spotify.sh
 tail = true
-format-prefix = " "
-format-prefix-font = ${font.nerd}
+format-prefix = "  "
+format-prefix-font = ${font.smallnerd}
 format-background = ${color.top}
+format-padding = 1
 
 label-minlen = 35
 label-maxlen = 35
@@ -109,7 +81,6 @@ ws-icon-8 = 9;
 ws-icon-9 = 10;
 
 format = <label-state> <label-mode>
-format-font = ${font.bigtext}
 
 ;; ------------------ LABEL-STATE SECTION ------------------ ;;
 
@@ -117,19 +88,22 @@ label-separator = "  "
 
 label-focused = %index%
 label-focused-foreground = ${color.lavender}
-label-focused-font = ${font.text}
+label-focused-font = ${font.bigtext}
 
 label-unfocused = %index%
 label-unfocused-foreground = ${color.gray0}
-label-unfocused-font = ${font.text}
+label-unfocused-font = ${font.bigtext}
 
 label-urgent = %icon%
 label-urgent-foreground = ${color.red}
-label-urgent-font = ${font.text}
+label-urgent-font = ${font.bigtext}
 
 ;; ------------------ LABEL-MODE SECTION ------------------ ;;
 
 label-mode = %mode%
+label-mode-font = ${font.bigtext}
+label-mode-foreground = ${color.rosewater}
+label-mode-padding = 2
 
 ;;============================================================================;;
 
@@ -142,10 +116,10 @@ use-ui-max = false
 format-volume = <ramp-volume><label-volume>
 format-volume-background = ${color.top}
 
-ramp-volume-0 = " "
-ramp-volume-1 = " "
-ramp-volume-2 = " "
-ramp-volume-font = ${font.nerd}
+ramp-volume-0 = ""
+ramp-volume-1 = ""
+ramp-volume-2 = ""
+ramp-volume-font = ${font.lesssmallnerd}
 
 label-volume = "%percentage%%"
 label-volume-padding = 1
@@ -156,10 +130,37 @@ format-muted = <label-muted>
 format-muted-background = ${color.top}
 
 format-muted-prefix = " "
-format-muted-prefix-font = ${font.nerd}
+format-muted-prefix-font = ${font.lesssmallnerd}
 
 label-muted = "Mute"
 label-muted-padding = 1
+
+;;============================================================================;;
+
+[module/network]
+type = internal/network
+interface = ${system.network_interface}
+
+;; ------------------ CONNECTED MODE ------------------ ;;
+
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-connected-prefix-font = ${font.smallnerd}
+format-connected-background = ${color.top}
+format-connected-padding = 1
+
+label-connected = "%{A1:nm-connection-editor &:}%essid%%{A}"
+label-connected-padding = 1
+
+;; ------------------ DISCONNECTED MODE ------------------ ;;
+
+format-disconnected = <label-disconnected>
+format-disconnected-prefix = "睊"
+format-disconnected-prefix-font = ${font.nerd}
+format-disconnected-background = ${color.top}
+format-disconnected-padding = 1
+
+label-disconnected = "%{A1:def-nmdmenu &:}Offline%{A}"
 
 ;;============================================================================;;
 
@@ -171,7 +172,7 @@ format-background = ${color.top}
 format-padding = 1
 
 format-prefix = " "
-format-prefix-font = ${font.nerd}
+format-prefix-font = ${font.lesssmallnerd}
 
 label = %date%
 
@@ -183,7 +184,7 @@ time = "%I:%M:%S %p"
 
 format-background = ${color.top}
 format-prefix = " "
-format-prefix-font = ${font.nerd}
+format-prefix-font = ${font.lesssmallnerd}
 format-padding = 1
 
 label = %time%

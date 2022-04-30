@@ -11,14 +11,16 @@ include-file = ~/.config/polybar/system
 background = ${color.top}
 
 font-0 = "FiraCode Nerd Font Mono:size=9;2.5"
-font-1 = "FiraMono Nerd Font Mono:size=18;3"
+font-1 = "FiraMono Nerd Font Mono:size=12;2.75"
 font-2 = "Iosevka Nerd Font:size=13;3"
 font-3 = "Iosevka Nerd Font:size=16;4"
 font-4 = "Material Design Icons:size=13;4"
+font-5 = "Iosevka Nerd Font:size=10;2"
+font-6 = "Iosevka Nerd Font:size=11;3"
 
-modules-left = spacing cpu gpu memory filesystem network spotify
+modules-left = spacing cpu gpu memory filesystem spotify
 modules-center = i3
-modules-right = volume date time
+modules-right = volume network date time
 
 tray-position = none
 tray-maxsize = 14
@@ -42,5 +44,7 @@ bigtext = 2
 nerd = 3
 bignerd = 4
 material = 5
+smallnerd = 6
+lesssmallnerd = 7
 
 ;;============================================================================;;
