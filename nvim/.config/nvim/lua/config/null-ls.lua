@@ -18,7 +18,7 @@ local sources = {
   fmt.nginx_beautifier,
   fmt.trim_newlines,
   fmt.trim_whitespace,
-  -- fmt.shellharden,
+  fmt.shellharden,
 
   diag.pylint,
   diag.shellcheck,
@@ -43,15 +43,7 @@ null_ls.setup({
         group = augroup,
         buffer = bufnr,
         callback = function()
-          vim.lsp.buf.format({
-            filter = function(clients)
-              return vim.tbl_filter(function(c)
-                return vim.tbl_contains({
-                  'tsserver', 'sumneko_lua', 'gopls', 'pyright'
-                }, c.name)
-              end, clients)
-            end,
-            bufnr = bufnr })
+          vim.lsp.buf.format({ bufnr = bufnr })
         end,
       })
     end

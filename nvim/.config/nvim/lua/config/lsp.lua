@@ -28,9 +28,36 @@ local function add_default_maps(bfr)
   map.n(']d', diag.goto_next, opts)
 end
 
+local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+local function turn_off_formatting(client, bufnr)
+  if client.supports_method('textDocument/formatting') then
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      group = augroup,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format({
+          filter = function(clients)
+            return vim.tbl_filter(function(c)
+              local servers = {
+                'tsserver',
+                'sumneko_lua',
+                'gopls',
+                'pyright',
+              }
+              return vim.tbl_contains(servers, c.name)
+            end, clients)
+          end,
+          bufnr = bufnr,
+        })
+      end,
+    })
+  end
+end
+
 -- define keymaps when lsp client attaches
-local function on_attach_default(_, bfr)
-  add_default_maps(bfr)
+local function on_attach_default(client, bufnr)
+  add_default_maps(bufnr)
+  turn_off_formatting(client, bufnr)
 end
 
 -- add additional capabilities supported by nvim-cmp
