@@ -14,7 +14,7 @@ export NVM_COMPLETION=true
 
 # oh-my-zsh plugins
 export ZSH=$HOME/.oh-my-zsh
-plugins=(
+export plugins=(
   archlinux
   brew
   emoji
@@ -34,11 +34,11 @@ plugins=(
   zsh-syntax-highlighting
 )
 fpath+="${ZSH_CUSTOM:-"$ZSH/custom"}/plugins/zsh-completions/src"
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
 # vi-mode settings
-VI_MODE_SET_CURSOR=true
-KEYTIMEOUT=1
+export VI_MODE_SET_CURSOR=true
+export KEYTIMEOUT=1
 
 # fzf settings
 export FZF_BASE="/usr/share/fzf"
@@ -62,14 +62,14 @@ export FZF_ALT_C_OPTS=$fzf_dir_layout
 
 # completion settings
 zstyle ':completion:*' ignored-patterns '*.|*..' # ignore the special dirs . and .. in tab completion
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-ZSH_AUTOSUGGEST_USE_ASYNC=1
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#5a524c'
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+export ZSH_AUTOSUGGEST_USE_ASYNC=1
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#5a524c'
 
 
 # initialize prompt
-ZSH_THEME=""
+export ZSH_THEME=""
 autoload -U promptinit
 promptinit
 prompt pure
@@ -82,7 +82,6 @@ bindkey '^]' autosuggest-accept
 bindkey '^P' fzf-file-widget
 bindkey '^O' fzf-cd-widget
 bindkey '^R' fzf-history-widget
-bindkey '^E' 'vim $(fzf)\n'
 
 # check linux or macos
 [[ $(uname) = 'Darwin' ]] && is_macos=true || is_macos=false
