@@ -4,7 +4,7 @@ map.n('<c-h>', map.cmd('BufferLineCyclePrev'))
 map.n('<c-l>', map.cmd('BufferLineCycleNext'))
 map.n('<c-[>', map.cmd('BufferLineMovePrev'))
 map.n('<c-]>', map.cmd('BufferLineMoveNext'))
-map.n('<c-x>', function()
+map.n('<c-\\>', function()
   require('bufdelete').bufdelete(0, false)
 end)
 
