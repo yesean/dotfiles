@@ -28,16 +28,9 @@ local function add_default_maps(bfr)
   map.n(']d', diag.goto_next, opts)
 end
 
--- turn off server formatting, use null-ls instead
-local function turn_off_formatting(client)
-  client.resolved_capabilities.document_formatting = false
-  client.resolved_capabilities.document_range_formatting = false
-end
-
 -- define keymaps when lsp client attaches
-local function on_attach_default(client, bfr)
+local function on_attach_default(_, bfr)
   add_default_maps(bfr)
-  turn_off_formatting(client)
 end
 
 -- add additional capabilities supported by nvim-cmp
@@ -58,12 +51,11 @@ require('nvim-lsp-installer').on_server_ready(function(server)
 
   if server.name == 'tsserver' then
     -- modify typescript lsp setup to allow curr dir as project root
-    opts.root_dir = require('lspconfig/util').root_pattern(
-      'package.json',
-      'tsconfig.json',
-      '.git',
-      vim.loop.cwd()
-    )
+    opts.root_dir = function(fname)
+      return require('lspconfig.server_configurations.tsserver').default_config_root(
+        fname
+      ) or require('lspconfig.util').root_pattern(vim.fn.getcwd())
+    end
 
     -- inject ts-utils
     local ts_utils = require('nvim-lsp-ts-utils')
