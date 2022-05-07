@@ -52,7 +52,7 @@ require('nvim-lsp-installer').on_server_ready(function(server)
   if server.name == 'tsserver' then
     -- modify typescript lsp setup to allow curr dir as project root
     opts.root_dir = function(fname)
-      return require('lspconfig.server_configurations.tsserver').default_config_root(
+      return require('lspconfig.server_configurations.tsserver').default_config.root_dir(
         fname
       ) or require('lspconfig.util').root_pattern(vim.fn.getcwd())
     end
