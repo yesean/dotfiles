@@ -61,6 +61,7 @@ format-prefix-font = ${font.smallnerd}
 format-background = ${color.top}
 format-padding = 1
 
+label = %output:0:30:...%
 label-minlen = 35
 label-maxlen = 35
 
@@ -94,7 +95,7 @@ label-unfocused = %index%
 label-unfocused-foreground = ${color.gray0}
 label-unfocused-font = ${font.bigtext}
 
-label-urgent = %icon%
+label-urgent = %index%
 label-urgent-foreground = ${color.red}
 label-urgent-font = ${font.bigtext}
 
