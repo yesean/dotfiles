@@ -90,5 +90,8 @@
   "liveshare.authenticationProvider": "GitHub",
   "workbench.editor.untitled.hint": "hidden",
   "window.zoomLevel": 0.75,
-  "workbench.colorTheme": "Catppuccin"
+  "workbench.colorTheme": "Catppuccin",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
+  }
 }
