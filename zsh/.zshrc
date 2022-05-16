@@ -11,6 +11,7 @@ export PATH=$PATH:$HOME/.toolbox/bin
 export PATH=$PATH:$HOME/go/bin
 export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=true
+export QT_QPA_PLATFORMTHEME=qt5ct
 
 # oh-my-zsh plugins
 export ZSH=$HOME/.oh-my-zsh
@@ -82,6 +83,7 @@ bindkey '^]' autosuggest-accept
 bindkey '^P' fzf-file-widget
 bindkey '^O' fzf-cd-widget
 bindkey '^R' fzf-history-widget
+bindkey -a -r ':'
 
 # check linux or macos
 [[ $(uname) = 'Darwin' ]] && is_macos=true || is_macos=false
