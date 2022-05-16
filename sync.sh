@@ -16,10 +16,10 @@ check nvim
 [[ $(uname) = 'Linux' ]] && is_linux=true || is_linux=false
 if [[ "$is_linux" == "true" ]]; then
   echo 'Linux detected!'
-  programs=(alacritty dunst git i3 nvim picom polybar prettier ranger scripts stylua tmux vim zathura zsh)
+  programs=(alacritty dunst git i3 kitty nvim picom polybar prettier ranger scripts stylua tmux vim zathura zsh)
 elif [[ "$is_macos" == "true" ]]; then
   echo 'macOS detected!'
-  programs=(alacritty git nvim prettier skhd stylua tmux vim vscode yabai zsh)
+  programs=(alacritty git kitty nvim prettier skhd stylua tmux vim vscode yabai zsh)
 else
   echo "Unknown machine detected."
   exit 1

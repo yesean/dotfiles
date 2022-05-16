@@ -1,6 +1,6 @@
 
 set $mod Mod4
-set $term alacritty
+set $term kitty
 
 # Define names for default workspaces for which we configure key bindings later on.
 set $ws1 "1"
@@ -47,7 +47,7 @@ exec --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id volnoti # start volnoti daemon
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/scripts/volume.sh up
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/scripts/volume.sh down
-bindsym XF86AudioMute exec --no-startup-id ~/scripts/volume.sh mute 
+bindsym XF86AudioMute exec --no-startup-id ~/scripts/volume.sh mute
 bindsym XF86AudioMicMute exec --no-startup-id ~/scripts/volume.sh mute-mic
 
 # Media player controls
@@ -235,7 +235,7 @@ for_window [class=".*"] border none
 exec_always --no-startup-id ~/.fehbg &
 
 # start polybar
-exec_always --no-startup-id ~/.config/polybar/launch.sh 
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # start dunst
 exec_always --no-startup-id dunst
