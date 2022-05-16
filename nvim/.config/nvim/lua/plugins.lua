@@ -28,6 +28,7 @@ require('packer').startup({
       run = 'TSUpdate',
       config = config('treesitter'),
     })
+    use('nvim-treesitter/playground')
     use({
       'catppuccin/nvim',
       as = 'catppuccin',
@@ -109,6 +110,7 @@ require('packer').startup({
             return map.cmd('DiffviewOpen')
           end
         end
+
         map.n('<leader>gd', DiffviewToggle, { expr = true })
         map.n('<leader>gdm', map.cmd('DiffviewOpen origin/main'))
       end,
@@ -158,7 +160,12 @@ require('packer').startup({
       config = setup('colorizer'),
     })
     use('lukas-reineke/indent-blankline.nvim') -- indent columns
-    use('iamcco/markdown-preview.nvim') -- live edit markdown
+    use({
+      'iamcco/markdown-preview.nvim',
+      run = function()
+        vim.fn['mkdp#util#install']()
+      end,
+    })
     use({
       'numToStr/Navigator.nvim', -- integration with tmux panes
       config = config('navigator'),
