@@ -1,4 +1,6 @@
 local map = require('mapping')
+local installer = require('nvim-lsp-installer')
+local config = require('lspconfig')
 
 local function add_default_maps(bfr)
   local tel = require('telescope.builtin')
@@ -66,7 +68,8 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(
 )
 
 -- setup language servers
-require('nvim-lsp-installer').on_server_ready(function(server)
+installer.setup()
+for _, server in ipairs(installer.get_installed_servers()) do
   local opts = {
     on_attach = on_attach_default,
     capabilities = capabilities,
@@ -81,7 +84,7 @@ require('nvim-lsp-installer').on_server_ready(function(server)
     opts.root_dir = function(fname)
       return require('lspconfig.server_configurations.tsserver').default_config.root_dir(
         fname
-      ) or require('lspconfig.util').root_pattern(vim.fn.getcwd())
+      ) or vim.fn.getcwd()
     end
 
     -- inject ts-utils
@@ -125,6 +128,5 @@ require('nvim-lsp-installer').on_server_ready(function(server)
     }
   end
 
-  server:setup(opts)
-  vim.cmd('do User LspAttachBuffers')
-end)
+  config[server.name].setup(opts)
+end
