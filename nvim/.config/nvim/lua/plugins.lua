@@ -2,8 +2,8 @@ local function config(name)
   return string.format([[require('config.%s')]], name)
 end
 
-local function setup(name)
-  return string.format([[require('%s').setup({})]], name)
+local function setup(name, empty)
+  return string.format([[require('%s').setup(%s)]], name, empty and '' or '{}')
 end
 
 require('packer').startup({
@@ -157,7 +157,7 @@ require('packer').startup({
     })
     use({
       'norcalli/nvim-colorizer.lua', -- color highlighter
-      config = setup('colorizer'),
+      config = setup('colorizer', true),
     })
     use('lukas-reineke/indent-blankline.nvim') -- indent columns
     use({
