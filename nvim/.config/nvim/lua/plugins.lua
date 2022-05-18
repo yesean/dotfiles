@@ -152,7 +152,7 @@ require('packer').startup({
     use({
       'goolord/alpha-nvim', -- startscreen
       config = function()
-        require('alpha').setup(require('alpha.themes.startify').config)
+        require('alpha').setup(require('alpha.themes.theta').config)
       end,
     })
     use({
@@ -172,6 +172,10 @@ require('packer').startup({
     })
     use('famiu/bufdelete.nvim')
     use('chrisbra/csv.vim')
+    use({
+      'rmagatti/auto-session',
+      config = setup('auto-session'),
+    })
   end,
   config = {
     display = {
