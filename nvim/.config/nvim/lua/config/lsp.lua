@@ -2,18 +2,38 @@ local map = require('mapping')
 local installer = require('nvim-lsp-installer')
 local config = require('lspconfig')
 
+vim.diagnostic.config({
+  float = {
+    format = function(diagnostic) -- add diagnostic source to message
+      vim.pretty_print(diagnostic)
+      if diagnostic.symbol or diagnostic.code then -- if possible, add diagnostic identifier ('no-param-reassign' in eslint, 'missing-function-docstring' in pylint)
+        return string.format(
+          '%s [%s, %s]',
+          diagnostic.message,
+          diagnostic.source,
+          diagnostic.symbol or diagnostic.code
+        )
+      else
+        return string.format('%s [%s]', diagnostic.message, diagnostic.source)
+      end
+    end,
+  },
+})
+
 local function add_default_maps(bfr)
   local tel = require('telescope.builtin')
   local lsp = vim.lsp.buf
   local diag = vim.diagnostic
   local opts = { buffer = bfr }
 
+  -- add lsp mappings
   map.n('gD', lsp.declaration, opts)
   map.n('K', lsp.hover, opts)
   map.n('<c-k>', lsp.signature_help, opts)
   map.n('<leader>r', lsp.rename, opts)
   map.n('<leader>f', lsp.formatting, opts)
 
+  -- add telescope mappings
   map.n('gd', tel.lsp_definitions, opts)
   map.n('gr', tel.lsp_references, opts)
   map.n('gt', tel.lsp_type_definitions, opts)
@@ -25,6 +45,7 @@ local function add_default_maps(bfr)
     tel.diagnostics({ bufnr = 0 })
   end, opts)
 
+  -- add diagnostic mappings
   map.n('ge', diag.open_float, opts)
   map.n('[d', diag.goto_prev, opts)
   map.n(']d', diag.goto_next, opts)
