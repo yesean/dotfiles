@@ -16,5 +16,5 @@ const discordNode = search(layout);
 
 if (discordNode !== null) {
   discordNode.title = '^Discord$';
-  fs.writeFile(path, JSON.stringify(layout), () => {});
+  fs.writeFile(path, JSON.stringify(layout), () => { });
 }
