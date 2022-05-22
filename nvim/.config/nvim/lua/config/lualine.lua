@@ -5,10 +5,24 @@ require('lualine').setup({
   },
   sections = {
     lualine_a = { 'mode' },
-    lualine_b = { 'branch' },
-    lualine_c = { { 'filename', path = 1, shorting_target = 40 } },
-    lualine_x = { 'encoding' },
-    lualine_y = { 'location', 'progress' },
-    lualine_z = { 'filetype' },
+    lualine_b = { 'branch', 'diff' },
+    lualine_c = {
+      {
+        'filename',
+        symbols = { modified = ' [modified]', readonly = ' [readonly]' },
+      },
+      {
+        'diagnostics',
+        symbols = {
+          error = ' ',
+          warn = ' ',
+          info = ' ',
+          hint = ' ',
+        },
+      },
+    },
+    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+    lualine_y = { 'progress' },
+    lualine_z = { 'location' },
   },
 })
