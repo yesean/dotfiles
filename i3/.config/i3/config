@@ -221,9 +221,8 @@ bindsym $mod+Ctrl+4 exec --no-startup-id flameshot gui
 bindsym $mod+Ctrl+3 exec --no-startup-id flameshot full -c
 
 # set gaps
-gaps inner 20
-gaps outer -20
-smart_gaps on
+gaps inner 15
+gaps outer 0
 
 # style window title
 font pango:SF Mono Bold 8
