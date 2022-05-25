@@ -19,6 +19,7 @@ local sources = {
   fmt.trim_newlines,
   fmt.trim_whitespace,
   fmt.shellharden,
+  fmt.latexindent,
 
   diag.pylint,
   diag.shellcheck,
