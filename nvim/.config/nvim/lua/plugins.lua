@@ -99,6 +99,7 @@ require('packer').startup({
     use('chrisbra/csv.vim')
     use({ 'rmagatti/auto-session', config = setup('auto-session') })
     use({ 'folke/which-key.nvim', config = setup('which-key') })
+    use('skywind3000/asyncrun.vim')
   end,
   config = {
     display = {

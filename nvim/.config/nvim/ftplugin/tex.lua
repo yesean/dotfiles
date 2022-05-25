@@ -1,3 +1,5 @@
+vim.api.nvim_create_augroup('LatexCompile', {})
 vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
-  command = 'silent !pdflatex -shell-escape % && rm %:r.aux %:r.log %:r.out',
+  command = 'AsyncRun pdflatex -shell-escape %; rm -rf %:r.{aux,log,out} indent.log _minted-%:t:r', -- compile pdf, delete misc files
+  group = 'LatexCompile',
 })
