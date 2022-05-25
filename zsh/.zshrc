@@ -115,6 +115,7 @@ alias ta='tmux attach -t'
 alias sc='sc-im'
 alias ll='ls -l'
 alias rs='sudo reset-audio'
+alias view='feh -. -d'
 
 gpo() {
   git push origin HEAD~$1:main
