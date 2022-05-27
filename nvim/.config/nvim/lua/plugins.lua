@@ -24,7 +24,7 @@ require('packer').startup({
       end,
     })
 
-    ----- syntax + colors -----
+    ----- syntax + treesitter integrations -----
     use({
       'nvim-treesitter/nvim-treesitter',
       run = 'TSUpdate',
@@ -32,6 +32,9 @@ require('packer').startup({
     })
     use('nvim-treesitter/playground')
     use({ 'catppuccin/nvim', as = 'catppuccin', config = config('catppuccin') })
+    use('p00f/nvim-ts-rainbow')
+    use({ 'SmiteshP/nvim-gps', config = setup('nvim-gps') })
+    use({ 'andymass/vim-matchup', config = config('vim-matchup') })
 
     ----- lsp -----
     use('williamboman/nvim-lsp-installer')
