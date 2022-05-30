@@ -260,8 +260,5 @@ exec --no-startup-id ~/scripts/restore-workspaces.sh
 exec_always --no-startup-id picom --experimental-backends -b &
 bindsym $mod+Shift+p exec --no-startup-id ~/scripts/toggle-picom.sh
 
-# start alttab
-exec_always --no-startup-id alttab -mk 65515
-
 # start autostart
 exec_always --no-startup-id systemctl --user start autostart.target
