@@ -121,5 +121,9 @@ gpo() {
   git push origin HEAD~$1:main
 }
 
+mecl() {
+  git clone git@github.com:yesean/$1 $2
+}
+
 # direnv
 _evalcache direnv hook zsh
