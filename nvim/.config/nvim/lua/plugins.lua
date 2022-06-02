@@ -103,6 +103,7 @@ require('packer').startup({
     use({ 'rmagatti/auto-session', config = setup('auto-session') })
     use({ 'folke/which-key.nvim', config = setup('which-key') })
     use('skywind3000/asyncrun.vim')
+    use('lambdalisue/suda.vim')
   end,
   config = {
     display = {
