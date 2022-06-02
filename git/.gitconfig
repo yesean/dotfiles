@@ -12,7 +12,7 @@
   show = delta
 
 [delta]
-  syntax-theme = "gruvbox-dark"
+  syntax-theme = "OneHalfDark"
 
 [alias]
   b = branch
