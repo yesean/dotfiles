@@ -5,7 +5,6 @@ local config = require('lspconfig')
 vim.diagnostic.config({
   float = {
     format = function(diagnostic) -- add diagnostic source to message
-      vim.pretty_print(diagnostic)
       if diagnostic.symbol or diagnostic.code then -- if possible, add diagnostic identifier ('no-param-reassign' in eslint, 'missing-function-docstring' in pylint)
         return string.format(
           '%s [%s, %s]',
@@ -51,6 +50,16 @@ local function add_default_maps(bfr)
   map.n(']d', diag.goto_next, opts)
 end
 
+-- turn off formatting from lsp servers
+local function format(bufnr)
+  vim.lsp.buf.format({
+    filter = function(client)
+      return client.name == 'null-ls'
+    end,
+    bufnr = bufnr,
+  })
+end
+
 local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
 local function turn_off_formatting(client, bufnr)
   if client.supports_method('textDocument/formatting') then
@@ -58,20 +67,7 @@ local function turn_off_formatting(client, bufnr)
       group = augroup,
       buffer = bufnr,
       callback = function()
-        vim.lsp.buf.format({
-          filter = function(clients)
-            return vim.tbl_filter(function(c)
-              local servers = {
-                'tsserver',
-                'sumneko_lua',
-                'gopls',
-                'pyright',
-              }
-              return vim.tbl_contains(servers, c.name)
-            end, clients)
-          end,
-          bufnr = bufnr,
-        })
+        format(bufnr)
       end,
     })
   end
