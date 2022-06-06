@@ -25,11 +25,11 @@ local grep_command = {
 
 -- telescope key bindings
 map.n('<leader>t', map.cmd('Telescope'))
-map.n('<c-p>', builtin.find_files)
-map.n('<c-f>', builtin.live_grep)
-map.n('gk', builtin.keymaps)
-map.n('gm', builtin.git_status)
-map.n('gl', builtin.git_bcommits)
+map.n('<c-p>', builtin.find_files, { desc = 'find files' })
+map.n('<c-f>', builtin.live_grep, { desc = 'find phrase' })
+map.n('gk', builtin.keymaps, { desc = 'show keymaps' })
+map.n('gm', builtin.git_status, { desc = 'show modified files' })
+map.n('gl', builtin.git_bcommits, { desc = 'show git commits' })
 
 telescope.setup({
   defaults = {

@@ -8,5 +8,5 @@ local function DiffviewToggle()
   end
 end
 
-map.n('<leader>gd', DiffviewToggle, { expr = true })
+map.n('<leader>gd', DiffviewToggle, { expr = true, desc = 'toggle diffview' })
 map.n('<leader>gdm', map.cmd('DiffviewOpen origin/main'))

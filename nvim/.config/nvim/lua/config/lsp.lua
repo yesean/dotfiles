@@ -23,31 +23,33 @@ local function add_default_maps(bfr)
   local tel = require('telescope.builtin')
   local lsp = vim.lsp.buf
   local diag = vim.diagnostic
-  local opts = { buffer = bfr }
+  local opts = function(desc)
+    return { buffer = bfr, desc = desc }
+  end
 
   -- add lsp mappings
-  map.n('gD', lsp.declaration, opts)
-  map.n('K', lsp.hover, opts)
-  map.n('<c-k>', lsp.signature_help, opts)
-  map.n('<leader>r', lsp.rename, opts)
-  map.n('<leader>f', lsp.formatting, opts)
+  map.n('gD', lsp.declaration, opts('go to declaration'))
+  map.n('K', lsp.hover, opts('display hover information'))
+  map.n('<c-k>', lsp.signature_help, opts('display signature information'))
+  map.n('<leader>r', lsp.rename, opts('rename symbol'))
+  map.n('<leader>f', lsp.formatting, opts('format buffer'))
 
   -- add telescope mappings
-  map.n('gd', tel.lsp_definitions, opts)
-  map.n('gr', tel.lsp_references, opts)
-  map.n('gt', tel.lsp_type_definitions, opts)
-  map.n('gi', tel.lsp_implementations, opts)
-  map.n('g0', tel.lsp_document_symbols, opts)
-  map.n('g-', tel.treesitter, opts)
-  map.n('ga', vim.lsp.buf.code_action, opts)
+  map.n('gd', tel.lsp_definitions, opts('go to definition'))
+  map.n('gr', tel.lsp_references, opts('go to references'))
+  map.n('gt', tel.lsp_type_definitions, opts('go to type definition'))
+  map.n('gi', tel.lsp_implementations, opts('go to implementation'))
+  map.n('g0', tel.lsp_document_symbols, opts('show lsp document symbols'))
+  map.n('g-', tel.treesitter, opts('show treesitter queries'))
+  map.n('ga', vim.lsp.buf.code_action, opts('select code actions'))
   map.n('gG', function()
     tel.diagnostics({ bufnr = 0 })
-  end, opts)
+  end, opts('show buffer diagnostics'))
 
   -- add diagnostic mappings
-  map.n('ge', diag.open_float, opts)
-  map.n('[d', diag.goto_prev, opts)
-  map.n(']d', diag.goto_next, opts)
+  map.n('ge', diag.open_float, opts('show floating diagnostics'))
+  map.n('[d', diag.goto_prev, opts('go to previous diagnostic'))
+  map.n(']d', diag.goto_next, opts('go to next diagnostic'))
 end
 
 -- turn off formatting from lsp servers
