@@ -80,12 +80,15 @@ require('packer').startup({
     use({ 'lewis6991/gitsigns.nvim', config = setup('gitsigns') })
 
     ----- editing -----
-    use({ 'ggandor/lightspeed.nvim', config = config('lightspeed') })
+    use({ 'ggandor/leap.nvim', config = config('leap') })
     use({ 'numToStr/Comment.nvim', config = config('comment') })
     use('JoosepAlviste/nvim-ts-context-commentstring')
     use({ 'windwp/nvim-autopairs', config = setup('nvim-autopairs') })
     use({ 'windwp/nvim-ts-autotag', config = setup('nvim-ts-autotag') })
-    use('tpope/vim-surround')
+    use({
+      'kylechui/nvim-surround',
+      config = setup('nvim-surround'),
+    })
 
     ----- niceties -----
     use({
