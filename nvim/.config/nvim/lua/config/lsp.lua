@@ -79,12 +79,17 @@ end
 local function on_attach_default(client, bufnr)
   add_default_maps(bufnr)
   turn_off_formatting(client, bufnr)
+  require('nvim-navic').attach(client, bufnr)
 end
 
 -- add additional capabilities supported by nvim-cmp
 local capabilities = require('cmp_nvim_lsp').update_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
+capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true,
+}
 
 -- setup language servers
 installer.setup()
@@ -149,3 +154,4 @@ for _, server in ipairs(installer.get_installed_servers()) do
 
   config[server.name].setup(opts)
 end
+require('ufo').setup()

@@ -1,5 +1,3 @@
-local gps = require('nvim-gps')
-
 require('lualine').setup({
   options = {
     theme = 'catppuccin',
@@ -13,7 +11,6 @@ require('lualine').setup({
         'filename',
         symbols = { modified = ' [modified]', readonly = ' [readonly]' },
       },
-      { gps.get_location, cond = gps.is_available },
       {
         'diagnostics',
         symbols = {

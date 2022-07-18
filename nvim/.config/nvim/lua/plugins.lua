@@ -33,7 +33,12 @@ require('packer').startup({
     use('nvim-treesitter/playground')
     use({ 'catppuccin/nvim', as = 'catppuccin', config = config('catppuccin') })
     use('p00f/nvim-ts-rainbow')
-    use({ 'SmiteshP/nvim-gps', config = setup('nvim-gps') })
+    use({
+      'SmiteshP/nvim-navic',
+      config = function()
+        vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
+      end,
+    })
     use({ 'andymass/vim-matchup', config = config('vim-matchup') })
 
     ----- lsp -----
@@ -89,6 +94,17 @@ require('packer').startup({
       'kylechui/nvim-surround',
       config = setup('nvim-surround'),
     })
+    use({
+      'kevinhwang91/nvim-ufo',
+      requires = 'kevinhwang91/promise-async',
+      config = function()
+        vim.o.foldcolumn = '1'
+        vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+        vim.o.foldlevelstart = -1
+        vim.o.foldenable = true
+        vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+      end,
+    })
 
     ----- niceties -----
     use({
@@ -96,6 +112,11 @@ require('packer').startup({
       config = function()
         require('alpha').setup(require('alpha.themes.theta').config)
       end,
+    })
+    use({
+      'akinsho/toggleterm.nvim',
+      tag = 'v2.*',
+      config = setup('toggleterm'),
     })
     use({ 'norcalli/nvim-colorizer.lua', config = setup('colorizer', true) }) -- color highlighter
     use('lukas-reineke/indent-blankline.nvim') -- indent columns
