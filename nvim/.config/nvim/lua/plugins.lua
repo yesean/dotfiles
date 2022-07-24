@@ -8,6 +8,8 @@ local function setup(name, empty)
   return string.format([[require('%s').setup(%s)]], name, empty and '' or '{}')
 end
 
+local is_nvim = vim.g.vscode == nil
+
 require('packer').startup({
   function()
     ----- package manager -----
@@ -31,7 +33,12 @@ require('packer').startup({
       config = config('treesitter'),
     })
     use('nvim-treesitter/playground')
-    use({ 'catppuccin/nvim', as = 'catppuccin', config = config('catppuccin') })
+    use({
+      'catppuccin/nvim',
+      as = 'catppuccin',
+      config = config('catppuccin'),
+      cond = is_nvim,
+    })
     use('p00f/nvim-ts-rainbow')
     use({
       'SmiteshP/nvim-navic',
