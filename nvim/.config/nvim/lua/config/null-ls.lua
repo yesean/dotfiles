@@ -28,7 +28,6 @@ local sources = {
   diag.markdownlint.with({
     extra_args = { '--config', '/home/sean/.markdownlint.json' },
   }),
-  diag.codespell,
   diag.write_good.with({
     extra_args = { '--no-passive', '--no-adverb', '--no-tooWordy' },
   }),
