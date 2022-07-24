@@ -47,6 +47,26 @@ require('packer').startup({
     use({ 'jose-elias-alvarez/null-ls.nvim', config = config('null-ls') })
     use('jose-elias-alvarez/nvim-lsp-ts-utils')
     use('onsails/lspkind-nvim') -- lsp symbols
+    use({
+      'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+      config = setup('lsp_lines'),
+    })
+    require('packer').use({
+      'weilbith/nvim-code-action-menu',
+      cmd = 'CodeActionMenu',
+    })
+    use({ 'j-hui/fidget.nvim', config = setup('fidget') })
+    use({
+      'smjonas/inc-rename.nvim',
+      config = setup('inc_rename'),
+    })
+    use({
+      'kosayoda/nvim-lightbulb',
+      requires = 'antoinemadec/FixCursorHold.nvim',
+      config = function()
+        require('nvim-lightbulb').setup({ autocmd = { enabled = true } })
+      end,
+    })
 
     ----- autocomplete -----
     use({ 'hrsh7th/nvim-cmp', config = config('cmp') }) -- completion engine
@@ -62,7 +82,6 @@ require('packer').startup({
 
     ----- file/grep finder + general purpose picker -----
     use({ 'nvim-telescope/telescope.nvim', config = config('telescope') })
-    use('nvim-telescope/telescope-ui-select.nvim')
     use({ 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' })
 
     ----- snippets -----
@@ -77,6 +96,7 @@ require('packer').startup({
       config = config('neotree'),
     })
     use({ 'hoob3rt/lualine.nvim', config = config('lualine') }) -- statusline
+    use({ 'stevearc/dressing.nvim' })
 
     ----- git -----
     use({ 'TimUntersberger/neogit', config = setup('neogit') })
@@ -128,6 +148,23 @@ require('packer').startup({
     use({ 'folke/which-key.nvim', config = setup('which-key') })
     use('skywind3000/asyncrun.vim')
     use('lambdalisue/suda.vim')
+    use({
+      'rktjmp/highlight-current-n.nvim',
+      config = function()
+        vim.keymap.set('n', 'n', '<Plug>(highlight-current-n-n)')
+        vim.keymap.set('n', 'N', '<Plug>(highlight-current-n-N)')
+        vim.api.nvim_create_augroup('ClearSearchHL', {})
+        vim.api.nvim_create_autocmd({ 'CmdlineEnter' }, {
+          command = 'set hlsearch',
+          group = 'ClearSearchHL',
+        })
+        vim.api.nvim_create_autocmd({ 'CmdlineLeave' }, {
+          command = 'set nohlsearch',
+          group = 'ClearSearchHL',
+        })
+      end,
+    })
+    use({ 'petertriho/nvim-scrollbar', config = setup('scrollbar') })
   end,
   config = {
     display = {

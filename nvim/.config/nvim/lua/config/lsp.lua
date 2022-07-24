@@ -3,6 +3,7 @@ local installer = require('nvim-lsp-installer')
 local config = require('lspconfig')
 
 vim.diagnostic.config({
+  virtual_text = false,
   float = {
     format = function(diagnostic) -- add diagnostic source to message
       if diagnostic.symbol or diagnostic.code then -- if possible, add diagnostic identifier ('no-param-reassign' in eslint, 'missing-function-docstring' in pylint)
@@ -23,15 +24,18 @@ local function add_default_maps(bfr)
   local tel = require('telescope.builtin')
   local lsp = vim.lsp.buf
   local diag = vim.diagnostic
-  local opts = function(desc)
-    return { buffer = bfr, desc = desc }
+  local opts = function(desc, expr)
+    expr = expr or false
+    return { buffer = bfr, desc = desc, expr = expr }
   end
 
   -- add lsp mappings
   map.n('gD', lsp.declaration, opts('go to declaration'))
   map.n('K', lsp.hover, opts('display hover information'))
   map.n('<c-k>', lsp.signature_help, opts('display signature information'))
-  map.n('<leader>r', lsp.rename, opts('rename symbol'))
+  map.n('<leader>r', function()
+    require('inc_rename').rename({ default = vim.fn.expand('<cword>') })
+  end, opts('rename symbol'))
   map.n('<leader>f', lsp.formatting, opts('format buffer'))
 
   -- add telescope mappings
@@ -41,7 +45,7 @@ local function add_default_maps(bfr)
   map.n('gi', tel.lsp_implementations, opts('go to implementation'))
   map.n('g0', tel.lsp_document_symbols, opts('show lsp document symbols'))
   map.n('g-', tel.treesitter, opts('show treesitter queries'))
-  map.n('ga', vim.lsp.buf.code_action, opts('select code actions'))
+  map.n('ga', map.cmd('CodeActionMenu'), opts('select code actions'))
   map.n('gG', function()
     tel.diagnostics({ bufnr = 0 })
   end, opts('show buffer diagnostics'))
