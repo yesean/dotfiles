@@ -102,7 +102,11 @@ require('packer').startup({
       branch = 'v2.x',
       config = config('neotree'),
     })
-    use({ 'hoob3rt/lualine.nvim', config = config('lualine') }) -- statusline
+    use({
+      'hoob3rt/lualine.nvim',
+      config = config('lualine'),
+      after = 'catppuccin',
+    }) -- statusline
     use({ 'stevearc/dressing.nvim' })
 
     ----- git -----
