@@ -11,11 +11,13 @@ export PATH=$PATH:$(yarn global bin)
 export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=true
 export QT_QPA_PLATFORMTHEME=qt5ct
+export PYENV_ROOT="$HOME/.pyenv"
+
+eval "$(pyenv init -)"
 
 # oh-my-zsh plugins
 export ZSH=$HOME/.oh-my-zsh
 export plugins=(
-  archlinux
   brew
   emoji
   evalcache
@@ -114,6 +116,7 @@ alias sc='sc-im'
 alias ll='ls -l'
 alias rs='sudo reset-audio'
 alias view='feh -. -d'
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 gpo() {
   git push origin HEAD~$1:main
