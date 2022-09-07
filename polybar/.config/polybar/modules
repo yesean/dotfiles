@@ -5,7 +5,7 @@ type = custom/script
 exec = "~/scripts/cpu-stats.sh"
 interval = 1
 format-prefix = " "
-format-prefix-font = ${font.nerd}
+format-prefix-font = ${font.symbols}
 format-background = ${color.top}
 format-padding = 1
 
@@ -17,8 +17,8 @@ label = "%{A1:alacritty -e htop -s PERCENT_CPU:}%output:0:9%%{A}"
 type = custom/script
 exec = "~/scripts/gpu-stats.sh"
 interval = 1
-format-prefix = "󰢮"
-format-prefix-font = ${font.smallnerd}
+format-prefix = ""
+format-prefix-font = ${font.symbols}
 format-background = ${color.top}
 format-padding = 1
 
@@ -29,8 +29,8 @@ label = " %{A1:alacritty -e watch -n 1 nvidia-smi &:}%output:0:9%%{A}"
 [module/memory]
 type = internal/memory
 format = <label>
-format-prefix = ""
-format-prefix-font = ${font.smallnerd}
+format-prefix = ""
+format-prefix-font = ${font.symbols}
 format-background = ${color.top}
 format-padding = 1
 
@@ -44,8 +44,8 @@ mount-0 = /
 fixed-values = true
 
 format-mounted-background = ${color.top}
-format-mounted-prefix = " "
-format-mounted-prefix-font = ${font.smallnerd}
+format-mounted-prefix = " "
+format-mounted-prefix-font = ${font.symbols}
 format-mounted-padding = 1
 
 label-mounted = "%{A1:baobab &:}%used%%{A}"
@@ -56,8 +56,8 @@ label-mounted = "%{A1:baobab &:}%used%%{A}"
 type = custom/script
 exec = ~/scripts/scroll-spotify.sh
 tail = true
-format-prefix = "  "
-format-prefix-font = ${font.smallnerd}
+format-prefix = " "
+format-prefix-font = ${font.symbols}
 format-background = ${color.top}
 format-padding = 1
 
@@ -89,20 +89,20 @@ label-separator = "  "
 
 label-focused = %index%
 label-focused-foreground = ${color.lavender}
-label-focused-font = ${font.bigtext}
+label-focused-font = ${font.big_text}
 
 label-unfocused = %index%
 label-unfocused-foreground = ${color.gray0}
-label-unfocused-font = ${font.bigtext}
+label-unfocused-font = ${font.big_text}
 
 label-urgent = %index%
 label-urgent-foreground = ${color.red}
-label-urgent-font = ${font.bigtext}
+label-urgent-font = ${font.big_text}
 
 ;; ------------------ LABEL-MODE SECTION ------------------ ;;
 
 label-mode = %mode%
-label-mode-font = ${font.bigtext}
+label-mode-font = ${font.big_text}
 label-mode-foreground = ${color.rosewater}
 label-mode-padding = 2
 
@@ -120,7 +120,7 @@ format-volume-background = ${color.top}
 ramp-volume-0 = ""
 ramp-volume-1 = ""
 ramp-volume-2 = ""
-ramp-volume-font = ${font.lesssmallnerd}
+ramp-volume-font = ${font.symbols}
 
 label-volume = "%percentage%%"
 label-volume-padding = 1
@@ -131,7 +131,7 @@ format-muted = <label-muted>
 format-muted-background = ${color.top}
 
 format-muted-prefix = " "
-format-muted-prefix-font = ${font.lesssmallnerd}
+format-muted-prefix-font = ${font.symbols}
 
 label-muted = "Mute"
 label-muted-padding = 1
@@ -146,18 +146,18 @@ interface = ${system.network_interface}
 
 format-connected = <label-connected>
 format-connected-prefix = " "
-format-connected-prefix-font = ${font.smallnerd}
+format-connected-prefix-font = ${font.symbols}
 format-connected-background = ${color.top}
 format-connected-padding = 1
 
 label-connected = "%{A1:nm-connection-editor &:}%essid%%{A}"
-label-connected-padding = 1
+;; label-connected-padding = 1
 
 ;; ------------------ DISCONNECTED MODE ------------------ ;;
 
 format-disconnected = <label-disconnected>
 format-disconnected-prefix = "睊"
-format-disconnected-prefix-font = ${font.nerd}
+format-disconnected-prefix-font = ${font.symbols}
 format-disconnected-background = ${color.top}
 format-disconnected-padding = 1
 
@@ -170,10 +170,9 @@ type = internal/date
 date = "%A, %m/%d/%y"
 
 format-background = ${color.top}
-format-padding = 1
-
 format-prefix = " "
-format-prefix-font = ${font.lesssmallnerd}
+format-prefix-font = ${font.symbols}
+format-padding = 1
 
 label = %date%
 
@@ -185,7 +184,7 @@ time = "%I:%M:%S %p"
 
 format-background = ${color.top}
 format-prefix = " "
-format-prefix-font = ${font.lesssmallnerd}
+format-prefix-font = ${font.symbols}
 format-padding = 1
 
 label = %time%
