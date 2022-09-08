@@ -34,8 +34,8 @@ local function add_default_maps(bfr)
   map.n('K', lsp.hover, opts('display hover information'))
   map.n('<c-k>', lsp.signature_help, opts('display signature information'))
   map.n('<leader>r', function()
-    require('inc_rename').rename({ default = vim.fn.expand('<cword>') })
-  end, opts('rename symbol'))
+    return ':IncRename ' .. vim.fn.expand('<cword>')
+  end, opts('rename symbol', true))
   map.n('<leader>f', lsp.formatting, opts('format buffer'))
 
   -- add telescope mappings
