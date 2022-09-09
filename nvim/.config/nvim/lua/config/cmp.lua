@@ -3,7 +3,10 @@ local luasnip = require('luasnip')
 
 cmp.setup({
   completion = {
-    completeopt = 'menu,menuone,noinsert',
+    completeopt = 'menu,menuone,noinsert,noselect',
+  },
+  confirmation = {
+    default_behavior = cmp.ConfirmBehavior.Replace,
   },
   mapping = {
     ['<c-f>'] = cmp.mapping.scroll_docs(4),
