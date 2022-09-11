@@ -107,15 +107,12 @@ for _, server in ipairs(installer.get_installed_servers()) do
   -------------------------------
 
   if server.name == 'tsserver' then
-    -- modify typescript lsp setup to allow curr dir as project root
+    -- allow tsserver to use curr dir as project root
     opts.root_dir = function(fname)
       return require('lspconfig.server_configurations.tsserver').default_config.root_dir(
         fname
       ) or vim.fn.getcwd()
     end
-
-    require('typescript').setup({ server = opts })
-    return
   elseif server.name == 'stylelint_lsp' then
     -- only start stylelint in css-related files, exclude react files
     opts.filetypes = { 'css', 'less', 'scss' }
@@ -139,5 +136,9 @@ for _, server in ipairs(installer.get_installed_servers()) do
     }
   end
 
-  lspconfig[server.name].setup(opts)
+  if server.name == 'tsserver' then
+    require('typescript').setup({ server = opts })
+  else
+    lspconfig[server.name].setup(opts)
+  end
 end
