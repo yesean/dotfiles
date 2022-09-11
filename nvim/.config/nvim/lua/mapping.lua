@@ -31,6 +31,17 @@ local M = {
 M.n('<space>', '')
 vim.g.mapleader = ' '
 
+-- saving / reloading
+M.n('<leader>w', function()
+  vim.cmd('w')
+  vim.cmd('so %')
+end)
+M.n('<leader>wr', function()
+  vim.cmd('w')
+  vim.cmd('so %')
+  vim.cmd('PackerSync')
+end)
+
 -- pane switching
 M.n('<leader>h', cmd('wincmd h'))
 M.n('<leader>j', cmd('wincmd j'))
