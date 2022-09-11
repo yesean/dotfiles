@@ -117,6 +117,7 @@ alias ll='ls -l'
 alias rs='sudo reset-audio'
 alias view='feh -. -d'
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
+alias ssh='kitty +kitten ssh'
 
 gpo() {
   git push origin HEAD~$1:main
