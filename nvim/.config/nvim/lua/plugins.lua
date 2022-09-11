@@ -148,7 +148,12 @@ require('packer').startup({
     use({
       'akinsho/toggleterm.nvim',
       tag = 'v2.*',
-      config = setup('toggleterm'),
+      config = function()
+        require('toggleterm').setup({
+          size = 25,
+          open_mapping = '<c-`>',
+        })
+      end,
     })
     use({ 'norcalli/nvim-colorizer.lua', config = setup('colorizer', true) }) -- color highlighter
     use('lukas-reineke/indent-blankline.nvim') -- indent columns
