@@ -141,4 +141,3 @@ for _, server in ipairs(installer.get_installed_servers()) do
 
   config[server.name].setup(opts)
 end
-require('ufo').setup()

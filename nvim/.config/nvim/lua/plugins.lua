@@ -135,6 +135,7 @@ require('packer').startup({
         vim.o.foldlevelstart = -1
         vim.o.foldenable = true
         vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+        require('ufo').setup()
       end,
     })
 
