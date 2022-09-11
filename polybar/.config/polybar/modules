@@ -9,7 +9,7 @@ format-prefix-font = ${font.symbols}
 format-background = ${color.top}
 format-padding = 1
 
-label = "%{A1:alacritty -e htop -s PERCENT_CPU:}%output:0:9%%{A}"
+label = "%{A1:kitty htop -s PERCENT_CPU:}%output:0:9%%{A}"
 
 ;;============================================================================;;
 
@@ -22,7 +22,7 @@ format-prefix-font = ${font.symbols}
 format-background = ${color.top}
 format-padding = 1
 
-label = " %{A1:alacritty -e watch -n 1 nvidia-smi &:}%output:0:9%%{A}"
+label = " %{A1:kitty watch -n 1 nvidia-smi &:}%output:0:9%%{A}"
 
 ;;============================================================================;;
 
@@ -34,7 +34,7 @@ format-prefix-font = ${font.symbols}
 format-background = ${color.top}
 format-padding = 1
 
-label = "%{A1:alacritty -e htop -s PERCENT_MEM &:}%gb_used:9:9%%{A}"
+label = "%{A1:kitty htop -s PERCENT_MEM &:}%gb_used:9:9%%{A}"
 
 ;;============================================================================;;
 
