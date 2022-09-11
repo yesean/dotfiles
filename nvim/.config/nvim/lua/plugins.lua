@@ -62,7 +62,11 @@ require('packer').startup({
     use({ 'j-hui/fidget.nvim', config = setup('fidget') })
     use({
       'smjonas/inc-rename.nvim',
-      config = setup('inc_rename'),
+      config = function()
+        require('inc_rename').setup({
+          input_buffer_type = 'dressing',
+        })
+      end,
     })
     use({
       'kosayoda/nvim-lightbulb',
