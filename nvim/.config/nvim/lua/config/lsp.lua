@@ -114,24 +114,8 @@ for _, server in ipairs(installer.get_installed_servers()) do
       ) or vim.fn.getcwd()
     end
 
-    -- inject ts-utils
-    local ts_utils = require('nvim-lsp-ts-utils')
-    local init_options = ts_utils.init_options
-    init_options.preferences.importModuleSpecifierPreference = 'relative'
-    opts.init_options = init_options
-    opts.on_attach = function(client, bfr)
-      on_attach_default(client, bfr)
-      local map_opts = { buffer = bfr }
-      map.n('gI', map.cmd('TSLspImportAll'), map_opts)
-      map.n('go', map.cmd('TSLspOrganize'), map_opts)
-
-      ts_utils.setup({
-        auto_inlay_hints = false,
-        filter_out_diagnostics_by_severity = { 'hint' },
-        update_imports_on_move = true,
-      })
-      ts_utils.setup_client(client)
-    end
+    require('typescript').setup({ server = opts })
+    return
   elseif server.name == 'stylelint_lsp' then
     -- only start stylelint in css-related files, exclude react files
     opts.filetypes = { 'css', 'less', 'scss' }
