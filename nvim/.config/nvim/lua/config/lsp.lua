@@ -1,6 +1,6 @@
 local map = require('mapping')
 local installer = require('nvim-lsp-installer')
-local config = require('lspconfig')
+local lspconfig = require('lspconfig')
 
 vim.diagnostic.config({
   float = {
@@ -139,5 +139,5 @@ for _, server in ipairs(installer.get_installed_servers()) do
     }
   end
 
-  config[server.name].setup(opts)
+  lspconfig[server.name].setup(opts)
 end
