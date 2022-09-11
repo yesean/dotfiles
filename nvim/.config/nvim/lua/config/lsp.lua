@@ -3,7 +3,6 @@ local installer = require('nvim-lsp-installer')
 local config = require('lspconfig')
 
 vim.diagnostic.config({
-  virtual_text = false,
   float = {
     format = function(diagnostic) -- add diagnostic source to message
       if diagnostic.symbol or diagnostic.code then -- if possible, add diagnostic identifier ('no-param-reassign' in eslint, 'missing-function-docstring' in pylint)

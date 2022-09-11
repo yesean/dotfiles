@@ -53,12 +53,8 @@ require('packer').startup({
     use('williamboman/nvim-lsp-installer')
     use({ 'neovim/nvim-lspconfig', config = config('lsp') })
     use({ 'jose-elias-alvarez/null-ls.nvim', config = config('null-ls') })
-    use('jose-elias-alvarez/nvim-lsp-ts-utils')
+    use('jose-elias-alvarez/typescript.nvim')
     use('onsails/lspkind-nvim') -- lsp symbols
-    use({
-      'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
-      config = setup('lsp_lines'),
-    })
     require('packer').use({
       'weilbith/nvim-code-action-menu',
       cmd = 'CodeActionMenu',
