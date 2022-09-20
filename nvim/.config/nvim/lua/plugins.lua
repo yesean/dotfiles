@@ -142,12 +142,6 @@ require('packer').startup({
 
     ----- niceties -----
     use({
-      'goolord/alpha-nvim', -- startscreen
-      config = function()
-        require('alpha').setup(require('alpha.themes.theta').config)
-      end,
-    })
-    use({
       'akinsho/toggleterm.nvim',
       tag = 'v2.*',
       config = function()
@@ -160,7 +154,6 @@ require('packer').startup({
     use({ 'norcalli/nvim-colorizer.lua', config = setup('colorizer', true) }) -- color highlighter
     use('lukas-reineke/indent-blankline.nvim') -- indent columns
     use({ 'iamcco/markdown-preview.nvim', run = vim.fn['mkdp#util#install'] })
-    use({ 'numToStr/Navigator.nvim', config = config('navigator') }) -- integration with tmux panes
     use('famiu/bufdelete.nvim')
     use('chrisbra/csv.vim')
     use({
