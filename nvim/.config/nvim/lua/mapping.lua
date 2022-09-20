@@ -19,6 +19,7 @@ local M = {
   n = set_mode('n'),
   i = set_mode('i'),
   v = set_mode('v'),
+  x = set_mode('x'),
   s = set_mode('s'),
 }
 
@@ -69,6 +70,8 @@ M.v('<leader>p', '"+p')
 M.v('<leader>P', '"+P')
 M.n('<leader>p', '"+p')
 M.n('<leader>P', '"+P')
+
+M.x('p', '"_dP')
 
 -- keep center cursor
 M.n('n', 'nzz')
