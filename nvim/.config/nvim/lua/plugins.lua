@@ -55,7 +55,7 @@ require('packer').startup({
     use({ 'jose-elias-alvarez/null-ls.nvim', config = config('null-ls') })
     use('jose-elias-alvarez/typescript.nvim')
     use('onsails/lspkind-nvim') -- lsp symbols
-    require('packer').use({
+    use({
       'weilbith/nvim-code-action-menu',
       cmd = 'CodeActionMenu',
     })
@@ -162,7 +162,14 @@ require('packer').startup({
     use({ 'numToStr/Navigator.nvim', config = config('navigator') }) -- integration with tmux panes
     use('famiu/bufdelete.nvim')
     use('chrisbra/csv.vim')
-    use({ 'rmagatti/auto-session', config = setup('auto-session') })
+    use({
+      'rmagatti/auto-session',
+      config = function()
+        require('auto-session').setup()
+        vim.o.sessionoptions =
+        'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
+      end,
+    })
     use({ 'folke/which-key.nvim', config = setup('which-key') })
     use('skywind3000/asyncrun.vim')
     use('lambdalisue/suda.vim')

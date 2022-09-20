@@ -26,7 +26,7 @@ o.smartindent = true -- intelligently indents based on prev line
 o.swapfile = false -- creates new buffer without swap file
 o.undofile = true -- use permanent undo file
 o.termguicolors = true
-o.cmdheight = 0
+o.cmdheight = 1
 
 -- globals
 local g = vim.g
