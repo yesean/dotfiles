@@ -9,11 +9,7 @@ local function set_mode(mode)
   end
 end
 
-local function cmd(str)
-  return '<cmd>' .. str .. '<cr>'
-end
-
-local function add_jumplist(key)
+local function add_to_jumplist(key)
   return function()
     return vim.v.count > 3 and "m'" .. vim.v.count .. key or key
   end
@@ -24,8 +20,22 @@ local M = {
   i = set_mode('i'),
   v = set_mode('v'),
   s = set_mode('s'),
-  cmd = cmd,
 }
+
+function M.cmd(str)
+  return '<cmd>' .. str .. '<cr>'
+end
+
+function M.set_mappings(bufnr, mappings)
+  local opts = function(desc, expr)
+    expr = expr or false
+    return { buffer = bufnr, desc = desc, expr = expr }
+  end
+
+  for _, m in ipairs(mappings) do
+    M.n(m[1], m[2], opts(m[3], m[4]))
+  end
+end
 
 -- map leader to space
 M.n('<space>', '')
@@ -43,10 +53,10 @@ M.n('<leader>wr', function()
 end)
 
 -- pane switching
-M.n('<leader>h', cmd('wincmd h'))
-M.n('<leader>j', cmd('wincmd j'))
-M.n('<leader>k', cmd('wincmd k'))
-M.n('<leader>l', cmd('wincmd l'))
+M.n('<leader>h', M.cmd('wincmd h'))
+M.n('<leader>j', M.cmd('wincmd j'))
+M.n('<leader>k', M.cmd('wincmd k'))
+M.n('<leader>l', M.cmd('wincmd l'))
 
 -- copy to clipboard
 M.v('<leader>y', '"+y')
@@ -72,8 +82,8 @@ M.i('?', '?<c-g>u')
 M.i('[', '[<c-g>u')
 
 -- add relative moves to jumplist
-M.n('k', add_jumplist('k'), { expr = true })
-M.n('j', add_jumplist('j'), { expr = true })
+M.n('k', add_to_jumplist('k'), { expr = true })
+M.n('j', add_to_jumplist('j'), { expr = true })
 
 -- jupyter ascending
 M.n('<leader><cr>', '<Plug>JupyterExecute')

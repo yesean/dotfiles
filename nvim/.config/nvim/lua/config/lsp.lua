@@ -19,70 +19,54 @@ vim.diagnostic.config({
   },
 })
 
-local function add_default_maps(bfr)
-  local tel = require('telescope.builtin')
-  local lsp = vim.lsp.buf
-  local diag = vim.diagnostic
-  local opts = function(desc, expr)
-    expr = expr or false
-    return { buffer = bfr, desc = desc, expr = expr }
-  end
-
-  -- add lsp mappings
-  map.n('gD', lsp.declaration, opts('go to declaration'))
-  map.n('K', lsp.hover, opts('display hover information'))
-  map.n('<c-k>', lsp.signature_help, opts('display signature information'))
-  map.n('<leader>r', function()
-    return ':IncRename ' .. vim.fn.expand('<cword>')
-  end, opts('rename symbol', true))
-  map.n('<leader>f', lsp.formatting, opts('format buffer'))
-
-  -- add telescope mappings
-  map.n('gd', tel.lsp_definitions, opts('go to definition'))
-  map.n('gr', tel.lsp_references, opts('go to references'))
-  map.n('gt', tel.lsp_type_definitions, opts('go to type definition'))
-  map.n('gi', tel.lsp_implementations, opts('go to implementation'))
-  map.n('g0', tel.lsp_document_symbols, opts('show lsp document symbols'))
-  map.n('g-', tel.treesitter, opts('show treesitter queries'))
-  map.n('ga', map.cmd('CodeActionMenu'), opts('select code actions'))
-  map.n('gG', function()
-    tel.diagnostics({ bufnr = 0 })
-  end, opts('show buffer diagnostics'))
-
-  -- add diagnostic mappings
-  map.n('ge', diag.open_float, opts('show floating diagnostics'))
-  map.n('[d', diag.goto_prev, opts('go to previous diagnostic'))
-  map.n(']d', diag.goto_next, opts('go to next diagnostic'))
-end
-
--- turn off formatting from lsp servers
-local function format(bufnr)
-  vim.lsp.buf.format({
-    filter = function(client)
-      return client.name == 'null-ls'
+local tel = require('telescope.builtin')
+local lsp = vim.lsp.buf
+local diag = vim.diagnostic
+local default_mappings = {
+  -- lsp mappings
+  { 'gD', lsp.declaration, 'go to declaration' },
+  { 'K', lsp.hover, 'display hover information' },
+  { '<c-k>', lsp.signature_help, 'display signature information' },
+  {
+    '<leader>r',
+    function()
+      return ':IncRename ' .. vim.fn.expand('<cword>')
     end,
-    bufnr = bufnr,
-  })
-end
+    'rename symbol',
+    true,
+  },
+  { '<leader>f', lsp.formatting, 'format buffer' },
 
-local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
-local function turn_off_formatting(client, bufnr)
-  if client.supports_method('textDocument/formatting') then
-    vim.api.nvim_create_autocmd('BufWritePre', {
-      group = augroup,
-      buffer = bufnr,
-      callback = function()
-        format(bufnr)
-      end,
-    })
-  end
-end
+  -- telescope mappings
+  { 'gd', tel.lsp_definitions, 'go to definition' },
+  { 'gr', tel.lsp_references, 'go to references' },
+  { 'gt', tel.lsp_type_definitions, 'go to type definition' },
+  { 'gi', tel.lsp_implementations, 'go to implementation' },
+  { 'g0', tel.lsp_document_symbols, 'show lsp document symbols' },
+  { 'g-', tel.treesitter, 'show treesitter queries' },
+  { 'ga', map.cmd('CodeActionMenu'), 'select code actions' },
+  {
+    'gG',
+    function()
+      tel.diagnostics({ bufnr = 0 })
+    end,
+    'show buffer diagnostics',
+  },
+
+  -- diagnostic mappings
+  { 'ge', diag.open_float, 'show floating diagnostics' },
+  { '[d', diag.goto_prev, 'go to previous diagnostic' },
+  { ']d', diag.goto_next, 'go to next diagnostic' },
+}
 
 -- define keymaps when lsp client attaches
-local function on_attach_default(client, bufnr)
-  add_default_maps(bufnr)
-  turn_off_formatting(client, bufnr)
-  require('nvim-navic').attach(client, bufnr)
+local function get_on_attach(override_mappings)
+  override_mappings = override_mappings or {}
+  return function(client, bufnr)
+    map.set_mappings(bufnr, default_mappings)
+    map.set_mappings(bufnr, override_mappings)
+    require('nvim-navic').attach(client, bufnr)
+  end
 end
 
 -- add additional capabilities supported by nvim-cmp
@@ -98,7 +82,7 @@ capabilities.textDocument.foldingRange = {
 installer.setup()
 for _, server in ipairs(installer.get_installed_servers()) do
   local opts = {
-    on_attach = on_attach_default,
+    on_attach = get_on_attach(),
     capabilities = capabilities,
   }
 
@@ -137,6 +121,14 @@ for _, server in ipairs(installer.get_installed_servers()) do
   end
 
   if server.name == 'tsserver' then
+    local ts_mappings = {
+      {
+        'gd',
+        map.cmd('TypescriptGoToSourceDefinition'),
+        'go to source definition',
+      },
+    }
+    opts.on_attach = get_on_attach(ts_mappings)
     require('typescript').setup({ server = opts })
   else
     lspconfig[server.name].setup(opts)
