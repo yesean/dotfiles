@@ -10,6 +10,16 @@ end)
 
 require('bufferline').setup({
   options = {
+    numbers = 'buffer_id',
+    separator_style = 'slant',
+    show_close_icon = false,
+    hover = {
+      enabled = true,
+      reveal = { 'close' },
+    },
+    indicator = {
+      style = 'underline',
+    },
     offsets = {
       {
         filetype = 'neo-tree',

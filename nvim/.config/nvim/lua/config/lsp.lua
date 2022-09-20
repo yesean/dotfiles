@@ -40,7 +40,7 @@ local default_mappings = {
   -- telescope mappings
   { 'gd', tel.lsp_definitions, 'go to definition' },
   { 'gr', tel.lsp_references, 'go to references' },
-  { 'gt', tel.lsp_type_definitions, 'go to type definition' },
+  { 'gy', tel.lsp_type_definitions, 'go to type definition' },
   { 'gi', tel.lsp_implementations, 'go to implementation' },
   { 'g0', tel.lsp_document_symbols, 'show lsp document symbols' },
   { 'g-', tel.treesitter, 'show treesitter queries' },

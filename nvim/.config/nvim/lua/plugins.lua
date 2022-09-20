@@ -97,6 +97,7 @@ require('packer').startup({
     use('rafamadriz/friendly-snippets')
 
     ----- visuals -----
+    use({ 'tiagovla/scope.nvim', config = setup('scope') })
     use({ 'akinsho/bufferline.nvim', config = config('bufferline') }) -- tabs
     use({
       'nvim-neo-tree/neo-tree.nvim', -- filetree

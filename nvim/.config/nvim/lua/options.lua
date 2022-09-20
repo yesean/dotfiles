@@ -27,6 +27,7 @@ o.swapfile = false -- creates new buffer without swap file
 o.undofile = true -- use permanent undo file
 o.termguicolors = true
 o.cmdheight = 1
+o.mousemoveevent = true
 
 -- globals
 local g = vim.g
