@@ -165,7 +165,9 @@ require('packer').startup({
     use({
       'rmagatti/auto-session',
       config = function()
-        require('auto-session').setup()
+        require('auto-session').setup({
+          pre_save_cmds = { 'Neotree close' },
+        })
         vim.o.sessionoptions =
         'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
       end,
