@@ -75,6 +75,7 @@ focus_follows_mouse no
 
 # spotlight equivalent
 exec_always --no-startup-id ~/scripts/launch-albert.sh
+bindsym $mod+Space exec --no-startup-id albert show; [class="albert"] move absolute position center
 
 # change focus
 bindsym $mod+h focus left
@@ -129,17 +130,15 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+x move scratchpad
 
 # toggle items in scratchpad
-bindsym $mod+mod1+m [floating class="^(?!Caprine)"] move scratchpad; [class="Caprine"] scratchpad show; move absolute position center
-bindsym $mod+mod1+c [floating class="^(?!Morgen)"] move scratchpad; [class="Morgen"] scratchpad show; move absolute position center
-bindsym $mod+mod1+t [floating class="^(?!Todoist)"] move scratchpad; [class="Todoist"] scratchpad show; move absolute position center
-bindsym $mod+mod1+s [floating class="^(?!Spotify)"] move scratchpad; [class="Spotify"] scratchpad show; move absolute position center
+bindsym $mod+mod1+m [floating class="^(?!Caprine)"] move scratchpad; [class="Caprine"] scratchpad show, resize set 2000 1125, move absolute position center
+bindsym $mod+mod1+c [floating class="^(?!Morgen)"] move scratchpad; [class="Morgen"] scratchpad show, resize set 2000 1125, move absolute position center
+bindsym $mod+mod1+t [floating class="^(?!Todoist)"] move scratchpad; [class="Todoist"] scratchpad show, resize set 2000 1125, move absolute position center
+bindsym $mod+mod1+s [floating class="^(?!Spotify)"] move scratchpad; [class="Spotify"] scratchpad show, resize set 2000 1125, move absolute position center
 
 for_window [class="Caprine"] move scratchpad
 for_window [class="Morgen"] move scratchpad
 for_window [class="Todoist"] move scratchpad
 for_window [class="Spotify"] move scratchpad
-
-floating_minimum_size 2000 x 1125
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
