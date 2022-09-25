@@ -129,15 +129,17 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+x move scratchpad
 
 # toggle items in scratchpad
-bindsym $mod+Shift+m [class="Caprine"] scratchpad show; move absolute position center
-bindsym $mod+Shift+comma [class="Morgen"] scratchpad show; move absolute position center
-bindsym $mod+Shift+period [class="Todoist"] scratchpad show; move absolute position center
-bindsym $mod+Shift+slash [class="Spotify"] scratchpad show; move absolute position center
+bindsym $mod+mod1+m [floating class="^(?!Caprine)"] move scratchpad; [class="Caprine"] scratchpad show; move absolute position center
+bindsym $mod+mod1+c [floating class="^(?!Morgen)"] move scratchpad; [class="Morgen"] scratchpad show; move absolute position center
+bindsym $mod+mod1+t [floating class="^(?!Todoist)"] move scratchpad; [class="Todoist"] scratchpad show; move absolute position center
+bindsym $mod+mod1+s [floating class="^(?!Spotify)"] move scratchpad; [class="Spotify"] scratchpad show; move absolute position center
 
 for_window [class="Caprine"] move scratchpad
 for_window [class="Morgen"] move scratchpad
 for_window [class="Todoist"] move scratchpad
 for_window [class="Spotify"] move scratchpad
+
+floating_minimum_size 2000 x 1125
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -162,11 +164,6 @@ bindsym $mod+Shift+7 move container to workspace number $ws7; workspace number $
 bindsym $mod+Shift+8 move container to workspace number $ws8; workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9; workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10; workspace number $ws10
-
-# make certain windows floating by default
-for_window [class="zoom" title="Zoom - Licensed Account"] floating enable, move absolute position center
-for_window [class="zoom" title="Settings"] floating enable, move absolute position center
-floating_minimum_size 500 x 500
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
