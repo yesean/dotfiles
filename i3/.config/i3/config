@@ -130,15 +130,21 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+x move scratchpad
 
 # toggle items in scratchpad
-bindsym $mod+mod1+m [floating class="^(?!Caprine)"] move scratchpad; [class="Caprine"] scratchpad show, resize set 2000 1125, move absolute position center
-bindsym $mod+mod1+c [floating class="^(?!Morgen)"] move scratchpad; [class="Morgen"] scratchpad show, resize set 2000 1125, move absolute position center
-bindsym $mod+mod1+t [floating class="^(?!Todoist)"] move scratchpad; [class="Todoist"] scratchpad show, resize set 2000 1125, move absolute position center
-bindsym $mod+mod1+s [floating class="^(?!Spotify)"] move scratchpad; [class="Spotify"] scratchpad show, resize set 2000 1125, move absolute position center
+bindsym $mod+mod1+n [floating class="^(?!Morgen)"] move scratchpad; [class="Morgen"] scratchpad show, resize set 2000 1125, move absolute position center
+bindsym $mod+mod1+m [floating class="^(?!Todoist)"] move scratchpad; [class="Todoist"] scratchpad show, resize set 2000 1125, move absolute position center
+bindsym $mod+mod1+j [floating title="^(?!Inbox( \(\d*\))? - seanye24@gmail.com - Gmail - Brave)"] move scratchpad; [title="seanye24@gmail.com - Gmail - Brave"] scratchpad show, resize set 2000 1125, move absolute position center
+bindsym $mod+mod1+k [floating title="^(?!Inbox( \(\d*\))? - sye@ucsd.edu - UC San Diego Mail - Brave).*"] move scratchpad; [title="sye@ucsd.edu - UC San Diego Mail - Brave"] scratchpad show, resize set 2000 1125, move absolute position center
+bindsym $mod+mod1+u [floating class="^(?!Caprine)"] move scratchpad; [class="Caprine"] scratchpad show, resize set 2000 1125, move absolute position center
+bindsym $mod+mod1+i [floating class="^(?!discord)"] move scratchpad; [class="discord"] scratchpad show, resize set 2000 1125, move absolute position center
+bindsym $mod+mod1+o [floating class="^(?!Spotify)"] move scratchpad; [class="Spotify"] scratchpad show, resize set 2000 1125, move absolute position center
 
 for_window [class="Caprine"] move scratchpad
 for_window [class="Morgen"] move scratchpad
 for_window [class="Todoist"] move scratchpad
 for_window [class="Spotify"] move scratchpad
+for_window [class="discord"] move scratchpad
+for_window [class=".*seanye24@gmail.com - Gmail - Brave.*"] move scratchpad
+for_window [class=".*sye@ucsd.edu - UC San Diego Mail - Brave.*"] move scratchpad
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
