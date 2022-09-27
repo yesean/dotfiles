@@ -137,14 +137,16 @@ bindsym $mod+mod1+k [floating title="^(?!Inbox( \(\d*\))? - sye@ucsd.edu - UC Sa
 bindsym $mod+mod1+u [floating class="^(?!Caprine)"] move scratchpad; [class="Caprine"] scratchpad show, resize set 2000 1125, move absolute position center
 bindsym $mod+mod1+i [floating class="^(?!discord)"] move scratchpad; [class="discord"] scratchpad show, resize set 2000 1125, move absolute position center
 bindsym $mod+mod1+o [floating class="^(?!Spotify)"] move scratchpad; [class="Spotify"] scratchpad show, resize set 2000 1125, move absolute position center
+bindsym $mod+mod1+p [floating class="^(?!dots)"] move scratchpad; [class="dots"] scratchpad show, resize set 2000 1125, move absolute position center
 
-for_window [class="Caprine"] move scratchpad
 for_window [class="Morgen"] move scratchpad
 for_window [class="Todoist"] move scratchpad
-for_window [class="Spotify"] move scratchpad
-for_window [class="discord"] move scratchpad
 for_window [class=".*seanye24@gmail.com - Gmail - Brave.*"] move scratchpad
 for_window [class=".*sye@ucsd.edu - UC San Diego Mail - Brave.*"] move scratchpad
+for_window [class="Caprine"] move scratchpad
+for_window [class="discord"] move scratchpad
+for_window [class="Spotify"] move scratchpad
+for_window [class="dots"] move scratchpad
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
