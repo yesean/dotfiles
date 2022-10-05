@@ -1,11 +1,12 @@
 local null_ls = require('null-ls')
+local command_resolver = require('null-ls.helpers.command_resolver')
 
 local fmt = null_ls.builtins.formatting
 local diag = null_ls.builtins.diagnostics
 local sources = {
   diag.luacheck.with({ extra_args = { '--globals', 'vim', 'use' } }), -- lua
   fmt.stylua,
-  fmt.prettier,
+  fmt.prettierd,
   fmt.rustfmt,
   fmt.yapf,
   fmt.isort,
@@ -40,11 +41,16 @@ null_ls.setup({
       vim.api.nvim_clear_autocmds({ event = 'BufWritePre', buffer = bufnr })
       vim.api.nvim_create_autocmd('BufWritePre', {
         buffer = bufnr,
-        desc = 'Format on save with null-ls (' .. vim.api.nvim_buf_get_name(
-          bufnr
-        ) .. ')',
+        desc = 'Format on save with null-ls: '
+          .. vim.api.nvim_buf_get_name(bufnr),
         callback = function()
-          vim.lsp.buf.format({ bufnr = bufnr })
+          vim.lsp.buf.format({
+            bufnr = bufnr,
+            filter = function(formatter)
+              return formatter.name == 'null-ls'
+            end,
+            timeout_ms = 4000,
+          })
         end,
       })
     end
