@@ -20,6 +20,19 @@ require('packer').startup({
     use('nvim-lua/plenary.nvim')
     use('MunifTanjim/nui.nvim')
     use({
+      'stevearc/dressing.nvim',
+      config = function()
+        require('dressing').setup({
+          input = {
+            insert_only = false,
+          },
+          select = {
+            backend = { 'nui' },
+          },
+        })
+      end,
+    })
+    use({
       'kyazdani42/nvim-web-devicons',
       config = function()
         require('nvim-web-devicons').setup({ default = true })
@@ -61,14 +74,6 @@ require('packer').startup({
     })
     use({ 'j-hui/fidget.nvim', config = setup('fidget') })
     use({
-      'smjonas/inc-rename.nvim',
-      config = function()
-        require('inc_rename').setup({
-          input_buffer_type = 'dressing',
-        })
-      end,
-    })
-    use({
       'kosayoda/nvim-lightbulb',
       requires = 'antoinemadec/FixCursorHold.nvim',
       config = function()
@@ -98,7 +103,11 @@ require('packer').startup({
 
     ----- visuals -----
     use({ 'tiagovla/scope.nvim', config = setup('scope') })
-    use({ 'akinsho/bufferline.nvim', config = config('bufferline'), after = 'catppuccin' }) -- tabs
+    use({
+      'akinsho/bufferline.nvim',
+      config = config('bufferline'),
+      after = 'catppuccin',
+    }) -- tabs
     use({
       'nvim-neo-tree/neo-tree.nvim', -- filetree
       branch = 'v2.x',
@@ -109,7 +118,6 @@ require('packer').startup({
       config = config('lualine'),
       after = 'catppuccin',
     }) -- statusline
-    use({ 'stevearc/dressing.nvim' })
 
     ----- git -----
     use({ 'TimUntersberger/neogit', config = setup('neogit') })
