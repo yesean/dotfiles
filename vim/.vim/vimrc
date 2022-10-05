@@ -71,8 +71,7 @@ let g:plug_url_format = 'git@github.com:%s.git'
 
 " load plugins
 call plug#begin('~/.vim/plugged')
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sainnhe/gruvbox-material'
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 call plug#end()
 
-colorscheme gruvbox-material                          " set colorscheme
+colorscheme catppuccin_macchiato
