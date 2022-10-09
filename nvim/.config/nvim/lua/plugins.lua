@@ -147,6 +147,11 @@ require('packer').startup({
         require('ufo').setup()
       end,
     })
+    use({
+      'folke/trouble.nvim',
+      requires = 'kyazdani42/nvim-web-devicons',
+      config = setup('trouble'),
+    })
 
     ----- niceties -----
     use({
@@ -171,7 +176,7 @@ require('packer').startup({
           pre_save_cmds = { 'Neotree close' },
         })
         vim.o.sessionoptions =
-        'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
+          'blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal'
       end,
     })
     use({ 'folke/which-key.nvim', config = setup('which-key') })

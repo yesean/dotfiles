@@ -1,5 +1,5 @@
 local null_ls = require('null-ls')
-local command_resolver = require('null-ls.helpers.command_resolver')
+local map = require('mapping')
 
 local fmt = null_ls.builtins.formatting
 local diag = null_ls.builtins.diagnostics
@@ -34,25 +34,38 @@ local sources = {
   }),
 }
 
+local group = vim.api.nvim_create_augroup('LspFormatting', {})
+local function format(buffer)
+  vim.lsp.buf.format({
+    bufnr = buffer,
+    filter = function(formatter)
+      return formatter.name == 'null-ls'
+    end,
+    timeout_ms = 4000,
+  })
+end
+
 null_ls.setup({
   sources = sources,
-  on_attach = function(client, bufnr)
+  on_attach = function(client, buffer)
     if client.supports_method('textDocument/formatting') then
-      vim.api.nvim_clear_autocmds({ event = 'BufWritePre', buffer = bufnr })
+      vim.api.nvim_clear_autocmds({
+        event = 'BufWritePre',
+        buffer = buffer,
+        group = group,
+      })
       vim.api.nvim_create_autocmd('BufWritePre', {
-        buffer = bufnr,
+        buffer = buffer,
         desc = 'Format on save with null-ls: '
-          .. vim.api.nvim_buf_get_name(bufnr),
+          .. vim.api.nvim_buf_get_name(buffer),
+        group = group,
         callback = function()
-          vim.lsp.buf.format({
-            bufnr = bufnr,
-            filter = function(formatter)
-              return formatter.name == 'null-ls'
-            end,
-            timeout_ms = 4000,
-          })
+          format(buffer)
         end,
       })
+      map.n('<leader>f', function()
+        format(buffer)
+      end, { desc = 'format document' })
     end
   end,
 })
