@@ -27,15 +27,7 @@ local default_mappings = {
   { 'gD', lsp.declaration, 'go to declaration' },
   { 'K', lsp.hover, 'display hover information' },
   { '<c-k>', lsp.signature_help, 'display signature information' },
-  {
-    '<leader>r',
-    function()
-      return ':IncRename ' .. vim.fn.expand('<cword>')
-    end,
-    'rename symbol',
-    true,
-  },
-  { '<leader>f', lsp.formatting, 'format buffer' },
+  { '<leader>r', lsp.rename, 'rename symbol' },
 
   -- telescope mappings
   { 'gd', tel.lsp_definitions, 'go to definition' },
