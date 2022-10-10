@@ -37,8 +37,8 @@ nvim --headless --noplugin -c 'autocmd User PackerComplete quitall' -c 'PackerSy
 end updating neovim plugins
 
 # update treesitter
-begin updating treesitter plugins
+begin updating treesitter parsers
 nvim --headless -c 'TSInstallSync all' -c 'q'
 nvim --headless -c 'TSUpdateSync' -c 'q'
 echo
-end updating treesitter plugins
+end updating treesitter parsers
