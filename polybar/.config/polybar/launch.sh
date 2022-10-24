@@ -1,8 +1,8 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # files and directories
 DIR="$HOME/.config/polybar"
-SFILE="$DIR/system"
+SFILE="$DIR/system.ini"
 
 # get system variable values for various modules
 get_values() {
@@ -23,7 +23,7 @@ launch_bar() {
   set_values
 
   if [ ! "$(pidof polybar)" ]; then
-    polybar -q main -c "$DIR"/config &
+    polybar -q main -c "$DIR"/config.ini &
   else
     polybar-msg cmd restart
   fi
