@@ -15,7 +15,7 @@ local sources = {
   fmt.golines,
   fmt.clang_format,
   fmt.shfmt.with({ extra_args = { '-i', '2', '-ci' } }),
-  fmt.sqlformat,
+  fmt.sql_formatter,
   fmt.nginx_beautifier,
   fmt.trim_newlines,
   fmt.trim_whitespace,
