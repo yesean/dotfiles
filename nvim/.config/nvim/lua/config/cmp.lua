@@ -47,13 +47,13 @@ cmp.setup({
     }),
   },
   sources = {
-    { name = 'nvim_lsp', priority = 6 },
-    { name = 'luasnip', priority = 5 },
-    { name = 'nvim_lua', priority = 4 },
-    { name = 'emoji', priority = 3 },
-    { name = 'path', priority = 2 },
-    { name = 'buffer', priority = 1 },
-    { name = 'nvim_lsp_signature_help', priority = 0 },
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+    { name = 'nvim_lua' },
+    { name = 'emoji' },
+    { name = 'path' },
+    { name = 'buffer' },
+    { name = 'nvim_lsp_signature_help' },
   },
   snippet = {
     expand = function(args)
