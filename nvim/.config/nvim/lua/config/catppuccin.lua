@@ -22,4 +22,4 @@ require('catppuccin').setup({
     enabled = true,
   },
 })
-vim.cmd('colorscheme catppuccin')
+vim.cmd.colorscheme('catppuccin')
