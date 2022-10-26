@@ -1,27 +1,34 @@
 local map = require('mapping')
-local installer = require('nvim-lsp-installer')
 local lspconfig = require('lspconfig')
+local masonlsp = require('mason-lspconfig')
 
-vim.diagnostic.config({
-  float = {
-    format = function(diagnostic) -- add diagnostic source to message
-      if diagnostic.symbol or diagnostic.code then -- if possible, add diagnostic identifier ('no-param-reassign' in eslint, 'missing-function-docstring' in pylint)
-        return string.format(
-          '%s [%s, %s]',
-          diagnostic.message,
-          diagnostic.source,
-          diagnostic.symbol or diagnostic.code
-        )
-      else
-        return string.format('%s [%s]', diagnostic.message, diagnostic.source)
-      end
-    end,
+masonlsp.setup({
+  ensure_installed = {
+    'bashls',
+    'clangd',
+    'cssls',
+    'dockerls',
+    'eslint',
+    'gopls',
+    'graphql',
+    'html',
+    'jdtls',
+    'jsonls',
+    'marksman',
+    'pyright',
+    'rust_analyzer',
+    'sqls',
+    'stylelint_lsp',
+    'sumneko_lua',
+    'tailwindcss',
+    'texlab',
+    'tsserver',
+    'yamlls',
   },
 })
 
 local tel = require('telescope.builtin')
 local lsp = vim.lsp.buf
-local diag = vim.diagnostic
 local default_mappings = {
   -- lsp mappings
   { 'gD', lsp.declaration, 'go to declaration' },
@@ -37,26 +44,14 @@ local default_mappings = {
   { 'g0', tel.lsp_document_symbols, 'show lsp document symbols' },
   { 'g-', tel.treesitter, 'show treesitter queries' },
   { 'ga', map.cmd('CodeActionMenu'), 'select code actions' },
-  {
-    'gG',
-    function()
-      tel.diagnostics({ bufnr = 0 })
-    end,
-    'show buffer diagnostics',
-  },
-
-  -- diagnostic mappings
-  { 'ge', diag.open_float, 'show floating diagnostics' },
-  { '[d', diag.goto_prev, 'go to previous diagnostic' },
-  { ']d', diag.goto_next, 'go to next diagnostic' },
 }
 
 -- define keymaps when lsp client attaches
 local function get_on_attach(override_mappings)
   override_mappings = override_mappings or {}
   return function(client, bufnr)
-    map.set_mappings(bufnr, default_mappings)
-    map.set_mappings(bufnr, override_mappings)
+    map.set(default_mappings, { buffer = bufnr })
+    map.set(override_mappings, { buffer = bufnr })
     require('nvim-navic').attach(client, bufnr)
   end
 end
@@ -69,8 +64,7 @@ capabilities.textDocument.foldingRange = {
 }
 
 -- setup language servers
-installer.setup()
-for _, server in ipairs(installer.get_installed_servers()) do
+for _, server in ipairs(masonlsp.get_installed_servers()) do
   local opts = {
     on_attach = get_on_attach(),
     capabilities = capabilities,
@@ -80,17 +74,25 @@ for _, server in ipairs(installer.get_installed_servers()) do
   -- language specific options --
   -------------------------------
 
-  if server.name == 'tsserver' then
+  if server == 'tsserver' then
     -- allow tsserver to use curr dir as project root
     opts.root_dir = function(fname)
       return require('lspconfig.server_configurations.tsserver').default_config.root_dir(
         fname
       ) or vim.fn.getcwd()
     end
-  elseif server.name == 'stylelint_lsp' then
+    local ts_mappings = {
+      {
+        'gd',
+        map.cmd('TypescriptGoToSourceDefinition'),
+        'go to source definition',
+      },
+    }
+    opts.on_attach = get_on_attach(ts_mappings)
+  elseif server == 'stylelint_lsp' then
     -- only start stylelint in css-related files, exclude react files
     opts.filetypes = { 'css', 'less', 'scss' }
-  elseif server.name == 'sumneko_lua' then
+  elseif server == 'sumneko_lua' then
     -- inject globals into lua for neovim usage
     opts.settings = {
       Lua = {
@@ -102,7 +104,7 @@ for _, server in ipairs(installer.get_installed_servers()) do
         },
       },
     }
-  elseif server.name == 'clangd' then
+  elseif server == 'clangd' then
     opts.capabilities.offsetEncoding = { 'utf-16' }
     opts.cmd = {
       'clangd',
@@ -110,17 +112,9 @@ for _, server in ipairs(installer.get_installed_servers()) do
     }
   end
 
-  if server.name == 'tsserver' then
-    local ts_mappings = {
-      {
-        'gd',
-        map.cmd('TypescriptGoToSourceDefinition'),
-        'go to source definition',
-      },
-    }
-    opts.on_attach = get_on_attach(ts_mappings)
+  if server == 'tsserver' then
     require('typescript').setup({ server = opts })
   else
-    lspconfig[server.name].setup(opts)
+    lspconfig[server].setup(opts)
   end
 end

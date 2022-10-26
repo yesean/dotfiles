@@ -10,6 +10,16 @@ end
 
 local is_nvim = vim.g.vscode == nil
 
+local group = vim.api.nvim_create_augroup('packer_user_config', {})
+vim.api.nvim_create_autocmd('BufWritePost', {
+  group = group,
+  pattern = 'plugins.lua',
+  callback = function()
+    vim.cmd.source('<afile>')
+    vim.cmd.PackerCompile()
+  end,
+})
+
 require('packer').startup({
   function()
     ----- package manager -----
@@ -63,8 +73,15 @@ require('packer').startup({
     use({ 'andymass/vim-matchup', config = config('vim-matchup') })
 
     ----- lsp -----
-    use('williamboman/nvim-lsp-installer')
-    use({ 'neovim/nvim-lspconfig', config = config('lsp') })
+    use({
+      { 'williamboman/mason.nvim', config = setup('mason') },
+      { 'williamboman/mason-lspconfig.nvim', after = 'mason.nvim' },
+      {
+        'neovim/nvim-lspconfig',
+        after = 'mason-lspconfig.nvim',
+        config = config('lsp'),
+      },
+    })
     use({ 'jose-elias-alvarez/null-ls.nvim', config = config('null-ls') })
     use('jose-elias-alvarez/typescript.nvim')
     use('onsails/lspkind-nvim') -- lsp symbols
