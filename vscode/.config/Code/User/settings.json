@@ -1,6 +1,5 @@
 {
   "debug.onTaskErrors": "abort",
-  "C_Cpp.updateChannel": "Insiders",
   "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 2 }",
   "colorize.languages": [
     "css",
@@ -43,19 +42,10 @@
   "[java]": {
     "editor.defaultFormatter": "xaver.clang-format"
   },
-  "[latex]": {
-    "editor.formatOnPaste": false,
-    "editor.suggestSelection": "recentlyUsedByPrefix",
-    "editor.defaultFormatter": "James-Yu.latex-workshop",
-    "editor.formatOnSave": true
-  },
-  "[systemverilog]": {
-    "editor.defaultFormatter": "ericsonj.verilogformat"
-  },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.detectIndentation": false,
   "editor.fontSize": 12,
-  "editor.fontFamily": "FiraCode Nerd Font",
+  "editor.fontFamily": "JetBrains Mono",
   "editor.formatOnSave": true,
   "editor.lineNumbers": "relative",
   "editor.parameterHints.enabled": false,
@@ -75,12 +65,13 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "latex-workshop.view.pdf.viewer": "tab",
   "terminal.integrated.defaultProfile.osx": "/bin/zsh",
-  "terminal.integrated.fontFamily": "FiraMono Nerd Font Mono",
+  "terminal.integrated.fontFamily": "JetBrains Mono",
+  "terminal.integrated.fontSize": 11,
   "typescript.preferences.importModuleSpecifier": "relative",
   "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-  "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
-  "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.vim",
-  "vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim/init.vim",
+  "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim",
+  "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
+  "vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim/init.lua",
   "vim.enableNeovim": true,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "workbench.editor.enablePreviewFromQuickOpen": true,
@@ -90,8 +81,9 @@
   "liveshare.authenticationProvider": "GitHub",
   "workbench.editor.untitled.hint": "hidden",
   "window.zoomLevel": 0.75,
-  "workbench.colorTheme": "Catppuccin",
+  "workbench.colorTheme": "Catppuccin Macchiato",
   "[python]": {
     "editor.defaultFormatter": "ms-python.python"
-  }
+  },
+  "editor.fontLigatures": true
 }
