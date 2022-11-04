@@ -249,7 +249,7 @@ bindsym $mod+Shift+BackSpace exec --no-startup-id dunstctl history-pop
 exec --no-startup-id xset s off && xset s noblank
 
 # sleep after idle for 60 minutes
-exec --no-startup-id xidlehook --detect-sleep --not-when-audio --not-when-fullscreen --timer 3600 'systemctl suspend' '' &
+exec --no-startup-id xidlehook --detect-sleep --not-when-audio --not-when-fullscreen --timer 1800 'systemctl suspend' '' &
 exec --no-startup-id xidlehook --detect-sleep --timer 120 '/home/sean/scripts/lock.sh' '' &
 bindsym $mod+mod1+l exec --no-startup-id ~/scripts/lock.sh
 

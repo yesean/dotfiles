@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
-i3lock -k -i ~/pictures/wallpapers/glaciers.jpg \
+i3lock -k \
+  --image ~/pictures/wallpapers/glaciers-background.png \
   --time-str="%-I:%M %p" \
   --date-str "%A, %B %d %G" \
   --time-font="SF Pro Display" --time-size=32 \
