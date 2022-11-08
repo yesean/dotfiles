@@ -71,6 +71,7 @@ require('packer').startup({
       end,
     })
     use({ 'andymass/vim-matchup', config = config('vim-matchup') })
+    use('jxnblk/vim-mdx-js')
 
     ----- lsp -----
     use({
