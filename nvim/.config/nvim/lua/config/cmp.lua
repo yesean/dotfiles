@@ -47,7 +47,7 @@ cmp.setup({
     }),
   },
   sources = {
-    { name = 'nvim_lsp' },
+    { name = 'nvim_lsp', priority = 30 },
     { name = 'luasnip' },
     { name = 'nvim_lua' },
     { name = 'emoji' },
