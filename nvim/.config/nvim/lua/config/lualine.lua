@@ -10,6 +10,7 @@ require('lualine').setup({
       {
         'filename',
         symbols = { modified = ' [modified]', readonly = ' [readonly]' },
+        path = 1,
       },
       {
         'diagnostics',
