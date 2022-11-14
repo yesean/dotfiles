@@ -10,7 +10,7 @@ PLAYER="spotify"
 # Format of the information displayed
 # Eg. {{ artist }} - {{ album }} - {{ title }}
 # See more attributes here: https://github.com/altdesktop/playerctl/#printing-properties-and-metadata
-FORMAT="{{ title }} - {{ artist }}"
+FORMAT="{{ title }} • {{ artist }}"
 
 PLAYERCTL_STATUS=$(playerctl --player="$PLAYER" status 2>/dev/null)
 EXIT_CODE=$?
