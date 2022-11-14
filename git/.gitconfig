@@ -20,9 +20,6 @@
 [init]
   defaultBranch = main
 
-[pull]
-  ff = only
-
 [filter "lfs"]
   required = true
   clean = git-lfs clean -- %f
