@@ -109,7 +109,6 @@ alias psm='ps -o rss,vsize,command | head -1; ps -o rss,vsize,command | grep -v 
 alias llg='ll | grep -i'
 alias R='R --quiet --no-save'
 alias dots='cd ~/.dotfiles/'
-alias proj='cd ~/projects/'
 alias ucsd='cd ~/gd-ucsd/year\ 3/fall/'
 alias ta='tmux attach -t'
 alias sc='sc-im'
@@ -125,6 +124,10 @@ gpo() {
 
 mecl() {
   git clone git@github.com:yesean/$1 $2
+}
+
+p() {
+  cd ~/projects/$1
 }
 
 # direnv
