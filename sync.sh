@@ -2,15 +2,12 @@
 
 check() {
   if ! command -v "$1" &>/dev/null; then
-    echo "\`${1}\` must be installed. exiting."
+    echo "\`${1}\` must be installed, exiting."
     exit 1
   fi
 }
 begin() { echo "Begin $*..."; }
 end() { echo "Done $*"; }
-
-check stow
-check nvim
 
 [[ $(uname) = 'Darwin' ]] && is_macos=true || is_macos=false
 [[ $(uname) = 'Linux' ]] && is_linux=true || is_linux=false
@@ -25,11 +22,15 @@ else
   exit 1
 fi
 
+check stow
+
 begin stowing dotfiles
 for program in "${programs[@]}"; do
   stow "$program"
 done
 end stowing dotfiles
+
+check nvim
 
 # clean and update packer
 begin updating neovim plugins
