@@ -62,7 +62,7 @@ require('packer').startup({
       config = config('catppuccin'),
       cond = is_nvim,
     })
-    use('p00f/nvim-ts-rainbow')
+    use({ 'p00f/nvim-ts-rainbow', after = 'nvim-treesitter' })
     use({
       'SmiteshP/nvim-navic',
       config = function()
@@ -73,13 +73,25 @@ require('packer').startup({
     use({ 'andymass/vim-matchup', config = config('vim-matchup') })
     use('jxnblk/vim-mdx-js')
 
+    ----- completion -----
+    use({ 'hrsh7th/nvim-cmp', config = config('cmp') }) -- completion engine
+    use({ 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' }) -- completion sources
+    use({ 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' })
+    use({ 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' })
+    use({ 'hrsh7th/cmp-path', after = 'nvim-cmp' })
+    use({ 'hrsh7th/cmp-buffer', after = 'nvim-cmp' })
+    use({ 'hrsh7th/cmp-emoji', after = 'nvim-cmp' })
+    use({ 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' })
+    use({ 'hrsh7th/cmp-nvim-lsp-document-symbol', after = 'nvim-cmp' })
+    use({ 'hrsh7th/cmp-nvim-lsp-signature-help', after = 'nvim-cmp' })
+
     ----- lsp -----
     use({
       { 'williamboman/mason.nvim', config = setup('mason') },
       { 'williamboman/mason-lspconfig.nvim', after = 'mason.nvim' },
       {
         'neovim/nvim-lspconfig',
-        after = 'mason-lspconfig.nvim',
+        after = { 'mason-lspconfig.nvim', 'cmp-nvim-lsp' },
         config = config('lsp'),
       },
     })
@@ -98,18 +110,6 @@ require('packer').startup({
         require('nvim-lightbulb').setup({ autocmd = { enabled = true } })
       end,
     })
-
-    ----- autocomplete -----
-    use({ 'hrsh7th/nvim-cmp', config = config('cmp') }) -- completion engine
-    use('hrsh7th/cmp-nvim-lsp') -- completion sources
-    use('saadparwaiz1/cmp_luasnip')
-    use('hrsh7th/cmp-nvim-lua')
-    use('hrsh7th/cmp-path')
-    use('hrsh7th/cmp-buffer')
-    use('hrsh7th/cmp-emoji')
-    use('hrsh7th/cmp-cmdline')
-    use('hrsh7th/cmp-nvim-lsp-document-symbol')
-    use('hrsh7th/cmp-nvim-lsp-signature-help')
 
     ----- file/grep finder + general purpose picker -----
     use({ 'nvim-telescope/telescope.nvim', config = config('telescope') })
@@ -148,7 +148,11 @@ require('packer').startup({
     use({ 'numToStr/Comment.nvim', config = config('comment') })
     use('JoosepAlviste/nvim-ts-context-commentstring')
     use({ 'windwp/nvim-autopairs', config = setup('nvim-autopairs') })
-    use({ 'windwp/nvim-ts-autotag', config = setup('nvim-ts-autotag') })
+    use({
+      'windwp/nvim-ts-autotag',
+      after = 'nvim-treesitter',
+      config = setup('nvim-ts-autotag'),
+    })
     use({
       'kylechui/nvim-surround',
       config = setup('nvim-surround'),
