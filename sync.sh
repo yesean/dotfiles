@@ -1,45 +1,37 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
+#
+# This script symlinks my dotfiles to their proper system locations. `stow` is
+# used to create the symlinks.
+#
 
 check() {
-  if ! command -v "$1" &>/dev/null; then
-    echo "\`${1}\` must be installed, exiting."
+  if ! command -v "$1" >/dev/null 2>&1; then
+    echo "\`${1}\` must be installed."
     exit 1
   fi
 }
-begin() { echo "Begin $*..."; }
-end() { echo "Done $*"; }
 
-[[ $(uname) = 'Darwin' ]] && is_macos=true || is_macos=false
-[[ $(uname) = 'Linux' ]] && is_linux=true || is_linux=false
-if [[ "$is_linux" == "true" ]]; then
-  echo 'Linux detected!'
-  programs=(alacritty dunst git i3 kitty nvim picom polybar prettier ranger scripts stylua tmux vim zathura zsh)
-elif [[ "$is_macos" == "true" ]]; then
-  echo 'macOS detected!'
-  programs=(alacritty git kitty nvim prettier skhd stylua tmux vim vscode yabai zsh)
+end() { printf "Finished\n\n"; }
+
+[ "$DOTFILES_DIR" = "" ] && dots_dir="$HOME/.dotfiles" || dots_dir="$DOTFILES_DIR"
+[ "$(uname)" = 'Darwin' ] && is_macos=true || is_macos=false
+[ "$(uname)" = 'Linux' ] && is_linux=true || is_linux=false
+
+if [ "$is_linux" = "true" ]; then
+  set -- alacritty dunst git i3 kitty nvim picom polybar prettier ranger scripts stylua tmux vim zathura zsh
+elif [ "$is_macos" = "true" ]; then
+  set -- alacritty git kitty nvim prettier skhd stylua tmux vim vscode yabai zsh
 else
-  echo "Unknown machine detected."
+  echo "This script only works on Linux or macOS."
   exit 1
 fi
 
 check stow
 
-begin stowing dotfiles
-for program in "${programs[@]}"; do
+cd "$dots_dir" || exit
+echo "Creating symlinks..."
+for program in "$@"; do
+  echo "Symlinking $program"
   stow "$program"
 done
-end stowing dotfiles
-
-check nvim
-
-# clean and update packer
-begin updating neovim plugins
-nvim --headless --noplugin -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-end updating neovim plugins
-
-# update treesitter
-begin updating treesitter parsers
-nvim --headless -c 'TSInstallSync all' -c 'q'
-nvim --headless -c 'TSUpdateSync' -c 'q'
-echo
-end updating treesitter parsers
+end
