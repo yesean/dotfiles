@@ -73,6 +73,9 @@ bindsym $mod+q kill
 # only change focus with keyboard
 focus_follows_mouse no
 
+# disable focus wrapping
+focus_wrapping no
+
 # spotlight equivalent
 exec_always --no-startup-id ~/scripts/launch-albert.sh
 bindsym $mod+Space exec --no-startup-id albert show; [class="albert"] move absolute position center
@@ -250,7 +253,7 @@ exec --no-startup-id xset s off && xset s noblank
 
 # sleep after idle for 60 minutes
 exec --no-startup-id xidlehook --detect-sleep --not-when-audio --not-when-fullscreen --timer 1800 'systemctl suspend' '' &
-exec --no-startup-id xidlehook --detect-sleep --timer 120 '/home/sean/scripts/lock.sh' '' &
+exec --no-startup-id xidlehook --detect-sleep --not-when-audio --timer 120 '/home/sean/scripts/lock.sh' '' &
 bindsym $mod+mod1+l exec --no-startup-id ~/scripts/lock.sh
 
 # disable wakeup from mouse
