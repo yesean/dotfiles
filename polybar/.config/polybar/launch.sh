@@ -3,6 +3,7 @@
 # files and directories
 DIR="$HOME/.config/polybar"
 SFILE="$DIR/system.ini"
+touch "$SFILE"
 
 # get system variable values for various modules
 get_values() {
