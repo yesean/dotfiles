@@ -25,9 +25,7 @@ export plugins=(
   fd
   fzf
   git
-  git-extras
   ripgrep
-  stack
   tmux
   vi-mode
   zsh-aliases-exa
@@ -72,9 +70,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#5a524c'
 
 # initialize prompt
 export ZSH_THEME=""
-autoload -U promptinit
-promptinit
-prompt pure
+eval "$(starship init zsh)"
 
 setopt globdots     # match hidden files
 setopt extendedglob # add globbing syntax
