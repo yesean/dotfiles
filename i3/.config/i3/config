@@ -221,7 +221,7 @@ bindsym $mod+o        gaps outer current plus 10
 bindsym $mod+Shift+o  gaps outer current minus 10
 
 # save workspaces shortcut
-bindsym $mod+Ctrl+s exec --no-startup-id ~/scripts/save-workspaces.sh
+bindsym $mod+Ctrl+s exec --no-startup-id ~/scripts/workspaces.sh save
 
 # flameshot shortcut (for screenshotting)
 bindsym $mod+Ctrl+4 exec --no-startup-id flameshot gui
@@ -253,8 +253,8 @@ exec --no-startup-id xset s off && xset s noblank
 
 # sleep after idle for 60 minutes
 exec --no-startup-id xidlehook --detect-sleep --not-when-audio --not-when-fullscreen --timer 1800 'systemctl suspend' '' &
-exec --no-startup-id xidlehook --detect-sleep --not-when-audio --timer 600 '/home/sean/scripts/lock.sh' '' &
-bindsym $mod+mod1+l exec --no-startup-id ~/scripts/lock.sh
+exec --no-startup-id xidlehook --detect-sleep --not-when-audio --timer 600 "/home/sean/scripts/power.sh lock" '' &
+bindsym $mod+mod1+l exec --no-startup-id ~/scripts/power.sh lock
 
 # disable wakeup from mouse
 exec --no-startup-id sudo ~/scripts/disable-mouse-wakeup.sh
@@ -263,11 +263,11 @@ exec --no-startup-id sudo ~/scripts/disable-mouse-wakeup.sh
 exec --no-startup-id insync start --no-daemon
 
 # restore saved layout
-exec --no-startup-id ~/scripts/restore-workspaces.sh
+exec --no-startup-id ~/scripts/workspaces.sh restore
 
 # start picom
 exec_always --no-startup-id picom --experimental-backends -b &
-bindsym $mod+Shift+p exec --no-startup-id ~/scripts/toggle-picom.sh
+bindsym $mod+Shift+p exec --no-startup-id ~/scripts/picom.sh
 
 # start autostart
 exec_always --no-startup-id systemctl --user start autostart.target

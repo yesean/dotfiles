@@ -20,17 +20,17 @@ lock() {
 }
 
 logout() {
-  ~/scripts/save-workspaces.sh
+  ~/scripts/workspaces.sh save
   i3-msg exit
 }
 
 shutdown() {
-  ~/scripts/save-workspaces.sh
+  ~/scripts/workspaces.sh save
   systemctl poweroff
 }
 
 restart() {
-  ~/scripts/save-workspaces.sh
+  ~/scripts/workspaces.sh save
   systemctl reboot
 }
 
