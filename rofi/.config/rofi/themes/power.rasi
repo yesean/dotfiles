@@ -1,0 +1,34 @@
+* {
+  font: "SF Pro Display 12";
+}
+
+window {
+  children: [listview];
+  width: 500px;
+  height: 100px;
+  transparency: "background";
+}
+
+listview {
+  background-color: #00ff0044;
+  layout: horizontal;
+  lines: 5;
+  flow: true;
+}
+
+element {
+  padding: 100px;
+}
+
+element selected {
+  background-color: #04a5e5;
+}
+
+element-text selected {
+  background-color: #04a5e5;
+}
+
+element-text {
+  vertical-align: 0.5;
+  horizontal-align: 0.5;
+}
