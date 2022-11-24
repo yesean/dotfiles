@@ -191,6 +191,7 @@ require('packer').startup({
     use({ 'iamcco/markdown-preview.nvim', run = vim.fn['mkdp#util#install'] })
     use('famiu/bufdelete.nvim')
     use('chrisbra/csv.vim')
+    use('Fymyte/rasi.vim')
     use({
       'rmagatti/auto-session',
       config = function()
