@@ -180,7 +180,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec --no-startup-id ~/scripts/power.sh prompt
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -253,7 +253,7 @@ exec --no-startup-id xset s off && xset s noblank
 
 # sleep after idle for 60 minutes
 exec --no-startup-id xidlehook --detect-sleep --not-when-audio --not-when-fullscreen --timer 1800 'systemctl suspend' '' &
-exec --no-startup-id xidlehook --detect-sleep --not-when-audio --timer 120 '/home/sean/scripts/lock.sh' '' &
+exec --no-startup-id xidlehook --detect-sleep --not-when-audio --timer 600 '/home/sean/scripts/lock.sh' '' &
 bindsym $mod+mod1+l exec --no-startup-id ~/scripts/lock.sh
 
 # disable wakeup from mouse
