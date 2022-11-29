@@ -45,23 +45,8 @@ elif [ "$1" = 'shutdown' ]; then
 elif [ "$1" = 'restart' ]; then
   restart
 elif [ "$1" = 'prompt' ]; then
-  action=$(printf 'Lock;Logout;Sleep;Shutdown;Restart\n' | rofi -theme power -dmenu -i -sep ';')
-  case $action in
-    'Lock')
-      "$0" lock
-      ;;
-    'Logout')
-      "$0" logout
-      ;;
-    'Sleep')
-      "$0" sleep
-      ;;
-    'Shutdown')
-      "$0" shutdown
-      ;;
-    'Restart')
-      "$0" restart
-      ;;
-    *) exit 1 ;;
-  esac
+  rofi \
+    -theme power \
+    -hover-select -me-select-entry '' -me-accept-entry MousePrimary \
+  -show power -modes "power:~/.config/rofi/power.sh"
 fi

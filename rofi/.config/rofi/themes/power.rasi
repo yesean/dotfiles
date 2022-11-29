@@ -1,34 +1,52 @@
 * {
-  font: "SF Pro Display 12";
+  font: "SF Pro Rounded 12";
 }
 
 window {
-  children: [listview];
-  width: 500px;
-  height: 100px;
-  transparency: "background";
+  children: [message, listview];
+  location: north east;
+  background-color: #eff1f5;
+  x-offset: -10px;
+  y-offset: 34px;
+  width: 300px;
+  height: 352px;
+  padding: 20px;
+}
+
+message {
+  children: [textbox];
+  margin: 0 0 10px 0;
+  padding: 10px;
+  border-radius: 3px;
+  background-color: #ccd0da;
+}
+
+textbox {
+  background-color: inherit;
 }
 
 listview {
-  background-color: #00ff0044;
-  layout: horizontal;
-  lines: 5;
-  flow: true;
+  background-color: inherit;
+  spacing: 10px;
+  fixed-height: true;
 }
 
 element {
-  padding: 100px;
+  background-color: inherit;
+  padding: 10px;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 element selected {
-  background-color: #04a5e5;
-}
-
-element-text selected {
-  background-color: #04a5e5;
+  background-color: #af85ea;
 }
 
 element-text {
-  vertical-align: 0.5;
-  horizontal-align: 0.5;
+  background-color: inherit;
+  cursor: inherit;
+}
+
+element-text selected {
+  background-color: inherit;
 }
