@@ -10,13 +10,13 @@ lock() {
     --pass-media-keys --pass-volume-keys \
     --radius=150 \
     --inside-color=00000000 --ring-color=ccd0da \
-    --insidever-color=00000000 --ringver-color=dc8a78 \
+    --insidever-color=00000000 --ringver-color=4c4f69 \
     --insidewrong-color=00000000 --ringwrong-color=e64553 \
     --separator-color=9ca0b0 --line-color=00000000 \
     --keyhl-color=4c4f69 \
-    --greeter-font="SF Pro Display" --greeter-text="what's da password fam" \
-    --verif-font="SF Pro Display Bold" --verif-text="checking..." --verif-size=20 \
-    --wrong-font="SF Pro Display Bold" --wrong-text="r u dumb?" --wrong-size=20
+    --greeter-text="" \
+    --verif-font="SF Pro Display:style=Bold" --verif-text="Checking..." --verif-size=30 \
+    --wrong-font="SF Pro Display:style=Bold" --wrong-text="Incorrect" --wrong-size=30
 }
 
 logout() {
