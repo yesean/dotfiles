@@ -18,7 +18,7 @@ end() { printf "Finished\n\n"; }
 [ "$(uname)" = 'Linux' ] && is_linux=true || is_linux=false
 
 if [ "$is_linux" = "true" ]; then
-  set -- alacritty dunst git i3 kitty nvim picom polybar prettier ranger scripts stylua tmux vim zathura zsh
+  set -- alacritty dunst git i3 kitty nvim picom polybar prettier ranger rofi scripts stylua tmux vim zathura zsh
 elif [ "$is_macos" = "true" ]; then
   set -- alacritty git kitty nvim prettier skhd stylua tmux vim vscode yabai zsh
 else
