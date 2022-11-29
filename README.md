@@ -1,83 +1,60 @@
 # dotfiles
 
-![screenshot](./screenshot.png)
+![screenshot](./dotfiles.png)
 
-This repo contains config files and scripts for my
-[Arch Linux](https://archlinux.org/)/macOS environment. I use `stow` to help
-manage my dotfiles and create symlinks that point to this repo. For example,
-this repo lives at `~/.dotfiles` on my machine, so the `init.lua` for my neovim
-setup is a symlink at `~/.config/nvim/init.lua` that points to
-`~/.dotfiles/nvim/.config/nvim/init.lua`. As a result, every program becomes
-namespaced in its own directory in this repo, which is cleaner and easier to
-manage IMO.
+- config files and scripts for Linux / macOS
+- `stow` for namespacing and symlink management, e.g. `~/.zsh` points to
+  `~/.dotfiles/zsh/.zshrc`
 
-## Installation
+## Usage
 
-There is a
-[helper script](https://github.com/seanye24/dotfiles/blob/main/sync.sh) for easy
-setup, with the following requirements:
-
-- [stow](https://www.gnu.org/software/stow/)
-- [nvim](https://neovim.io)
-
-To get started, clone the repo and run the helper script:
+To install:
 
 ```sh
 git clone https://github.com/yesean/dotfiles ~/.dotfiles
 cd ~/.dotfiles
-./sync.sh
+./install.sh
 ```
 
-If you just want to pull updates, run
+> `install.sh` requires a system package manager (macOS →
+> [`brew`](https://brew.sh/), Arch Linux →
+> [`paru`](https://github.com/Morganamilo/paru) ).
+
+The install script will bootstrap my dotfiles, installing necessary software,
+creating symlinks, etc.
+
+To update:
 
 ```sh
-./sync.sh
+./update.sh
 ```
 
-by itself.
+This update script will add new symlinks and update neovim stuff (neovim
+upstream, plugins, treesitter parsers).
 
-> If `sync.sh` fails, it's likely because you are either missing a dependency or
-> one of the config files is conflicting with an existing file on your system.
-> For instance, if you already a neovim config at `~/.config/nvim/init.lua`,
-> `stow` won't be able to create a symlink at `~/.config/nvim/init.lua` that
-> points to this repo's config at `~/.dotfiles/nvim/.config/nvim/init.lua`. You
-> either have to delete/backup your `init.lua` or remove `nvim` from the
-> programs array in `sync.sh`.
+Install script only needs to be run once, but update script should be run
+periodically. I try to update every couple days or when I haven't updated in a
+while.
 
-### Manual
+> These scripts only work on macOS and Arch Linux, as I use them daily and can
+> test them out. The scripts will probably work for other Linux distros, but you
+> have to edit the package manager and package names.
 
-_Alternatively_, just copy and paste whatever you want! My dotfiles are specific
-to my preferences and use cases which are probably different from yours.
+Or, just copy and paste a snippet or a function that looks cool! Most of this
+stuff is specific to my needs, so just use whatever **_you_** need.
 
-## Why This Exists
+## Motivation
 
-I found it tedious manually synchronizing config file changes between my desktop
-and laptop, so I began looking for a simple, centralized solution that quickly
-pulled any changes to my configs. After some researching and experimenting, this
-repo was born. Moreover, I've found lots of inspiration from other people's
-dotfiles so enjoy!
+It was tedious manually syncing config file changes between my desktop and
+laptop, so I began looking for a solution that could track changes and update
+all my machines at once. I've found lots of inspiration from other people's
+dotfiles, so enjoy!
 
-## Things I Use
+## Highlights
 
-| program                                                                   | purpose             | os     |
-| ------------------------------------------------------------------------- | ------------------- | ------ |
-| [alacritty](https://alacritty.org/)                                       | terminal            | both   |
-| [dunst](https://dunst-project.org/)                                       | notifications       | linux  |
-| [git](https://git-scm.com/)                                               | vcs                 | both   |
-| [i3](https://i3wm.org/)                                                   | wm                  | linux  |
-| [nvim](https://neovim.io/)                                                | code editor         | both   |
-| [picom](https://github.com/yshui/picom)                                   | compositor          | linux  |
-| [polybar](https://polybar.github.io/)                                     | statusbar           | linux  |
-| [prettier](https://prettier.io/)                                          | code formatter      | both   |
-| [ranger](https://github.com/ranger/ranger)                                | file manager        | both\* |
-| [scripts](https://github.com/seanye24/dotfiles/blob/main/scripts/scripts) | random stuff        | both   |
-| [skhd](https://github.com/koekeishiya/skhd)                               | macos hotkey daemon | mac    |
-| [stylua](https://github.com/JohnnyMorganz/StyLua)                         | code formatter      | both   |
-| [tmux](https://github.com/tmux/tmux/wiki)                                 | terminal wm         | both   |
-| [vim](https://www.vim.org/)                                               | code editor         | both   |
-| [vscode](https://code.visualstudio.com/)                                  | code editor         | both   |
-| [yabai](https://github.com/koekeishiya/yabai)                             | wm                  | mac    |
-| [zathura](https://pwmt.org/projects/zathura/)                             | pdf viewer          | both\* |
-| [zsh](https://www.zsh.org/)                                               | shell               | both   |
-
-> \* technically both, but much better on linux
+- editor: `nvim`
+- terminal: `kitty`
+- shell: `zsh`
+- wm: `i3-gaps`
+- compositor: `picom` (jonaburg fork)
+- bar: `polybar`
