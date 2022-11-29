@@ -45,9 +45,12 @@ echo "Installing dependencies..."
 if [ "$is_linux" = 'true' ]; then
   paru -S --noconfirm fd fzf ripgrep starship tmux kitty                                # shell deps
   paru -S --noconfirm dunst kitty picom-jonaburg-fix polybar ranger stylua stow zathura # system deps
+  paru -S --noconfirm base-devel cmake unzip ninja tree-sitter curl                     # neovim deps
 elif [ "$is_macos" = 'true' ]; then
   brew install kitty stylua stow
   brew install fd fzf ripgrep starship tmux kitty
+  brew install ninja libtool automake cmake pkg-config gettext curl
+  xcode-select --install
 fi
 # install nvm
 export NVM_DIR="$HOME/.nvm" && (
@@ -84,13 +87,6 @@ nvm use node
 echo "Installing neovim..."
 git clone https://github.com/yesean/neovim.git ~/neovim
 cd ~/neovim || exit
-if [ "$is_macos" = 'true' ]; then
-  xcode-select --install
-  brew install ninja libtool automake cmake pkg-config gettext curl
-elif [ "$is_linux" = 'true' ]; then
-  sudo pacman -S --noconfirm base-devel cmake unzip ninja tree-sitter curl
-fi
-
 ~/scripts/build-neovim.sh
 git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 end
