@@ -2,9 +2,9 @@ local map = require('mapping')
 
 map.n('<c-h>', map.cmd('BufferLineCyclePrev'))
 map.n('<c-l>', map.cmd('BufferLineCycleNext'))
-map.n('<c-[>', map.cmd('BufferLineMovePrev'))
-map.n('<c-]>', map.cmd('BufferLineMoveNext'))
-map.n('<c-\\>', function()
+map.n('<leader>H', map.cmd('BufferLineMovePrev'))
+map.n('<leader>L', map.cmd('BufferLineMoveNext'))
+map.n('<leader>d', function()
   require('bufdelete').bufdelete()
 end)
 
