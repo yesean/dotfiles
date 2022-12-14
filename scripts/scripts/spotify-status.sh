@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # Set the source audio player here.
 # Players supporting the MPRIS spec are supported.
@@ -21,7 +21,7 @@ else
   STATUS="No player is running"
 fi
 
-if [ "$1" == "--status" ]; then
+if [ "$1" = "--status" ]; then
   echo "$STATUS"
 else
   if [ "$STATUS" = "Stopped" ]; then
