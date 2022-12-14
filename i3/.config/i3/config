@@ -40,9 +40,6 @@ client.urgent           $base08 $base08 $base00 $base08 $base08
 client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
 
-# set cursor size
-exec --no-startup-id xrdb ~/.Xresources
-
 # Use pulseaudio-ctl to adjust volume in PulseAudio.
 exec --no-startup-id volnoti # start volnoti daemon
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/scripts/volume.sh up
@@ -65,7 +62,7 @@ bindsym $mod+Return exec --no-startup-id $term
 bindsym $mod+shift+Return exec --no-startup-id brave
 
 # file browser key binding
-bindsym $mod+mod1+Return exec --no-startup-id nautilus
+bindsym $mod+mod1+Return exec --no-startup-id nemo
 
 # kill focused window
 bindsym $mod+q kill
