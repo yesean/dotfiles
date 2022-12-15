@@ -89,6 +89,7 @@ require('packer').startup({
     use({
       { 'williamboman/mason.nvim', config = setup('mason') },
       { 'williamboman/mason-lspconfig.nvim', after = 'mason.nvim' },
+      { 'WhoIsSethDaniel/mason-tool-installer.nvim', after = 'mason.nvim' },
       {
         'neovim/nvim-lspconfig',
         after = { 'mason-lspconfig.nvim', 'cmp-nvim-lsp' },

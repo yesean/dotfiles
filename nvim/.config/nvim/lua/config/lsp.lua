@@ -26,6 +26,27 @@ masonlsp.setup({
     'yamlls',
   },
 })
+require('mason-tool-installer').setup({
+  ensure_installed = {
+    'luacheck',
+    'stylua',
+    'prettierd',
+    'rustfmt',
+    'yapf',
+    'isort',
+    'goimports',
+    'golines',
+    'clang-format',
+    'shfmt',
+    'sql-formatter',
+    'shellharden',
+    'pylint',
+    'shellcheck',
+    'hadolint',
+    'markdownlint',
+    'write-good',
+  },
+})
 
 local tel = require('telescope.builtin')
 local lsp = vim.lsp.buf
