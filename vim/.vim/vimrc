@@ -69,9 +69,4 @@ nnoremap <silent> <leader>p :cal<leader> ClipboardPaste()<cr>p
 " vim-plug
 let g:plug_url_format = 'git@github.com:%s.git'
 
-" load plugins
-call plug#begin('~/.vim/plugged')
-Plug 'catppuccin/vim', { 'as': 'catppuccin' }
-call plug#end()
-
-colorscheme catppuccin_macchiato
+colorscheme desert
