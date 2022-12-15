@@ -6,4 +6,4 @@
 cd ~/neovim || exit
 git pull
 make CMAKE_BUILD_TYPE=RelWithDebInfo
-sudo make install
+sudo make install >/dev/null
