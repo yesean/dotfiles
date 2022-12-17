@@ -67,10 +67,12 @@ local default_mappings = {
   { 'ga', map.cmd('CodeActionMenu'), 'select code actions' },
 }
 
--- define keymaps when lsp client attaches
+--- returns an on_attach function for setting up language servers
+-- @param override_mappings - extra mappings for certain language servers
 local function get_on_attach(override_mappings)
   override_mappings = override_mappings or {}
   return function(client, bufnr)
+    -- set up lsp mappings
     map.set(default_mappings, { buffer = bufnr })
     map.set(override_mappings, { buffer = bufnr })
     require('nvim-navic').attach(client, bufnr)
