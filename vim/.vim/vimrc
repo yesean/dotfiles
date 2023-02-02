@@ -65,8 +65,3 @@ endfunction
 vnoremap <silent> <leader>y y:call ClipboardYank()<cr>
 vnoremap <silent> <leader>d d:call ClipboardYank()<cr>
 nnoremap <silent> <leader>p :cal<leader> ClipboardPaste()<cr>p
-
-" vim-plug
-let g:plug_url_format = 'git@github.com:%s.git'
-
-colorscheme desert
