@@ -126,5 +126,13 @@ p() {
   cd ~/projects/$1
 }
 
+mergepdf() {
+  ghostscript -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dPDFSETTINGS=/prepress -sOutputFile="$@"
+}
+
+solo() {
+  nohup "$@" &>/dev/null &
+}
+
 # direnv
 _evalcache direnv hook zsh
