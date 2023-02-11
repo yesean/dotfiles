@@ -42,10 +42,10 @@ client.background       $base07
 
 # Use pulseaudio-ctl to adjust volume in PulseAudio.
 exec --no-startup-id volnoti # start volnoti daemon
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/scripts/volume.sh up
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/scripts/volume.sh down
-bindsym XF86AudioMute exec --no-startup-id ~/scripts/volume.sh mute
-bindsym XF86AudioMicMute exec --no-startup-id ~/scripts/volume.sh mute-mic
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.local/bin/volume.sh up
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.local/bin/volume.sh down
+bindsym XF86AudioMute exec --no-startup-id ~/.local/bin/volume.sh mute
+bindsym XF86AudioMicMute exec --no-startup-id ~/.local/bin/volume.sh mute-mic
 
 # Media player controls
 bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
@@ -74,7 +74,7 @@ focus_follows_mouse no
 focus_wrapping no
 
 # spotlight equivalent
-exec_always --no-startup-id ~/scripts/launch-albert.sh
+exec_always --no-startup-id ~/.local/bin/launch-albert.sh
 bindsym $mod+Space exec --no-startup-id albert show; [class="albert"] move absolute position center
 
 # change focus
@@ -216,7 +216,7 @@ bindsym $mod+o        gaps outer current plus 10
 bindsym $mod+Shift+o  gaps outer current minus 10
 
 # save workspaces shortcut
-bindsym $mod+Ctrl+s exec --no-startup-id ~/scripts/workspaces.sh save
+bindsym $mod+Ctrl+s exec --no-startup-id ~/.local/bin/workspaces.sh save
 
 # flameshot shortcut (for screenshotting)
 bindsym $mod+Ctrl+4 exec --no-startup-id flameshot gui
@@ -247,22 +247,22 @@ bindsym $mod+Shift+BackSpace exec --no-startup-id dunstctl history-pop
 exec --no-startup-id xset s off
 
 # sleep after idle for 60 minutes
-exec --no-startup-id xidlehook --detect-sleep --not-when-audio --not-when-fullscreen --timer 1800 'systemctl suspend' '' &
-exec --no-startup-id xidlehook --detect-sleep --not-when-audio --timer 600 "/home/sean/scripts/power.sh lock" '' &
-bindsym $mod+mod1+l exec --no-startup-id ~/scripts/power.sh lock
+exec --no-startup-id xidlehook --detect-sleep --not-when-audio --not-when-fullscreen --timer 1800 '/home/sean/.local/bin/power.sh sleep' '' &
+exec --no-startup-id xidlehook --detect-sleep --not-when-audio --timer 600 '/home/sean/.local/bin/power.sh lock' '' &
+bindsym $mod+mod1+l exec --no-startup-id ~/.local/bin/power.sh lock
 
 # disable wakeup from mouse
-exec --no-startup-id sudo ~/scripts/disable-mouse-wakeup.sh
+exec --no-startup-id sudo ~/.local/bin/disable-mouse-wakeup.sh
 
 # start insync
 exec --no-startup-id insync start --no-daemon
 
 # restore saved layout
-exec --no-startup-id ~/scripts/workspaces.sh restore
+exec --no-startup-id ~/.local/bin/workspaces.sh restore
 
 # start picom
 exec_always --no-startup-id picom --experimental-backends -b &
-bindsym $mod+Shift+p exec --no-startup-id ~/scripts/picom.sh
+bindsym $mod+Shift+p exec --no-startup-id ~/.local/bin/picom.sh
 
 # start autostart
 exec_always --no-startup-id systemctl --user start autostart.target

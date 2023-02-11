@@ -8,7 +8,7 @@
 #
 
 [ "$DOTFILES_DIR" = "" ] && dots_dir="$HOME/.dotfiles" || dots_dir="$DOTFILES_DIR"
-scripts_dir="$dots_dir"/scripts/scripts
+scripts_dir="$dots_dir"/scripts
 . "$scripts_dir"/shared.sh
 
 # intro
@@ -76,10 +76,12 @@ ghcl zsh-users/zsh-syntax-highlighting "${omz_plugins}/zsh-syntax-highlighting"
 ghcl mroth/evalcache "${omz_plugins}/evalcache"
 end
 
+neovim_dir="$HOME/projects/neovim"
+
 # install/build custom neovim fork
 echo "Installing neovim..."
-ghcl yesean/neovim ~/neovim
-cd ~/neovim || exit
+ghcl yesean/neovim "$neovim_dir"
+cd "$neovim_dir" || exit
 "$scripts_dir"/build-neovim.sh
 ghcl wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim --depth 1
 end

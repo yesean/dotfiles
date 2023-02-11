@@ -5,7 +5,7 @@
 #
 
 [ "$DOTFILES_DIR" = "" ] && dots_dir="$HOME/.dotfiles" || dots_dir="$DOTFILES_DIR"
-scripts_dir="$dots_dir"/scripts/scripts
+scripts_dir="$dots_dir"/scripts
 . "$scripts_dir"/shared.sh
 
 if [ "$is_linux" = "true" ]; then
