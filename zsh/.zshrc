@@ -6,7 +6,6 @@ export GOPATH=$HOME/.local/share/go/
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/scripts
 export PATH=$PATH:$(yarn global bin)
 export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=true
