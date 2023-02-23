@@ -19,7 +19,7 @@ masonlsp.setup({
     'rust_analyzer',
     'sqls',
     'stylelint_lsp',
-    'sumneko_lua',
+    'lua_ls',
     'tailwindcss',
     'texlab',
     'tsserver',
@@ -115,7 +115,7 @@ for _, server in ipairs(masonlsp.get_installed_servers()) do
   elseif server == 'stylelint_lsp' then
     -- only start stylelint in css-related files, exclude react files
     opts.filetypes = { 'css', 'less', 'scss' }
-  elseif server == 'sumneko_lua' then
+  elseif server == 'lua_ls' then
     -- inject globals into lua for neovim usage
     opts.settings = {
       Lua = {
