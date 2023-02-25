@@ -131,6 +131,7 @@ mergepdf() {
 
 solo() {
   nohup "$@" &>/dev/null &
+  disown
 }
 
 # direnv
