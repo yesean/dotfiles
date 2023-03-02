@@ -86,12 +86,6 @@ bindkey -a -r ':'
 [[ $(uname) = 'Linux' ]] && is_linux=true || is_linux=false
 
 # aliases
-if [[ "$is_linux" == "true" ]]; then
-  alias o='xdg-open'
-elif [[ "$is_macos" == "true" ]]; then
-  alias o='open'
-fi
-
 alias nv='nvim'
 alias se='sudoedit'
 alias gl='git lg'
@@ -132,6 +126,14 @@ mergepdf() {
 solo() {
   nohup "$@" &>/dev/null &
   disown
+}
+
+o() {
+if [[ "$is_linux" == "true" ]]; then
+  solo xdg-open "$@"
+elif [[ "$is_macos" == "true" ]]; then
+  open "$@"
+fi
 }
 
 # direnv
