@@ -12,7 +12,7 @@ scripts_dir="$dots_dir"/scripts
 "$scripts_dir"/sync.sh
 
 echo "Building neovim..."
-build-neovim.sh
+"$scripts_dir"/dot-local/bin/build-neovim.sh
 end
 
 # clean and update packer
