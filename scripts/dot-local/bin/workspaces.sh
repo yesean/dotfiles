@@ -21,4 +21,8 @@ case $1 in
       brave
     fi
     ;;
+  *)
+    echo Usage:
+    echo "  workspaces.sh <save|restore>"
+    ;;
 esac
