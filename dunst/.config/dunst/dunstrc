@@ -12,7 +12,7 @@ format = "%a\n<b>%s</b>\n%b"
 markup = full
 font = SF Pro Text 9
 icon_position = right
-max_icon_size = 64
+max_icon_size = 48
 frame_color = "#eff1f5"
 
 [urgency_low]
