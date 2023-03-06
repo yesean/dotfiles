@@ -23,6 +23,6 @@ cd "$dots_dir" || exit
 echo "Creating symlinks..."
 for program in "$@"; do
   echo "Symlinking $program"
-  stow "$program"
+  stow --dotfiles "$program"
 done
 end

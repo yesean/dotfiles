@@ -10,19 +10,19 @@ restart='󰜉  Restart'
 if [ "$1" != "" ]; then
   case $1 in
     "$sleep")
-      coproc "$HOME/scripts/power.sh" sleep
+      coproc "$HOME/.local/bin/power.sh" sleep
       ;;
     "$lock")
-      coproc "$HOME/scripts/power.sh" lock
+      coproc "$HOME/.local/bin/power.sh" lock
       ;;
     "$logout")
-      coproc "$HOME/scripts/power.sh" logout
+      coproc "$HOME/.local/bin/power.sh" logout
       ;;
     "$shutdown")
-      "$HOME/scripts/power.sh" shutdown
+      "$HOME/.local/bin/power.sh" shutdown
       ;;
     "$restart")
-      "$HOME/scripts/power.sh" restart
+      "$HOME/.local/bin/power.sh" restart
       ;;
   esac
   exit 0

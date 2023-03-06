@@ -20,17 +20,17 @@ lock() {
 }
 
 logout() {
-  ~/scripts/workspaces.sh save
+  ~/.local/bin/workspaces.sh save
   i3-msg exit
 }
 
 shutdown() {
-  ~/scripts/workspaces.sh save
+  ~/.local/bin/workspaces.sh save
   systemctl poweroff
 }
 
 restart() {
-  ~/scripts/workspaces.sh save
+  ~/.local/bin/workspaces.sh save
   systemctl reboot
 }
 
@@ -48,5 +48,5 @@ elif [ "$1" = 'prompt' ]; then
   rofi \
     -theme power \
     -hover-select -me-select-entry '' -me-accept-entry MousePrimary \
-  -show power -modes "power:~/.config/rofi/power.sh"
+    -show power -modes "power:~/.config/rofi/power.sh"
 fi
