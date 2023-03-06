@@ -216,7 +216,9 @@ bindsym $mod+Ctrl+s exec --no-startup-id ~/.local/bin/workspaces.sh save
 
 # flameshot shortcut (for screenshotting)
 bindsym $mod+Ctrl+4 exec --no-startup-id flameshot gui
-bindsym $mod+Ctrl+3 exec --no-startup-id flameshot full -c
+bindsym $mod+Shift+Ctrl+4 exec --no-startup-id flameshot gui -s -c
+bindsym $mod+Ctrl+3 exec --no-startup-id flameshot full
+bindsym $mod+Shift+Ctrl+3 exec --no-startup-id flameshot full -c
 
 # set gaps
 gaps inner 15
