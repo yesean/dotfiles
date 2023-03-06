@@ -240,7 +240,7 @@ bindsym $mod+BackSpace exec --no-startup-id dunstctl close-all
 bindsym $mod+Shift+BackSpace exec --no-startup-id dunstctl history-pop
 
 # turn off screen blanking
-exec --no-startup-id xset s off
+exec --no-startup-id xset s off -dpms
 
 # sleep after idle for 60 minutes
 exec --no-startup-id xidlehook --detect-sleep --not-when-audio --not-when-fullscreen --timer 1800 '/home/sean/.local/bin/power.sh sleep' '' &
