@@ -144,6 +144,18 @@ require('packer').startup({
     use({ 'sindrets/diffview.nvim', config = config('diffview') })
     use({ 'f-person/git-blame.nvim', config = config('gitblame') })
     use({ 'lewis6991/gitsigns.nvim', config = setup('gitsigns') })
+    use({
+      'akinsho/git-conflict.nvim',
+      tag = '*',
+      config = function()
+        require('git-conflict').setup({
+          default_mappings = {
+            prev = '[x',
+            next = ']x',
+          },
+        })
+      end,
+    })
 
     ----- editing -----
     use({ 'ggandor/leap.nvim', config = config('leap') })
