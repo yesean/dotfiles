@@ -45,9 +45,14 @@ local function format(buffer)
   })
 end
 
+local format_ignore_files = {
+  'setup-arch.sh',
+}
+
 null_ls.setup({
   sources = sources,
   on_attach = function(client, buffer)
+    local filename = vim.api.nvim_buf_get_name(buffer)
     if client.supports_method('textDocument/formatting') then
       vim.api.nvim_clear_autocmds({
         event = 'BufWritePre',
@@ -56,10 +61,16 @@ null_ls.setup({
       })
       vim.api.nvim_create_autocmd('BufWritePre', {
         buffer = buffer,
-        desc = 'Format on save with null-ls: '
-          .. vim.api.nvim_buf_get_name(buffer),
+        desc = 'Format on save with null-ls: ' .. filename,
         group = group,
         callback = function()
+          -- ignore if buffer suffix matches ignore file
+          for _, ifile in ipairs(format_ignore_files) do
+            if filename:sub(-string.len(ifile)) == ifile then
+              return
+            end
+          end
+
           format(buffer)
         end,
       })
