@@ -73,6 +73,7 @@ nemo                                  `# file browser` \
 nemo-preview                          `# file browser previewer` \
 ranger                                `# terminal file browser` \
 zathura                               `# pdf viewer` \
+zathura-pdf-poppler                   `# zathura pdf plugin`
 feh                                   `# image viewer` \
 i3-resurrect                          `# layout restoration` \
 xidlehook                             `# command timer` \
