@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 disable() {
   grep -l "$1" /sys/bus/usb/devices/*/product |
