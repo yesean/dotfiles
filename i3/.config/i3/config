@@ -34,7 +34,7 @@ set $base0F #be5046
 # style window decoration colors
 client.focused          $base05 $base0D $base00 $base0D $base0C
 client.focused_inactive $base01 $base01 $base05 $base03 $base01
-client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.unfocused        $base01 $base00 $base05 $base01 $base07
 client.urgent           $base08 $base08 $base00 $base08 $base08
 client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
@@ -131,15 +131,13 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+x move scratchpad
 
 # toggle items in scratchpad
-bindsym $mod+mod1+n [floating class="^(?!Morgen)"] move scratchpad; [class="Morgen"] scratchpad show, resize set 2000 1125, move absolute position center
-bindsym $mod+mod1+m [floating class="^(?!Todoist)"] move scratchpad; [class="Todoist"] scratchpad show, resize set 2000 1125, move absolute position center
+bindsym $mod+mod1+m [floating class="^(?!Morgen)"] move scratchpad; [class="Morgen"] scratchpad show, resize set 2000 1125, move absolute position center
 bindsym $mod+mod1+u [floating class="^(?!Caprine)"] move scratchpad; [class="Caprine"] scratchpad show, resize set 2000 1125, move absolute position center
 bindsym $mod+mod1+i [floating class="^(?!discord)"] move scratchpad; [class="discord"] scratchpad show, resize set 2000 1125, move absolute position center
 bindsym $mod+mod1+o [floating class="^(?!Spotify)"] move scratchpad; [class="Spotify"] scratchpad show, resize set 2000 1125, move absolute position center
 bindsym $mod+mod1+p [floating class="^(?!dots)"] move scratchpad; [class="dots"] scratchpad show, resize set 2000 1125, move absolute position center
 
 for_window [class="Morgen"] move scratchpad
-for_window [class="Todoist"] move scratchpad
 for_window [class="Caprine"] move scratchpad
 for_window [class="discord"] move scratchpad
 for_window [class="Spotify"] move scratchpad
