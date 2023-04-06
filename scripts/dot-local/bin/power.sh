@@ -2,7 +2,7 @@
 
 lock() {
   i3lock -k \
-    --image ~/pictures/wallpapers/glaciers-background.png \
+    --image ~/pictures/wallpapers/21:9/bigsur.jpg \
     --time-str="%-I:%M %p" \
     --date-str "%A, %B %d %G" \
     --time-font="SF Pro Display" --time-size=32 \
@@ -13,10 +13,15 @@ lock() {
     --insidever-color=00000000 --ringver-color=4c4f69 \
     --insidewrong-color=00000000 --ringwrong-color=e64553 \
     --separator-color=9ca0b0 --line-color=00000000 \
+    --time-color=ffffffff \
+    --date-color=ffffffff \
+    --greeter-color=ffffffff \
+    --verif-color=ffffffff \
+    --wrong-color=ffffffff \
     --keyhl-color=4c4f69 \
     --greeter-text="" \
-    --verif-font="SF Pro Display:style=Bold" --verif-text="Checking..." --verif-size=30 \
-    --wrong-font="SF Pro Display:style=Bold" --wrong-text="Incorrect" --wrong-size=30
+    --verif-font="SF Pro Display:style=Bold" --verif-text="..." --verif-size=30 \
+    --wrong-font="SF Pro Display:style=Bold" --wrong-text="Try Again" --wrong-size=30
 }
 
 logout() {
