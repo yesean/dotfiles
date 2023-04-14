@@ -11,20 +11,17 @@ scripts_dir="$dots_dir"/scripts
 
 "$scripts_dir"/sync.sh
 
-echo "Building neovim..."
-"$scripts_dir"/dot-local/bin/build-neovim.sh
-end
-
-# clean and update packer
+# update neovim plugins
 echo "Updating neovim plugins..."
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+nvim --headless -c 'autocmd User LazySync quitall' -c 'Lazy sync'
 end
 
-# update treesitter
+# install missing treesitter plugins
 echo "Installing treesitter parsers..."
 nvim --headless -c 'TSInstallSync all' -c 'q'
 end
 
+# update treesitter plugins
 echo "Updating treesitter parsers..."
 nvim --headless -c 'TSUpdateSync' -c 'q'
 echo

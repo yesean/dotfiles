@@ -76,16 +76,6 @@ ghcl zsh-users/zsh-syntax-highlighting "${omz_plugins}/zsh-syntax-highlighting"
 ghcl mroth/evalcache "${omz_plugins}/evalcache"
 end
 
-neovim_dir="$HOME/projects/neovim"
-
-# install/build custom neovim fork
-echo "Installing neovim..."
-ghcl yesean/neovim "$neovim_dir"
-cd "$neovim_dir" || exit
-"$scripts_dir"/build-neovim.sh
-ghcl wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim --depth 1
-end
-
 # update dots
 cd "$dots_dir" || exit
 "$scripts_dir"/update.sh
