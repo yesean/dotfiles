@@ -29,8 +29,8 @@ To **update**:
 ./scripts/scripts/update.sh
 ```
 
-This update script will add new symlinks and update neovim stuff (neovim
-upstream, plugins, treesitter parsers).
+This update script will add new symlinks and update neovim (plugins, treesitter
+parsers).
 
 Installation only needs to be run once, but the dots should be updated
 periodically. I try to update every couple days or when I haven't updated in a
