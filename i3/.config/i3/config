@@ -131,11 +131,12 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+x move scratchpad
 
 # toggle items in scratchpad
-bindsym $mod+mod1+m [floating class="^(?!Morgen)"] move scratchpad; [class="Morgen"] scratchpad show, resize set 2000 1125, move absolute position center
-bindsym $mod+mod1+u [floating class="^(?!Caprine)"] move scratchpad; [class="Caprine"] scratchpad show, resize set 2000 1125, move absolute position center
-bindsym $mod+mod1+i [floating class="^(?!discord)"] move scratchpad; [class="discord"] scratchpad show, resize set 2000 1125, move absolute position center
-bindsym $mod+mod1+o [floating class="^(?!Spotify)"] move scratchpad; [class="Spotify"] scratchpad show, resize set 2000 1125, move absolute position center
-bindsym $mod+mod1+p [floating class="^(?!dots)"] move scratchpad; [class="dots"] scratchpad show, resize set 2000 1125, move absolute position center
+bindsym $mod+mod1+i [floating class="^(?!discord)"] move scratchpad; [class="discord"] scratchpad show, resize set 2176 1224, move absolute position center
+bindsym $mod+mod1+o [floating class="^(?!Spotify)"] move scratchpad; [class="Spotify"] scratchpad show, resize set 2176 1224, move absolute position center
+bindsym $mod+mod1+p [floating class="^(?!dots)"] move scratchpad; [class="dots"] scratchpad show, resize set 2176 1224, move absolute position center
+
+bindsym $mod+mod1+j [floating class="^(?!Morgen)"] move scratchpad; [class="Morgen"] scratchpad show, resize set 2176 1224, move absolute position center
+bindsym $mod+mod1+k [floating class="^(?!notion-app)"] move scratchpad; [class="notion-app"] scratchpad show, resize set 2176 1224, move absolute position center
 
 for_window [class="Morgen"] move scratchpad
 for_window [class="Caprine"] move scratchpad
