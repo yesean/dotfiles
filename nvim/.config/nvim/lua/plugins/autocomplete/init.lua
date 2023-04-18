@@ -13,6 +13,7 @@ return {
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'L3MON4D3/LuaSnip',
     },
+    event = 'InsertEnter',
     opts = function(_)
       local cmp = require('cmp')
       local luasnip = require('luasnip')

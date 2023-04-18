@@ -1,6 +1,7 @@
 return {
   {
     'rmagatti/auto-session',
+    lazy = false,
     opts = {
       pre_save_cmds = { 'Neotree close' },
     },

@@ -30,4 +30,8 @@ require('lazy').setup({
   { import = 'plugins.terminal' },
   { import = 'plugins.themes' },
   { import = 'plugins.ui' },
+}, {
+  change_detection = {
+    notify = false,
+  },
 })

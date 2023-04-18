@@ -3,6 +3,11 @@ local opts = {
     'clangd',
     '--clang-tidy',
   },
+  capabilities = {
+    offsetEncoding = {
+      'utf-16',
+    },
+  },
 }
 
 local mappings = {}

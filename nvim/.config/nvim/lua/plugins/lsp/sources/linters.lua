@@ -1,4 +1,5 @@
 return {
+  'cpplint',
   'hadolint',
   'luacheck',
   'markdownlint',

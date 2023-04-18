@@ -18,6 +18,7 @@ return {
         fmt.gofmt,
         fmt.golines,
         fmt.clang_format,
+        fmt.cmake_format,
         fmt.shfmt.with({ extra_args = { '-i', '2', '-ci' } }),
         fmt.sql_formatter,
         fmt.nginx_beautifier,
@@ -26,6 +27,8 @@ return {
         fmt.shellharden,
         fmt.latexindent,
 
+        diag.cppcheck,
+        diag.cpplint,
         diag.pylint,
         diag.shellcheck,
         diag.hadolint,

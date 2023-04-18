@@ -10,6 +10,7 @@ return {
       'jose-elias-alvarez/typescript.nvim',
       'hrsh7th/cmp-nvim-lsp',
     },
+    event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local map = require('mapping')
       local tel = require('telescope.builtin')
