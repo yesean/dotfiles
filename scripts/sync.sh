@@ -9,9 +9,9 @@ scripts_dir="$dots_dir"/scripts
 . "$scripts_dir"/shared.sh
 
 if [ "$is_linux" = "true" ]; then
-  set -- alacritty dunst git i3 kitty nvim picom polybar prettier ranger rofi scripts stylua tmux vim zathura zsh
+  set -- alacritty dunst git i3 kitty nvim picom polybar prettier ranger rofi scripts stylua tmux vim wezterm zathura zsh
 elif [ "$is_macos" = "true" ]; then
-  set -- alacritty git kitty nvim prettier scripts skhd stylua tmux vim vscode yabai zsh
+  set -- alacritty git kitty nvim prettier scripts skhd stylua tmux vim vscode wezterm yabai zsh
 else
   echo "This script only works on Linux or macOS."
   exit 1
