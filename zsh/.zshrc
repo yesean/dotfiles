@@ -7,7 +7,6 @@ export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$(yarn global bin)
-export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=true
 export QT_QPA_PLATFORMTHEME=qt5ct
 export PYENV_ROOT="$HOME/.pyenv"
