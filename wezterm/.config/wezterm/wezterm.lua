@@ -11,4 +11,8 @@ config.font_size = 11
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 
+if pcall(require, 'macos') then
+  require('macos').override(config)
+end
+
 return config
