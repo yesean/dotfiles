@@ -31,5 +31,4 @@ o.mousemoveevent = true
 
 -- globals
 local g = vim.g
-
 g.tex_flavor = 'latex' -- set default ft as tex
