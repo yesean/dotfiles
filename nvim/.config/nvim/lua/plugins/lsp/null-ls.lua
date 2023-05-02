@@ -17,7 +17,9 @@ return {
         fmt.goimports,
         fmt.gofmt,
         fmt.golines,
-        fmt.clang_format,
+        fmt.clang_format.with({
+          extra_args = { '--style=Google' },
+        }),
         fmt.cmake_format,
         fmt.shfmt.with({ extra_args = { '-i', '2', '-ci' } }),
         fmt.sql_formatter,
@@ -28,6 +30,11 @@ return {
         fmt.latexindent,
 
         diag.cppcheck,
+        diag.cpplint.with({
+          filter = function(diagnostic)
+            return diagnostic.label ~= 'copyright'
+          end,
+        }),
         diag.cpplint,
         diag.pylint,
         diag.shellcheck,
