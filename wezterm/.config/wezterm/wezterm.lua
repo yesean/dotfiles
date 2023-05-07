@@ -11,6 +11,29 @@ config.font_size = 11
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
 
+config.keys = {
+  {
+    key = 'h',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.ActivatePaneDirection('Left'),
+  },
+  {
+    key = 'j',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.ActivatePaneDirection('Down'),
+  },
+  {
+    key = 'k',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.ActivatePaneDirection('Up'),
+  },
+  {
+    key = 'l',
+    mods = 'CTRL|SHIFT',
+    action = wezterm.action.ActivatePaneDirection('Right'),
+  },
+}
+
 if pcall(require, 'macos') then
   require('macos').override(config)
 end
