@@ -19,9 +19,6 @@ return {
       local luasnip = require('luasnip')
 
       return {
-        confirmation = {
-          default_behavior = cmp.ConfirmBehavior.Replace,
-        },
         mapping = {
           ['<c-space>'] = cmp.mapping.complete(),
           ['<c-p>'] = cmp.mapping.select_prev_item(),
