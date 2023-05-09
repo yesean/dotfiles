@@ -1,4 +1,6 @@
 return {
+  'cmakelang',
+  'cmakelint',
   'cpplint',
   'hadolint',
   'luacheck',
