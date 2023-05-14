@@ -29,7 +29,9 @@ return {
         fmt.shellharden,
         fmt.latexindent,
 
-        diag.cppcheck,
+        diag.cppcheck.with({
+          extra_args = { '--language=c++' },
+        }),
         diag.cpplint.with({
           filter = function(diagnostic)
             return diagnostic.label ~= 'copyright'
