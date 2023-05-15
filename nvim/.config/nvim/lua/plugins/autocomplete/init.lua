@@ -1,6 +1,7 @@
 return {
   {
     'hrsh7th/nvim-cmp',
+    commit = 'c4128bc',
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'saadparwaiz1/cmp_luasnip',
@@ -69,8 +70,7 @@ return {
           }),
         },
         experimental = {
-          -- temporary fix for https://github.com/hrsh7th/nvim-cmp/issues/1565
-          ghost_text = {},
+          ghost_text = true,
         },
       }
     end,
