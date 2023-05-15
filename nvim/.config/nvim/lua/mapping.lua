@@ -15,8 +15,10 @@ local M = {
   s = set_mode('s'),
 }
 
-function M.cmd(str)
-  return '<cmd>' .. str .. '<cr>'
+function M.cmd(...)
+  return table.concat(vim.tbl_map(function(c)
+    return '<cmd>' .. c .. '<cr>'
+  end, type(...) == 'table' and ... or { ... }))
 end
 
 -- Allow a mapping to be defined as an array: {key, command, description}, useful for grouping mappings such as lsp or diagnostics.
