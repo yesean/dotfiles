@@ -3,7 +3,7 @@
 if [[ "$is_linux" == "true" ]]; then
   fzf_base="/usr/share/fzf"
 elif [[ "$is_macos" == "true" ]]; then
-  fzf_base="/opt/homebrew/opt/fzf"
+  fzf_base="/usr/local/opt/fzf/shell"
 fi
 
 source ${fzf_base}/completion.zsh
