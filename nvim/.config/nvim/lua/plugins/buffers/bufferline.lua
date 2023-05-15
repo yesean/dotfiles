@@ -58,6 +58,11 @@ return {
           end,
           'close all buffers',
         },
+        {
+          '<leader>dd',
+          map.cmd('BufferLineCloseLeft', 'BufferLineCloseRight'),
+          'close all buffers except current',
+        },
       })
       require('bufferline').setup(opts)
     end,
