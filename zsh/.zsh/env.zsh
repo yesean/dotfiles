@@ -6,6 +6,8 @@ export PATH=$PATH:$(yarn global bin)
 
 export QUOTING_STYLE=literal
 export HISTFILE=~/.zsh_history
+export HISTSIZE=50000
+export SAVEHIST=10000
 
 export EDITOR=nvim
 export BROWSER=brave
