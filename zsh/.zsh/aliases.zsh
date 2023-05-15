@@ -6,6 +6,7 @@ alias la='exa -la'
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 alias ga='git add'
+alias gaa='git add -A'
 alias gs='git status'
 alias gl='git lg'
 alias gd='git diff'
