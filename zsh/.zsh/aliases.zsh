@@ -11,6 +11,8 @@ alias gl='git lg'
 alias gd='git diff'
 alias gds='git diff --staged'
 alias gcm='git commit -vm'
+alias gco='git checkout'
+alias gcb='git checkout -b'
 alias gpl='git pull'
 alias gp='git push'
 
