@@ -1,7 +1,8 @@
 # aliases
 alias nv='nvim'
 alias se='sudoedit'
-alias ll='ls -l'
+alias ls='exa'
+alias ll='exa -l'
 alias la='exa -la'
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
