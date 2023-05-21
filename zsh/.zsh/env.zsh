@@ -1,17 +1,8 @@
-# set environment variables
-export PATH=/usr/local/sbin:$PATH
-export PATH=/usr/local/bin:$PATH
-export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$(yarn global bin)
-
-export QUOTING_STYLE=literal
-export HISTFILE=~/.zsh_history
-export HISTSIZE=50000
-export SAVEHIST=10000
+export PATH=/usr/local/bin:$PATH    # homebrew binaries
+export PATH=/usr/local/sbin:$PATH   # homebrew binaries
+export PATH=$HOME/.local/bin:$PATH  # dotfiles scripts
 
 export EDITOR=nvim
 export BROWSER=brave
 export QT_QPA_PLATFORMTHEME=qt5ct
-
-export PYENV_ROOT="$HOME/.pyenv"
 export GOPATH=$HOME/.local/share/go/

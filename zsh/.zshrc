@@ -6,10 +6,11 @@
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 antidote load
 
+source ~/.zsh/aliases.zsh
+source ~/.zsh/completion.zsh
 source ~/.zsh/env.zsh
 source ~/.zsh/fzf.zsh
-source ~/.zsh/completion.zsh
-source ~/.zsh/aliases.zsh
+source ~/.zsh/history.zsh
 source ~/.zsh/options.zsh
 
 # load keybindings after zsh-vi-mode, otherwise they'll get overwritten
@@ -20,6 +21,7 @@ function zvm_after_init() {
 
 eval "$(starship init zsh)"
 eval "$(pyenv init -)"
+
 if [[ "$is_linux" == true ]]; then
   source /usr/share/nvm/init-nvm.sh
 elif [[ "$is_macos" == true ]]; then
