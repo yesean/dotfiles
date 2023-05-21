@@ -11,14 +11,10 @@ source ~/.zsh/completion.zsh
 source ~/.zsh/env.zsh
 source ~/.zsh/fzf.zsh
 source ~/.zsh/history.zsh
+source ~/.zsh/keybindings.zsh
 source ~/.zsh/nvm.zsh
 source ~/.zsh/options.zsh
+source ~/.zsh/pyenv.zsh
 
-# load keybindings after zsh-vi-mode, otherwise they'll get overwritten
-# https://github.com/jeffreytse/zsh-vi-mode#execute-extra-commands
-function zvm_after_init() {
-  source ~/.zsh/keybindings.zsh
-}
-
+# load prompt
 eval "$(starship init zsh)"
-eval "$(pyenv init -)"
