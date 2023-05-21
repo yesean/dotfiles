@@ -23,5 +23,5 @@ eval "$(pyenv init -)"
 if [[ "$is_linux" == true ]]; then
   source /usr/share/nvm/init-nvm.sh
 elif [[ "$is_macos" == true ]]; then
-  source "${HOMEBREW_PREFIX}/opt/nvm/nvm.sh"
+  source "$(brew --prefix)/opt/nvm/nvm.sh"
 fi
