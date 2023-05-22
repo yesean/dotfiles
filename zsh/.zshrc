@@ -15,6 +15,7 @@ source ~/.zsh/keybindings.zsh
 source ~/.zsh/nvm.zsh
 source ~/.zsh/options.zsh
 source ~/.zsh/pyenv.zsh
+source ~/.zsh/nvim.zsh # requires functions from nvm.zsh and pyenv.zsh
 
 # load prompt
 eval "$(starship init zsh)"
