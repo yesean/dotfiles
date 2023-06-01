@@ -6,7 +6,7 @@ if wezterm.config_builder then
 end
 
 config.color_scheme = 'Catppuccin Mocha'
-config.font_size = 11
+config.font_size = 10.5
 
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
