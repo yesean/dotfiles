@@ -29,6 +29,7 @@ return {
     config = function(_, opts)
       local map = require('mapping')
       map.set({
+        { '<c-y>', map.cmd('BufferLinePick'), 'select a buffer by key' },
         { '<c-h>', map.cmd('BufferLineCyclePrev'), 'go to one buffer left' },
         { '<c-l>', map.cmd('BufferLineCycleNext'), 'go to one buffer right' },
         { '<leader>H', map.cmd('BufferLineMovePrev'), 'swap one buffer left' },
