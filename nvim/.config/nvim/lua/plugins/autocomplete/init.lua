@@ -1,7 +1,6 @@
 return {
   {
     'hrsh7th/nvim-cmp',
-    commit = 'c4128bc',
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'saadparwaiz1/cmp_luasnip',
@@ -14,7 +13,7 @@ return {
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'L3MON4D3/LuaSnip',
     },
-    event = 'InsertEnter',
+    event = { 'InsertEnter', 'CmdlineEnter' },
     opts = function(_)
       local cmp = require('cmp')
       local luasnip = require('luasnip')
@@ -79,9 +78,16 @@ return {
 
       cmp.setup.cmdline(':', {
         mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          { name = 'cmdline' },
-        },
+        sources = cmp.config.sources({
+          { name = 'path' },
+        }, {
+          {
+            name = 'cmdline',
+            option = {
+              ignore_cmds = { 'Man', '!' },
+            },
+          },
+        }),
       })
 
       cmp.setup.cmdline('/', {
