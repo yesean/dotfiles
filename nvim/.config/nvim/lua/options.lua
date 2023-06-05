@@ -28,6 +28,7 @@ o.undofile = true -- use permanent undo file
 o.termguicolors = true
 o.cmdheight = 1
 o.mousemoveevent = true
+o.fileformat = 'unix'
 
 -- globals
 local g = vim.g
