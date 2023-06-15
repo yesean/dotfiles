@@ -35,3 +35,9 @@ require('lazy').setup({
     notify = false,
   },
 })
+
+vim.filetype.add({
+  pattern = {
+    ['Dockerfile.*'] = 'dockerfile',
+  },
+})
