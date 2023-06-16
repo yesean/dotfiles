@@ -15,6 +15,4 @@ local opts = {
   },
 }
 
-local mappings = {}
-
-return { opts = opts, mappings = mappings }
+return { opts = opts }

@@ -41,20 +41,17 @@ return {
       }
 
       -- setup language servers
-      for _, server in
-        ipairs(require('mason-lspconfig').get_installed_servers())
-      do
+      for _, server in ipairs(require('mason-lspconfig').get_installed_servers()) do
         local opts = {
           capabilities = capabilities,
         }
         local mappings = vim.deepcopy(default_mappings)
 
         -- override lsp opts, if override exists
-        local exists, override =
-          pcall(require, 'plugins.lsp.overrides.' .. server)
+        local exists, override = pcall(require, 'plugins.lsp.overrides.' .. server)
         if exists then
-          opts = vim.tbl_deep_extend('force', opts, override.opts)
-          mappings = vim.list_extend(mappings, override.mappings)
+          opts = vim.tbl_deep_extend('force', opts, override.opts or {})
+          mappings = vim.list_extend(mappings, override.mappings or {})
         end
 
         function opts.on_attach(client, bufnr)
