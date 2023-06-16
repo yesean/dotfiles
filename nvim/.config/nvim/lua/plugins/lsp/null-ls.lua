@@ -39,7 +39,6 @@ return {
         }),
         diag.cpplint,
         diag.pylint,
-        diag.shellcheck,
         diag.hadolint,
         diag.chktex,
         diag.markdownlint.with({
