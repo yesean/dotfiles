@@ -1,5 +1,5 @@
 lazy_load_nvm() {
-  unset -f nvm node npm
+  unset -f nvm node npm yarn
 
   if [[ "$is_linux" == true ]]; then
     source /usr/share/nvm/init-nvm.sh
@@ -21,4 +21,9 @@ node() {
 npm() {
   lazy_load_nvm
   npm $@
+}
+
+yarn() {
+  lazy_load_nvm
+  yarn $@
 }
