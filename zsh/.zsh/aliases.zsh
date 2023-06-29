@@ -24,6 +24,8 @@ alias lg='lazygit'
 alias dc='docker compose'
 alias da='docker ps -a'
 alias ds='docker image ls'
+alias dsp='docker system prune --force'
+alias dspa='docker system prune --force --all'
 
 alias pss='ps -ef | grep "PID" | head -1; ps -ef | grep -v "grep" | grep'
 alias psm='ps -o rss,vsize,command | head -1; ps -o rss,vsize,command | grep -v "grep" | grep'
