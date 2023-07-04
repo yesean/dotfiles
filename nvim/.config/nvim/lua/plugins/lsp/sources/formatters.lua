@@ -4,7 +4,6 @@ return {
   'golines',
   'isort',
   'prettierd',
-  'rustfmt',
   'shellharden',
   'shfmt',
   'sql-formatter',
