@@ -1,24 +1,3 @@
-local find_command = {
-  'fd',
-  '--type',
-  'f',
-  '--hidden',
-  '--follow',
-  '--exclude',
-  '{.git,node_modules}',
-}
-
-local grep_command = {
-  'rg',
-  '--hidden',
-  '--color=never',
-  '--no-heading',
-  '--with-filename',
-  '--line-number',
-  '--column',
-  '--smart-case',
-}
-
 return {
   {
     'nvim-telescope/telescope.nvim',
@@ -27,7 +6,6 @@ return {
     },
     opts = {
       defaults = {
-        vimgrep_arguments = grep_command,
         layout_strategy = 'flex',
         layout_config = {
           width = 0.85,
@@ -44,14 +22,13 @@ return {
         },
       },
       pickers = {
-        keymaps = {
-          show_plug = false,
-        },
         find_files = {
-          find_command = find_command,
+          hidden = true,
         },
-        diagnostics = {
-          bufnr = 0,
+        live_grep = {
+          additional_args = {
+            '--hidden',
+          },
         },
         lsp_code_actions = {
           layout_config = {
