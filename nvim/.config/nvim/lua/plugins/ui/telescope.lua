@@ -65,20 +65,4 @@ return {
       'make',
     },
   },
-  {
-    'nvim-telescope/telescope-file-browser.nvim',
-    dependencies = {
-      'nvim-telescope/telescope.nvim',
-    },
-    keys = {
-      {
-        '<leader>gf',
-        '<cmd>Telescope file_browser path=%:p:h select_buffer=true<cr>',
-        desc = 'file browser',
-      },
-    },
-    config = function()
-      require('telescope').load_extension('file_browser')
-    end,
-  },
 }
