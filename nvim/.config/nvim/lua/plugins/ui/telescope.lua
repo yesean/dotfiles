@@ -28,6 +28,10 @@ return {
         live_grep = {
           additional_args = {
             '--hidden',
+            '--glob',
+            '!*.lock',
+            '--glob',
+            '!.git/*',
           },
         },
         lsp_code_actions = {
