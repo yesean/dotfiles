@@ -24,7 +24,17 @@ return {
         { '<leader>r', lsp.rename, 'rename symbol' },
 
         -- telescope mappings
-        { 'gd', tel.lsp_definitions, 'go to definition' },
+        {
+          'gd',
+          function()
+            if vim.fn.exists(':TypescriptGoToSourceDefinition') == 1 then
+              vim.cmd.TypescriptGoToSourceDefinition()
+            else
+              tel.lsp_definitions()
+            end
+          end,
+          'go to definition',
+        },
         { 'gr', tel.lsp_references, 'go to references' },
         { 'gy', tel.lsp_type_definitions, 'go to type definition' },
         { 'gi', tel.lsp_implementations, 'go to implementation' },
