@@ -10,7 +10,9 @@ return {
       local sources = {
         diag.luacheck.with({ extra_args = { '--globals', 'vim', 'use' } }), -- lua
         fmt.stylua,
-        fmt.prettierd,
+        fmt.prettierd.with({
+          extra_filetypes = { 'astro' },
+        }),
         fmt.rustfmt,
         fmt.yapf,
         fmt.isort,

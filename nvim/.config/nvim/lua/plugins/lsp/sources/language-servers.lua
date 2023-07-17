@@ -1,4 +1,5 @@
 return {
+  'astro-language-server',
   'bash-language-server',
   'clangd',
   'cmake-language-server',
