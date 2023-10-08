@@ -1,7 +1,13 @@
-export PATH=/usr/local/bin:$PATH    # homebrew binaries
-export PATH=/usr/local/sbin:$PATH   # homebrew binaries
-export PATH=$HOME/.local/bin:$PATH  # dotfiles scripts
-source "$HOME/.cargo/env"           # rust path
+# check for homebrew in home directory
+if [[ -d $HOME/homebrew ]]; then
+  export HOMEBREW="$HOME/homebrew"
+else
+  export HOMEBREW="/usr/local"
+fi
+
+export PATH=$HOME/.local/bin:$PATH                # dotfiles scripts
+export PATH=$HOME/.cargo/bin:$PATH                # rust binaries
+export PATH="$HOMEBREW/bin:$HOMEBREW/sbin:$PATH"  # homebrew binaries
 
 export EDITOR=nvim
 export BROWSER=brave

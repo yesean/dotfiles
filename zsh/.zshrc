@@ -6,9 +6,9 @@
 source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 antidote load
 
+source ~/.zsh/env.zsh
 source ~/.zsh/aliases.zsh
 source ~/.zsh/completion.zsh
-source ~/.zsh/env.zsh
 source ~/.zsh/fzf.zsh
 source ~/.zsh/history.zsh
 source ~/.zsh/keybindings.zsh
