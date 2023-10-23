@@ -27,7 +27,7 @@ return {
         {
           'gd',
           function()
-            if vim.fn.exists(':TypescriptGoToSourceDefinition') == 1 then
+            if vim.fn.exists(':TypescriptGoToSourceDefinition') ~= 0 then
               vim.cmd.TypescriptGoToSourceDefinition()
             else
               tel.lsp_definitions()
