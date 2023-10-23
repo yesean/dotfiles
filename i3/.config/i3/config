@@ -58,7 +58,7 @@ floating_modifier $mod
 bindsym $mod+Return exec --no-startup-id $term
 
 # browser key binding
-bindsym $mod+shift+Return exec --no-startup-id brave
+bindsym $mod+shift+Return exec --no-startup-id firefox-developer-edition
 
 # file browser key binding
 bindsym $mod+mod1+Return exec --no-startup-id nemo
@@ -237,8 +237,8 @@ bindsym $mod+Shift+BackSpace exec --no-startup-id dunstctl history-pop
 exec --no-startup-id xset s off -dpms
 
 # sleep after idle for 60 minutes
-exec --no-startup-id xidlehook --detect-sleep --not-when-audio --not-when-fullscreen --timer 1800 '/home/sean/.local/bin/power.sh sleep' '' &
-exec --no-startup-id xidlehook --detect-sleep --not-when-audio --timer 600 '/home/sean/.local/bin/power.sh lock' '' &
+exec --no-startup-id xidlehook --detect-sleep --not-when-audio --not-when-fullscreen --timer 3600 '/home/sean/.local/bin/power.sh sleep' '' &
+exec --no-startup-id xidlehook --detect-sleep --not-when-audio --timer 1800 '/home/sean/.local/bin/power.sh lock' '' &
 bindsym $mod+Ctrl+l exec --no-startup-id ~/.local/bin/power.sh lock
 
 # disable wakeup from mouse
