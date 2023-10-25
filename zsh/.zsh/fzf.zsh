@@ -21,6 +21,6 @@ fzf_file_layout="--preview 'bat --color=always --style=numbers --line-range=:500
 export FZF_CTRL_T_COMMAND=$fd_files
 export FZF_CTRL_T_OPTS=$fzf_file_layout
 
-fzf_dir_layout="--preview 'exa -lbhHigUmuSa --no-time  --git --color-scale {}'"
+fzf_dir_layout="--preview 'eza -lbhHigUmuSa --no-time  --git --color-scale {}'"
 export FZF_ALT_C_COMMAND=$fd_dirs
 export FZF_ALT_C_OPTS=$fzf_dir_layout
