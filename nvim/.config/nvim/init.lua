@@ -1,6 +1,10 @@
 require('options')
 require('mapping')
 require('diagnostics')
+if vim.g.vscode then
+  require('vscode')
+end
+require('vscode')
 
 -- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'

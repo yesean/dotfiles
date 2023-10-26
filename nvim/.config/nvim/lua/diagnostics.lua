@@ -19,10 +19,20 @@ diagnostic.config({
   },
 })
 
+-- change command depending on VSCode or nvim
+local diagnostic_cmds = {
+  next = vim.g.vscode and map.cmd(
+    "call VSCodeNotify('editor.action.marker.next')"
+  ) or diagnostic.goto_next,
+  prev = vim.g.vscode and map.cmd(
+    "call VSCodeNotify('editor.action.marker.prev')"
+  ) or diagnostic.goto_prev,
+}
+
 local mappings = {
   { 'ge', diagnostic.open_float, 'show floating diagnostics' },
-  { '[d', diagnostic.goto_prev, 'go to previous diagnostic' },
-  { ']d', diagnostic.goto_next, 'go to next diagnostic' },
+  { '[d', diagnostic_cmds.prev, 'go to previous diagnostic' },
+  { ']d', diagnostic_cmds.next, 'go to next diagnostic' },
   {
     'gG',
     function()
