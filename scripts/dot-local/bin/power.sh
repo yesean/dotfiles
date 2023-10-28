@@ -1,24 +1,26 @@
 #!/usr/bin/env sh
 
 lock() {
+  text=1d3557
+  ring_color=f1faee
+  error=f08080
+  clear=00000000
+
   i3lock -k \
-    --image ~/pictures/wallpapers/21:9/bigsur.jpg \
+    --image ~/.lock --fill \
     --time-str="%-I:%M %p" \
     --date-str "%A, %B %d %G" \
     --time-font="SF Pro Display" --time-size=32 \
     --date-font="SF Pro Display" --date-size=16 \
     --pass-media-keys --pass-volume-keys \
     --radius=150 \
-    --inside-color=00000000 --ring-color=ccd0da \
-    --insidever-color=00000000 --ringver-color=4c4f69 \
-    --insidewrong-color=00000000 --ringwrong-color=e64553 \
-    --separator-color=9ca0b0 --line-color=00000000 \
-    --time-color=ffffffff \
-    --date-color=ffffffff \
-    --greeter-color=ffffffff \
-    --verif-color=ffffffff \
-    --wrong-color=ffffffff \
-    --keyhl-color=4c4f69 \
+    --ring-color="$ring_color" --ringver-color="$ring_color" --ringwrong-color="$error" \
+    --inside-color="$clear" --insidever-color="$clear" --insidewrong-color="$clear" \
+    --separator-color="$clear" \
+    --line-uses-inside \
+    --layout-color="$text" --time-color="$text" --date-color="$text" --greeter-color="$text" \
+    --verif-color="$ring_color" --wrong-color="$error" --modif-color="$text" \
+    --keyhl-color="$text" --bshl-color="$text" \
     --greeter-text="" \
     --verif-font="SF Pro Display:style=Bold" --verif-text="..." --verif-size=30 \
     --wrong-font="SF Pro Display:style=Bold" --wrong-text="Try Again" --wrong-size=30
