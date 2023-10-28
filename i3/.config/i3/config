@@ -131,13 +131,10 @@ bindsym $mod+minus scratchpad show
 bindsym $mod+x move scratchpad
 
 # toggle items in scratchpad
-bindsym $mod+mod1+j [floating class="^(?!notion-app)"] move scratchpad; [floating class="notion-app"] scratchpad show, resize set 2176 1224, move absolute position center
-bindsym $mod+mod1+k [floating class="^(?!Morgen)"] move scratchpad; [floating class="Morgen"] scratchpad show, resize set 2176 1224, move absolute position center
-bindsym $mod+mod1+l [floating class="^(?!Spotify)"] move scratchpad; [floating class="Spotify"] scratchpad show, resize set 2176 1224, move absolute position center
+for_window [class="Morgen|Spotify"] move scratchpad
+bindsym $mod+mod1+k [floating class="^(?!Morgen)"] move scratchpad; [floating class="Morgen"] scratchpad show, resize set 3328 1872, move absolute position center
+bindsym $mod+mod1+l [floating class="^(?!Spotify)"] move scratchpad; [floating class="Spotify"] scratchpad show, resize set 3328 1872, move absolute position center
 
-for_window [class="notion-app"] move scratchpad
-for_window [class="Morgen"] move scratchpad
-for_window [class="Spotify"] move scratchpad
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -169,31 +166,24 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will grow the window’s width.
-        # Pressing right will shrink the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize grow width 5 px or 5 ppt
-        bindsym j resize shrink height 5 px or 5 ppt
-        bindsym k resize grow height 5 px or 5 ppt
-        bindsym l resize shrink width 5 px or 5 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize grow width 5 px or 5 ppt
-        bindsym Down resize shrink height 5 px or 5 ppt
-        bindsym Up resize grow height 5 px or 5 ppt
-        bindsym Right resize shrink width 5 px or 5 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-
 bindsym $mod+r mode "resize"
+mode "resize" {
+  bindsym h resize grow   width   5 px or 5 ppt
+  bindsym j resize shrink height  5 px or 5 ppt
+  bindsym k resize grow   height  5 px or 5 ppt
+  bindsym l resize shrink width   5 px or 5 ppt
+
+  # same bindings, but for the arrow keys
+  bindsym Left  resize grow   width   5 px or 5 ppt
+  bindsym Down  resize shrink height  5 px or 5 ppt
+  bindsym Up    resize grow   height  5 px or 5 ppt
+  bindsym Right resize shrink width   5 px or 5 ppt
+
+  # back to normal: Enter or Escape or $mod+r
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+  bindsym $mod+r mode "default"
+}
 
 bindsym $mod+c move absolute position center
 
@@ -203,10 +193,10 @@ bindsym $mod+Shift+i  gaps inner current minus 10
 bindsym $mod+o        gaps outer current plus 10
 bindsym $mod+Shift+o  gaps outer current minus 10
 
-# save workspaces shortcut
+# save workspaces
 bindsym $mod+Ctrl+s exec --no-startup-id ~/.local/bin/workspaces.sh save
 
-# flameshot shortcut (for screenshotting)
+# screenshot shortcuts (flameshot)
 bindsym $mod+Ctrl+4 exec --no-startup-id flameshot gui
 bindsym $mod+Shift+Ctrl+4 exec --no-startup-id flameshot gui -s -c
 bindsym $mod+Ctrl+3 exec --no-startup-id flameshot full
@@ -236,7 +226,7 @@ bindsym $mod+Shift+BackSpace exec --no-startup-id dunstctl history-pop
 # turn off screen blanking
 exec --no-startup-id xset s off -dpms
 
-# sleep after idle for 60 minutes
+# lock after 30m mins, sleep after 60 mins
 exec --no-startup-id xidlehook --detect-sleep --not-when-audio --not-when-fullscreen --timer 3600 '/home/sean/.local/bin/power.sh sleep' '' &
 exec --no-startup-id xidlehook --detect-sleep --not-when-audio --timer 1800 '/home/sean/.local/bin/power.sh lock' '' &
 bindsym $mod+Ctrl+l exec --no-startup-id ~/.local/bin/power.sh lock
