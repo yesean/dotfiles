@@ -3,6 +3,7 @@ return {
     'nvim-telescope/telescope.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope-live-grep-args.nvim',
     },
     opts = {
       defaults = {
@@ -44,15 +45,21 @@ return {
     config = function(_, opts)
       local map = require('mapping')
       local builtin = require('telescope.builtin')
+      local extensions = require('telescope').extensions
 
       -- telescope key bindings
       map.n('<leader>t', map.cmd('Telescope'))
       map.n('<c-p>', builtin.find_files, { desc = 'find files' })
-      map.n('<c-f>', builtin.live_grep, { desc = 'find phrase' })
+      map.n(
+        '<c-f>',
+        extensions.live_grep_args.live_grep_args,
+        { desc = 'find phrase' }
+      )
       map.n('gk', builtin.keymaps, { desc = 'show keymaps' })
       map.n('gm', builtin.git_status, { desc = 'show modified files' })
       map.n('gl', builtin.git_bcommits, { desc = 'show git commits' })
 
+      require('telescope').load_extension('live_grep_args')
       require('telescope').setup(opts)
     end,
   },
