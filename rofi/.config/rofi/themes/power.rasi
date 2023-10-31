@@ -1,5 +1,5 @@
 * {
-  font: "SF Pro Rounded 12";
+  font: "SF Pro Rounded 10";
 }
 
 window {
@@ -7,7 +7,7 @@ window {
   location: north east;
   background-color: #eff1f5;
   x-offset: -10px;
-  y-offset: 34px;
+  y-offset: 44px;
   width: 300px;
   height: 352px;
   padding: 20px;
