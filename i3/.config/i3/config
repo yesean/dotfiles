@@ -203,7 +203,7 @@ bindsym $mod+Ctrl+3 exec --no-startup-id flameshot full
 bindsym $mod+Shift+Ctrl+3 exec --no-startup-id flameshot full -c
 
 # set gaps
-gaps inner 15
+gaps inner 10
 gaps outer 0
 
 # style window title
