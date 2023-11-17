@@ -3,7 +3,7 @@ history_length = 100
 
 width = 270
 height = 100
-offset = 15x15                  # w x h distance from top-right corner
+offset = 8x30                  # w x h distance from top-right corner
 padding = 12                    # vertical padding
 horizontal_padding = 12
 transparency = 30
