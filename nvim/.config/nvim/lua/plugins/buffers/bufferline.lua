@@ -7,14 +7,9 @@ return {
     opts = function()
       return {
         options = {
-          show_close_icon = false,
-          hover = {
-            enabled = true,
-            reveal = { 'close' },
-          },
-          indicator = {
-            style = 'underline',
-          },
+          separator_style = 'slant',
+          show_close_icons = false,
+          show_buffer_close_icons = false,
           offsets = {
             {
               filetype = 'neo-tree',
