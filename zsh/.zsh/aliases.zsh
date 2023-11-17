@@ -31,6 +31,7 @@ alias pss='ps -ef | grep "PID" | head -1; ps -ef | grep -v "grep" | grep'
 alias psm='ps -o rss,vsize,command | head -1; ps -o rss,vsize,command | grep -v "grep" | grep'
 
 alias dots='cd ~/.dotfiles/'
+alias copy='xclip -selection clipboard'
 
 gpo() {
   git push origin HEAD~$1:main
