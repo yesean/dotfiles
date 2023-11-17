@@ -6,8 +6,6 @@ return {
       { 'williamboman/mason-lspconfig.nvim', config = true },
       'nvim-telescope/telescope.nvim',
       'folke/neodev.nvim',
-      'jose-elias-alvarez/typescript.nvim',
-      'jose-elias-alvarez/typescript.nvim',
       'hrsh7th/cmp-nvim-lsp',
     },
     event = { 'BufReadPre', 'BufNewFile' },
@@ -27,15 +25,21 @@ return {
         {
           'gd',
           function()
-            if vim.fn.exists(':TypescriptGoToSourceDefinition') ~= 0 then
-              vim.cmd.TypescriptGoToSourceDefinition()
+            if vim.fn.exists(':TSToolsGoToSourceDefinition') ~= 0 then
+              vim.cmd.TSToolsGoToSourceDefinition()
             else
               tel.lsp_definitions()
             end
           end,
           'go to definition',
         },
-        { 'gr', tel.lsp_references, 'go to references' },
+        {
+          'gr',
+          function()
+            tel.lsp_references({ fname_width = 70 })
+          end,
+          'go to references',
+        },
         { 'gy', tel.lsp_type_definitions, 'go to type definition' },
         { 'gi', tel.lsp_implementations, 'go to implementation' },
         { 'g0', tel.lsp_document_symbols, 'show lsp document symbols' },
@@ -51,14 +55,17 @@ return {
       }
 
       -- setup language servers
-      for _, server in ipairs(require('mason-lspconfig').get_installed_servers()) do
+      for _, server in
+        ipairs(require('mason-lspconfig').get_installed_servers())
+      do
         local opts = {
           capabilities = capabilities,
         }
         local mappings = vim.deepcopy(default_mappings)
 
         -- override lsp opts, if override exists
-        local exists, override = pcall(require, 'plugins.lsp.overrides.' .. server)
+        local exists, override =
+          pcall(require, 'plugins.lsp.overrides.' .. server)
         if exists then
           opts = vim.tbl_deep_extend('force', opts, override.opts or {})
           mappings = vim.list_extend(mappings, override.mappings or {})
@@ -71,7 +78,7 @@ return {
 
         -- use setup fn from typescript.nvim
         if server == 'tsserver' then
-          require('typescript').setup({ server = opts })
+          require('typescript-tools').setup({ server = opts })
         else
           require('lspconfig')[server].setup(opts)
         end
