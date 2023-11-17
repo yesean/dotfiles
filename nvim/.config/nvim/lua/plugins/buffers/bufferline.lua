@@ -36,9 +36,7 @@ return {
         { '<leader>L', map.cmd('BufferLineMoveNext'), 'swap one buffer right' },
         {
           '<leader>d',
-          function()
-            require('bufdelete').bufwipeout()
-          end,
+          map.cmd('Bdelete'),
           'close current buffer',
         },
         {
@@ -52,17 +50,14 @@ return {
           'close all buffers to the right',
         },
         {
-          '<leader>da',
-          function()
-            local bufs = vim.api.nvim_list_bufs()
-            require('bufdelete').bufwipeout({ bufs[1], bufs[#bufs] })
-          end,
-          'close all buffers',
-        },
-        {
           '<leader>dd',
           map.cmd('BufferLineCloseLeft', 'BufferLineCloseRight'),
           'close all buffers except current',
+        },
+        {
+          '<leader>da',
+          map.cmd('BufferLineCloseLeft', 'BufferLineCloseRight', 'Bdelete'),
+          'close all buffers',
         },
       })
       require('bufferline').setup(opts)
