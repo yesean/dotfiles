@@ -45,8 +45,9 @@ return {
   },
   {
     'RRethy/vim-illuminate',
-    config = function()
-      require('illuminate').configure()
+    opts = { filetypes_denylist = { 'TelescopePrompt' } },
+    config = function(_, opts)
+      require('illuminate').configure(opts)
     end,
   },
   {
