@@ -1,9 +1,8 @@
 return {
+  { 'famiu/bufdelete.nvim' },
   {
     'akinsho/bufferline.nvim',
-    dependencies = {
-      'catppuccin/nvim',
-    },
+    dependencies = { 'catppuccin/nvim' },
     opts = function()
       return {
         options = {
@@ -29,11 +28,7 @@ return {
         { '<c-l>', map.cmd('BufferLineCycleNext'), 'go to one buffer right' },
         { '<leader>H', map.cmd('BufferLineMovePrev'), 'swap one buffer left' },
         { '<leader>L', map.cmd('BufferLineMoveNext'), 'swap one buffer right' },
-        {
-          '<leader>d',
-          map.cmd('Bdelete'),
-          'close current buffer',
-        },
+        { '<leader>d', map.cmd('Bdelete'), 'close current buffer' },
         {
           '<leader>dh',
           map.cmd('BufferLineCloseLeft'),
@@ -58,4 +53,5 @@ return {
       require('bufferline').setup(opts)
     end,
   },
+  { 'tiagovla/scope.nvim' },
 }

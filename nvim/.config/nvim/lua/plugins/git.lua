@@ -11,7 +11,6 @@ return {
           return map.cmd('DiffviewOpen')
         end
       end
-
       map.n(
         '<leader>gd',
         DiffviewToggle,
@@ -20,4 +19,25 @@ return {
       map.n('<leader>gdm', map.cmd('DiffviewOpen origin/main'))
     end,
   },
+  {
+    'f-person/git-blame.nvim',
+    keys = {
+      { '<leader>gb', '<cmd>GitBlameToggle<cr>', desc = 'toggle git blame' },
+    },
+  },
+  {
+    'akinsho/git-conflict.nvim',
+    version = '*',
+    event = { 'BufRead' },
+    opts = { default_mappings = { prev = '[x', next = ']x' } },
+    config = true,
+  },
+  {
+    'lewis6991/gitsigns.nvim',
+    opts = {
+      signs = { untracked = { text = '│' } },
+      _extmark_signs = false,
+    },
+  },
+  { 'TimUntersberger/neogit' },
 }

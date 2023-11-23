@@ -17,7 +17,6 @@ return {
     opts = function(_)
       local cmp = require('cmp')
       local luasnip = require('luasnip')
-
       return {
         mapping = {
           ['<c-space>'] = cmp.mapping.complete(),
@@ -68,35 +67,24 @@ return {
             },
           }),
         },
-        experimental = {
-          ghost_text = true,
-        },
+        experimental = { ghost_text = true },
       }
     end,
     config = function(_, opts)
       local cmp = require('cmp')
-
       cmp.setup.cmdline(':', {
         mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-          { name = 'path' },
-        }, {
-          {
-            name = 'cmdline',
-            option = {
-              ignore_cmds = { 'Man', '!' },
-            },
-          },
-        }),
+        sources = cmp.config.sources(
+          { { name = 'path' } },
+          { { name = 'cmdline', option = { ignore_cmds = { 'Man', '!' } } } }
+        ),
       })
-
       cmp.setup.cmdline('/', {
         mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-          { name = 'nvim_lsp_document_symbol' },
-        }, {
-          { name = 'buffer' },
-        }),
+        sources = cmp.config.sources(
+          { { name = 'nvim_lsp_document_symbol' } },
+          { { name = 'buffer' } }
+        ),
       })
 
       cmp.setup(opts)
