@@ -4,8 +4,11 @@ return {
     opts = {
       formatters_by_ft = {
         lua = { 'stylua' },
-        ['javascript*'] = { { 'prettierd', 'prettier' } },
-        ['typescript*'] = { { 'prettierd', 'prettier' } },
+        ['html'] = { { 'prettierd', 'prettier' } },
+        ['javascript'] = { { 'prettierd', 'prettier' } },
+        ['javascriptreact'] = { { 'prettierd', 'prettier' } },
+        ['typescript'] = { { 'prettierd', 'prettier' } },
+        ['typescriptreact'] = { { 'prettierd', 'prettier' } },
         python = { 'yapf', 'isort' },
         rust = { 'rustfmt' },
         go = { 'gofmt', 'goimports', 'golines' },
