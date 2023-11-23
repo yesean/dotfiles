@@ -69,7 +69,7 @@
   "terminal.integrated.fontSize": 11,
   "typescript.preferences.importModuleSpecifier": "relative",
   "vscode-neovim.neovimExecutablePaths.darwin": "/usr/local/bin/nvim",
-  "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim",
+  "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
   "vscode-neovim.neovimInitVimPaths.darwin": "~/.config/nvim/init.lua",
   "vscode-neovim.neovimInitVimPaths.linux": "~/.config/nvim/init.lua",
   "vim.enableNeovim": true,
@@ -79,11 +79,14 @@
   "workbench.startupEditor": "newUntitledFile",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "liveshare.authenticationProvider": "GitHub",
-  "workbench.editor.untitled.hint": "hidden",
   "window.zoomLevel": 0.75,
   "workbench.colorTheme": "Catppuccin Macchiato",
   "[python]": {
     "editor.defaultFormatter": "ms-python.python"
   },
-  "editor.fontLigatures": true
+  "editor.fontLigatures": true,
+  "workbench.editor.empty.hint": "hidden",
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  }
 }
