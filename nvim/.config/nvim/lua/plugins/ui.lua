@@ -10,9 +10,7 @@ return {
       return {
         theme = 'hyper',
         config = {
-          week_header = {
-            enable = true,
-          },
+          week_header = { enable = true },
           shortcut = {
             {
               icon = '󰏓 ',
@@ -28,17 +26,12 @@ return {
   },
   { 'stevearc/dressing.nvim', opts = { input = { insert_only = false } } },
   { 'j-hui/fidget.nvim', tag = 'legacy', config = true },
-
   {
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
     opts = {
-      scope = {
-        enabled = false,
-      },
-      exclude = {
-        filetypes = { 'dashboard' },
-      },
+      scope = { enabled = false },
+      exclude = { filetypes = { 'dashboard' } },
     },
   },
   {
@@ -61,26 +54,21 @@ return {
       vim.keymap.set('n', 'n', '<Plug>(highlight-current-n-n)')
       vim.keymap.set('n', 'N', '<Plug>(highlight-current-n-N)')
       vim.api.nvim_create_augroup('ClearSearchHL', {})
-      vim.api.nvim_create_autocmd({ 'CmdlineEnter' }, {
-        command = 'set hlsearch',
-        group = 'ClearSearchHL',
-      })
-      vim.api.nvim_create_autocmd({ 'CmdlineLeave' }, {
-        command = 'set nohlsearch',
-        group = 'ClearSearchHL',
-      })
+      vim.api.nvim_create_autocmd(
+        { 'CmdlineEnter' },
+        { command = 'set hlsearch', group = 'ClearSearchHL' }
+      )
+      vim.api.nvim_create_autocmd(
+        { 'CmdlineLeave' },
+        { command = 'set nohlsearch', group = 'ClearSearchHL' }
+      )
     end,
   },
   {
     'hoob3rt/lualine.nvim',
-    dependencies = {
-      'catppuccin/nvim',
-    },
+    dependencies = { 'catppuccin/nvim' },
     opts = {
-      options = {
-        theme = 'catppuccin',
-        globalstatus = true,
-      },
+      options = { theme = 'catppuccin', globalstatus = true },
       sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff' },
@@ -118,10 +106,7 @@ return {
       return {
         close_if_last_window = true,
         filesystem = {
-          filtered_items = {
-            hide_dotfiles = false,
-            hide_gitignored = false,
-          },
+          filtered_items = { hide_dotfiles = false, hide_gitignored = false },
           follow_current_file = true,
           hijack_netrw_behavior = 'open_current',
         },
@@ -143,7 +128,6 @@ return {
     config = function(_, opts)
       local map = require('mapping')
       map.n('<leader>n', map.cmd('Neotree toggle'))
-
       require('neo-tree').setup(opts)
     end,
   },
@@ -151,9 +135,7 @@ return {
   { 'norcalli/nvim-colorizer.lua' },
   {
     'kosayoda/nvim-lightbulb',
-    opts = {
-      autocmd = { enabled = true },
-    },
+    opts = { autocmd = { enabled = true } },
     config = function(_, opts)
       require('nvim-lightbulb').setup(opts)
     end,
@@ -165,22 +147,15 @@ return {
       vim.g.navic_silence = true
     end,
   },
-  {
-    'rcarriga/nvim-notify',
-  },
-  {
-    'petertriho/nvim-scrollbar',
-  },
+  { 'rcarriga/nvim-notify' },
+  { 'petertriho/nvim-scrollbar' },
   {
     'kevinhwang91/nvim-ufo',
-    dependencies = {
-      'kevinhwang91/promise-async',
-    },
+    dependencies = { 'kevinhwang91/promise-async' },
     config = function(_, opts)
       vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
       vim.o.foldcolumn = '1'
       vim.o.foldlevel = 99
-
       require('ufo').setup(opts)
     end,
   },
