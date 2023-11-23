@@ -20,21 +20,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup({
-  { import = 'plugins.autocomplete' },
-  { import = 'plugins.buffer' },
-  { import = 'plugins.editing' },
-  { import = 'plugins.git' },
-  { import = 'plugins.language-support' },
-  { import = 'plugins.lsp' },
-  { import = 'plugins.session' },
-  { import = 'plugins.snippets' },
-  { import = 'plugins.syntax' },
-  { import = 'plugins.terminal' },
-  { import = 'plugins.colorscheme' },
-  { import = 'plugins.ui' },
-  { import = 'plugins.telescope' },
-}, {
+require('lazy').setup({ { import = 'plugins' }, { import = 'plugins.lsp' } }, {
   change_detection = {
     notify = false,
   },

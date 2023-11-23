@@ -1,3 +1,5 @@
+local colorscheme = require('plugins.colorscheme.colorscheme')
+
 return {
   {
     'nvimdev/dashboard-nvim',
@@ -66,9 +68,12 @@ return {
   },
   {
     'hoob3rt/lualine.nvim',
-    dependencies = { 'catppuccin/nvim' },
+    dependencies = { colorscheme.selected_colorscheme },
     opts = {
-      options = { theme = 'catppuccin', globalstatus = true },
+      options = {
+        theme = colorscheme.selected_colorscheme_name,
+        globalstatus = true,
+      },
       sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff' },
