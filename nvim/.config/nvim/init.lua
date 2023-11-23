@@ -22,7 +22,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   { import = 'plugins.autocomplete' },
-  { import = 'plugins.buffers' },
+  { import = 'plugins.buffer' },
   { import = 'plugins.editing' },
   { import = 'plugins.git' },
   { import = 'plugins.language-support' },
