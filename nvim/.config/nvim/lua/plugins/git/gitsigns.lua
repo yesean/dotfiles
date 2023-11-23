@@ -5,6 +5,7 @@ return {
       signs = {
         untracked = { text = '│' },
       },
+      _extmark_signs = false,
     },
   },
 }
