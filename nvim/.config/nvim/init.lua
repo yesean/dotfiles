@@ -4,7 +4,6 @@ require('diagnostics')
 if vim.g.vscode then
   require('vscode')
 end
-require('vscode')
 
 -- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
@@ -20,12 +19,13 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local colorscheme = require('colorschemes')
 require('lazy').setup({
   { import = 'plugins' },
   { import = 'plugins.lsp' },
 }, {
-  change_detection = {
-    notify = false,
+  install = {
+    colorscheme = { colorscheme.selected_colorscheme_name },
   },
 })
 

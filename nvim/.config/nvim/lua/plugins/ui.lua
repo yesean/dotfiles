@@ -1,4 +1,4 @@
-local colorscheme = require('plugins.colorscheme.colorscheme')
+local colorschemes = require('colorschemes')
 
 return {
   {
@@ -32,7 +32,7 @@ return {
     main = 'ibl',
     opts = {
       scope = { enabled = false },
-      exclude = { filetypes = { 'dashboard' } },
+      exclude = { filetypes = { 'dashboard', 'lazy' } },
     },
   },
   {
@@ -67,10 +67,10 @@ return {
   },
   {
     'hoob3rt/lualine.nvim',
-    dependencies = { colorscheme.selected_colorscheme },
+    dependencies = { colorschemes.selected_colorscheme },
     opts = {
       options = {
-        theme = colorscheme.selected_colorscheme_name,
+        theme = colorschemes.selected_colorscheme_name,
         globalstatus = true,
       },
       sections = {
