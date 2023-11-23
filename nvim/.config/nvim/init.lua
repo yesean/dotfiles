@@ -20,10 +20,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local colorscheme = require('colorschemes')
-require('lazy').setup({
-  { import = 'plugins' },
-  { import = 'plugins.lsp' },
-}, {
+require('lazy').setup('plugins', {
   install = {
     colorscheme = { colorscheme.selected_colorscheme_name },
   },

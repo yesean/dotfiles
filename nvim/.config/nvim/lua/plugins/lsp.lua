@@ -1,4 +1,15 @@
+local sources = require('lsp.sources')
+
 return {
+  {
+    'WhoIsSethDaniel/mason-tool-installer.nvim',
+    dependencies = {
+      { 'williamboman/mason.nvim', build = ':MasonUpdate', config = true },
+    },
+    opts = {
+      ensure_installed = sources,
+    },
+  },
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -54,6 +65,7 @@ return {
         lineFoldingOnly = true,
       }
 
+      local overrides = require('lsp.overrides')
       -- setup language servers
       for _, server in
         ipairs(require('mason-lspconfig').get_installed_servers())
@@ -61,18 +73,15 @@ return {
         local opts = {
           capabilities = capabilities,
         }
-        local mappings = vim.deepcopy(default_mappings)
 
         -- override lsp opts, if override exists
-        local exists, override =
-          pcall(require, 'plugins.lsp.overrides.' .. server)
-        if exists then
-          opts = vim.tbl_deep_extend('force', opts, override.opts or {})
-          mappings = vim.list_extend(mappings, override.mappings or {})
+        if overrides[server] ~= nil then
+          opts = vim.tbl_deep_extend('force', opts, overrides[server])
         end
 
+        -- attach lsp key bindings
         function opts.on_attach(client, bufnr)
-          map.set(mappings)
+          map.set(default_mappings)
           require('nvim-navic').attach(client, bufnr)
         end
 
@@ -84,5 +93,8 @@ return {
         end
       end
     end,
+  },
+  {
+    'onsails/lspkind-nvim',
   },
 }
