@@ -32,7 +32,7 @@ require('lazy').setup({
   { import = 'plugins.snippets' },
   { import = 'plugins.syntax' },
   { import = 'plugins.terminal' },
-  { import = 'plugins.themes' },
+  { import = 'plugins.colorscheme' },
   { import = 'plugins.ui' },
   { import = 'plugins.telescope' },
 }, {
