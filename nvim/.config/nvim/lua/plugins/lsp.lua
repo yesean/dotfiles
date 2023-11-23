@@ -22,40 +22,34 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local map = require('mapping')
-      local tel = require('telescope.builtin')
+      local tt = function(cmd)
+        return function()
+          require('trouble').toggle(cmd)
+        end
+      end
       local lsp = vim.lsp.buf
 
       local default_mappings = {
         -- lsp mappings
-        { 'gD', lsp.declaration, 'go to declaration' },
-        { 'K', lsp.hover, 'display hover information' },
-        { '<c-k>', lsp.signature_help, 'display signature information' },
-        { '<leader>r', lsp.rename, 'rename symbol' },
-
-        -- telescope mappings
         {
           'gd',
           function()
             if vim.fn.exists(':TSToolsGoToSourceDefinition') ~= 0 then
               vim.cmd.TSToolsGoToSourceDefinition()
             else
-              tel.lsp_definitions()
+              tt('lsp_definitions')()
             end
           end,
           'go to definition',
         },
-        {
-          'gr',
-          function()
-            tel.lsp_references({ fname_width = 70 })
-          end,
-          'go to references',
-        },
-        { 'gy', tel.lsp_type_definitions, 'go to type definition' },
-        { 'gi', tel.lsp_implementations, 'go to implementation' },
-        { 'g0', tel.lsp_document_symbols, 'show lsp document symbols' },
-        { 'g-', tel.treesitter, 'show treesitter queries' },
+        { 'gr', tt('lsp_references'), 'go to references' },
+        { 'gy', tt('lsp_type_definitions'), 'go to type definition' },
+        { 'gi', tt('lsp_implementations'), 'go to implementation' },
         { 'ga', map.cmd('CodeActionMenu'), 'select code actions' },
+
+        { 'K', lsp.hover, 'display hover information' },
+        { '<c-k>', lsp.signature_help, 'display signature information' },
+        { '<leader>r', lsp.rename, 'rename symbol' },
       }
 
       -- add additional capabilities supported by nvim-cmp
