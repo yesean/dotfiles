@@ -53,7 +53,7 @@ return {
                 ['<c-h>'] = lga_actions.quote_prompt({ postfix = ' --hidden ' }),
                 ['<c-i>'] = lga_actions.quote_prompt({ postfix = ' --iglob ' }),
                 ['<c-l>'] = lga_actions.quote_prompt({
-                  postfix = ' --hidden --iglob ',
+                  postfix = ' --hidden --iglob **',
                 }),
               },
             },
