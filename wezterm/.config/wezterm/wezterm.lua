@@ -5,7 +5,7 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
-config.color_scheme = 'Tokyo Night'
+config.color_scheme = 'Tokyo Night Storm'
 config.font_size = 10.5
 
 config.use_fancy_tab_bar = false
