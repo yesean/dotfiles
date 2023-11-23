@@ -3,16 +3,17 @@ return {
     'numToStr/Comment.nvim',
     events = 'VeryLazy',
     dependencies = {
-      'JoosepAlviste/nvim-ts-context-commentstring',
+      {
+        'JoosepAlviste/nvim-ts-context-commentstring',
+        opts = { enable_autocmd = false },
+      },
     },
-    opts = {
-      pre_hook = function(ctx)
-        local u = require('Comment.utils')
-        if ctx.ctype == u.ctype.line or ctx.cmotion == u.cmotion.line then
-          -- only comment when we are doing linewise comment or up-down motion
-          return require('ts_context_commentstring.internal').calculate_commentstring()
-        end
-      end,
-    },
+    opts = function()
+      return {
+        pre_hook = require(
+          'ts_context_commentstring.integrations.comment_nvim'
+        ).create_pre_hook(),
+      }
+    end,
   },
 }

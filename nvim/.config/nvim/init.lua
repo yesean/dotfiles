@@ -28,7 +28,7 @@ require('lazy').setup({
   { import = 'plugins.language-support' },
   { import = 'plugins.lsp' },
   { import = 'plugins.navigation' },
-  { import = 'plugins.sessions' },
+  { import = 'plugins.session' },
   { import = 'plugins.snippets' },
   { import = 'plugins.syntax' },
   { import = 'plugins.terminal' },
