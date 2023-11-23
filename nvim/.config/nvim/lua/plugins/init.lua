@@ -1,13 +1,6 @@
-local function merge_arrays(...)
-  local merged = {}
-  for _, array in ipairs(...) do
-    vim.list_extend(merged, array)
-  end
+local utils = require('utils')
 
-  return merged
-end
-
-return merge_arrays(
+local plugins = utils.merge_lists(
   { require('plugins.colorscheme.colorscheme').selected_colorscheme },
   require('plugins.autocomplete'),
   require('plugins.buffer'),
@@ -20,3 +13,5 @@ return merge_arrays(
   require('plugins.terminal'),
   require('plugins.ui')
 )
+
+return plugins
