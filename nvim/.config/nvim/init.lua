@@ -34,6 +34,7 @@ require('lazy').setup({
   { import = 'plugins.terminal' },
   { import = 'plugins.themes' },
   { import = 'plugins.ui' },
+  { import = 'plugins.telescope' },
 }, {
   change_detection = {
     notify = false,

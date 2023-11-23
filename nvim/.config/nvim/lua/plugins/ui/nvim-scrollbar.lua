@@ -1,3 +1,0 @@
-return {
-  'petertriho/nvim-scrollbar',
-}
