@@ -10,6 +10,6 @@ export PATH=$HOME/.cargo/bin:$PATH                # rust binaries
 export PATH="$HOMEBREW/bin:$HOMEBREW/sbin:$PATH"  # homebrew binaries
 
 export EDITOR=nvim
-export BROWSER=brave
+export BROWSER=firefox-developer-edition
 export QT_QPA_PLATFORMTHEME=qt5ct
 export GOPATH=$HOME/.local/share/go/
