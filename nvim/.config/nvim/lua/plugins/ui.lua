@@ -1,5 +1,6 @@
 local colorschemes = require('colorschemes')
 local map = require('mapping')
+local utils = require('utils')
 
 return {
   {
@@ -156,12 +157,15 @@ return {
   {
     'kevinhwang91/nvim-ufo',
     dependencies = { { 'kevinhwang91/promise-async' } },
+    opts = {
+      fold_virt_text_handler = utils.fold_virt_text_handler,
+    },
     config = function(_, opts)
-      vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
       vim.o.foldcolumn = '1'
       vim.o.foldlevel = 99
       vim.o.foldlevelstart = 99
       vim.o.foldenable = true
+      vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
       map.n('zR', require('ufo').openAllFolds)
       map.n('zM', require('ufo').closeAllFolds)
