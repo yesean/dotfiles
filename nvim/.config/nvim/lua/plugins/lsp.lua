@@ -1,4 +1,5 @@
 local sources = require('lsp.sources')
+local map = require('mapping')
 
 return {
   {
@@ -13,15 +14,16 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
-      { 'williamboman/mason-lspconfig.nvim', config = true },
-      'nvim-telescope/telescope.nvim',
-      'folke/neodev.nvim',
-      'hrsh7th/cmp-nvim-lsp',
+      { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
+      { 'williamboman/mason-lspconfig.nvim', opts = {} },
+      { 'nvim-telescope/telescope.nvim' },
+      { 'folke/neodev.nvim' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'folke/trouble.nvim' },
     },
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
-      local map = require('mapping')
+      -- trouble.toggle factory function
       local tt = function(cmd)
         return function()
           require('trouble').toggle(cmd)
@@ -29,8 +31,8 @@ return {
       end
       local lsp = vim.lsp.buf
 
+      -- lsp mappings
       local default_mappings = {
-        -- lsp mappings
         {
           'gd',
           function()
@@ -59,8 +61,8 @@ return {
         lineFoldingOnly = true,
       }
 
-      local overrides = require('lsp.overrides')
       -- setup language servers
+      local overrides = require('lsp.overrides')
       for _, server in
         ipairs(require('mason-lspconfig').get_installed_servers())
       do

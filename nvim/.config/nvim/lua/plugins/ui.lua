@@ -1,4 +1,5 @@
 local colorschemes = require('colorschemes')
+local map = require('mapping')
 
 return {
   {
@@ -155,7 +156,7 @@ return {
   { 'petertriho/nvim-scrollbar' },
   {
     'kevinhwang91/nvim-ufo',
-    dependencies = { 'kevinhwang91/promise-async' },
+    dependencies = { { 'kevinhwang91/promise-async' } },
     config = function(_, opts)
       vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
       vim.o.foldcolumn = '1'
@@ -165,7 +166,10 @@ return {
       require('ufo').setup(opts)
     end,
   },
-  { 'folke/trouble.nvim', dependencies = { 'nvim-tree/nvim-web-devicons' } },
+  {
+    'folke/trouble.nvim',
+    dependencies = { { 'nvim-tree/nvim-web-devicons' } },
+  },
   { 'folke/which-key.nvim', opts = {} },
   {
     'luukvbaal/statuscol.nvim',
