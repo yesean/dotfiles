@@ -160,6 +160,8 @@ return {
       vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
       vim.o.foldcolumn = '1'
       vim.o.foldlevel = 99
+      map.n('zR', require('ufo').openAllFolds)
+      map.n('zM', require('ufo').closeAllFolds)
       require('ufo').setup(opts)
     end,
   },
