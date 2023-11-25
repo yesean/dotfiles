@@ -5,6 +5,8 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         ['html'] = { { 'prettierd', 'prettier' } },
+        ['json'] = { { 'prettierd', 'prettier' } },
+        ['markdown'] = { { 'prettierd', 'prettier' } },
         ['javascript'] = { { 'prettierd', 'prettier' } },
         ['javascriptreact'] = { { 'prettierd', 'prettier' } },
         ['typescript'] = { { 'prettierd', 'prettier' } },
