@@ -39,7 +39,7 @@ local sources = {
     'goimports',
     'golines',
     'isort',
-    'prettierd',
+    'prettier',
     'shellharden',
     'shfmt',
     'sql-formatter',
