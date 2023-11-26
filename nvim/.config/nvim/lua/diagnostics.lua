@@ -31,6 +31,14 @@ local diagnostic_cmds = {
 
 local mappings = {
   { 'ge', diagnostic.open_float, 'show floating diagnostics' },
+  {
+    '<leader>e',
+    function()
+      vim.diagnostic.reset()
+      vim.cmd.edit()
+    end,
+    'refresh diagnostics',
+  },
   { '[d', diagnostic_cmds.prev, 'go to previous diagnostic' },
   { ']d', diagnostic_cmds.next, 'go to next diagnostic' },
   {

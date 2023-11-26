@@ -45,6 +45,7 @@ return {
       vim.api.nvim_create_autocmd({ 'Filetype' }, {
         pattern = 'dashboard',
         callback = function()
+          ---@diagnostic disable-next-line: inject-field
           vim.b.miniindentscope_disable = true
         end,
       })
@@ -102,24 +103,27 @@ return {
   },
   {
     'nvim-neo-tree/neo-tree.nvim',
+    branch = 'main',
     dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons',
-      'MunifTanjim/nui.nvim',
+      { 'nvim-lua/plenary.nvim' },
+      { 'nvim-tree/nvim-web-devicons' },
+      { 'MunifTanjim/nui.nvim' },
     },
     opts = function()
-      local commands = require('neo-tree.sources.filesystem.commands')
       return {
         close_if_last_window = true,
+        enable_normal_mode_for_inputs = true,
         filesystem = {
           filtered_items = { hide_dotfiles = false, hide_gitignored = false },
-          follow_current_file = true,
+          follow_current_file = { enabled = true, leave_dirs_open = true },
           hijack_netrw_behavior = 'open_current',
         },
         window = {
+          position = 'right',
           mappings = {
             ['<space>'] = 'none',
             ['<cr>'] = function(state)
+              local commands = require('neo-tree.sources.filesystem.commands')
               local node = state.tree:get_node()
               if node.type == 'file' then
                 commands.open(state)
