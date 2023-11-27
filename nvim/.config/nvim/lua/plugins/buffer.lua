@@ -6,6 +6,7 @@ return {
     opts = function()
       return {
         options = {
+          max_name_length = 30,
           separator_style = 'slant',
           show_close_icons = false,
           show_buffer_close_icons = false,
