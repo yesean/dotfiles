@@ -38,4 +38,6 @@ function M.fold_virt_text_handler(virtText, lnum, endLnum, width, truncate)
   return newVirtText
 end
 
+M.is_vscode = vim.g.vscode ~= nil
+
 return M

@@ -1,3 +1,5 @@
+local utils = require('utils')
+
 return {
   {
     'folke/flash.nvim',
@@ -45,6 +47,7 @@ return {
   },
   {
     'RRethy/vim-illuminate',
+    cond = not utils.is_vscode,
     opts = { filetypes_denylist = { 'TelescopePrompt' } },
     config = function(_, opts)
       require('illuminate').configure(opts)

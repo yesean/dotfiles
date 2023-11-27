@@ -1,7 +1,7 @@
 require('options')
 require('mapping')
 require('diagnostics')
-if vim.g.vscode then
+if require('utils').is_vscode then
   require('vscode')
 end
 

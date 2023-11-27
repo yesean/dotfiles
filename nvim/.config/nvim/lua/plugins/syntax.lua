@@ -1,4 +1,4 @@
-local is_nvim = vim.g.vscode == nil
+local utils = require('utils')
 
 return {
   {
@@ -7,7 +7,7 @@ return {
       return {
         ensure_installed = 'all',
         highlight = {
-          enable = is_nvim,
+          enable = not utils.is_vscode,
         },
         rainbow = {
           enable = true,
@@ -30,7 +30,7 @@ return {
           vim.bo.buftype == ''
           and not vim.bo.readonly
           and not is_buffer_empty
-          and is_nvim
+          and not utils.is_vscode
         then
           vim.cmd.w()
           vim.cmd.e()

@@ -1,4 +1,5 @@
 local map = require('mapping')
+local utils = require('utils')
 local diagnostic = vim.diagnostic
 
 -- configure diagnostics ui
@@ -21,10 +22,10 @@ diagnostic.config({
 
 -- change command depending on VSCode or nvim
 local diagnostic_cmds = {
-  next = vim.g.vscode and map.cmd(
+  next = utils.is_vscode and map.cmd(
     "call VSCodeNotify('editor.action.marker.next')"
   ) or diagnostic.goto_next,
-  prev = vim.g.vscode and map.cmd(
+  prev = utils.is_vscode and map.cmd(
     "call VSCodeNotify('editor.action.marker.prev')"
   ) or diagnostic.goto_prev,
 }

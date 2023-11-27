@@ -39,6 +39,7 @@ return {
   },
   {
     'echasnovski/mini.indentscope',
+    cond = not utils.is_vscode,
     version = '*',
     opts = { try_as_border = true },
     config = function(opts)
@@ -218,6 +219,7 @@ return {
   -- lazy.nvim
   {
     'folke/noice.nvim',
+    cond = not utils.is_vscode,
     event = 'VeryLazy',
     opts = {
       -- add any options here
