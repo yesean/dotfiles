@@ -14,10 +14,14 @@ if [ "$1" = "cpu_usage" ]; then
   echo "$cpu_usage"
 elif [ "$1" = "cpu_temp" ]; then
   echo "$cpu_temp"
+elif [ "$1" = "cpu" ]; then
+  echo "${cpu_usage}%" "${cpu_temp}°C"
 elif [ "$1" = "gpu_usage" ]; then
   echo "$gpu_usage"
 elif [ "$1" = "gpu_temp" ]; then
   echo "$gpu_temp"
+elif [ "$1" = "gpu" ]; then
+  echo "${gpu_usage}%" "${gpu_temp}°C"
 else
   echo "CPU_USAGE=${cpu_usage}%"
   echo "CPU_TEMP=${cpu_temp}°C"
