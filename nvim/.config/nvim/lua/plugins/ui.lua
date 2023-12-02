@@ -143,7 +143,12 @@ return {
     end,
   },
   { 'weilbith/nvim-code-action-menu' },
-  { 'norcalli/nvim-colorizer.lua' },
+  {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup()
+    end,
+  },
   {
     'kosayoda/nvim-lightbulb',
     opts = { autocmd = { enabled = true } },
