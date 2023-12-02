@@ -135,7 +135,6 @@ for_window [class="Morgen|Spotify"] move scratchpad
 bindsym $mod+mod1+k [floating class="^(?!Morgen)"] move scratchpad; [floating class="Morgen"] scratchpad show, resize set 3328 1872, move absolute position center
 bindsym $mod+mod1+l [floating class="^(?!Spotify)"] move scratchpad; [floating class="Spotify"] scratchpad show, resize set 3328 1872, move absolute position center
 
-
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -205,6 +204,9 @@ bindsym $mod+Shift+Ctrl+3 exec --no-startup-id flameshot full -c
 # set gaps
 gaps inner 10
 gaps outer 0
+
+# margin offset for polybar
+gaps top 15
 
 # style window title
 font pango:SF Mono Bold 8
