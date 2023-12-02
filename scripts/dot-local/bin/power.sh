@@ -1,10 +1,11 @@
 #!/usr/bin/env sh
 
 lock() {
-  text=1d3557
-  ring_color=f1faee
-  error=f08080
-  clear=00000000
+  text=#c0caf5
+  ring_color=#c0caf5
+  ring_hl_color=#1a1b26
+  error=#f7768e
+  transparent=#00000000
 
   i3lock -k \
     --image ~/.lock --fill \
@@ -15,15 +16,16 @@ lock() {
     --pass-media-keys --pass-volume-keys \
     --radius=150 \
     --ring-color="$ring_color" --ringver-color="$ring_color" --ringwrong-color="$error" \
-    --inside-color="$clear" --insidever-color="$clear" --insidewrong-color="$clear" \
-    --separator-color="$clear" \
+    --inside-color="$transparent" --insidever-color="$transparent" --insidewrong-color="$transparent" \
+    --separator-color="$transparent" \
     --line-uses-inside \
     --layout-color="$text" --time-color="$text" --date-color="$text" --greeter-color="$text" \
     --verif-color="$ring_color" --wrong-color="$error" --modif-color="$text" \
-    --keyhl-color="$text" --bshl-color="$text" \
+    --keyhl-color="$ring_hl_color" --bshl-color="$error" \
     --greeter-text="" \
     --verif-font="SF Pro Display:style=Bold" --verif-text="..." --verif-size=30 \
-    --wrong-font="SF Pro Display:style=Bold" --wrong-text="Try Again" --wrong-size=30
+    --wrong-font="SF Pro Display:style=Bold" --wrong-text="Try again" --wrong-size=30 \
+    --noinput-text="No input"
 }
 
 logout() {
