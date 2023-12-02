@@ -164,7 +164,12 @@ return {
     end,
   },
   { 'rcarriga/nvim-notify' },
-  { 'petertriho/nvim-scrollbar' },
+  {
+    'petertriho/nvim-scrollbar',
+    config = function()
+      require('scrollbar').setup()
+    end,
+  },
   {
     'kevinhwang91/nvim-ufo',
     dependencies = { { 'kevinhwang91/promise-async' } },

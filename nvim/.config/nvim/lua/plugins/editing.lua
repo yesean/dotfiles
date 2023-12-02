@@ -40,11 +40,14 @@ return {
       }
     end,
   },
-  { 'windwp/nvim-autopairs', config = true },
+  { 'windwp/nvim-autopairs', event = 'InsertEnter', opts = {} },
   { 'kylechui/nvim-surround', version = '*', config = true },
   {
     'windwp/nvim-ts-autotag',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end,
   },
   {
     'RRethy/vim-illuminate',
