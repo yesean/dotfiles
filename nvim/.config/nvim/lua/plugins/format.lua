@@ -21,6 +21,9 @@ return {
         sql = { 'pg_format' },
         ['_'] = { 'trim_whitespace' },
       },
+      formatters = {
+        shfmt = { prepend_args = { '--indent', 2 } },
+      },
       format_on_save = {
         lsp_fallback = true,
         timeout_ms = 1000,
