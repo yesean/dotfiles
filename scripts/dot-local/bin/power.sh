@@ -53,7 +53,7 @@ elif [ "$1" = 'restart' ]; then
   restart
 elif [ "$1" = 'prompt' ]; then
   rofi \
-    -dpi 135 \
+    -dpi 150 \
     -theme power \
     -hover-select -me-select-entry '' -me-accept-entry MousePrimary \
     -show power -modes "power:~/.config/rofi/power.sh"
