@@ -4,6 +4,7 @@ return {
     dependencies = {
       'rafamadriz/friendly-snippets',
     },
+    build = 'make install_jsregexp',
     opts = {
       region_check_events = 'CursorMoved',
     },
