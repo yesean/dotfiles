@@ -1,3 +1,5 @@
+local map = require('mapping')
+
 return {
   {
     'sindrets/diffview.nvim',
@@ -21,16 +23,17 @@ return {
   },
   {
     'f-person/git-blame.nvim',
-    keys = {
-      { '<leader>gb', '<cmd>GitBlameToggle<cr>', desc = 'toggle git blame' },
-    },
+    config = function()
+      map.set({
+        { '<leader>gb', '<cmd>GitBlameToggle<cr>', desc = 'toggle git blame' },
+      })
+    end,
   },
   {
     'akinsho/git-conflict.nvim',
     version = '*',
     event = { 'BufRead' },
     opts = { default_mappings = { prev = '[x', next = ']x' } },
-    config = true,
   },
   {
     'lewis6991/gitsigns.nvim',
