@@ -5,7 +5,9 @@ return {
     'folke/flash.nvim',
     cond = not utils.is_vscode,
     event = 'VeryLazy',
-    opts = {},
+    opts = {
+      modes = { search = { enabled = false } },
+    },
     keys = {
       -- stylua: ignore start
       { 's', mode = { 'n', 'x', 'o' }, function() require('flash').jump() end, desc = 'Flash', },
