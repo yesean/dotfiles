@@ -26,16 +26,15 @@ end
 function M.set(mappings, opts)
   opts = opts or {}
   for _, m in ipairs(mappings) do
-    local set
+    local mode = opts['mode']
+    local set = M ~= nil and M[mode] or M.n
     if opts['mode'] ~= nil then
       set = M[opts['mode']]
     else
       set = M.n
     end
-    opts['mode'] = nil
 
-    opts['desc'] = m[3]
-    set(m[1], m[2], opts)
+    set(m[1], m[2], { desc = opts['desc'] })
   end
 end
 
