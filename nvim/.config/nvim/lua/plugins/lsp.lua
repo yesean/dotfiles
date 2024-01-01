@@ -23,10 +23,10 @@ return {
     },
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
-      -- trouble.toggle factory function
+      -- trouble.open factory function
       local tt = function(cmd)
         return function()
-          require('trouble').toggle(cmd)
+          require('trouble').open(cmd)
         end
       end
       local lsp = vim.lsp.buf
