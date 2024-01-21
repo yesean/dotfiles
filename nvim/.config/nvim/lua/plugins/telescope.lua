@@ -6,7 +6,7 @@ return {
       'nvim-telescope/telescope-live-grep-args.nvim',
     },
     opts = function()
-      local lga_actions = require('telescope-live-grep-args.actions')
+      local live_grep_args_actions = require('telescope-live-grep-args.actions')
 
       return {
         defaults = {
@@ -29,15 +29,6 @@ return {
           find_files = {
             hidden = true,
           },
-          live_grep = {
-            additional_args = {
-              '--hidden',
-              '--glob',
-              '!*.lock',
-              '--glob',
-              '!.git/*',
-            },
-          },
           lsp_code_actions = {
             layout_config = {
               prompt_position = 'bottom',
@@ -46,15 +37,18 @@ return {
         },
         extensions = {
           live_grep_args = {
+            search_dirs = { 'nvim/.config' },
             auto_quoting = true,
             mappings = {
               i = {
-                ['<c-k>'] = lga_actions.quote_prompt(),
-                ['<c-h>'] = lga_actions.quote_prompt({ postfix = ' --hidden ' }),
-                ['<c-i>'] = lga_actions.quote_prompt({
+                ['<c-k>'] = live_grep_args_actions.quote_prompt(),
+                ['<c-h>'] = live_grep_args_actions.quote_prompt({
+                  postfix = ' --hidden ',
+                }),
+                ['<c-i>'] = live_grep_args_actions.quote_prompt({
                   postfix = ' --iglob **',
                 }),
-                ['<c-l>'] = lga_actions.quote_prompt({
+                ['<c-l>'] = live_grep_args_actions.quote_prompt({
                   postfix = ' --hidden --iglob **',
                 }),
               },
