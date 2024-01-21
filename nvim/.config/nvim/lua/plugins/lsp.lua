@@ -68,6 +68,11 @@ return {
       do
         local opts = {
           capabilities = capabilities,
+          -- suggested fix for stale diagnostics: https://www.reddit.com/r/neovim/comments/mm1h0t/comment/huic9px/?utm_source=reddit&utm_medium=web2x&context=3
+          flags = {
+            allow_incremental_sync = false,
+            debounce_text_changes = 500,
+          },
         }
 
         -- override lsp opts, if override exists
