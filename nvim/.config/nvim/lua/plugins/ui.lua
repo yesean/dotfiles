@@ -166,6 +166,7 @@ return {
   { 'rcarriga/nvim-notify' },
   {
     'petertriho/nvim-scrollbar',
+    cond = not utils.is_vscode,
     config = function()
       require('scrollbar').setup()
     end,
