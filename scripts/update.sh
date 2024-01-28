@@ -11,12 +11,12 @@ scripts_dir="$dots_dir"/scripts
 
 "$scripts_dir"/sync.sh
 
-# update neovim plugins
-echo "Updating neovim plugins..."
-nvim --headless -c 'autocmd User LazySync quitall' -c 'Lazy sync'
+# install neovim plugins
+echo "Installing neovim plugins..."
+nvim --headless -c 'autocmd User LazyInstall quitall' -c 'Lazy install'
 end
 
-# install missing treesitter plugins
+# install treesitter plugins
 echo "Installing treesitter parsers..."
 nvim --headless -c 'TSInstallSync all' -c 'q'
 end
