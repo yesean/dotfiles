@@ -6,7 +6,21 @@ return {
     cond = not utils.is_vscode,
     event = 'VeryLazy',
     opts = {
-      modes = { search = { enabled = false } },
+      modes = {
+        search = {
+          enabled = false,
+        },
+        char = {
+          highlight = {
+            backdrop = false,
+            matches = false,
+          },
+        },
+      },
+      highlight = {
+        backdrop = false,
+        matches = false,
+      },
     },
     keys = {
       -- stylua: ignore start
