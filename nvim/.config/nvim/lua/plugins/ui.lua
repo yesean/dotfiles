@@ -156,13 +156,6 @@ return {
       require('nvim-lightbulb').setup(opts)
     end,
   },
-  {
-    'SmiteshP/nvim-navic',
-    config = function()
-      vim.o.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
-      vim.g.navic_silence = true
-    end,
-  },
   { 'rcarriga/nvim-notify' },
   {
     'petertriho/nvim-scrollbar',

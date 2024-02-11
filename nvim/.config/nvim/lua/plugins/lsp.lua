@@ -83,7 +83,6 @@ return {
         -- attach lsp key bindings
         function opts.on_attach(client, bufnr)
           map.set(default_mappings)
-          require('nvim-navic').attach(client, bufnr)
         end
 
         -- use setup fn from typescript.nvim
