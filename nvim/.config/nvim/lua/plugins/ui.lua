@@ -44,7 +44,7 @@ return {
     opts = { try_as_border = true },
     config = function(opts)
       vim.api.nvim_create_autocmd({ 'Filetype' }, {
-        pattern = 'dashboard',
+        pattern = { 'dashboard', 'toggleterm' },
         callback = function()
           ---@diagnostic disable-next-line: inject-field
           vim.b.miniindentscope_disable = true
