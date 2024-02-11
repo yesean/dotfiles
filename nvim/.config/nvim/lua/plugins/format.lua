@@ -19,6 +19,7 @@ return {
         cpp = { 'clang_format' },
         sh = { 'shfmt', 'shellharden' },
         sql = { 'pg_format' },
+        toml = { 'taplo' },
         ['_'] = { 'trim_whitespace' },
       },
       formatters = {

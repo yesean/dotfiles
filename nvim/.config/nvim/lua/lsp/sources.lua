@@ -44,6 +44,7 @@ local sources = {
     'shfmt',
     'sql-formatter',
     'stylua',
+    'taplo',
     'yapf',
   },
 }
