@@ -3,24 +3,27 @@ return {
   {
     'akinsho/bufferline.nvim',
     dependencies = { 'catppuccin/nvim' },
-    opts = function()
-      return {
-        options = {
-          max_name_length = 30,
-          separator_style = 'slant',
-          show_close_icons = false,
-          show_buffer_close_icons = false,
-          offsets = {
-            {
-              filetype = 'neo-tree',
-              text = 'File Explorer',
-              text_align = 'center',
-            },
+    opts = {
+      options = {
+        max_name_length = 30,
+        separator_style = 'slant',
+        show_close_icons = false,
+        show_buffer_close_icons = false,
+        offsets = {
+          {
+            filetype = 'neo-tree',
+            text = 'File Explorer',
+            text_align = 'center',
           },
-          -- highlights = require('catppuccin.groups.integrations.bufferline').get(),
         },
-      }
-    end,
+        custom_filter = function(buf_number)
+          if vim.bo[buf_number].filetype == 'qf' then
+            return false
+          end
+          return true
+        end,
+      },
+    },
     config = function(_, opts)
       local map = require('mapping')
       map.set({
