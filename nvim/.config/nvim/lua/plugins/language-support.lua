@@ -30,4 +30,12 @@ return {
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
     opts = {},
   },
+  {
+    'dmmulroy/tsc.nvim',
+    opts = {
+      flags = {
+        build = true,
+      },
+    },
+  },
 }
