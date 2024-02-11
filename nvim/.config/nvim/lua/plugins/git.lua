@@ -42,5 +42,5 @@ return {
       _extmark_signs = false,
     },
   },
-  { 'TimUntersberger/neogit' },
+  { 'TimUntersberger/neogit', opts = {} },
 }
