@@ -16,10 +16,17 @@ return {
             text_align = 'center',
           },
         },
-        custom_filter = function(buf_number)
-          if vim.bo[buf_number].filetype == 'qf' then
+        custom_filter = function(buffer)
+          -- hide quickfix buffers
+          if vim.bo[buffer].filetype == 'qf' then
             return false
           end
+
+          -- hide "[No Name]" buffers
+          if vim.fn.bufname(buffer) == '' then
+            return false
+          end
+
           return true
         end,
       },
