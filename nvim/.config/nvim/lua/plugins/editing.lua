@@ -57,7 +57,7 @@ return {
     end,
   },
   { 'windwp/nvim-autopairs', event = 'InsertEnter', opts = {} },
-  { 'kylechui/nvim-surround', version = '*', config = true },
+  { 'kylechui/nvim-surround', version = '*', opts = {} },
   {
     'windwp/nvim-ts-autotag',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
