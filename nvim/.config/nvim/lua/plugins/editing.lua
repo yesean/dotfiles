@@ -3,6 +3,7 @@ local utils = require('utils')
 return {
   {
     'folke/flash.nvim',
+    cond = not utils.is_vscode,
     event = 'VeryLazy',
     opts = {
       modes = {
