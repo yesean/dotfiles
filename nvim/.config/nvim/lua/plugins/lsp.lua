@@ -1,6 +1,15 @@
 local sources = require('lsp.sources')
 local map = require('mapping')
 
+local function merge(tbl_a, tbl_b)
+  -- if either/both tables are null, return the other or empty table
+  if not tbl_a or not tbl_b then
+    return tbl_a or tbl_b or {}
+  end
+
+  vim.tbl_deep_extend('error', tbl_a, tbl_b)
+end
+
 return {
   {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
@@ -55,35 +64,43 @@ return {
       }
 
       -- add additional capabilities supported by nvim-cmp
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
-      capabilities.textDocument.foldingRange = {
+      local default_capabilities =
+        require('cmp_nvim_lsp').default_capabilities()
+      default_capabilities.textDocument.foldingRange = {
         dynamicRegistration = false,
         lineFoldingOnly = true,
       }
+
+      -- suggested fix for stale diagnostics: https://www.reddit.com/r/neovim/comments/mm1h0t/comment/huic9px/?utm_source=reddit&utm_medium=web2x&context=3
+      local default_flags = {
+        allow_incremental_sync = false,
+        debounce_text_changes = 500,
+      }
+
+      -- attach lsp key bindings
+      local function default_on_attach()
+        map.set(default_mappings)
+      end
 
       -- setup language servers
       local overrides = require('lsp.overrides')
       for _, server in
         ipairs(require('mason-lspconfig').get_installed_servers())
       do
+        -- add lsp overrides
+        local override = overrides[server] or {}
+
+        -- merge default opts with overrides
         local opts = {
-          capabilities = capabilities,
-          -- suggested fix for stale diagnostics: https://www.reddit.com/r/neovim/comments/mm1h0t/comment/huic9px/?utm_source=reddit&utm_medium=web2x&context=3
-          flags = {
-            allow_incremental_sync = false,
-            debounce_text_changes = 500,
-          },
+          capabilities = merge(default_capabilities, override.capabilities),
+          flags = merge(default_flags, override.flags),
+          on_attach = function(client, bufnr)
+            default_on_attach()
+            if override.on_attach then
+              override.on_attach(client, bufnr)
+            end
+          end,
         }
-
-        -- override lsp opts, if override exists
-        if overrides[server] ~= nil then
-          opts = vim.tbl_deep_extend('force', opts, overrides[server])
-        end
-
-        -- attach lsp key bindings
-        function opts.on_attach(client, bufnr)
-          map.set(default_mappings)
-        end
 
         -- use setup fn from typescript.nvim
         if server == 'tsserver' then
