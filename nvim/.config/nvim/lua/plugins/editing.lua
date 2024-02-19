@@ -15,6 +15,8 @@ return {
             backdrop = false,
             matches = false,
           },
+          jump_labels = false,
+          autohide = true,
         },
       },
       highlight = {
