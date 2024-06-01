@@ -219,7 +219,7 @@ return {
           },
           { text = { builtin.lnumfunc, ' ' }, click = 'v:lua.ScLa' },
           { text = { builtin.foldfunc, ' ' }, click = 'v:lua.ScFa' },
-          { sign = { name = { 'GitSigns' } } },
+          { sign = { namespace = { 'gitsigns' } } },
         },
       }
     end,
