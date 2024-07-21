@@ -25,7 +25,7 @@
     "typescriptreact"
   ],
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "[cpp]": {
     "editor.defaultFormatter": "ms-vscode.cpptools"
