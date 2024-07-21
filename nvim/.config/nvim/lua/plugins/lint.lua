@@ -9,7 +9,7 @@ return {
         docker = { 'hadolint' },
         tex = { 'chktex' },
         markdown = { 'markdownlint', 'vale' },
-        ['markdown.mdx'] = { 'vale' },
+        ['markdown.mdx'] = {},
         ['*'] = { 'write_good' },
       },
       linters = {
