@@ -243,7 +243,7 @@ exec --no-startup-id insync start --no-daemon
 exec --no-startup-id ~/.local/bin/workspaces.sh restore
 
 # start picom
-exec_always --no-startup-id picom --experimental-backends -b &
+exec_always --no-startup-id picom -b &
 bindsym $mod+Shift+p exec --no-startup-id ~/.local/bin/picom.sh
 
 # start autostart
