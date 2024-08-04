@@ -3,7 +3,8 @@ local wezterm = require('wezterm')
 local config = wezterm.config_builder()
 
 config.color_scheme = 'Tokyo Night'
-config.font_size = 10.5
+config.font_size = 11
+config.font = wezterm.font('Berkeley Mono Variable')
 
 config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = true
