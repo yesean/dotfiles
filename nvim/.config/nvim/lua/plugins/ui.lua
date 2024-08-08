@@ -31,6 +31,7 @@ return {
   { 'stevearc/dressing.nvim', opts = { input = { insert_only = false } } },
   {
     'lukas-reineke/indent-blankline.nvim',
+    cond = not utils.is_vscode,
     main = 'ibl',
     opts = {
       scope = { enabled = false },
