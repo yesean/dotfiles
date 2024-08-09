@@ -1,14 +1,19 @@
 local map = require('mapping')
+local vscode = require('vscode')
 
 -- VSCode shortcuts
 local mappings = {
   {
     'gr',
-    map.cmd("call VSCodeNotify('editor.action.referenceSearch.trigger')"),
+    function()
+      vscode.action('editor.action.referenceSearch.trigger')
+    end,
   },
   {
     '<leader>r',
-    map.cmd("call VSCodeNotify('editor.action.rename')"),
+    function()
+      vscode.action('editor.action.rename')
+    end,
   },
 }
 map.set(mappings)
