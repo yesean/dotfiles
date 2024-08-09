@@ -2,7 +2,7 @@ require('options')
 require('mapping')
 require('diagnostics')
 if require('utils').is_vscode then
-  require('vscode')
+  require('vscode-config')
 end
 
 -- bootstrap lazy.nvim
