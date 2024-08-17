@@ -58,10 +58,20 @@ return {
       }
     end,
   },
-  { 'windwp/nvim-autopairs', event = 'InsertEnter', opts = {} },
-  { 'kylechui/nvim-surround', version = '*', opts = {} },
+  {
+    'windwp/nvim-autopairs',
+    cond = not utils.is_vscode,
+    event = 'InsertEnter',
+    opts = {},
+  },
+  {
+    'kylechui/nvim-surround',
+    version = '*',
+    opts = {},
+  },
   {
     'windwp/nvim-ts-autotag',
+    cond = not utils.is_vscode,
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config = function()
       require('nvim-ts-autotag').setup()
@@ -77,6 +87,7 @@ return {
   },
   {
     'andymass/vim-matchup',
+    cond = not utils.is_vscode,
     config = function()
       vim.g.matchup_matchparen_offscreen = { method = 'popup' }
     end,
