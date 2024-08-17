@@ -114,7 +114,19 @@ return {
     opts = function()
       return {
         close_if_last_window = true,
-        enable_normal_mode_for_inputs = true,
+        event_handlers = {
+          {
+            event = 'neo_tree_popup_input_ready',
+            handler = function(args)
+              vim.keymap.set(
+                'i',
+                '<esc>',
+                vim.cmd.stopinsert,
+                { noremap = true, buffer = args.bufnr }
+              )
+            end,
+          },
+        },
         filesystem = {
           filtered_items = { hide_dotfiles = false, hide_gitignored = false },
           follow_current_file = { enabled = true, leave_dirs_open = true },
