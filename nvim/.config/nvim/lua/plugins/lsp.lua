@@ -1,5 +1,6 @@
 local sources = require('lsp.sources')
 local map = require('mapping')
+local utils = require('utils')
 
 local function merge(tbl_a, tbl_b)
   -- if either/both tables are null, return the other or empty table
@@ -22,6 +23,7 @@ return {
   },
   {
     'neovim/nvim-lspconfig',
+    cond = not utils.is_vscode,
     dependencies = {
       { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
       { 'williamboman/mason-lspconfig.nvim', opts = {} },

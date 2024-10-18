@@ -1,6 +1,9 @@
+local utils = require('utils')
+
 return {
   {
     'mfussenegger/nvim-lint',
+    cond = not utils.is_vscode,
     opts = {
       linters_by_ft = {
         lua = { 'luacheck' },

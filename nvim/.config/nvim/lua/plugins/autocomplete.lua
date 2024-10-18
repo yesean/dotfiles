@@ -1,6 +1,9 @@
+local utils = require('utils')
+
 return {
   {
     'hrsh7th/nvim-cmp',
+    cond = not utils.is_vscode,
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'saadparwaiz1/cmp_luasnip',

@@ -1,3 +1,5 @@
+local utils = require('utils')
+
 return {
   { 'chrisbra/csv.vim' },
   {
@@ -12,6 +14,7 @@ return {
   { 'jxnblk/vim-mdx-js' },
   {
     'folke/neodev.nvim',
+    cond = not utils.is_vscode,
     opts = {
       -- enable neodev.nvim inside ~/.dotfiles
       override = function(root_dir, options)
@@ -27,6 +30,7 @@ return {
   { 'Fymyte/rasi.vim' },
   {
     'pmizio/typescript-tools.nvim',
+    cond = not utils.is_vscode,
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
     opts = {},
   },

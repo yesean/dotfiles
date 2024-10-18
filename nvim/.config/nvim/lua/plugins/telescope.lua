@@ -1,6 +1,9 @@
+local utils = require('utils')
+
 return {
   {
     'nvim-telescope/telescope.nvim',
+    cond = not utils.is_vscode,
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-telescope/telescope-live-grep-args.nvim',
