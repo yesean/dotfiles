@@ -40,7 +40,6 @@ return {
         },
         extensions = {
           live_grep_args = {
-            search_dirs = { 'nvim/.config' },
             auto_quoting = true,
             mappings = {
               i = {
