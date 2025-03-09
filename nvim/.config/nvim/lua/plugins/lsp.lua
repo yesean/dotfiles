@@ -2,15 +2,6 @@ local sources = require('lsp.sources')
 local map = require('mapping')
 local utils = require('utils')
 
-local function merge(tbl_a, tbl_b)
-  -- if either/both tables are null, return the other or empty table
-  if not tbl_a or not tbl_b then
-    return tbl_a or tbl_b or {}
-  end
-
-  vim.tbl_deep_extend('error', tbl_a, tbl_b)
-end
-
 return {
   {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
