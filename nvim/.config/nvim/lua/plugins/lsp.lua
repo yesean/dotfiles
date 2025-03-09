@@ -58,8 +58,11 @@ return {
         { 'gr', tt('lsp_references'), 'go to references' },
         { 'gy', tt('lsp_type_definitions'), 'go to type definition' },
         { 'gi', tt('lsp_implementations'), 'go to implementation' },
-        { 'ga', map.cmd('CodeActionMenu'), 'select code actions' },
-
+        {
+          'ga',
+          require('tiny-code-action').code_action,
+          'select code actions',
+        },
         { 'K', lsp.hover, 'display hover information' },
         { '<c-k>', lsp.signature_help, 'display signature information' },
         { '<leader>r', lsp.rename, 'rename symbol' },
