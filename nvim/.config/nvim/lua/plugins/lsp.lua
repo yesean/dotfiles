@@ -66,12 +66,18 @@ return {
       }
 
       -- add additional capabilities supported by nvim-cmp
-      local default_capabilities =
-        require('cmp_nvim_lsp').default_capabilities()
-      default_capabilities.textDocument.foldingRange = {
-        dynamicRegistration = false,
-        lineFoldingOnly = true,
-      }
+      local default_capabilities = vim.tbl_deep_extend(
+        'force',
+        require('cmp_nvim_lsp').default_capabilities(),
+        {
+          textDocument = {
+            foldingRange = {
+              dynamicRegistration = false,
+              lineFoldingOnly = true,
+            },
+          },
+        }
+      )
 
       -- suggested fix for stale diagnostics: https://www.reddit.com/r/neovim/comments/mm1h0t/comment/huic9px/?utm_source=reddit&utm_medium=web2x&context=3
       local default_flags = {
@@ -79,30 +85,28 @@ return {
         debounce_text_changes = 500,
       }
 
-      -- attach lsp key bindings
-      local function default_on_attach()
-        map.set(default_mappings)
-      end
+      local default_opts = {
+        default_capabilities,
+        default_flags,
+      }
 
       -- setup language servers
       local overrides = require('lsp.overrides')
       for _, server in
         ipairs(require('mason-lspconfig').get_installed_servers())
       do
-        -- add lsp overrides
-        local override = overrides[server] or {}
+        local override_opts = overrides[server] or {}
 
         -- merge default opts with overrides
-        local opts = {
-          capabilities = merge(default_capabilities, override.capabilities),
-          flags = merge(default_flags, override.flags),
-          on_attach = function(client, bufnr)
-            default_on_attach()
-            if override.on_attach then
-              override.on_attach(client, bufnr)
-            end
-          end,
-        }
+        local opts = vim.tbl_deep_extend('force', default_opts, override_opts)
+
+        -- append override.on_attach callback
+        opts.on_attach = function(client, bufnr)
+          map.set(default_mappings)
+          if override_opts.on_attach then
+            override_opts.on_attach(client, bufnr)
+          end
+        end
 
         -- use setup fn from typescript.nvim
         if server == 'tsserver' then
@@ -113,7 +117,5 @@ return {
       end
     end,
   },
-  {
-    'onsails/lspkind-nvim',
-  },
+  { 'onsails/lspkind-nvim' },
 }
