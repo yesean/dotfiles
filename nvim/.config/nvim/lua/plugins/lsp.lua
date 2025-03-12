@@ -102,12 +102,7 @@ return {
           end
         end
 
-        -- use setup fn from typescript.nvim
-        if server == 'tsserver' then
-          require('typescript-tools').setup({ server = opts })
-        else
-          require('lspconfig')[server].setup(opts)
-        end
+        require('lspconfig')[server].setup(opts)
       end
     end,
   },
