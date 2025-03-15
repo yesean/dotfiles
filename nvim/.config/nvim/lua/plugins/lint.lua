@@ -11,7 +11,7 @@ return {
         python = { 'pylint' },
         docker = { 'hadolint' },
         tex = { 'chktex' },
-        markdown = { 'markdownlint', 'vale' },
+        markdown = { 'markdownlint' },
         ['markdown.mdx'] = {},
         ['*'] = { 'write_good' },
       },
