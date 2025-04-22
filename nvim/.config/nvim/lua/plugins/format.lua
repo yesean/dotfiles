@@ -20,6 +20,7 @@ return {
         sh = { 'shfmt', 'shellharden' },
         sql = { 'pg_format' },
         toml = { 'taplo' },
+        xml = { 'xmlformatter' },
         ['_'] = { 'trim_whitespace' },
       },
       formatters = {
