@@ -6,22 +6,14 @@ return {
     event = 'VeryLazy',
     opts = {
       modes = {
-        search = {
-          enabled = false,
-        },
+        search = { enabled = false },
         char = {
-          highlight = {
-            backdrop = false,
-            matches = false,
-          },
+          highlight = { backdrop = false, matches = false },
           jump_labels = false,
           autohide = true,
         },
       },
-      highlight = {
-        backdrop = false,
-        matches = false,
-      },
+      highlight = { backdrop = false, matches = false },
     },
     keys = {
       -- stylua: ignore start
