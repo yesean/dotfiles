@@ -5,6 +5,7 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         ['html'] = { 'prettier' },
+        ['css'] = { 'prettier' },
         ['json'] = { 'prettier' },
         ['jsonc'] = { 'prettier' },
         ['markdown'] = { 'prettier' },
