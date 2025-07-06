@@ -39,6 +39,7 @@ local sources = {
     'goimports',
     'golines',
     'isort',
+    'pgformatter',
     'prettier',
     'shellharden',
     'shfmt',
