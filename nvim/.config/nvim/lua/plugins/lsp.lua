@@ -20,7 +20,6 @@ return {
       { 'williamboman/mason-lspconfig.nvim', opts = {} },
       { 'nvim-telescope/telescope.nvim' },
       { 'folke/neodev.nvim' },
-      { 'hrsh7th/cmp-nvim-lsp' },
       { 'folke/trouble.nvim' },
     },
     event = { 'BufReadPre', 'BufNewFile' },
@@ -59,30 +58,21 @@ return {
         { '<leader>r', lsp.rename, 'rename symbol' },
       }
 
-      -- add additional capabilities supported by nvim-cmp
-      local default_capabilities = vim.tbl_deep_extend(
-        'force',
-        require('cmp_nvim_lsp').default_capabilities(),
-        {
-          textDocument = {
-            foldingRange = {
-              dynamicRegistration = false,
-              lineFoldingOnly = true,
-            },
-          },
-        }
-      )
-
       -- suggested fix for stale diagnostics: https://www.reddit.com/r/neovim/comments/mm1h0t/comment/huic9px/?utm_source=reddit&utm_medium=web2x&context=3
       local default_flags = {
         allow_incremental_sync = false,
         debounce_text_changes = 500,
       }
 
-      local default_opts = {
-        default_capabilities,
-        default_flags,
-      }
+      -- merge LSP capabilities with blink.nvim
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = vim.tbl_deep_extend(
+        'force',
+        capabilities,
+        require('blink.cmp').get_lsp_capabilities({}, false)
+      )
+
+      local opts = { capabilities, default_flags }
 
       -- setup language servers
       local overrides = require('lsp.overrides')
@@ -92,7 +82,7 @@ return {
         local override_opts = overrides[server] or {}
 
         -- merge default opts with overrides
-        local opts = vim.tbl_deep_extend('force', default_opts, override_opts)
+        opts = vim.tbl_deep_extend('force', opts, override_opts)
 
         -- append override.on_attach callback
         opts.on_attach = function(client, bufnr)
