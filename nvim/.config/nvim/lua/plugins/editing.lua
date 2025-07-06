@@ -8,12 +8,10 @@ return {
       modes = {
         search = { enabled = false },
         char = {
-          highlight = { backdrop = false, matches = false },
-          jump_labels = false,
+          highlight = { backdrop = false },
           autohide = true,
         },
       },
-      highlight = { backdrop = false, matches = false },
     },
     keys = {
       -- stylua: ignore start
