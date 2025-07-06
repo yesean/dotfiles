@@ -57,8 +57,9 @@ return {
   {
     'rktjmp/highlight-current-n.nvim',
     config = function()
-      vim.keymap.set('n', 'n', '<Plug>(highlight-current-n-n)')
-      vim.keymap.set('n', 'N', '<Plug>(highlight-current-n-N)')
+      local hcn = require('highlight_current_n')
+      vim.keymap.set('n', 'n', hcn.n)
+      vim.keymap.set('n', 'N', hcn.N)
       vim.api.nvim_create_augroup('ClearSearchHL', {})
       vim.api.nvim_create_autocmd(
         { 'CmdlineEnter' },
