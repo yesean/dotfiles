@@ -1,6 +1,9 @@
+local utils = require('utils')
+
 return {
   {
     'saghen/blink.cmp',
+    cond = not utils.is_vscode,
     -- optional: provides snippets for the snippet source
     dependencies = { 'rafamadriz/friendly-snippets' },
 
