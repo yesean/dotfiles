@@ -173,13 +173,6 @@ return {
       require('colorizer').setup()
     end,
   },
-  {
-    'kosayoda/nvim-lightbulb',
-    opts = { autocmd = { enabled = true } },
-    config = function(_, opts)
-      require('nvim-lightbulb').setup(opts)
-    end,
-  },
   { 'rcarriga/nvim-notify' },
   {
     'petertriho/nvim-scrollbar',
@@ -236,7 +229,7 @@ return {
         segments = {
           {
             sign = {
-              name = { 'LightBulbSign', 'Diagnostic' },
+              name = { 'Diagnostic' },
               maxwidth = 2,
               auto = true,
             },
