@@ -51,16 +51,15 @@ return {
         require('blink.cmp').get_lsp_capabilities({}, false)
       )
 
-      local opts = { capabilities, default_flags }
-
       -- setup language servers
       local overrides = require('lsp.overrides')
       for _, server in
         ipairs(require('mason-lspconfig').get_installed_servers())
       do
-        local override_opts = overrides[server] or {}
+        local opts = { capabilities, default_flags }
 
         -- merge default opts with overrides
+        local override_opts = overrides[server] or {}
         opts = vim.tbl_deep_extend('force', opts, override_opts)
 
         -- append override.on_attach callback
@@ -71,7 +70,8 @@ return {
           end
         end
 
-        require('lspconfig')[server].setup(opts)
+        vim.lsp.config[server] = opts
+        vim.lsp.enable(server)
       end
     end,
   },
