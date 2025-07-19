@@ -199,25 +199,6 @@ return {
       require('ufo').setup(opts)
     end,
   },
-  {
-    'folke/trouble.nvim',
-    dependencies = { { 'nvim-tree/nvim-web-devicons' } },
-    opts = {
-      height = 30,
-    },
-    config = function(_, opts)
-      local trouble = require('trouble')
-
-      map.n('<leader>xx', function()
-        trouble.toggle()
-      end)
-      map.n('<leader>xw', function()
-        trouble.toggle('workspace_diagnostics')
-      end)
-
-      trouble.setup(opts)
-    end,
-  },
   { 'folke/which-key.nvim', opts = {} },
   {
     'luukvbaal/statuscol.nvim',

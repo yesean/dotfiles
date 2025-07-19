@@ -20,34 +20,13 @@ return {
       { 'williamboman/mason-lspconfig.nvim', opts = {} },
       { 'nvim-telescope/telescope.nvim' },
       { 'folke/neodev.nvim' },
-      { 'folke/trouble.nvim' },
     },
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
-      -- trouble.open factory function
-      local tt = function(cmd)
-        return function()
-          require('trouble').open(cmd)
-        end
-      end
       local lsp = vim.lsp.buf
 
       -- lsp mappings
       local default_mappings = {
-        {
-          'gd',
-          function()
-            if vim.fn.exists(':TSToolsGoToSourceDefinition') ~= 0 then
-              vim.cmd.TSToolsGoToSourceDefinition()
-            else
-              tt('lsp_definitions')()
-            end
-          end,
-          'go to definition',
-        },
-        { 'gr', tt('lsp_references'), 'go to references' },
-        { 'gy', tt('lsp_type_definitions'), 'go to type definition' },
-        { 'gi', tt('lsp_implementations'), 'go to implementation' },
         {
           'ga',
           require('tiny-code-action').code_action,
