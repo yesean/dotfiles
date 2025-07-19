@@ -222,7 +222,8 @@ label:focus {
 }
 
 #custom-media.custom-spotify {
-  background-color: #66cc99;
+  color: #66cc99;
+  background-color: transparent;
 }
 
 #custom-media.custom-vlc {
@@ -332,10 +333,4 @@ label:focus {
 
 #privacy-item.audio-out {
   background-color: #0069d4;
-}
-
-.custom-spotify {
-  padding: 0;
-  margin: 0;
-  background-color: teal;
 }
