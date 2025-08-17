@@ -23,8 +23,6 @@ return {
     },
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
-      local lsp = vim.lsp.buf
-
       -- lsp mappings
       local default_mappings = {
         {
@@ -32,9 +30,7 @@ return {
           require('tiny-code-action').code_action,
           'select code actions',
         },
-        { 'K', lsp.hover, 'display hover information' },
-        { '<c-k>', lsp.signature_help, 'display signature information' },
-        { '<leader>r', lsp.rename, 'rename symbol' },
+        { '<leader>r', vim.lsp.buf.rename, 'rename symbol' },
       }
 
       -- suggested fix for stale diagnostics: https://www.reddit.com/r/neovim/comments/mm1h0t/comment/huic9px/?utm_source=reddit&utm_medium=web2x&context=3
