@@ -13,7 +13,7 @@ return {
         ['javascriptreact'] = { 'prettier' },
         ['typescript'] = { 'prettier' },
         ['typescriptreact'] = { 'prettier' },
-        python = { 'yapf', 'isort' },
+        python = { 'ruff_format', 'isort' },
         rust = { 'rustfmt' },
         go = { 'gofmt', 'goimports', 'golines' },
         c = { 'clang_format' },

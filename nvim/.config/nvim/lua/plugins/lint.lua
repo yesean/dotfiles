@@ -8,7 +8,6 @@ return {
       linters_by_ft = {
         lua = { 'luacheck' },
         cpp = { 'cppcheck', 'cpplint' },
-        python = { 'pylint' },
         docker = { 'hadolint' },
         tex = { 'chktex' },
         markdown = { 'markdownlint' },

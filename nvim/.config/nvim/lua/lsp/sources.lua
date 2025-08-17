@@ -1,6 +1,7 @@
 local sources = {
   servers = {
     'astro-language-server',
+    'basedpyright',
     'bash-language-server',
     'clangd',
     'cmake-language-server',
@@ -13,7 +14,7 @@ local sources = {
     'jdtls',
     'json-lsp',
     'marksman',
-    'pyright',
+    'ruff',
     'rust-analyzer',
     'sqlls',
     'stylelint-lsp',
@@ -27,17 +28,14 @@ local sources = {
     'cmakelang',
     'cmakelint',
     'cpplint',
-    'hadolint',
     'luacheck',
     'markdownlint',
-    'pylint',
     'shellcheck',
     'write-good',
   },
   formatters = {
     'clang-format',
     'goimports',
-    'golines',
     'isort',
     'pgformatter',
     'prettier',
@@ -46,7 +44,6 @@ local sources = {
     'sql-formatter',
     'stylua',
     'taplo',
-    'yapf',
   },
 }
 
