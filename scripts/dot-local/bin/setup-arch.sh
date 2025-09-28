@@ -83,7 +83,6 @@ npm                                   `# js pkg mgr` \
 go                                    `# golang` \
 lua                                   `# lua` \
 luarocks                              `# lua pkg mgr` \
-pyenv                                 `# python version manager` \
 
 add "$@"
 

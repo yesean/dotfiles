@@ -37,12 +37,12 @@ if [ "$is_linux" = 'true' ]; then
   add dunst htop i3-gaps kitty picom-jonaburg-fix polybar ranger stow xclip xidlehook zathura          # system deps
   add base-devel cmake unzip ninja tree-sitter curl                                                    # neovim deps
   add apple-fonts ttf-jetbrains-mono ttf-nerd-fonts-symbols-2048-em-mono ttf-material-design-icons-git # fonts
-  add nodejs npm go lua luarocks pyenv                                                                 # languages
+  add nodejs npm go lua luarocks                                                                       # languages
 elif [ "$is_macos" = 'true' ]; then
   add direnv fd fzf git-delta kitty starship stow ripgrep tmux
   add kitty stow xclip
   add ninja libtool automake cmake pkg-config gettext curl
-  add go lua luarocks pyenv
+  add go lua luarocks
   xcode-select --install
 fi
 

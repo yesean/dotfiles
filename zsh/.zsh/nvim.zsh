@@ -2,6 +2,5 @@
 nvim() {
   unset -f nvim
   lazy_load_nvm
-  lazy_load_pyenv
   nvim $@
 }

@@ -4,7 +4,6 @@ alias se='sudoedit'
 alias ls='eza'
 alias ll='eza -l'
 alias la='eza -la'
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 alias ga='git add'
 alias gaa='git add -A'
