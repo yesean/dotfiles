@@ -42,12 +42,6 @@ local mappings = {
   },
   { '[d', diagnostic_cmds.prev, 'go to previous diagnostic' },
   { ']d', diagnostic_cmds.next, 'go to next diagnostic' },
-  {
-    'gG',
-    function()
-      require('telescope.builtin').diagnostics({ bufnr = 0 })
-    end,
-    'show buffer diagnostics',
-  },
+  { 'gG', map.cmd('Trouble diagnostics toggle filter.buf=0'), 'show buffer diagnostics' },
 }
 map.set(mappings)
