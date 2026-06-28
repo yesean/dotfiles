@@ -19,10 +19,6 @@ return {
       }
     end,
     config = function(_, opts)
-      vim.o.foldmethod = 'expr'
-      vim.o.foldexpr = 'nvim_treesitter#foldexpr()'
-      vim.o.foldenable = false
-
       -- always use jsonc parser
       vim.api.nvim_create_autocmd({ 'BufEnter' }, {
         pattern = '*.json',

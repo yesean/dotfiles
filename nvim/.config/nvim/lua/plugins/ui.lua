@@ -72,7 +72,7 @@ return {
     end,
   },
   {
-    'hoob3rt/lualine.nvim',
+    'nvim-lualine/lualine.nvim',
     dependencies = { colorschemes.selected_colorscheme },
     opts = {
       options = {

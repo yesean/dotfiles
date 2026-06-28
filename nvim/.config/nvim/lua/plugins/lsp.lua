@@ -19,27 +19,24 @@ return {
       { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
       { 'williamboman/mason-lspconfig.nvim', opts = {} },
       { 'nvim-telescope/telescope.nvim' },
-      { 'folke/neodev.nvim' },
     },
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
-      -- lsp mappings
       local default_mappings = {
-        {
-          'ga',
-          require('tiny-code-action').code_action,
-          'select code actions',
-        },
+        { 'ga', require('tiny-code-action').code_action, 'select code actions' },
         { '<leader>r', vim.lsp.buf.rename, 'rename symbol' },
+        { 'gd', vim.lsp.buf.definition, 'go to definition' },
+        { 'gr', vim.lsp.buf.references, 'go to references' },
+        { 'gI', vim.lsp.buf.implementation, 'go to implementation' },
+        { 'K', vim.lsp.buf.hover, 'hover documentation' },
       }
 
-      -- suggested fix for stale diagnostics: https://www.reddit.com/r/neovim/comments/mm1h0t/comment/huic9px/?utm_source=reddit&utm_medium=web2x&context=3
       local default_flags = {
         allow_incremental_sync = false,
         debounce_text_changes = 500,
       }
 
-      -- merge LSP capabilities with blink.nvim
+      -- merge LSP capabilities with blink.cmp
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend(
         'force',
@@ -47,20 +44,18 @@ return {
         require('blink.cmp').get_lsp_capabilities({}, false)
       )
 
-      -- setup language servers
       local overrides = require('lsp.overrides')
-      for _, server in
-        ipairs(require('mason-lspconfig').get_installed_servers())
-      do
-        local opts = { capabilities, default_flags }
+      for _, server in ipairs(require('mason-lspconfig').get_installed_servers()) do
+        local opts = {
+          capabilities = capabilities,
+          flags = default_flags,
+        }
 
-        -- merge default opts with overrides
         local override_opts = overrides[server] or {}
         opts = vim.tbl_deep_extend('force', opts, override_opts)
 
-        -- append override.on_attach callback
         opts.on_attach = function(client, bufnr)
-          map.set(default_mappings)
+          map.set(default_mappings, { buffer = bufnr })
           if override_opts.on_attach then
             override_opts.on_attach(client, bufnr)
           end

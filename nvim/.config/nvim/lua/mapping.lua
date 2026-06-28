@@ -1,8 +1,7 @@
 local default_opts = { silent = true }
 local function set_mode(mode)
   return function(keymap, command, opts)
-    opts = opts or {}
-    vim.tbl_extend('force', default_opts, opts)
+    opts = vim.tbl_extend('force', default_opts, opts or {})
     vim.keymap.set(mode, keymap, command, opts)
   end
 end
@@ -25,16 +24,9 @@ end
 -- Accepts an array of mappings.
 function M.set(mappings, opts)
   opts = opts or {}
+  local set = opts['mode'] ~= nil and M[opts['mode']] or M.n
   for _, m in ipairs(mappings) do
-    local mode = opts['mode']
-    local set = M ~= nil and M[mode] or M.n
-    if opts['mode'] ~= nil then
-      set = M[opts['mode']]
-    else
-      set = M.n
-    end
-
-    set(m[1], m[2], { desc = opts['desc'] })
+    set(m[1], m[2], { desc = m[3] or m.desc or opts['desc'], buffer = opts['buffer'] })
   end
 end
 

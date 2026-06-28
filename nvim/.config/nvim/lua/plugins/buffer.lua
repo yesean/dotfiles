@@ -1,8 +1,10 @@
+local colorschemes = require('colorschemes')
+
 return {
   { 'famiu/bufdelete.nvim' },
   {
     'akinsho/bufferline.nvim',
-    dependencies = { 'catppuccin/nvim' },
+    dependencies = { colorschemes.selected_colorscheme },
     opts = {
       options = {
         max_name_length = 30,

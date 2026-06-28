@@ -29,7 +29,7 @@ return {
   stylelint_lsp = {
     filetypes = { 'css', 'less', 'scss' },
   },
-  tsserver = {
+  ts_ls = {
     root_dir = function(fname)
       local project_root =
         require('lspconfig.server_configurations.tsserver').default_config.root_dir(
@@ -38,7 +38,7 @@ return {
       return project_root or vim.fn.getcwd()
     end,
   },
-  pyright = {
+  basedpyright = {
     settings = {
       pyright = {
         -- Using Ruff's import organizer
