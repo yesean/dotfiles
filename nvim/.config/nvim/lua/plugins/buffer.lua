@@ -36,32 +36,16 @@ return {
     config = function(_, opts)
       local map = require('mapping')
       map.set({
-        { '<c-y>', map.cmd('BufferLinePick'), 'select a buffer by key' },
-        { '<c-h>', map.cmd('BufferLineCyclePrev'), 'go to one buffer left' },
-        { '<c-l>', map.cmd('BufferLineCycleNext'), 'go to one buffer right' },
-        { '<leader>H', map.cmd('BufferLineMovePrev'), 'swap one buffer left' },
-        { '<leader>L', map.cmd('BufferLineMoveNext'), 'swap one buffer right' },
-        { '<leader>d', map.cmd('Bdelete'), 'close current buffer' },
-        {
-          '<leader>dh',
-          map.cmd('BufferLineCloseLeft'),
-          'close all buffers to the left',
-        },
-        {
-          '<leader>dl',
-          map.cmd('BufferLineCloseRight'),
-          'close all buffers to the right',
-        },
-        {
-          '<leader>dd',
-          map.cmd('BufferLineCloseLeft', 'BufferLineCloseRight'),
-          'close all buffers except current',
-        },
-        {
-          '<leader>da',
-          map.cmd('BufferLineCloseLeft', 'BufferLineCloseRight', 'Bdelete'),
-          'close all buffers',
-        },
+        { '<c-y>', map.cmd('BufferLinePick'), desc = 'select a buffer by key' },
+        { '<c-h>', map.cmd('BufferLineCyclePrev'), desc = 'go to one buffer left' },
+        { '<c-l>', map.cmd('BufferLineCycleNext'), desc = 'go to one buffer right' },
+        { '<leader>H', map.cmd('BufferLineMovePrev'), desc = 'swap one buffer left' },
+        { '<leader>L', map.cmd('BufferLineMoveNext'), desc = 'swap one buffer right' },
+        { '<leader>d', map.cmd('Bdelete'), desc = 'close current buffer' },
+        { '<leader>dh', map.cmd('BufferLineCloseLeft'), desc = 'close all buffers to the left' },
+        { '<leader>dl', map.cmd('BufferLineCloseRight'), desc = 'close all buffers to the right' },
+        { '<leader>dd', map.cmd('BufferLineCloseLeft', 'BufferLineCloseRight'), desc = 'close all buffers except current' },
+        { '<leader>da', map.cmd('BufferLineCloseLeft', 'BufferLineCloseRight', 'Bdelete'), desc = 'close all buffers' },
       })
       require('bufferline').setup(opts)
     end,

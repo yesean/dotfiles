@@ -23,12 +23,12 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local default_mappings = {
-        { 'ga', require('tiny-code-action').code_action, 'select code actions' },
-        { '<leader>r', vim.lsp.buf.rename, 'rename symbol' },
-        { 'gd', vim.lsp.buf.definition, 'go to definition' },
-        { 'gr', vim.lsp.buf.references, 'go to references' },
-        { 'gI', vim.lsp.buf.implementation, 'go to implementation' },
-        { 'K', vim.lsp.buf.hover, 'hover documentation' },
+        { 'ga', require('tiny-code-action').code_action, desc = 'select code actions' },
+        { '<leader>r', vim.lsp.buf.rename, desc = 'rename symbol' },
+        { 'gd', vim.lsp.buf.definition, desc = 'go to definition' },
+        { 'gr', vim.lsp.buf.references, desc = 'go to references' },
+        { 'gI', vim.lsp.buf.implementation, desc = 'go to implementation' },
+        { 'K', vim.lsp.buf.hover, desc = 'hover documentation' },
       }
 
       local default_flags = {

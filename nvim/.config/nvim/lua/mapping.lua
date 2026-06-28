@@ -20,13 +20,18 @@ function M.cmd(...)
   end, type(...) == 'table' and ... or { ... }))
 end
 
--- Allow a mapping to be defined as an array: {key, command, description}, useful for grouping mappings such as lsp or diagnostics.
--- Accepts an array of mappings.
+-- Each mapping is { key, command, named_opts... } where any named field
+-- (desc, expr, buffer, ...) is forwarded directly to vim.keymap.set.
+-- Shared opts: mode = 'n'|'v'|..., buffer = bufnr
 function M.set(mappings, opts)
   opts = opts or {}
   local set = opts['mode'] ~= nil and M[opts['mode']] or M.n
   for _, m in ipairs(mappings) do
-    set(m[1], m[2], { desc = m[3] or m.desc or opts['desc'], buffer = opts['buffer'] })
+    local keymap_opts = vim.tbl_extend('force', {}, m)
+    keymap_opts[1] = nil
+    keymap_opts[2] = nil
+    if opts['buffer'] then keymap_opts.buffer = opts['buffer'] end
+    set(m[1], m[2], keymap_opts)
   end
 end
 
@@ -42,37 +47,37 @@ M.set({
       vim.cmd.w()
       vim.cmd.so('%')
     end,
-    'save and source file',
+    desc = 'save and source file',
   },
 })
 
 -- window switching
 M.set({
-  { '<leader>h', M.cmd('wincmd h'), 'move to the window left of current' },
-  { '<leader>j', M.cmd('wincmd j'), 'move to the window below current' },
-  { '<leader>k', M.cmd('wincmd k'), 'move to the window above current' },
-  { '<leader>l', M.cmd('wincmd l'), 'move to the window right of current' },
+  { '<leader>h', M.cmd('wincmd h'), desc = 'move to the window left of current' },
+  { '<leader>j', M.cmd('wincmd j'), desc = 'move to the window below current' },
+  { '<leader>k', M.cmd('wincmd k'), desc = 'move to the window above current' },
+  { '<leader>l', M.cmd('wincmd l'), desc = 'move to the window right of current' },
 })
 
 -- copy to clipboard
 M.set(
-  { { '<leader>y', '"+y', 'copy selection to system clipboard' } },
+  { { '<leader>y', '"+y', desc = 'copy selection to system clipboard' } },
   { mode = 'v' }
 )
 M.set({
-  { '<leader>y', '"+y', 'copy to system clipboard' },
-  { '<leader>Y', '"+yg_', 'copy until end of line to system clipboard' },
-  { '<leader>yy', '"+yy', 'copy line to system clipboard' },
+  { '<leader>y',  '"+y',   desc = 'copy to system clipboard' },
+  { '<leader>Y',  '"+yg_', desc = 'copy until end of line to system clipboard' },
+  { '<leader>yy', '"+yy',  desc = 'copy line to system clipboard' },
 })
 
 -- paste from clipboard
 M.set({
-  { '<leader>p', '"+p', 'paste below line from system clipboard' },
-  { '<leader>P', '"+P', 'paste above line from system clipboard' },
+  { '<leader>p', '"+p', desc = 'paste below line from system clipboard' },
+  { '<leader>P', '"+P', desc = 'paste above line from system clipboard' },
 }, { mode = 'v' })
 M.set({
-  { '<leader>p', '"+p', 'paste below line from system clipboard' },
-  { '<leader>P', '"+P', 'paste above line from system clipboard' },
+  { '<leader>p', '"+p', desc = 'paste below line from system clipboard' },
+  { '<leader>P', '"+P', desc = 'paste above line from system clipboard' },
 })
 
 -- when pasting, place deleted text in the _ register instead of the default one
