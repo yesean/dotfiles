@@ -3,15 +3,16 @@ local utils = require('utils')
 return {
   {
     'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
     opts = function()
       return {
         ensure_installed = 'all',
         highlight = {
           enable = not utils.is_vscode,
-        },
-        rainbow = {
-          enable = true,
-          extended_mode = true,
+          disable = function(_, buf)
+            local wins = vim.fn.win_findbuf(buf)
+            return #wins > 0 and vim.api.nvim_win_get_config(wins[1]).relative ~= ''
+          end,
         },
         matchup = {
           enable = true,

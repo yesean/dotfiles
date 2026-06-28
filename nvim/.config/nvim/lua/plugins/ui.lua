@@ -202,7 +202,7 @@ return {
   { 'folke/which-key.nvim', opts = {} },
   {
     'luukvbaal/statuscol.nvim',
-    branch = '0.10',
+    branch = 'main',
     dependencies = { 'lewis6991/gitsigns.nvim' },
     opts = function()
       local builtin = require('statuscol.builtin')

@@ -66,5 +66,5 @@ return {
       end
     end,
   },
-  { 'onsails/lspkind-nvim' },
+
 }
