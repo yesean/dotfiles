@@ -1,14 +1,5 @@
 local M = {}
 
-function M.merge_lists(...)
-  local merged = {}
-  for _, list in ipairs({ ... }) do
-    merged = vim.list_extend(merged, list)
-  end
-
-  return merged
-end
-
 -- reference: https://github.com/kevinhwang91/nvim-ufo#customize-fold-text
 function M.fold_virt_text_handler(virtText, lnum, endLnum, width, truncate)
   local newVirtText = {}

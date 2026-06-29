@@ -11,7 +11,9 @@ return {
       -- skip float windows to avoid nil-node crash in injection queries
       vim.api.nvim_create_autocmd('FileType', {
         callback = function(args)
-          if utils.is_vscode then return end
+          if utils.is_vscode then
+            return
+          end
           local wins = vim.fn.win_findbuf(args.buf)
           local is_float = #wins > 0
             and vim.api.nvim_win_get_config(wins[1]).relative ~= ''

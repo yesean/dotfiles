@@ -1,4 +1,3 @@
-local colorschemes = require('colorschemes')
 local map = require('mapping')
 local utils = require('utils')
 
@@ -43,7 +42,7 @@ return {
     cond = not utils.is_vscode,
     version = '*',
     opts = { try_as_border = true },
-    config = function(opts)
+    config = function(_, opts)
       vim.api.nvim_create_autocmd({ 'Filetype' }, {
         pattern = { 'dashboard', 'toggleterm' },
         callback = function()
@@ -58,8 +57,24 @@ return {
     'rktjmp/highlight-current-n.nvim',
     config = function()
       local hcn = require('highlight_current_n')
-      vim.keymap.set('n', 'n', hcn.n)
-      vim.keymap.set('n', 'N', hcn.N)
+      map.set({
+        {
+          key = 'n',
+          cmd = function()
+            hcn.n()
+            vim.cmd('normal! zz')
+          end,
+          desc = 'next search result',
+        },
+        {
+          key = 'N',
+          cmd = function()
+            hcn.N()
+            vim.cmd('normal! zz')
+          end,
+          desc = 'prev search result',
+        },
+      })
       vim.api.nvim_create_augroup('ClearSearchHL', {})
       vim.api.nvim_create_autocmd(
         { 'CmdlineEnter' },
@@ -73,10 +88,9 @@ return {
   },
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { colorschemes.selected_colorscheme },
     opts = {
       options = {
-        theme = colorschemes.selected_colorscheme_name,
+        theme = 'auto',
         globalstatus = true,
       },
       sections = {
@@ -152,7 +166,13 @@ return {
       }
     end,
     config = function(_, opts)
-      map.n('<leader>n', map.cmd('Neotree toggle'))
+      map.set({
+        {
+          key = '<leader>n',
+          cmd = map.cmd('Neotree toggle'),
+          desc = 'toggle file explorer',
+        },
+      })
       require('neo-tree').setup(opts)
     end,
   },
@@ -194,8 +214,18 @@ return {
       vim.o.foldenable = true
       vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
-      map.n('zR', require('ufo').openAllFolds)
-      map.n('zM', require('ufo').closeAllFolds)
+      map.set({
+        {
+          key = 'zR',
+          cmd = require('ufo').openAllFolds,
+          desc = 'open all folds',
+        },
+        {
+          key = 'zM',
+          cmd = require('ufo').closeAllFolds,
+          desc = 'close all folds',
+        },
+      })
       require('ufo').setup(opts)
     end,
   },
@@ -222,7 +252,6 @@ return {
       }
     end,
   },
-  -- lazy.nvim
   {
     'folke/noice.nvim',
     cond = not utils.is_vscode,
@@ -237,7 +266,6 @@ return {
         override = {
           ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
           ['vim.lsp.util.stylize_markdown'] = true,
-
         },
         hover = { silent = true },
       },

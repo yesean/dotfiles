@@ -31,17 +31,29 @@ local diagnostic_cmds = {
 }
 
 local mappings = {
-  { 'ge', diagnostic.open_float, desc = 'show floating diagnostics' },
   {
-    '<leader>e',
-    function()
+    key = 'ge',
+    cmd = diagnostic.open_float,
+    desc = 'show floating diagnostics',
+  },
+  {
+    key = '<leader>e',
+    cmd = function()
       vim.diagnostic.reset()
       vim.cmd.edit()
     end,
     desc = 'refresh diagnostics',
   },
-  { '[d', diagnostic_cmds.prev, desc = 'go to previous diagnostic' },
-  { ']d', diagnostic_cmds.next, desc = 'go to next diagnostic' },
-  { 'gG', map.cmd('Trouble diagnostics toggle filter.buf=0'), desc = 'show buffer diagnostics' },
+  {
+    key = '[d',
+    cmd = diagnostic_cmds.prev,
+    desc = 'go to previous diagnostic',
+  },
+  { key = ']d', cmd = diagnostic_cmds.next, desc = 'go to next diagnostic' },
+  {
+    key = 'gG',
+    cmd = map.cmd('Trouble diagnostics toggle filter.buf=0'),
+    desc = 'show buffer diagnostics',
+  },
 }
 map.set(mappings)

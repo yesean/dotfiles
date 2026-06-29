@@ -64,17 +64,14 @@ return {
       local builtin = require('telescope.builtin')
       local extensions = require('telescope').extensions
 
-      -- telescope key bindings
-      map.n('<leader>t', map.cmd('Telescope'))
-      map.n('<c-p>', builtin.find_files, { desc = 'find files' })
-      map.n(
-        '<c-f>',
-        extensions.live_grep_args.live_grep_args,
-        { desc = 'find phrase' }
-      )
-      map.n('gk', builtin.keymaps, { desc = 'show keymaps' })
-      map.n('gm', builtin.git_status, { desc = 'show modified files' })
-      map.n('gl', builtin.git_bcommits, { desc = 'show git commits' })
+      map.set({
+        { key = '<leader>t', cmd = map.cmd('Telescope'),                           desc = 'open telescope' },
+        { key = '<c-p>',     cmd = builtin.find_files,                             desc = 'find files' },
+        { key = '<c-f>',     cmd = extensions.live_grep_args.live_grep_args,       desc = 'find phrase' },
+        { key = 'gk',        cmd = builtin.keymaps,                                desc = 'show keymaps' },
+        { key = 'gm',        cmd = builtin.git_status,                             desc = 'show modified files' },
+        { key = 'gl',        cmd = builtin.git_bcommits,                           desc = 'show git commits' },
+      })
 
       require('telescope').setup(opts)
       require('telescope').load_extension('live_grep_args')

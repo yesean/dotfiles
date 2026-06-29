@@ -1,10 +1,7 @@
-local colorschemes = require('colorschemes')
-
 return {
   { 'famiu/bufdelete.nvim' },
   {
     'akinsho/bufferline.nvim',
-    dependencies = { colorschemes.selected_colorscheme },
     opts = {
       options = {
         max_name_length = 30,
@@ -36,16 +33,60 @@ return {
     config = function(_, opts)
       local map = require('mapping')
       map.set({
-        { '<c-y>', map.cmd('BufferLinePick'), desc = 'select a buffer by key' },
-        { '<c-h>', map.cmd('BufferLineCyclePrev'), desc = 'go to one buffer left' },
-        { '<c-l>', map.cmd('BufferLineCycleNext'), desc = 'go to one buffer right' },
-        { '<leader>H', map.cmd('BufferLineMovePrev'), desc = 'swap one buffer left' },
-        { '<leader>L', map.cmd('BufferLineMoveNext'), desc = 'swap one buffer right' },
-        { '<leader>d', map.cmd('Bdelete'), desc = 'close current buffer' },
-        { '<leader>dh', map.cmd('BufferLineCloseLeft'), desc = 'close all buffers to the left' },
-        { '<leader>dl', map.cmd('BufferLineCloseRight'), desc = 'close all buffers to the right' },
-        { '<leader>dd', map.cmd('BufferLineCloseLeft', 'BufferLineCloseRight'), desc = 'close all buffers except current' },
-        { '<leader>da', map.cmd('BufferLineCloseLeft', 'BufferLineCloseRight', 'Bdelete'), desc = 'close all buffers' },
+        {
+          key = '<c-y>',
+          cmd = map.cmd('BufferLinePick'),
+          desc = 'select a buffer by key',
+        },
+        {
+          key = '<c-h>',
+          cmd = map.cmd('BufferLineCyclePrev'),
+          desc = 'go to one buffer left',
+        },
+        {
+          key = '<c-l>',
+          cmd = map.cmd('BufferLineCycleNext'),
+          desc = 'go to one buffer right',
+        },
+        {
+          key = '<leader>H',
+          cmd = map.cmd('BufferLineMovePrev'),
+          desc = 'swap one buffer left',
+        },
+        {
+          key = '<leader>L',
+          cmd = map.cmd('BufferLineMoveNext'),
+          desc = 'swap one buffer right',
+        },
+        {
+          key = '<leader>d',
+          cmd = map.cmd('Bdelete'),
+          desc = 'close current buffer',
+        },
+        {
+          key = '<leader>dh',
+          cmd = map.cmd('BufferLineCloseLeft'),
+          desc = 'close all buffers to the left',
+        },
+        {
+          key = '<leader>dl',
+          cmd = map.cmd('BufferLineCloseRight'),
+          desc = 'close all buffers to the right',
+        },
+        {
+          key = '<leader>dd',
+          cmd = map.cmd('BufferLineCloseLeft', 'BufferLineCloseRight'),
+          desc = 'close all buffers except current',
+        },
+        {
+          key = '<leader>da',
+          cmd = map.cmd(
+            'BufferLineCloseLeft',
+            'BufferLineCloseRight',
+            'Bdelete'
+          ),
+          desc = 'close all buffers',
+        },
       })
       require('bufferline').setup(opts)
     end,

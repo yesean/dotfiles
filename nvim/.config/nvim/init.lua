@@ -19,12 +19,7 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local colorscheme = require('colorschemes')
-require('lazy').setup('plugins', {
-  install = {
-    colorscheme = { colorscheme.selected_colorscheme_name },
-  },
-})
+require('lazy').setup('plugins')
 
 vim.filetype.add({
   pattern = {

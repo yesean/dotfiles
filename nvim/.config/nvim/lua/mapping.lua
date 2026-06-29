@@ -20,18 +20,20 @@ function M.cmd(...)
   end, type(...) == 'table' and ... or { ... }))
 end
 
--- Each mapping is { key, command, named_opts... } where any named field
--- (desc, expr, buffer, ...) is forwarded directly to vim.keymap.set.
+-- Each mapping is { key = keymap, cmd = command, desc = '...', ... }
+-- where any extra named field is forwarded to vim.keymap.set.
 -- Shared opts: mode = 'n'|'v'|..., buffer = bufnr
 function M.set(mappings, opts)
   opts = opts or {}
   local set = opts['mode'] ~= nil and M[opts['mode']] or M.n
   for _, m in ipairs(mappings) do
     local keymap_opts = vim.tbl_extend('force', {}, m)
-    keymap_opts[1] = nil
-    keymap_opts[2] = nil
-    if opts['buffer'] then keymap_opts.buffer = opts['buffer'] end
-    set(m[1], m[2], keymap_opts)
+    keymap_opts.key = nil
+    keymap_opts.cmd = nil
+    if opts['buffer'] then
+      keymap_opts.buffer = opts['buffer']
+    end
+    set(m.key, m.cmd, keymap_opts)
   end
 end
 
@@ -42,8 +44,8 @@ vim.g.mapleader = ' '
 -- saving / reloading
 M.set({
   {
-    '<leader>w',
-    function()
+    key = '<leader>w',
+    cmd = function()
       vim.cmd.w()
       vim.cmd.so('%')
     end,
@@ -53,40 +55,75 @@ M.set({
 
 -- window switching
 M.set({
-  { '<leader>h', M.cmd('wincmd h'), desc = 'move to the window left of current' },
-  { '<leader>j', M.cmd('wincmd j'), desc = 'move to the window below current' },
-  { '<leader>k', M.cmd('wincmd k'), desc = 'move to the window above current' },
-  { '<leader>l', M.cmd('wincmd l'), desc = 'move to the window right of current' },
+  {
+    key = '<leader>h',
+    cmd = M.cmd('wincmd h'),
+    desc = 'move to the window left of current',
+  },
+  {
+    key = '<leader>j',
+    cmd = M.cmd('wincmd j'),
+    desc = 'move to the window below current',
+  },
+  {
+    key = '<leader>k',
+    cmd = M.cmd('wincmd k'),
+    desc = 'move to the window above current',
+  },
+  {
+    key = '<leader>l',
+    cmd = M.cmd('wincmd l'),
+    desc = 'move to the window right of current',
+  },
 })
 
 -- copy to clipboard
-M.set(
-  { { '<leader>y', '"+y', desc = 'copy selection to system clipboard' } },
-  { mode = 'v' }
-)
 M.set({
-  { '<leader>y',  '"+y',   desc = 'copy to system clipboard' },
-  { '<leader>Y',  '"+yg_', desc = 'copy until end of line to system clipboard' },
-  { '<leader>yy', '"+yy',  desc = 'copy line to system clipboard' },
+  {
+    key = '<leader>y',
+    cmd = '"+y',
+    desc = 'copy selection to system clipboard',
+  },
+}, { mode = 'v' })
+M.set({
+  { key = '<leader>y', cmd = '"+y', desc = 'copy to system clipboard' },
+  {
+    key = '<leader>Y',
+    cmd = '"+yg_',
+    desc = 'copy until end of line to system clipboard',
+  },
+  { key = '<leader>yy', cmd = '"+yy', desc = 'copy line to system clipboard' },
 })
 
 -- paste from clipboard
 M.set({
-  { '<leader>p', '"+p', desc = 'paste below line from system clipboard' },
-  { '<leader>P', '"+P', desc = 'paste above line from system clipboard' },
+  {
+    key = '<leader>p',
+    cmd = '"+p',
+    desc = 'paste below line from system clipboard',
+  },
+  {
+    key = '<leader>P',
+    cmd = '"+P',
+    desc = 'paste above line from system clipboard',
+  },
 }, { mode = 'v' })
 M.set({
-  { '<leader>p', '"+p', desc = 'paste below line from system clipboard' },
-  { '<leader>P', '"+P', desc = 'paste above line from system clipboard' },
+  {
+    key = '<leader>p',
+    cmd = '"+p',
+    desc = 'paste below line from system clipboard',
+  },
+  {
+    key = '<leader>P',
+    cmd = '"+P',
+    desc = 'paste above line from system clipboard',
+  },
 })
 
 -- when pasting, place deleted text in the _ register instead of the default one
 -- this way, pastes don't override yanked content
 M.x('p', '"_dP')
-
--- keep center cursor
-M.n('n', 'nzz')
-M.n('N', 'Nzz')
 
 -- add punctuation to undo break points
 M.i(',', ',<c-g>u')

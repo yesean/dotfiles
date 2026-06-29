@@ -4,14 +4,14 @@ local vscode = require('vscode')
 -- VSCode shortcuts
 local mappings = {
   {
-    'gr',
-    function()
+    key = 'gr',
+    cmd = function()
       vscode.action('editor.action.referenceSearch.trigger')
     end,
   },
   {
-    '<leader>r',
-    function()
+    key = '<leader>r',
+    cmd = function()
       vscode.action('editor.action.rename')
     end,
   },

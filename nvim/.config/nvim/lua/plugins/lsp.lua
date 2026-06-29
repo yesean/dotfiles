@@ -9,7 +9,7 @@ return {
       { 'williamboman/mason.nvim', build = ':MasonUpdate', config = true },
     },
     opts = {
-      ensure_installed = sources,
+      ensure_installed = sources.mason_tools(),
     },
   },
   {
@@ -23,12 +23,36 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local default_mappings = {
-        { 'ga', require('tiny-code-action').code_action, desc = 'select code actions' },
-        { '<leader>r', vim.lsp.buf.rename, desc = 'rename symbol' },
-        { 'gd', vim.lsp.buf.definition, desc = 'go to definition' },
-        { 'gr', vim.lsp.buf.references, desc = 'go to references' },
-        { 'gI', vim.lsp.buf.implementation, desc = 'go to implementation' },
-        { 'K', vim.lsp.buf.hover, desc = 'hover documentation' },
+        {
+          key = 'ga',
+          cmd = require('tiny-code-action').code_action,
+          desc = 'select code actions',
+        },
+        {
+          key = '<leader>r',
+          cmd = vim.lsp.buf.rename,
+          desc = 'rename symbol',
+        },
+        {
+          key = 'gd',
+          cmd = map.cmd('Trouble lsp_definitions toggle'),
+          desc = 'go to definition',
+        },
+        {
+          key = 'gr',
+          cmd = map.cmd('Trouble lsp_references toggle'),
+          desc = 'go to references',
+        },
+        {
+          key = 'gI',
+          cmd = map.cmd('Trouble lsp_implementations toggle'),
+          desc = 'go to implementation',
+        },
+        {
+          key = 'K',
+          cmd = vim.lsp.buf.hover,
+          desc = 'hover documentation',
+        },
       }
 
       local default_flags = {
@@ -36,7 +60,6 @@ return {
         debounce_text_changes = 500,
       }
 
-      -- merge LSP capabilities with blink.cmp
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend(
         'force',
@@ -44,20 +67,21 @@ return {
         require('blink.cmp').get_lsp_capabilities({}, false)
       )
 
-      local overrides = require('lsp.overrides')
-      for _, server in ipairs(require('mason-lspconfig').get_installed_servers()) do
-        local opts = {
+      for _, server in
+        ipairs(require('mason-lspconfig').get_installed_servers())
+      do
+        local server_opts = sources.lsp_opts(server)
+        local server_on_attach = server_opts.on_attach
+
+        local opts = vim.tbl_deep_extend('force', {
           capabilities = capabilities,
           flags = default_flags,
-        }
-
-        local override_opts = overrides[server] or {}
-        opts = vim.tbl_deep_extend('force', opts, override_opts)
+        }, server_opts)
 
         opts.on_attach = function(client, bufnr)
           map.set(default_mappings, { buffer = bufnr })
-          if override_opts.on_attach then
-            override_opts.on_attach(client, bufnr)
+          if server_on_attach then
+            server_on_attach(client, bufnr)
           end
         end
 
@@ -66,5 +90,4 @@ return {
       end
     end,
   },
-
 }

@@ -4,7 +4,6 @@ return {
   {
     'sindrets/diffview.nvim',
     config = function()
-      local map = require('mapping')
       local function DiffviewToggle()
         local view = require('diffview.lib').get_current_view()
         if view then
@@ -13,19 +12,30 @@ return {
           return map.cmd('DiffviewOpen')
         end
       end
-      map.n(
-        '<leader>gd',
-        DiffviewToggle,
-        { expr = true, desc = 'toggle diffview' }
-      )
-      map.n('<leader>gdm', map.cmd('DiffviewOpen origin/main'))
+      map.set({
+        {
+          key = '<leader>gd',
+          cmd = DiffviewToggle,
+          expr = true,
+          desc = 'toggle diffview',
+        },
+        {
+          key = '<leader>gdm',
+          cmd = map.cmd('DiffviewOpen origin/main'),
+          desc = 'open diffview on main',
+        },
+      })
     end,
   },
   {
     'f-person/git-blame.nvim',
     config = function()
       map.set({
-        { '<leader>gb', '<cmd>GitBlameToggle<cr>', desc = 'toggle git blame' },
+        {
+          key = '<leader>gb',
+          cmd = '<cmd>GitBlameToggle<cr>',
+          desc = 'toggle git blame',
+        },
       })
     end,
   },
