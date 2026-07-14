@@ -2,3 +2,4 @@ arch.conf
 macos.lua
 .luarc.json
 **/polybar/system.ini
+.claude
