@@ -44,3 +44,11 @@
 cursor-style-blink = false
 shell-integration-features = no-cursor
 theme = Rose Pine
+
+# Pin box-drawing/braille/misc-symbol glyph ranges (used by Claude Code's
+# spinner and tmux's status line) directly to a font with full coverage,
+# instead of letting Ghostty hit fontconfig's runtime fallback search.
+# That search races with concurrent fontconfig cache writes (e.g. from
+# pango/font-manager) and corrupts fontconfig's internal state, crashing
+# Ghostty's renderer thread. See ghostty-org/ghostty#10432.
+font-codepoint-map = U+2500-U+259F,U+2800-U+28FF,U+23BF,U+25D0=Symbols Nerd Font Mono
