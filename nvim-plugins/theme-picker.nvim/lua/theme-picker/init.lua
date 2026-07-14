@@ -1,67 +1,106 @@
 local M = {}
 
+---@class ThemePickerConfig
+---@field prompt_title string
+---@field save_path string
+
+---@type ThemePickerConfig
 local _config = {
-  colorschemes = nil, -- nil → falls back to vim.fn.getcompletion('', 'color')
   prompt_title = 'Theme Picker',
-  persist = nil, -- file path to write the selected colorscheme name on select
+  save_path = vim.fn.stdpath('data') .. '/theme-picker/colorscheme',
 }
 
-function M.setup(opts)
-  _config = vim.tbl_deep_extend('force', _config, opts or {})
+---@return string?
+local function read_saved()
+  if vim.fn.filereadable(_config.save_path) == 1 then
+    local colorscheme_name = vim.fn.readfile(_config.save_path)[1]
+    return colorscheme_name ~= '' and colorscheme_name or nil
+  end
 end
 
-function M.pick(opts)
-  local pickers = require('telescope.pickers')
-  local finders = require('telescope.finders')
-  local conf = require('telescope.config').values
-  local actions = require('telescope.actions')
+---@param colorscheme_name string
+local function apply_colorscheme(colorscheme_name)
+  pcall(vim.cmd.colorscheme, colorscheme_name)
+end
+
+---@param colorscheme_name string
+local function persist_colorscheme(colorscheme_name)
+  vim.fn.mkdir(vim.fn.fnamemodify(_config.save_path, ':h'), 'p')
+  vim.fn.writefile({ colorscheme_name }, _config.save_path)
+end
+
+---@param opts ThemePickerConfig?
+function M.setup(opts)
+  _config = vim.tbl_deep_extend('force', _config, opts or {})
+
+  local saved_colorscheme_name = read_saved()
+  if saved_colorscheme_name then
+    apply_colorscheme(saved_colorscheme_name)
+  end
+end
+
+function M.open_picker()
+  local colorscheme_names = vim.fn.getcompletion('', 'color')
+
+  local prev_colorscheme = vim.g.colors_name
+  local prev_background = vim.o.background
+
+  local is_confirmed = false
+
+  local function revert_colorscheme()
+    vim.o.background = prev_background
+    apply_colorscheme(prev_colorscheme)
+  end
+
+  ---@param colorscheme_name string
+  local function preview_colorscheme(colorscheme_name)
+    -- Reset background before each preview to prevent light/dark state from bleeding between themes.
+    vim.o.background = prev_background
+    apply_colorscheme(colorscheme_name)
+  end
+
   local action_state = require('telescope.actions.state')
-  local themes = require('telescope.themes')
+  local picker = require('telescope.pickers').new(
+    require('telescope.themes').get_dropdown({ previewer = false }),
+    {
+      prompt_title = _config.prompt_title,
+      finder = require('telescope.finders').new_table({
+        results = colorscheme_names,
+      }),
+      sorter = require('telescope.config').values.generic_sorter({}),
+      attach_mappings = function(prompt_bufnr)
+        local actions = require('telescope.actions')
+        actions.select_default:replace(function()
+          local entry = action_state.get_selected_entry()
+          if entry == nil then
+            return
+          end
 
-  local merged = vim.tbl_deep_extend('force', _config, opts or {})
-  local schemes = merged.colorschemes or vim.fn.getcompletion('', 'color')
+          is_confirmed = true
+          actions.close(prompt_bufnr)
+          persist_colorscheme(entry.value)
+        end)
+        return true
+      end,
+    }
+  )
 
-  local before_color = vim.api.nvim_exec2('colorscheme', { output = true }).output
-  local before_background = vim.o.background
-  local need_restore = true
-
-  local picker = pickers.new(themes.get_dropdown({ previewer = false }), {
-    prompt_title = merged.prompt_title,
-    finder = finders.new_table({ results = schemes }),
-    sorter = conf.generic_sorter(merged),
-    attach_mappings = function(prompt_bufnr)
-      actions.select_default:replace(function()
-        local entry = action_state.get_selected_entry()
-        if entry == nil then
-          return
-        end
-        need_restore = false
-        actions.close(prompt_bufnr)
-        pcall(vim.cmd.colorscheme, entry.value)
-        if merged.persist then
-          vim.fn.writefile({ entry.value }, merged.persist)
-        end
-      end)
-      return true
-    end,
-  })
-
-  local orig_set_selection = picker.set_selection
+  -- Override set_selection to preview the colorscheme live as the cursor moves through the list.
+  local base_set_selection = picker.set_selection
   picker.set_selection = function(self, row)
-    orig_set_selection(self, row)
+    base_set_selection(self, row)
     local entry = action_state.get_selected_entry()
     if entry then
-      vim.o.background = before_background
-      pcall(vim.cmd.colorscheme, entry.value)
+      preview_colorscheme(entry.value)
     end
   end
 
-  local orig_close_windows = picker.close_windows
+  -- Override close_windows to revert to the original colorscheme if the picker is closed without confirming.
+  local base_close_windows = picker.close_windows
   picker.close_windows = function(status)
-    orig_close_windows(status)
-    if need_restore then
-      vim.o.background = before_background
-      pcall(vim.cmd.colorscheme, before_color)
+    base_close_windows(status)
+    if not is_confirmed then
+      revert_colorscheme()
     end
   end
 

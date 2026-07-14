@@ -17,6 +17,11 @@ return {
     ft = 'lua',
     cond = not utils.is_vscode,
     opts = {
+      enabled = function(root_dir)
+        return root_dir:find(vim.fn.stdpath('config'), 1, true) ~= nil
+          or root_dir:find(vim.fn.expand('~/.dotfiles/nvim-plugins'), 1, true) ~= nil
+          or vim.uv.fs_stat(root_dir .. '/lazy-lock.json') ~= nil
+      end,
       library = {
         { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
       },
