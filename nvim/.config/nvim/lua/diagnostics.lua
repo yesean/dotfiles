@@ -39,7 +39,7 @@ local mappings = {
   {
     key = '<leader>e',
     cmd = function()
-      vim.diagnostic.reset()
+      diagnostic.reset()
       vim.cmd.edit()
     end,
     desc = 'refresh diagnostics',

@@ -25,13 +25,13 @@ end
 -- Shared opts: mode = 'n'|'v'|..., buffer = bufnr
 function M.set(mappings, opts)
   opts = opts or {}
-  local set = opts['mode'] ~= nil and M[opts['mode']] or M.n
+  local set = opts.mode ~= nil and M[opts.mode] or M.n
   for _, m in ipairs(mappings) do
     local keymap_opts = vim.tbl_extend('force', {}, m)
     keymap_opts.key = nil
     keymap_opts.cmd = nil
-    if opts['buffer'] then
-      keymap_opts.buffer = opts['buffer']
+    if opts.buffer then
+      keymap_opts.buffer = opts.buffer
     end
     set(m.key, m.cmd, keymap_opts)
   end
@@ -123,14 +123,14 @@ M.set({
 
 -- when pasting, place deleted text in the _ register instead of the default one
 -- this way, pastes don't override yanked content
-M.x('p', '"_dP')
+M.x('p', '"_dP', { desc = 'paste without overwriting yank register' })
 
 -- add punctuation to undo break points
-M.i(',', ',<c-g>u')
-M.i('.', '.<c-g>u')
-M.i('!', '!<c-g>u')
-M.i('?', '?<c-g>u')
-M.i('[', '[<c-g>u')
+M.i(',', ',<c-g>u', { desc = 'insert comma with undo break point' })
+M.i('.', '.<c-g>u', { desc = 'insert period with undo break point' })
+M.i('!', '!<c-g>u', { desc = 'insert exclamation mark with undo break point' })
+M.i('?', '?<c-g>u', { desc = 'insert question mark with undo break point' })
+M.i('[', '[<c-g>u', { desc = 'insert bracket with undo break point' })
 
 -- add "significant" relative moves to jumplist, center cursor afterwards
 local function add_to_jumplist(key)
@@ -139,7 +139,7 @@ local function add_to_jumplist(key)
     return motion
   end
 end
-M.n('k', add_to_jumplist('k'), { expr = true })
-M.n('j', add_to_jumplist('j'), { expr = true })
+M.n('k', add_to_jumplist('k'), { expr = true, desc = 'move up, adding to jumplist if count > 3' })
+M.n('j', add_to_jumplist('j'), { expr = true, desc = 'move down, adding to jumplist if count > 3' })
 
 return M

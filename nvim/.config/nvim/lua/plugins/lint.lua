@@ -23,15 +23,15 @@ return {
 
       -- override default linter configs
       lint.linters_by_ft = opts.linters_by_ft
-      for linter, config in pairs(opts.linters) do
-        lint.linters[linter].args = config.args
+      for linter, linter_opts in pairs(opts.linters) do
+        lint.linters[linter].args = linter_opts.args
       end
 
       vim.api.nvim_create_autocmd(
         { 'BufWritePost', 'BufReadPost', 'InsertLeave', 'BufEnter' },
         {
           callback = function()
-            require('lint').try_lint()
+            lint.try_lint()
           end,
         }
       )

@@ -75,6 +75,7 @@ return {
 
       require('telescope').setup(opts)
       require('telescope').load_extension('live_grep_args')
+      require('telescope').load_extension('fzf')
     end,
   },
   {

@@ -15,10 +15,10 @@ return {
     },
     keys = {
       -- stylua: ignore start
-      { 's', mode = { 'n', 'x', 'o' }, function() require('flash').jump() end, desc = 'Flash', },
-      { 'S', mode = { 'n', 'x', 'o' }, function() require('flash').treesitter() end, desc = 'Flash Treesitter', },
-      { 'r', mode = 'o', function() require('flash').remote() end, desc = 'Remote Flash', },
-      { 'R', mode = { 'o', 'x' }, function() require('flash').treesitter_search() end, desc = 'Treesitter Search', },
+      { 's', mode = { 'n', 'x', 'o' }, function() require('flash').jump() end, desc = 'flash jump', },
+      { 'S', mode = { 'n', 'x', 'o' }, function() require('flash').treesitter() end, desc = 'flash treesitter', },
+      { 'r', mode = 'o', function() require('flash').remote() end, desc = 'flash remote', },
+      { 'R', mode = { 'o', 'x' }, function() require('flash').treesitter_search() end, desc = 'flash treesitter search', },
       -- stylua: ignore end
       {
         '<c-s>',
@@ -26,7 +26,7 @@ return {
         function()
           require('flash').toggle()
         end,
-        desc = 'Toggle Flash Search',
+        desc = 'toggle flash search',
       },
     },
   },
@@ -46,9 +46,7 @@ return {
     'windwp/nvim-ts-autotag',
     cond = not utils.is_vscode,
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    config = function()
-      require('nvim-ts-autotag').setup()
-    end,
+    opts = {},
   },
   {
     'RRethy/vim-illuminate',

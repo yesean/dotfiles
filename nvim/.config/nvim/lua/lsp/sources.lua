@@ -56,7 +56,7 @@ M.servers = {
     pkg = 'typescript-language-server',
     root_dir = function(fname)
       local project_root =
-        require('lspconfig.server_configurations.tsserver').default_config.root_dir(
+        require('lspconfig.server_configurations.ts_ls').default_config.root_dir(
           fname
         )
       return project_root or vim.fn.getcwd()
@@ -87,7 +87,6 @@ M.formatters = {
   prettier = {},
   shellharden = {},
   shfmt = { prepend_args = { '--indent', 2 } },
-  sql_formatter = { pkg = 'sql-formatter' },
   stylua = {},
   taplo = {},
 }

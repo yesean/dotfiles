@@ -25,7 +25,7 @@ return {
       local default_mappings = {
         {
           key = 'ga',
-          cmd = require('tiny-code-action').code_action,
+          cmd = function() require('tiny-code-action').code_action() end,
           desc = 'select code actions',
         },
         {
