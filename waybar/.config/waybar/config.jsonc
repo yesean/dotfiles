@@ -1,11 +1,11 @@
 // -*- mode: jsonc -*-
 {
-  // "layer": "top", // Waybar at top layer
-  // "position": "bottom", // Waybar position (top|bottom|left|right)
-  "height": 30, // Waybar height (to be removed for auto height)
-  // "width": 1280, // Waybar width
-  "spacing": 4, // Gaps between modules (4px)
-  // Choose the order of the modules
+  "layer": "top",
+  "height": 46,
+  "margin-top": 8,
+  "margin-left": 10,
+  "margin-right": 10,
+  "spacing": 4,
   "modules-left": ["hyprland/workspaces", "hyprland/submap"],
   "modules-center": ["hyprland/window"],
   "modules-right": [
@@ -13,9 +13,7 @@
     "pulseaudio",
     "network",
     "power-profiles-daemon",
-    "cpu",
-    "memory",
-    "temperature",
+    "custom/stats",
     "backlight",
     "keyboard-state",
     "battery",
@@ -23,23 +21,7 @@
     "clock",
     "custom/power",
   ],
-  // Modules configuration
-  // "sway/workspaces": {
-  //     "disable-scroll": true,
-  //     "all-outputs": true,
-  //     "warp-on-scroll": false,
-  //     "format": "{name}: {icon}",
-  //     "format-icons": {
-  //         "1": "",
-  //         "2": "",
-  //         "3": "",
-  //         "4": "",
-  //         "5": "",
-  //         "urgent": "",
-  //         "focused": "",
-  //         "default": ""
-  //     }
-  // },
+
   "hyprland/workspaces": {
     "format": "{icon}",
     "on-scroll-up": "hyprctl dispatch workspace e+1",
@@ -57,57 +39,56 @@
   "hyprland/window": {
     "format": "{class} | {title}",
   },
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "",
-      "deactivated": "",
-    },
-  },
   "tray": {
-    // "icon-size": 21,
     "spacing": 10,
   },
+
   "clock": {
-    "timezone": "America/New_York",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format": "{:%B %d, %Y  %r}",
     "interval": 1,
+    "calendar": {
+      "mode": "month",
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months":   "<span color='#e0def4'><b>{}</b></span>",
+        "days":     "<span color='#908caa'>{}</span>",
+        "weeks":    "<span color='#6e6a86'><b>W{}</b></span>",
+        "weekdays": "<span color='#3e8fb0'><b>{}</b></span>",
+        "today":    "<span color='#ea9a97'><b><u>{}</u></b></span>",
+      },
+    },
+    "tooltip-format": "{:%A, %B %d, %Y  %I:%M %p}",
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down",
+    },
+    "on-click": "python3 $HOME/.config/waybar/scripts/clock-popup.py 2>>/tmp/waybar-clock.log",
   },
-  "cpu": {
-    "format": "{usage}% ",
-    "tooltip": false,
-  },
-  "memory": {
-    "format": "{}% ",
-  },
-  "temperature": {
-    // "thermal-zone": 2,
-    // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-    "critical-threshold": 80,
-    // "format-critical": "{temperatureC}°C {icon}",
-    "format": "{temperatureC}°C {icon}",
-    "format-icons": ["", "", ""],
+
+  "custom/stats": {
+    "exec": "python3 $HOME/.config/waybar/scripts/stats-bar.py",
+    "interval": 5,
+    "return-type": "json",
+    "tooltip": true,
+    "on-click": "python3 $HOME/.config/waybar/scripts/stats-popup.py 2>>/tmp/waybar-stats.log",
   },
   "backlight": {
-    // "device": "acpi_video1",
     "format": "{percent}% {icon}",
-    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
   },
   "battery": {
     "states": {
-      // "good": 95,
       "warning": 30,
       "critical": 15,
     },
     "format": "{capacity}% {icon}",
     "format-full": "{capacity}% {icon}",
-    "format-charging": "{capacity}% ",
+    "format-charging": "{capacity}% 󰂄",
     "format-plugged": "{capacity}% ",
     "format-alt": "{time} {icon}",
-    // "format-good": "", // An empty format will hide the module
-    // "format-full": "",
-    "format-icons": ["", "", "", "", ""],
+    "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰂁"],
   },
   "battery#bat2": {
     "bat": "BAT2",
@@ -117,29 +98,27 @@
     "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
     "tooltip": true,
     "format-icons": {
-      "default": "",
-      "performance": "",
-      "balanced": "",
-      "power-saver": "",
+      "default":     "󰐥",
+      "performance": "󰑭",
+      "balanced":    "󰗐",
+      "power-saver": "󰣛",
     },
   },
   "network": {
-    // "interface": "wlp2*", // (Optional) To force the use of this interface
     "format-wifi": "{essid} ({signalStrength}%) ",
-    "format-ethernet": "{ipaddr}/{cidr} ",
-    "tooltip-format": "{ifname} via {gwaddr} ",
-    "format-linked": "{ifname} (No IP) ",
+    "format-ethernet": "{ipaddr}/{cidr} 󰈀",
+    "tooltip-format": "{ifname} via {gwaddr} 󰍱",
+    "format-linked": "{ifname} (No IP) 󰍱",
     "format-disconnected": "Disconnected ⚠",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "on-click": "python3 $HOME/.config/waybar/scripts/wifi-menu.py 2>>/tmp/waybar-wifi.log",
   },
   "pulseaudio": {
-    // "scroll-step": 1, // %, can be a float
-    "format": "{volume}% {icon} {format_source}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": " {format_source}",
-    "format-source": "{volume}% ",
-    "format-source-muted": "",
+    "format": "{volume}% {icon}   {format_source}",
+    "format-bluetooth": "{volume}% {icon}   {format_source}",
+    "format-bluetooth-muted": "{volume}%  {icon}   {format_source}",
+    "format-muted": "{volume}%     {format_source}",
+    "format-source": "{volume}% 󰍬",
+    "format-source-muted": "<span color='#eb6f92'>{volume}% 󰍭</span>",
     "format-icons": {
       "headphone": "",
       "hands-free": "",
@@ -149,7 +128,9 @@
       "car": "",
       "default": ["", "", ""],
     },
-    "on-click": "pavucontrol",
+    "on-click": "python3 $HOME/.config/waybar/scripts/volume-control.py 2>>/tmp/waybar-vol.log",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +2%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -2%",
   },
   "custom/media": {
     "format": "{icon} {text}",
@@ -160,19 +141,12 @@
       "default": "🎜",
     },
     "escape": true,
-    "on-click": "playerctl play-pause",
-    "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null", // Filter player based on name
+    "on-click": "python3 $HOME/.config/waybar/scripts/spotify-popup.py 2>>/tmp/waybar-spotify.log",
+    "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null",
   },
   "custom/power": {
-    "format": "⏻ ",
+    "format": "⏻",
     "tooltip": false,
-    "menu": "on-click",
-    "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-    "menu-actions": {
-      "shutdown": "shutdown",
-      "reboot": "reboot",
-      "suspend": "systemctl suspend",
-      "hibernate": "systemctl hibernate",
-    },
+    "on-click": "python3 $HOME/.config/waybar/scripts/power-menu.py 2>>/tmp/waybar-power.log",
   },
 }

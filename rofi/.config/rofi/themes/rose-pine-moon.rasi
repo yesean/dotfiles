@@ -1,0 +1,99 @@
+* {
+  base:    #232136;
+  surface: #2a273f;
+  overlay: #393552;
+  muted:   #6e6a86;
+  subtle:  #908caa;
+  text:    #e0def4;
+  love:    #eb6f92;
+  gold:    #f6c177;
+  rose:    #ea9a97;
+  pine:    #3e8fb0;
+  hl-med:  #44415a;
+  hl-high: #56526e;
+
+  background-color: transparent;
+  text-color:       @text;
+  font:             "CommitMono 12";
+}
+
+window {
+  background-color: @surface;
+  border:           1px;
+  border-color:     #ea9a9766;
+  border-radius:    12px;
+  padding:          0;
+  location:         north east;
+  x-offset:         -10px;
+  y-offset:         4px;
+  width:            340px;
+}
+
+mainbox {
+  background-color: transparent;
+  children:         [message, inputbar, listview];
+  padding:          10px;
+  spacing:          6px;
+}
+
+message {
+  background-color: @overlay;
+  border-radius:    8px;
+  padding:          8px 12px;
+}
+
+textbox {
+  background-color: transparent;
+  text-color:       @subtle;
+  font:             "CommitMono 11";
+}
+
+inputbar {
+  background-color: @overlay;
+  border-radius:    8px;
+  padding:          6px 10px;
+  children:         [prompt, entry];
+  spacing:          6px;
+}
+
+prompt {
+  background-color: transparent;
+  text-color:       @pine;
+}
+
+entry {
+  background-color: transparent;
+  text-color:       @text;
+  placeholder:      "Search…";
+  placeholder-color: @muted;
+}
+
+listview {
+  background-color: transparent;
+  spacing:          2px;
+  scrollbar:        false;
+  fixed-height:     false;
+}
+
+element {
+  background-color: transparent;
+  border-radius:    8px;
+  padding:          7px 10px;
+}
+
+element selected {
+  background-color: @hl-med;
+  text-color:       @text;
+}
+
+element-text {
+  background-color: transparent;
+  text-color:       inherit;
+}
+
+scrollbar {
+  width:            3px;
+  handle-color:     @hl-high;
+  background-color: transparent;
+  border-radius:    2px;
+}

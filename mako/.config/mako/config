@@ -1,7 +1,36 @@
-background-color=#26233a
+font=CommitMono 12
+format=<b><span color="#e0def4">%s</span></b>\n\n<span color="#908caa">%b</span>
+background-color=#2a273fee
 text-color=#e0def4
-border-color=#524f67
-progress-color=over #31748f
+border-color=#ea9a9766
+border-size=1
+border-radius=12
+width=380
+height=120
+margin=12,12,0,0
+padding=14,16
+anchor=top-right
+layer=overlay
+max-icon-size=40
+icon-location=left
+default-timeout=5000
+ignore-timeout=0
+max-history=10
+sort=-time
+progress-color=over #3e8fb0
+
+[urgency=low]
+background-color=#2a273fd0
+text-color=#908caa
+border-color=#56526e88
+
+[urgency=normal]
+background-color=#2a273fee
+text-color=#e0def4
+border-color=#ea9a9766
 
 [urgency=high]
-border-color=#eb6f92
+background-color=#2a273fff
+text-color=#e0def4
+border-color=#eb6f92cc
+default-timeout=0

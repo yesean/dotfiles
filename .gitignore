@@ -3,3 +3,4 @@ macos.lua
 .luarc.json
 **/polybar/system.ini
 .claude
+__pycache__/
