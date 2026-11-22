@@ -52,7 +52,7 @@ button:hover {
 }
 
 #workspaces button.active {
-  background: @pine;
+  background: @rose;
   color: @base;
 }
 
