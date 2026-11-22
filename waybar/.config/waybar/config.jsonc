@@ -37,7 +37,12 @@
     },
   },
   "hyprland/window": {
-    "format": "{title}",
+    "format": "{class} | {title}",
+    // Reverse-DNS classes (com.mitchellh.ghostty) collapse to the last segment
+    // (ghostty); plain classes like firefox are left alone.
+    "rewrite": {
+      "^(?:[a-z0-9_-]+[.])+([^ .]+) [|] (.*)$": "$1 | $2",
+    },
   },
   "tray": {
     "spacing": 10,
